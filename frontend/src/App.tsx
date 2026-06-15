@@ -22,13 +22,27 @@ export default function App() {
   const [skills, setSkills] = useState<string[]>([]);
   const [jobFunctions, setJobFunctions] = useState<string[]>([]);
   const [industries, setIndustries] = useState<string[]>([]);
+  const [justifications, setJustifications] = useState<Record<string, string>>({});
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [mirrorSync, setMirrorSync] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loadingStep, setLoadingStep] = useState("");
 
-  const copyToClipboard = async (text: string) => {
+  const showToast = (message: string) => {
+    setToastMessage(message);
+    const timeout = (window as any)._toastTimeout;
+    if (timeout) clearTimeout(timeout);
+    (window as any)._toastTimeout = setTimeout(() => {
+      setToastMessage(null);
+    }, 2000);
+  };
+
+  const copyToClipboard = async (text: string, label?: string) => {
     try {
-      if (text) await navigator.clipboard.writeText(text);
+      if (text) {
+        await navigator.clipboard.writeText(text);
+        showToast(label ? `Copied ${label}!` : "Copied to clipboard!");
+      }
     } catch (e) {
       console.error(e);
     }
@@ -108,6 +122,7 @@ export default function App() {
       setSkills(data.skills || []);
       setJobFunctions(data.job_functions || []);
       setIndustries(data.industries || []);
+      setJustifications(data.justifications || {});
 
       clearTimeout(t1);
       clearTimeout(t2);
@@ -120,10 +135,15 @@ export default function App() {
     }
   };
 
-  const copyHtml = async (html: string) => {
-    const blob = new Blob([html], { type: "text/html" });
-    const data = [new ClipboardItem({ "text/html": blob })];
-    await navigator.clipboard.write(data);
+  const copyHtml = async (html: string, label?: string) => {
+    try {
+      const blob = new Blob([html], { type: "text/html" });
+      const data = [new ClipboardItem({ "text/html": blob })];
+      await navigator.clipboard.write(data);
+      showToast(label ? `Copied ${label}!` : "Copied to clipboard!");
+    } catch (e) {
+      console.error(e);
+    }
   };
   //Name suggested by Samarth
   return (
@@ -173,7 +193,13 @@ export default function App() {
               <p>Paste the job description below to begin the structural analysis<br />of role requirements and latent expectations.</p>
             </div>
 
-            <div className="card form-card">
+            <form 
+              className="card form-card"
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleGenerate();
+              }}
+            >
               <label className="input-label">CLIENT</label>
               <div className="input-with-icon" style={{ marginBottom: "24px" }}>
                 <select
@@ -184,10 +210,11 @@ export default function App() {
                 >
                   <option value="mercor">Mercor</option>
                   <option value="micro1">Micro1</option>
+                  <option value="turing">Turing</option>
                 </select>
               </div>
 
-              <label className="input-label">JOB LINK (REFERRAL)</label>
+              <label className="input-label">JOB LINK</label>
               <div className="input-with-icon" style={{ marginBottom: "24px" }}>
                 <LinkIcon />
                 <input
@@ -205,24 +232,31 @@ export default function App() {
                 placeholder="Paste the full description here..."
                 value={rawJd}
                 onChange={(e) => setRawJd(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                    e.preventDefault();
+                    handleGenerate();
+                  }
+                }}
               />
 
               {error && <p className="error-text">{error}</p>}
 
               <div className="form-actions">
                 <button
+                  type="button"
                   className="btn-ghost"
                   onClick={() => { setRawJd(''); setJobUrl(''); }}
                 >
                   Clear
                 </button>
-                <button className="btn-primary" onClick={handleGenerate}>
+                <button type="submit" className="btn-primary">
                   Generate Analysis <ArrowRightIcon />
                 </button>
               </div>
-            </div>
+            </form>
 
-            <div className="version-label">V1 ALPHA</div>
+            <div className="version-label">V1.5 ALPHA</div>
           </div>
         )}
 
@@ -253,7 +287,10 @@ export default function App() {
                       />
                       Mirror Prefix
                     </label>
-                    <button className="btn-primary-box" onClick={() => copyHtml(emailTemplate)}>
+                    <button
+                      className="btn-primary-box"
+                      onClick={() => copyHtml(emailTemplate, "template")}
+                    >
                       <CopyIcon /> Copy Template
                     </button>
                   </div>
@@ -269,7 +306,7 @@ export default function App() {
                         style={{ width: "100%", border: "none", background: "transparent", fontWeight: 600, color: "#0f172a", outline: "none", fontSize: "15px", fontFamily: "inherit" }}
                       />
                     </div>
-                    <button className="btn-ghost-box" onClick={() => copyToClipboard(subject)} title="Copy Subject">
+                    <button className="btn-ghost-box" onClick={() => copyToClipboard(subject, "subject")} title="Copy Subject">
                       <CopyIcon /> Copy
                     </button>
                   </div>
@@ -280,6 +317,7 @@ export default function App() {
                     className="rich-text-content"
                     ref={emailRef}
                     contentEditable
+                    style={{ whiteSpace: 'normal' }}
                     dangerouslySetInnerHTML={{ __html: emailTemplate || "<p>No data</p>" }}
                   />
                 </div>
@@ -291,7 +329,10 @@ export default function App() {
                     <h3>Job Description</h3>
                   </div>
                   <div className="header-actions">
-                    <button className="btn-primary-box" onClick={() => copyHtml(structuredJd)}>
+                    <button
+                      className="btn-primary-box"
+                      onClick={() => copyHtml(structuredJd, "JD")}
+                    >
                       <CopyIcon /> Copy JD
                     </button>
                   </div>
@@ -307,7 +348,7 @@ export default function App() {
                         style={{ width: "100%", border: "none", background: "transparent", fontWeight: 600, color: "#0f172a", outline: "none", fontSize: "15px", fontFamily: "inherit" }}
                       />
                     </div>
-                    <button className="btn-ghost-box" onClick={() => copyToClipboard(linkedinTitle)} title="Copy LinkedIn Title">
+                    <button className="btn-ghost-box" onClick={() => copyToClipboard(linkedinTitle, "LinkedIn title")} title="Copy LinkedIn Title">
                       <CopyIcon /> Copy
                     </button>
                   </div>
@@ -317,6 +358,7 @@ export default function App() {
                     className="rich-text-content"
                     ref={jdRef}
                     contentEditable
+                    style={{ whiteSpace: 'normal' }}
                     dangerouslySetInnerHTML={{ __html: structuredJd || "<p>No data</p>" }}
                   />
                 </div>
@@ -324,36 +366,38 @@ export default function App() {
             </div>
 
             <div className="output-col-right">
+              {/* 1. SUGGESTED TITLES */}
               <div className="card gray-card" style={{ padding: "24px" }}>
                 <div className="mini-title" style={{ marginBottom: "12px" }}>SUGGESTED TITLES (TAP TO COPY)</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                  {suggestedTitles.split("\n").filter(Boolean).map((t: string, i: number) => (
-                    <div key={i} className="clickable-pill" onClick={() => copyToClipboard(t.replace(/^- /, '').trim())} title="Copy Title">
-                      {t.replace(/^- /, '').trim()}
-                    </div>
-                  ))}
+                  {suggestedTitles.split("\n").filter(Boolean).map((t: string, i: number) => {
+                    const cleanT = t.replace(/^- /, '').trim();
+                    return (
+                      <div
+                        key={i}
+                        className="clickable-pill"
+                        onClick={() => copyToClipboard(cleanT, "title")}
+                        title={justifications[cleanT] || "Alternative job title matching role requirements."}
+                      >
+                        {cleanT}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 
-              {jobFunctions && jobFunctions.length > 0 && (
-                <div className="card gray-card" style={{ marginTop: "16px", padding: "24px" }}>
-                  <div className="mini-title" style={{ marginBottom: "12px" }}>JOB FUNCTIONS (TAP TO COPY)</div>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                    {jobFunctions.map((s: string, i: number) => (
-                      <div key={i} className="clickable-pill" onClick={() => copyToClipboard(s)} title="Copy Function">
-                        {s}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
+              {/* 2. INDUSTRIES */}
               {industries && industries.length > 0 && (
                 <div className="card gray-card" style={{ marginTop: "16px", padding: "24px" }}>
                   <div className="mini-title" style={{ marginBottom: "12px" }}>INDUSTRIES (TAP TO COPY)</div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                     {industries.map((s: string, i: number) => (
-                      <div key={i} className="clickable-pill" onClick={() => copyToClipboard(s)} title="Copy Industry">
+                      <div
+                        key={i}
+                        className="clickable-pill"
+                        onClick={() => copyToClipboard(s, "industry")}
+                        title={justifications[s] || "Industry sector relevant to the role's domain."}
+                      >
                         {s}
                       </div>
                     ))}
@@ -361,12 +405,37 @@ export default function App() {
                 </div>
               )}
 
+              {/* 3. JOB FUNCTIONS */}
+              {jobFunctions && jobFunctions.length > 0 && (
+                <div className="card gray-card" style={{ marginTop: "16px", padding: "24px" }}>
+                  <div className="mini-title" style={{ marginBottom: "12px" }}>JOB FUNCTIONS (TAP TO COPY)</div>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                    {jobFunctions.map((s: string, i: number) => (
+                      <div
+                        key={i}
+                        className="clickable-pill"
+                        onClick={() => copyToClipboard(s, "job function")}
+                        title={justifications[s] || "Core function related to the primary responsibilities."}
+                      >
+                        {s}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* 4. TARGET SKILLS */}
               {skills && skills.length > 0 && (
                 <div className="card gray-card" style={{ marginTop: "16px", padding: "24px" }}>
                   <div className="mini-title" style={{ marginBottom: "12px" }}>TARGET SKILLS (TAP TO COPY)</div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                     {skills.map((s: string, i: number) => (
-                      <div key={i} className="clickable-pill" onClick={() => copyToClipboard(s)} title="Copy Skill">
+                      <div
+                        key={i}
+                        className="clickable-pill"
+                        onClick={() => copyToClipboard(s, "skill")}
+                        title={justifications[s] || "Technical skill or framework required for the role."}
+                      >
                         {s}
                       </div>
                     ))}
@@ -378,6 +447,12 @@ export default function App() {
           </div>
         )}
       </main>
+
+      {toastMessage && (
+        <div className="toast-notification">
+          {toastMessage}
+        </div>
+      )}
     </div>
   );
 }
