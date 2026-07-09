@@ -8,7 +8,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 
 # ── Registry imports ─────────────────────────────────────────────────────────
-from clients import get_client_config, CLIENT_REGISTRY, SUPPORTED_CLIENTS
+from clients import get_client_config, CLIENT_REGISTRY, SUPPORTED_CLIENTS, DOMAIN_PAGE_KEYS
 from formatters import get_formatter
 from prompts import get_prompt
 
@@ -60,7 +60,7 @@ def generate_llm_output(raw_jd: str, client_name: str = "mercor") -> str:
     response = _openai_client.chat.completions.create(
         model="gpt-4o",
         messages=[
-            {"role": "system", "content": "You output strict JSON only. Do not wrap in formatting blocks."},
+            {"role": "system", "content": "You output strict JSON only. Do not wrap in formatting blocks. CRITICAL INSTRUCTION: Remove any sort of date, turnaround deadline, or completion time limit if mentioned in the JD (for example, 'Your turnaround time will be 3 hours of conversation that needs to be filled before 12/28'). The output must not hint anything regarding deadlines, turnaround windows, or completion dates while keeping all other details covered exactly."},
             {"role": "user", "content": prompt}
         ],
         temperature=0.0
@@ -103,8 +103,8 @@ VALID_INDUSTRIES = [
 ]
 
 def clean_category_list(items, valid_list):
-    """Validates items against valid_list (exact match). Falls back to keyword overlap if < 3 match."""
-    if not isinstance(items, list): return []
+    """Validates items against valid_list (exact match). Falls back to keyword overlap if < 3 match, and defaults if still < 3."""
+    if not isinstance(items, list): items = []
     cleaned = []
     for i in items:
         i_str = str(i).strip().lower()
@@ -114,7 +114,7 @@ def clean_category_list(items, valid_list):
                     cleaned.append(v)
                 break
 
-    # Failsafe: fill remaining slots via keyword-overlap scoring
+    # Failsafe 1: fill remaining slots via keyword-overlap scoring
     if len(cleaned) < 3:
         scored = []
         items_combined = " ".join(str(i).lower() for i in items)
@@ -132,6 +132,14 @@ def clean_category_list(items, valid_list):
             if len(cleaned) >= 3:
                 break
 
+    # Failsafe 2: if still < 3 (e.g. empty input or no keyword match), fill from valid_list
+    if len(cleaned) < 3:
+        for v in valid_list:
+            if v not in cleaned:
+                cleaned.append(v)
+            if len(cleaned) >= 3:
+                break
+
     return cleaned[:3]
 
 _SKILL_VERB_PREFIXES = (
@@ -141,10 +149,12 @@ _SKILL_VERB_PREFIXES = (
 
 def clean_skills(skills: list, role: str = "") -> list:
     """Post-filter LLM skills: remove niche, verbose, or role-repeating entries."""
+    if not isinstance(skills, list):
+        skills = []
     role_lower = role.lower()
     cleaned = []
     for s in skills:
-        s = s.strip()
+        s = str(s).strip()
         if not s:
             continue
         if len(s.split()) > 3:
@@ -155,6 +165,8 @@ def clean_skills(skills: list, role: str = "") -> list:
         if s_lower == role_lower:
             continue
         cleaned.append(s)
+    if not cleaned:
+        cleaned = ["Data Evaluation", "Quality Assurance", "Content Analysis"]
     return cleaned[:5]
 
 def normalize_commitment(commitment: str) -> str:
@@ -193,12 +205,29 @@ def normalize_requirements(requirements: List[str]) -> List[str]:
         cleaned.append(r[0].upper() + r[1:])
     return list(dict.fromkeys(cleaned))
 
+def strip_deadlines_and_dates(text: str) -> str:
+    if not text:
+        return text
+    sentences = re.split(r'(?<=[.!?])\s+', text)
+    cleaned = []
+    deadline_pattern = re.compile(
+        r'(?i)\b(before \d{1,2}/\d{1,2}|turnaround time|to be filled before|filled before|deadline|complete before|submit by|apply by|\d{1,2}(?:st|nd|rd|th)?\s+(?:january|february|march|april|may|june|july|august|september|october|november|december))\b'
+    )
+    for sentence in sentences:
+        if deadline_pattern.search(sentence):
+            continue
+        cleaned.append(sentence.strip())
+    return " ".join([s for s in cleaned if s]).strip()
+
 def filter_requirements(requirements: List[str]) -> List[str]:
     filtered = []
     blocked_pattern = re.compile(r'\b(us|uk|canada|europe|western|h1-b|h1b|visa|opt|citizenship)\b', re.IGNORECASE)
+    deadline_pattern = re.compile(
+        r'(?i)\b(before \d{1,2}/\d{1,2}|turnaround time|to be filled before|filled before|deadline|complete before|submit by|apply by|\d{1,2}(?:st|nd|rd|th)?\s+(?:january|february|march|april|may|june|july|august|september|october|november|december))\b'
+    )
 
     for r in requirements:
-        if blocked_pattern.search(r):
+        if blocked_pattern.search(r) or deadline_pattern.search(r):
             continue
         filtered.append(r)
 
@@ -212,9 +241,12 @@ def filter_requirements(requirements: List[str]) -> List[str]:
 def filter_responsibilities(responsibilities: List[str]) -> List[str]:
     filtered = []
     blocked_patterns = ["based in", "located in", "native to"]
+    deadline_pattern = re.compile(
+        r'(?i)\b(before \d{1,2}/\d{1,2}|turnaround time|to be filled before|filled before|deadline|complete before|submit by|apply by|\d{1,2}(?:st|nd|rd|th)?\s+(?:january|february|march|april|may|june|july|august|september|october|november|december))\b'
+    )
     for r in responsibilities:
         r_lower = r.lower()
-        if any(p in r_lower for p in blocked_patterns):
+        if any(p in r_lower for p in blocked_patterns) or deadline_pattern.search(r):
             continue
         filtered.append(r)
     return filtered
@@ -288,6 +320,13 @@ def normalize_data(data: dict, client_id: str) -> dict:
     data["justifications"] = data.get("justifications", {})
     if not isinstance(data["justifications"], dict):
         data["justifications"] = {}
+
+    if "role_overview" in data and isinstance(data["role_overview"], str):
+        data["role_overview"] = strip_deadlines_and_dates(data["role_overview"])
+    if "commitment" in data and isinstance(data["commitment"], str):
+        data["commitment"] = strip_deadlines_and_dates(data["commitment"])
+    if "who_this_is_for" in data and isinstance(data["who_this_is_for"], str):
+        data["who_this_is_for"] = strip_deadlines_and_dates(data["who_this_is_for"])
 
     data["role_overview"] = normalize_text_block(data.get("role_overview", ""))
 
@@ -584,6 +623,8 @@ Your task is to analyze the job description below and extract/generate the follo
    - DO NOT use generic filler like "matches the title", "relevant industry", "required for the role", "needed for responsibilities", or "fits the category".
    - Example of a GOOD justification: "Python": "Needed to develop training pipelines and integrate ML tools as described in key duties."
 
+CRITICAL DEADLINE EXCLUSION: Do NOT include any deadlines, dates, or turnaround time limits anywhere in suggested_titles, skills, job_functions, industries, or justifications.
+
 Output strictly in JSON format matching this schema:
 {{
   "suggested_titles": [],
@@ -668,7 +709,9 @@ def get_valid_llm_output(raw_jd: str, url: str = None, client: str = "mercor") -
                     "suggested_titles": fallback_titles,
                     "subject": "",
                     "linkedin_title": "",
-                    "skills": [],
+                    "skills": ["Data Evaluation", "Quality Assurance", "Content Analysis"],
+                    "job_functions": ["Writing/Editing", "Analytics", "Project Management"],
+                    "industries": ["Technology, Information and Media", "Professional Services", "Education"],
                     "justifications": {}
                 }
 
@@ -684,18 +727,22 @@ def get_valid_llm_output(raw_jd: str, url: str = None, client: str = "mercor") -
                     print("[TURING DEBUG] AI Raw Output (raw_resp):", raw_resp)
                     print("[TURING DEBUG] Final Response Payload (email):", email_output)
 
+                is_dp = client_id in DOMAIN_PAGE_KEYS
                 return {
                     "jd": jd_output,
-                    "email": email_output,
+                    "email": email_output if not is_dp else "",
+                    "inmail_draft": email_output if is_dp else None,
+                    "email_draft": None if is_dp else email_output,
                     "subject": fallback_data["subject"],
                     "linkedin_title": fallback_data["linkedin_title"],
                     "skills": fallback_data["skills"],
-                    "job_functions": [],
-                    "industries": [],
+                    "job_functions": fallback_data["job_functions"],
+                    "industries": fallback_data["industries"],
                     "version": "v2",
                     "titles": fallback_titles,
                     "structured_data": fallback_data,
-                    "justifications": {}
+                    "justifications": {},
+                    "is_domain_page": is_dp
                 }
 
             continue
@@ -817,9 +864,12 @@ def get_valid_llm_output(raw_jd: str, url: str = None, client: str = "mercor") -
                 print("[TURING DEBUG] AI Raw Output (raw_resp):", raw_resp)
                 print("[TURING DEBUG] Final Response Payload (email):", email_output)
 
+            is_dp = client_id in DOMAIN_PAGE_KEYS
             return {
                 "jd": jd_output,
-                "email": email_output,
+                "email": email_output if not is_dp else "",
+                "inmail_draft": email_output if is_dp else None,
+                "email_draft": None if is_dp else email_output,
                 "subject": subject,
                 "linkedin_title": linkedin_title,
                 "skills": skills,
@@ -828,7 +878,8 @@ def get_valid_llm_output(raw_jd: str, url: str = None, client: str = "mercor") -
                 "version": "v2",
                 "titles": result["suggested_titles"],
                 "structured_data": result,
-                "justifications": final_justifications
+                "justifications": final_justifications,
+                "is_domain_page": is_dp
             }
 
         else:

@@ -8,17 +8,19 @@ Usage:
     print(config["displayName"])  # "Turing"
 """
 
-from typing import Dict, Any
+from typing import Dict, Any, Set
 
 from clients.mercor import CONFIG as MERCOR_CONFIG
 from clients.micro1 import CONFIG as MICRO1_CONFIG
 from clients.turing import CONFIG as TURING_CONFIG
+from clients.domain_pages import DOMAIN_PAGES_REGISTRY, DOMAIN_PAGE_KEYS
 
 # ── Registry ──────────────────────────────────────────────────────────────────
 CLIENT_REGISTRY: Dict[str, Dict[str, Any]] = {
     "mercor": MERCOR_CONFIG,
     "micro1": MICRO1_CONFIG,
     "turing": TURING_CONFIG,
+    **DOMAIN_PAGES_REGISTRY,
 }
 
 SUPPORTED_CLIENTS = list(CLIENT_REGISTRY.keys())
@@ -38,3 +40,4 @@ def get_client_config(client_id: str) -> Dict[str, Any]:
             f"Supported clients: {SUPPORTED_CLIENTS}"
         )
     return CLIENT_REGISTRY[key]
+

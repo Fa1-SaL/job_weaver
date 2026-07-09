@@ -1,0 +1,6 @@
+/* HeroUI Select Utility Styles & Custom Overrides */
+.heroui-select-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

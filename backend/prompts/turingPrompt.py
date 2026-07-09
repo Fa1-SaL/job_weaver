@@ -47,6 +47,7 @@ TURING-SPECIFIC RULES:
 - All text values must be plain text only. No markdown, no HTML, no asterisks, no backticks.
 - No intro paragraph, no outro paragraph in any field.
 - Do NOT include company introduction or background in role_overview.
+- CRITICAL DEADLINE EXCLUSION: Completely omit any deadlines, completion dates, or turnaround time windows mentioned in the JD (e.g. "Your turnaround time will be 3 hours of conversation that needs to be filled before 12/28"). The output must not hint anything regarding deadlines while keeping all other details covered.
 
 RESPONSIBILITIES RULES:
 - Concise and action-driven. Start each with an action verb.
