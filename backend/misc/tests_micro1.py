@@ -15,7 +15,7 @@ def test_jbo():
     except Exception as e:
         print("API Error:", e)
 
-    # If API fails, fetch HTML
+    # If API fails, fetch HTML yada yada yada
     url2 = "https://jobs.micro1.ai/post/18d2124d-9cc1-472c-968f-5db976f09029"
     r = httpx.get(url2, timeout=10)
     print("HTML Status:", r.status_code)
