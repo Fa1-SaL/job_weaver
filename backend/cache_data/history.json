@@ -1,0 +1,1519 @@
+[
+  {
+    "id": "058e0edb-08ca-4271-a6e1-d00d4e645cd9",
+    "timestamp": "2026-07-11T11:26:03.124245Z",
+    "client": "designmeshai",
+    "url": "",
+    "raw_jd": "Medical Expert\nHourly contract\nRemote\nF\nA\nP\n266 hired this month\n$130-$180\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocation requirements\nCanada\nUnited States\nAbout the Role\nMercor is partnering with a leading AI lab to train frontier models on high-quality healthcare reasoning data. We're expanding our Medical Expert network. As a Medical Expert, you'll design realistic clinical scenarios, evaluate model outputs against evidence-based standards, and help shape how the next generation of AI reasons about patient care.\nIf your specialty has its own dedicated listing on Mercor (Internal Medicine, Emergency Medicine, Psychiatry, Hematology/Oncology, Radiology, Cardiology), please apply through that listing instead — you'll see the rate band that actually applies to you. Use this listing if your specialty is not yet listed (e.g., Family Medicine, Pediatrics, Anesthesiology, Surgery, ENT, PMR/Pain, Occupational Medicine, etc.).\nWhat You'll Do\nDesign clinically realistic prompts and scenarios drawn from your specialty (diagnostic reasoning, treatment planning, risk stratification, guideline concordance)\nWrite \"golden\" reference responses at attending-level quality\nGrade AI-generated responses against structured rubrics\nProvide written feedback the research team uses to improve model behavior\nParticipate in onboarding office hours and specialty calibration sessions\nWho You Are\nAttending Physicians: Must be board certified with current, active, unrestricted medical license\nResident physicians: Must be in final year of residency (recent graduates must be board-eligible)\nFellows: Must be board-certified/board-eligible in primary specialty and have current active, unrestricted, medical license.\nRates\nRates are set per specialty and seniority tier, benchmarked to Mercor. Your specific rate will be confirmed in your offer.\nEngagement\nRemote, 100% asynchronous\n20 hrs/wk default (can be raised after onboarding based on demand)\nPaid weekly via Mercor\nStart: rolling, after onboarding sign-off\nDuration: ongoing, reviewed monthly\nBefore Your First Task\nYou'll receive an onboarding doc and a calendar invite for Onboarding Office Hours after you accept.\nWe consider all qualified applicants without regard to legally protected characteristics and provide reasonable accommodations upon request.\nContract and Payment Terms\nYou will be engaged as an independent contractor.\nThis is a fully remote role that can be completed on your own schedule.\nProjects can be extended, shortened, or concluded early depending on needs and performance.\nYour work at Mercor will not involve access to confidential or proprietary information from any employer, client, or institution.\nPayments are weekly on Stripe or Wise based on services rendered.\nPlease note: We are unable to support H1-B or STEM OPT candidates at this time.",
+    "role": "Medical Expert",
+    "raw_jd_snippet": "Medical Expert\nHourly contract\nRemote\nF\nA\nP\n266 hired this month\n$130-$180\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocation requirements\nCana...",
+    "cache_key": "cac8f4f2015bfaa24e305cd1fa3bca51",
+    "data": {
+      "jd": "<b>Medical Expert</b><br><br>\n<b>Role Summary</b><br>\nAs a Medical Expert, you'll design clinical scenarios, evaluate AI model outputs, and influence AI reasoning in patient care.<br><br>\n\n<b>Deliverables</b>\n<ul>\n<li>Design clinically realistic prompts and scenarios drawn from your specialty.</li>\n<li>Write 'golden' reference responses at attending-level quality.</li>\n<li>Grade AI-generated responses against structured rubrics.</li>\n<li>Provide written feedback to improve model behavior.</li>\n<li>Participate in onboarding office hours and specialty calibration sessions.</li>\n</ul><br>\n\n<b>Requirements</b>\n<ul>\n<li>Attending Physicians: Must be board certified with current, active, unrestricted medical license.</li>\n<li>Fellows: Must be board-certified/board-eligible in primary specialty with current active, unrestricted medical license.</li>\n</ul><br>\n\n<b>Details</b><br>\n<b>Job Type:</b> Hourly contract<br>\n<b>Compensation:</b> $130-$180 per hour<br>\n<b>Work Setup:</b> Remote<br><br>\n\n<b>Application Process</b>\n<ul>\n<li>Complete your application using the Easy Apply button.</li>\n<li>Your application will be reviewed according to the role requirements.</li>\n<li>Qualified candidates will receive an email outlining the next stage of the application process.</li>\n<li>Follow the instructions in the email to proceed with the remaining steps.</li>\n</ul><br>\n\n#LI-CH",
+      "email": "",
+      "inmail_draft": "Hi {firstName},<br><br>\n\nI'm reaching out from <b>DesignMeshAI</b> to refer you for the role of <a href=\"mercor.com\"><b>Medical Expert</b></a> at <b>Mercor</b>.<br><br>\n\n<b>About the Role</b><br>\nAs a Medical Expert, you'll design clinical scenarios, evaluate AI model outputs, and influence AI reasoning in patient care.<br><br>\n\n<b>Organization:</b> Mercor<br>\n<b>Referred by:</b> DesignMeshAI<br>\n<b>Engagement:</b> Hourly contract<br>\n<b>Pay:</b> $130-$180 per hour<br>\n<b>Mode:</b> Remote<br><br>\n\n<b>Key Responsibilities</b>\n<ul>\n<li>Design clinically realistic prompts and scenarios drawn from your specialty.</li>\n<li>Write 'golden' reference responses at attending-level quality.</li>\n<li>Grade AI-generated responses against structured rubrics.</li>\n<li>Provide written feedback to improve model behavior.</li>\n<li>Participate in onboarding office hours and specialty calibration sessions.</li>\n</ul><br>\n\n<b>Who We're Looking For</b>\n<ul>\n<li>Attending Physicians: Must be board certified with current, active, unrestricted medical license.</li>\n<li>Fellows: Must be board-certified/board-eligible in primary specialty with current active, unrestricted medical license.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Click the Mercor application link shared in this email.</li>\n<li>Sign up for a Mercor account if required, or log in to continue.</li>\n<li>After accessing your account, submit your application to finalize the process.</li>\n</ul><br>\n\n<b>Apply here:</b> <a href=\"mercor.com\"><b>Medical Expert</b></a><br><br>\n\n<b>You can also checkout these Opportunities as well:</b><br><br>\n\n<i>P.S. For immediate support, contact support@mercor.com</i><br><br>\n\nBest Regards,<br>\nDesignMeshAI",
+      "email_draft": null,
+      "subject": "Medical Expert | $180/hr Remote | Mercor",
+      "linkedin_title": "Medical Expert | Remote",
+      "skills": [
+        "Clinical Reasoning",
+        "Scenario Design",
+        "Model Evaluation",
+        "Evidence-Based Medicine",
+        "AI Integration"
+      ],
+      "job_functions": [
+        "Health care provider",
+        "Design",
+        "Research"
+      ],
+      "industries": [
+        "Hospitals and Health Care",
+        "Medical Practices",
+        "Technology, Information and Media"
+      ],
+      "version": "v2",
+      "titles": [
+        "Medical Advisor",
+        "Clinical Scenario Designer",
+        "Medical Content Evaluator"
+      ],
+      "structured_data": {
+        "role": "Medical Expert",
+        "type": "Hourly contract",
+        "pay": "$130-$180 per hour",
+        "location": "Remote",
+        "commitment": "10-40 hrs/week",
+        "role_responsibilities": [
+          "Design clinically realistic prompts and scenarios drawn from your specialty.",
+          "Write 'golden' reference responses at attending-level quality.",
+          "Grade AI-generated responses against structured rubrics.",
+          "Provide written feedback to improve model behavior.",
+          "Participate in onboarding office hours and specialty calibration sessions."
+        ],
+        "requirements": [
+          "Attending Physicians: Must be board certified with current, active, unrestricted medical license.",
+          "Resident physicians: Must be in final year of residency or board-eligible.",
+          "Fellows: Must be board-certified/board-eligible in primary specialty with current active, unrestricted medical license."
+        ],
+        "role_overview": "As a Medical Expert, you'll design clinical scenarios, evaluate AI model outputs, and influence AI reasoning in patient care.",
+        "who_this_is_for": "Professionals in Family Medicine, Pediatrics, Anesthesiology, Surgery, ENT, PMR/Pain, or Occupational Medicine with board certification or eligibility.",
+        "client": "DesignMeshAI",
+        "client_desc": "Mercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.",
+        "link": "mercor.com",
+        "suggested_titles": [
+          "Medical Advisor",
+          "Clinical Scenario Designer",
+          "Medical Content Evaluator"
+        ],
+        "subject": "Medical Expert | $130-$180/hr Remote | DesignMeshAI x AI Labs",
+        "linkedin_title": "Medical Expert",
+        "skills": [
+          "Clinical Reasoning",
+          "Scenario Design",
+          "Model Evaluation",
+          "Evidence-Based Medicine",
+          "AI Integration"
+        ],
+        "job_functions": [
+          "Health care provider",
+          "Design",
+          "Research"
+        ],
+        "industries": [
+          "Hospitals and Health Care",
+          "Medical Practices",
+          "Technology, Information and Media"
+        ],
+        "justifications": {
+          "Healthcare AI Specialist": "Emphasizes AI-driven healthcare tasks and advanced clinical reasoning required for realistic scenario design.",
+          "Clinical AI Consultant": "Highlights consulting on clinical scenarios and evaluating AI outputs using evidence-based guidelines.",
+          "Medical Advisor": "Indicates board-certified expertise guiding clinical content and shaping next-generation AI reasoning.",
+          "Clinical Scenario Designer": "Directly reflects designing realistic clinical scenarios and drafting golden reference responses.",
+          "Medical Content Evaluator": "Focuses on grading AI outputs and providing structured feedback based on standardized rubrics.",
+          "Clinical Reasoning": "Required for diagnosing and planning treatments using evidence-based medical practices.",
+          "Scenario Design": "Essential for creating realistic, specialty-specific clinical prompts and training data.",
+          "Model Evaluation": "Vital for assessing AI outputs against structured rubrics and clinical guidelines.",
+          "Evidence-Based Medicine": "Ensures alignment of responses with current clinical evidence and standardized protocols.",
+          "AI Integration": "Relevant for enhancing AI model performance through the incorporation of medical expertise.",
+          "Health care provider": "Reflects the need for board-certified physicians contributing clinical expertise.",
+          "Design": "Captures the core responsibility of creating clinically realistic scenarios and prompts.",
+          "Research": "Supports systematic evaluation of AI outputs to improve model behavior using clinical data.",
+          "Hospitals and Health Care": "Connects clinical expertise with settings where high-quality patient care insights are crucial.",
+          "Medical Practices": "Aligns with the candidate's licensed medical background and specialty-specific experience.",
+          "Technology, Information and Media": "Reflects the AI lab environment leveraging advanced technology in healthcare reasoning."
+        },
+        "where_you_will": "contribute to training advanced AI models and ensuring high-quality system integration"
+      },
+      "justifications": {
+        "Medical Advisor": "Indicates board-certified expertise guiding clinical content and shaping next-generation AI reasoning.",
+        "Clinical Scenario Designer": "Directly reflects designing realistic clinical scenarios and drafting golden reference responses.",
+        "Medical Content Evaluator": "Focuses on grading AI outputs and providing structured feedback based on standardized rubrics.",
+        "Clinical Reasoning": "Required for diagnosing and planning treatments using evidence-based medical practices.",
+        "Scenario Design": "Essential for creating realistic, specialty-specific clinical prompts and training data.",
+        "Model Evaluation": "Vital for assessing AI outputs against structured rubrics and clinical guidelines.",
+        "Evidence-Based Medicine": "Ensures alignment of responses with current clinical evidence and standardized protocols.",
+        "AI Integration": "Relevant for enhancing AI model performance through the incorporation of medical expertise.",
+        "Health care provider": "Reflects the need for board-certified physicians contributing clinical expertise.",
+        "Design": "Captures the core responsibility of creating clinically realistic scenarios and prompts.",
+        "Research": "Supports systematic evaluation of AI outputs to improve model behavior using clinical data.",
+        "Hospitals and Health Care": "Connects clinical expertise with settings where high-quality patient care insights are crucial.",
+        "Medical Practices": "Aligns with the candidate's licensed medical background and specialty-specific experience.",
+        "Technology, Information and Media": "Reflects the AI lab environment leveraging advanced technology in healthcare reasoning."
+      },
+      "is_domain_page": true
+    }
+  },
+  {
+    "id": "66870f1b-fbb4-454c-ab3b-cc31a1a1e73b",
+    "timestamp": "2026-07-11T11:25:29.975117Z",
+    "client": "crossing_hurdles",
+    "url": "",
+    "raw_jd": "Medical Expert\nHourly contract\nRemote\nF\nA\nP\n266 hired this month\n$130-$180\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocation requirements\nCanada\nUnited States\nAbout the Role\nMercor is partnering with a leading AI lab to train frontier models on high-quality healthcare reasoning data. We're expanding our Medical Expert network. As a Medical Expert, you'll design realistic clinical scenarios, evaluate model outputs against evidence-based standards, and help shape how the next generation of AI reasons about patient care.\nIf your specialty has its own dedicated listing on Mercor (Internal Medicine, Emergency Medicine, Psychiatry, Hematology/Oncology, Radiology, Cardiology), please apply through that listing instead — you'll see the rate band that actually applies to you. Use this listing if your specialty is not yet listed (e.g., Family Medicine, Pediatrics, Anesthesiology, Surgery, ENT, PMR/Pain, Occupational Medicine, etc.).\nWhat You'll Do\nDesign clinically realistic prompts and scenarios drawn from your specialty (diagnostic reasoning, treatment planning, risk stratification, guideline concordance)\nWrite \"golden\" reference responses at attending-level quality\nGrade AI-generated responses against structured rubrics\nProvide written feedback the research team uses to improve model behavior\nParticipate in onboarding office hours and specialty calibration sessions\nWho You Are\nAttending Physicians: Must be board certified with current, active, unrestricted medical license\nResident physicians: Must be in final year of residency (recent graduates must be board-eligible)\nFellows: Must be board-certified/board-eligible in primary specialty and have current active, unrestricted, medical license.\nRates\nRates are set per specialty and seniority tier, benchmarked to Mercor. Your specific rate will be confirmed in your offer.\nEngagement\nRemote, 100% asynchronous\n20 hrs/wk default (can be raised after onboarding based on demand)\nPaid weekly via Mercor\nStart: rolling, after onboarding sign-off\nDuration: ongoing, reviewed monthly\nBefore Your First Task\nYou'll receive an onboarding doc and a calendar invite for Onboarding Office Hours after you accept.\nWe consider all qualified applicants without regard to legally protected characteristics and provide reasonable accommodations upon request.\nContract and Payment Terms\nYou will be engaged as an independent contractor.\nThis is a fully remote role that can be completed on your own schedule.\nProjects can be extended, shortened, or concluded early depending on needs and performance.\nYour work at Mercor will not involve access to confidential or proprietary information from any employer, client, or institution.\nPayments are weekly on Stripe or Wise based on services rendered.\nPlease note: We are unable to support H1-B or STEM OPT candidates at this time.",
+    "role": "Medical Expert",
+    "raw_jd_snippet": "Medical Expert\nHourly contract\nRemote\nF\nA\nP\n266 hired this month\n$130-$180\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocation requirements\nCana...",
+    "cache_key": "1b1df539f97a225b2232d249478b50cd",
+    "data": {
+      "jd": "<b>Position:</b> Medical Expert<br>\n<b>Type:</b> Hourly contract<br>\n<b>Compensation:</b> $130-$180 per hour<br>\n<b>Location:</b> Remote<br>\n<b>Commitment:</b> 10-40 hrs/week<br><br>\n\n<b>Role Responsibilities:</b>\n<ul>\n<li>Design clinically realistic prompts and scenarios drawn from your specialty.</li>\n<li>Write 'golden' reference responses at attending-level quality.</li>\n<li>Grade AI-generated responses against structured rubrics.</li>\n<li>Provide written feedback to improve model behavior.</li>\n<li>Participate in onboarding office hours and specialty calibration sessions.</li>\n</ul><br>\n\n<b>Requirements:</b>\n<ul>\n<li>Attending Physicians: Must be board certified with current, active, unrestricted medical license.</li>\n<li>Fellows: Must be board-certified/board-eligible in primary specialty with current active, unrestricted medical license.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Apply using the Easy Apply button and submit your application.</li>\n<li>Applications will be reviewed based on the role requirements.</li>\n<li>Eligible candidates will receive an InMail with instructions to continue the application process.</li>\n<li>Follow the instructions in the InMail to complete the remaining application steps.</li>\n</ul><br>\n\n#LI-CH",
+      "email": "",
+      "inmail_draft": "Hi {firstName},<br><br>\n\nI'm from <b>Crossing Hurdles</b>, Based on your profile, we think you could be a strong fit for the <a href=\"mercor.com\"><b>Medical Expert</b></a> position at <b>Mercor</b>.<br><br>\n\n<b>Organization:</b> Mercor<br>\n<b>Referral by:</b> Crossing Hurdles<br>\n<b>Role:</b> Medical Expert<br>\n<b>Type:</b> Hourly contract<br>\n<b>Pay:</b> $130-$180 per hour<br>\n<b>Location:</b> Remote<br><br>\n\n<b>Application Process</b>\n<ul>\n<li>Click the Mercor application link provided in this message.</li>\n<li>Create a Mercor account if you are a new user, or sign in to your existing account.</li>\n<li>Once signed in, submit your application for the role to complete the application process.</li>\n</ul><br>\n\n<b>Apply here (reviewed on a rolling basis):</b><br>\n<a href=\"mercor.com\"><b>Medical Expert</b></a> – $130-$180 per hour<br><br>\n\n<b>You can also checkout these Opportunities as well:</b><br><br>\n\n<b>Take Steps to Boost Your Profile:</b>\n<ul>\n<li>Need tips to improve your chances of selection? Check out the <a href=\"https://docs.google.com/document/d/1xYe9X4t2Bv6BEScXwwvix35Kmlc92xiulEpBDLcCZb8/edit?usp=sharing\">Interview Preparation Playbook</a></li>\n<li>You can strengthen your profile through the <a href=\"https://work.mercor.com/home?tab=assessments&referralCode=c88e7e37-c849-4793-a401-f58c8615e4c7\">Assessment tab</a> in your dashboard. Completing skill based assessments can help unlock future opportunities, including roles you have not applied to or roles that may not be publicly listed.</li>\n</ul><br>\n\n<i>P.S. For immediate support, contact support@mercor.com</i>",
+      "email_draft": null,
+      "subject": "Medical Expert | $180/hr Remote | Mercor x AI Labs",
+      "linkedin_title": "Medical Expert | Remote",
+      "skills": [
+        "Clinical Scenarios",
+        "Diagnostic Reasoning",
+        "Treatment Planning",
+        "Risk Stratification",
+        "Rubric Grading"
+      ],
+      "job_functions": [
+        "Design",
+        "Research",
+        "Writing/Editing"
+      ],
+      "industries": [
+        "Medical Practices",
+        "Hospitals and Health Care",
+        "Technology, Information and Media"
+      ],
+      "version": "v2",
+      "titles": [
+        "Medical Expert (Research & Reporting)",
+        "Content Analyst (Media & Insights)",
+        "Reporting Specialist (Analysis & Review)",
+        "Media Reviewer (Content & Accuracy)",
+        "Editorial Analyst (Research & Quality)"
+      ],
+      "structured_data": {
+        "role": "Medical Expert",
+        "type": "Hourly contract",
+        "pay": "$130-$180 per hour",
+        "location": "Remote",
+        "commitment": "10-40 hrs/week",
+        "role_responsibilities": [
+          "Design clinically realistic prompts and scenarios drawn from your specialty.",
+          "Write 'golden' reference responses at attending-level quality.",
+          "Grade AI-generated responses against structured rubrics.",
+          "Provide written feedback to improve model behavior.",
+          "Participate in onboarding office hours and specialty calibration sessions."
+        ],
+        "requirements": [
+          "Attending Physicians: Must be board certified with current, active, unrestricted medical license.",
+          "Resident physicians: Must be in final year of residency or board-eligible recent graduates.",
+          "Fellows: Must be board-certified/board-eligible in primary specialty with current active, unrestricted medical license."
+        ],
+        "role_overview": "As a Medical Expert, you'll design clinical scenarios, evaluate AI model outputs, and contribute to advancing AI reasoning in patient care.",
+        "who_this_is_for": "Experienced medical professionals in specialties like Family Medicine, Pediatrics, or Surgery, with board certification or eligibility, seeking to influence AI in healthcare.",
+        "client": "Crossing Hurdles",
+        "client_desc": "Mercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.",
+        "link": "mercor.com",
+        "suggested_titles": [
+          "Medical Expert (Research & Reporting)",
+          "Content Analyst (Media & Insights)",
+          "Reporting Specialist (Analysis & Review)",
+          "Media Reviewer (Content & Accuracy)",
+          "Editorial Analyst (Research & Quality)"
+        ],
+        "subject": "Medical Expert | $130-$180/hr Remote | Crossing Hurdles x AI Labs",
+        "linkedin_title": "Medical Expert",
+        "skills": [
+          "Clinical Scenarios",
+          "Diagnostic Reasoning",
+          "Treatment Planning",
+          "Risk Stratification",
+          "Rubric Grading"
+        ],
+        "job_functions": [
+          "Design",
+          "Research",
+          "Writing/Editing"
+        ],
+        "industries": [
+          "Medical Practices",
+          "Hospitals and Health Care",
+          "Technology, Information and Media"
+        ],
+        "justifications": {
+          "Clinical AI Advisor": "Focuses on melding clinical expertise with AI evaluation, directly aligning with designing and grading clinical prompts.",
+          "Medical AI Consultant": "Highlights consulting on improving AI outputs using in-depth medical insights outlined in job tasks.",
+          "AI Medical Reviewer": "Emphasizes the role of assessing AI-generated responses with evidence-based medical standards.",
+          "Clinical Scenario Specialist": "Captures the core responsibility of designing realistic clinical scenarios for diagnostic reasoning.",
+          "Healthcare Content Strategist": "Reflects the task of crafting high-quality clinical content to guide AI behavior improvements.",
+          "Clinical Scenarios": "Crucial for designing the realistic clinical prompts as described in the role.",
+          "Diagnostic Reasoning": "Essential for evaluating AI responses against evidence-based clinical data.",
+          "Treatment Planning": "Key for developing golden reference responses and planning clinical case outcomes.",
+          "Risk Stratification": "Important in assessing and categorizing patient care risks embedded in the scenarios.",
+          "Rubric Grading": "Pertinent for applying structured rubrics to evaluate the quality of AI-generated responses.",
+          "Design": "Directly tied to creating clinical scenarios and structured prompts in the role.",
+          "Research": "Involves analyzing AI outputs and feedback to improve model behavior as per the description.",
+          "Writing/Editing": "Covers the crafting of golden responses and detailed written feedback required by the job.",
+          "Medical Practices": "Reflects the clinical specialty expertise and hands-on medical practice background sought.",
+          "Hospitals and Health Care": "Aligns with the healthcare-focused tasks and evidence-based clinical evaluation mentioned.",
+          "Technology, Information and Media": "Matches the AI lab partnership and digital healthcare data environment described."
+        },
+        "where_you_will": "contribute to training advanced AI models and ensuring high-quality system integration"
+      },
+      "justifications": {
+        "Clinical Scenarios": "Crucial for designing the realistic clinical prompts as described in the role.",
+        "Diagnostic Reasoning": "Essential for evaluating AI responses against evidence-based clinical data.",
+        "Treatment Planning": "Key for developing golden reference responses and planning clinical case outcomes.",
+        "Risk Stratification": "Important in assessing and categorizing patient care risks embedded in the scenarios.",
+        "Rubric Grading": "Pertinent for applying structured rubrics to evaluate the quality of AI-generated responses.",
+        "Design": "Directly tied to creating clinical scenarios and structured prompts in the role.",
+        "Research": "Involves analyzing AI outputs and feedback to improve model behavior as per the description.",
+        "Writing/Editing": "Covers the crafting of golden responses and detailed written feedback required by the job.",
+        "Medical Practices": "Reflects the clinical specialty expertise and hands-on medical practice background sought.",
+        "Hospitals and Health Care": "Aligns with the healthcare-focused tasks and evidence-based clinical evaluation mentioned.",
+        "Technology, Information and Media": "Matches the AI lab partnership and digital healthcare data environment described."
+      },
+      "is_domain_page": true
+    }
+  },
+  {
+    "id": "4436ab38-6587-4c13-ad0f-a58bf68a12cc",
+    "timestamp": "2026-07-11T11:19:58.404466Z",
+    "client": "legaltrustai",
+    "url": "",
+    "raw_jd": "Medical Expert\nHourly contract\nRemote\nF\nA\nP\n266 hired this month\n$130-$180\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocation requirements\nCanada\nUnited States\nAbout the Role\nMercor is partnering with a leading AI lab to train frontier models on high-quality healthcare reasoning data. We're expanding our Medical Expert network. As a Medical Expert, you'll design realistic clinical scenarios, evaluate model outputs against evidence-based standards, and help shape how the next generation of AI reasons about patient care.\nIf your specialty has its own dedicated listing on Mercor (Internal Medicine, Emergency Medicine, Psychiatry, Hematology/Oncology, Radiology, Cardiology), please apply through that listing instead — you'll see the rate band that actually applies to you. Use this listing if your specialty is not yet listed (e.g., Family Medicine, Pediatrics, Anesthesiology, Surgery, ENT, PMR/Pain, Occupational Medicine, etc.).\nWhat You'll Do\nDesign clinically realistic prompts and scenarios drawn from your specialty (diagnostic reasoning, treatment planning, risk stratification, guideline concordance)\nWrite \"golden\" reference responses at attending-level quality\nGrade AI-generated responses against structured rubrics\nProvide written feedback the research team uses to improve model behavior\nParticipate in onboarding office hours and specialty calibration sessions\nWho You Are\nAttending Physicians: Must be board certified with current, active, unrestricted medical license\nResident physicians: Must be in final year of residency (recent graduates must be board-eligible)\nFellows: Must be board-certified/board-eligible in primary specialty and have current active, unrestricted, medical license.\nRates\nRates are set per specialty and seniority tier, benchmarked to Mercor. Your specific rate will be confirmed in your offer.\nEngagement\nRemote, 100% asynchronous\n20 hrs/wk default (can be raised after onboarding based on demand)\nPaid weekly via Mercor\nStart: rolling, after onboarding sign-off\nDuration: ongoing, reviewed monthly\nBefore Your First Task\nYou'll receive an onboarding doc and a calendar invite for Onboarding Office Hours after you accept.\nWe consider all qualified applicants without regard to legally protected characteristics and provide reasonable accommodations upon request.\nContract and Payment Terms\nYou will be engaged as an independent contractor.\nThis is a fully remote role that can be completed on your own schedule.\nProjects can be extended, shortened, or concluded early depending on needs and performance.\nYour work at Mercor will not involve access to confidential or proprietary information from any employer, client, or institution.\nPayments are weekly on Stripe or Wise based on services rendered.\nPlease note: We are unable to support H1-B or STEM OPT candidates at this time.",
+    "role": "Medical Expert",
+    "raw_jd_snippet": "Medical Expert\nHourly contract\nRemote\nF\nA\nP\n266 hired this month\n$130-$180\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocation requirements\nCana...",
+    "cache_key": "5594c4f609ae01d9475928d1371297b3",
+    "data": {
+      "jd": "<b>Medical Expert</b><br>\nHourly contract | Canada<br><br>\n<b>Pay:</b> $130-$180 per hour<br>\n<b>Time Commitment:</b> 10-40 hrs/week<br><br>\n\n<b>Role Snapshot</b><br>\nAs a Medical Expert, you'll design clinical scenarios, evaluate AI model outputs, and contribute to improving AI reasoning in patient care.<br><br>\n\n<b>Core Responsibilities</b>\n<ul>\n<li>Design clinically realistic prompts and scenarios drawn from your specialty.</li>\n<li>Write 'golden' reference responses at attending-level quality.</li>\n<li>Grade AI-generated responses against structured rubrics.</li>\n<li>Provide written feedback to improve model behavior.</li>\n<li>Participate in onboarding office hours and specialty calibration sessions.</li>\n</ul><br>\n\n<b>Ideal Candidate Profile</b>\n<ul>\n<li>Attending Physicians: Must be board certified with current, active, unrestricted medical license.</li>\n<li>Fellows: Must be board-certified/board-eligible in primary specialty with current active, unrestricted medical license.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Submit your details using the Easy Apply button.</li>\n<li>Our team will review applications against the specified role requirements.</li>\n<li>Candidates who are eligible to move forward will receive an email with further guidance.</li>\n<li>Follow the instructions provided to complete the rest of the application process.</li>\n</ul><br>\n\n#LI-CH",
+      "email": "",
+      "inmail_draft": "Hi {firstName},<br><br>\n\nI’m reaching out from <b>LegalTrustAI</b> to refer you for a remote opportunity at <b>Mercor</b>.<br><br>\n\n<b>Position Details</b><br>\n<a href=\"\"><b>Medical Expert</b></a><br>\n<b>Organisation:</b> Mercor<br>\n<b>Referred by:</b> LegalTrustAI<br>\n<b>Compensation:</b> $130-$180 per hour<br>\n<b>Location:</b> Canada<br><br>\n\n<b>Key Responsibilities</b>\n<ul>\n<li>Design clinically realistic prompts and scenarios drawn from your specialty.</li>\n<li>Write 'golden' reference responses at attending-level quality.</li>\n<li>Grade AI-generated responses against structured rubrics.</li>\n<li>Provide written feedback to improve model behavior.</li>\n<li>Participate in onboarding office hours and specialty calibration sessions.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Visit the Mercor application page using the link provided.</li>\n<li>Sign up for a Mercor account if you are a new user, or sign in if you already have one.</li>\n<li>Once logged in, submit your application to complete the process.</li>\n</ul><br>\n\n<b>Apply Here:</b> <a href=\"\"><b>Medical Expert</b></a><br><br>\n\n<b>You can also checkout these Opportunities as well:</b><br><br>\n\n<i>P.S. For any queries or assistance, feel free to reach out at support@mercor.com</i><br><br>\n\nBest Regards,<br>\nLegalTrustAI",
+      "email_draft": null,
+      "subject": "Medical Expert | $180/hr | Mercor",
+      "linkedin_title": "Medical Expert",
+      "skills": [
+        "Clinical Reasoning",
+        "Prompt Design",
+        "Rubric Analysis",
+        "Model Evaluation",
+        "Evidence-Based Medicine"
+      ],
+      "job_functions": [
+        "Health care provider",
+        "Research",
+        "Writing/Editing"
+      ],
+      "industries": [
+        "Hospitals and Health Care",
+        "Technology, Information and Media",
+        "Professional Services"
+      ],
+      "version": "v2",
+      "titles": [
+        "Medical Expert (Research & Reporting)",
+        "Content Analyst (Media & Insights)",
+        "Reporting Specialist (Analysis & Review)",
+        "Media Reviewer (Content & Accuracy)",
+        "Editorial Analyst (Research & Quality)"
+      ],
+      "structured_data": {
+        "role": "Medical Expert",
+        "type": "Hourly contract",
+        "pay": "$130-$180 per hour",
+        "location": "Canada, United States",
+        "commitment": "10-40 hrs/week",
+        "role_responsibilities": [
+          "Design clinically realistic prompts and scenarios drawn from your specialty.",
+          "Write 'golden' reference responses at attending-level quality.",
+          "Grade AI-generated responses against structured rubrics.",
+          "Provide written feedback to improve model behavior.",
+          "Participate in onboarding office hours and specialty calibration sessions."
+        ],
+        "requirements": [
+          "Attending Physicians: Must be board certified with current, active, unrestricted medical license.",
+          "Resident physicians: Must be in final year of residency or board-eligible recent graduates.",
+          "Fellows: Must be board-certified/board-eligible in primary specialty with current active, unrestricted medical license."
+        ],
+        "role_overview": "As a Medical Expert, you'll design clinical scenarios, evaluate AI model outputs, and contribute to improving AI reasoning in patient care.",
+        "who_this_is_for": "Professionals in Family Medicine, Pediatrics, Anesthesiology, Surgery, ENT, PMR/Pain, or Occupational Medicine with board certification or eligibility.",
+        "client": "LegalTrustAI",
+        "client_desc": "Mercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.",
+        "link": "",
+        "suggested_titles": [
+          "Medical Expert (Research & Reporting)",
+          "Content Analyst (Media & Insights)",
+          "Reporting Specialist (Analysis & Review)",
+          "Media Reviewer (Content & Accuracy)",
+          "Editorial Analyst (Research & Quality)"
+        ],
+        "subject": "Medical Expert | $130-$180/hr Remote | LegalTrustAI x AI Labs",
+        "linkedin_title": "Medical Expert",
+        "skills": [
+          "Clinical Reasoning",
+          "Prompt Design",
+          "Rubric Analysis",
+          "Model Evaluation",
+          "Evidence-Based Medicine"
+        ],
+        "job_functions": [
+          "Health care provider",
+          "Research",
+          "Writing/Editing"
+        ],
+        "industries": [
+          "Hospitals and Health Care",
+          "Technology, Information and Media",
+          "Professional Services"
+        ],
+        "justifications": {
+          "Medical Expert": "Directly reflects the job posting title and board certification requirement for clinical evaluation tasks.",
+          "Clinical AI Specialist": "Captures the role's focus on AI model evaluation and clinical scenario design per job description.",
+          "Clinical AI Evaluator": "Highlights responsibilities of grading AI outputs using structured rubrics and clinical standards.",
+          "Healthcare Scenario Designer": "Emphasizes designing realistic clinical scenarios and prompts for AI healthcare training.",
+          "Medical Content Reviewer": "Focuses on evaluating AI responses against evidence-based medical standards and detailed grading.",
+          "Clinical Reasoning": "Needed for assessing diagnostic scenarios and ensuring evidence-based guideline adherence.",
+          "Prompt Design": "Essential for creating clinically realistic prompts that drive AI decision-making processes.",
+          "Rubric Analysis": "Critical for grading AI responses against structured rubrics as described in tasks.",
+          "Model Evaluation": "Fundamental for assessing AI-generated responses using clinical expertise.",
+          "Evidence-Based Medicine": "Ensures alignment with established clinical guidelines and diagnostic standards.",
+          "Health care provider": "Requires board certification to apply clinical expertise and provide accurate healthcare insights.",
+          "Research": "Involves evaluating AI outputs and clinical scenario assessments to advance frontier AI research.",
+          "Writing/Editing": "Encompasses producing 'golden' reference responses and detailed written feedback.",
+          "Hospitals and Health Care": "Aligns with the clinical background and healthcare standards essential for scenario creation.",
+          "Technology, Information and Media": "Reflects the role's integration with AI labs and digital healthcare model evaluation.",
+          "Professional Services": "Fits the independent contractor model requiring specialized medical evaluation expertise."
+        },
+        "where_you_will": "contribute to training advanced AI models and ensuring high-quality system integration"
+      },
+      "justifications": {
+        "Clinical Reasoning": "Needed for assessing diagnostic scenarios and ensuring evidence-based guideline adherence.",
+        "Prompt Design": "Essential for creating clinically realistic prompts that drive AI decision-making processes.",
+        "Rubric Analysis": "Critical for grading AI responses against structured rubrics as described in tasks.",
+        "Model Evaluation": "Fundamental for assessing AI-generated responses using clinical expertise.",
+        "Evidence-Based Medicine": "Ensures alignment with established clinical guidelines and diagnostic standards.",
+        "Health care provider": "Requires board certification to apply clinical expertise and provide accurate healthcare insights.",
+        "Research": "Involves evaluating AI outputs and clinical scenario assessments to advance frontier AI research.",
+        "Writing/Editing": "Encompasses producing 'golden' reference responses and detailed written feedback.",
+        "Hospitals and Health Care": "Aligns with the clinical background and healthcare standards essential for scenario creation.",
+        "Technology, Information and Media": "Reflects the role's integration with AI labs and digital healthcare model evaluation.",
+        "Professional Services": "Fits the independent contractor model requiring specialized medical evaluation expertise."
+      },
+      "is_domain_page": true
+    }
+  },
+  {
+    "id": "9186eaa6-55db-4173-80b6-40c8e90a2259",
+    "timestamp": "2026-07-11T11:12:34.691236Z",
+    "client": "codegeniusrecruit",
+    "url": "",
+    "raw_jd": "Medical Expert\nHourly contract\nRemote\nF\nA\nP\n266 hired this month\n$130-$180\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocation requirements\nCanada\nUnited States\nAbout the Role\nMercor is partnering with a leading AI lab to train frontier models on high-quality healthcare reasoning data. We're expanding our Medical Expert network. As a Medical Expert, you'll design realistic clinical scenarios, evaluate model outputs against evidence-based standards, and help shape how the next generation of AI reasons about patient care.\nIf your specialty has its own dedicated listing on Mercor (Internal Medicine, Emergency Medicine, Psychiatry, Hematology/Oncology, Radiology, Cardiology), please apply through that listing instead — you'll see the rate band that actually applies to you. Use this listing if your specialty is not yet listed (e.g., Family Medicine, Pediatrics, Anesthesiology, Surgery, ENT, PMR/Pain, Occupational Medicine, etc.).\nWhat You'll Do\nDesign clinically realistic prompts and scenarios drawn from your specialty (diagnostic reasoning, treatment planning, risk stratification, guideline concordance)\nWrite \"golden\" reference responses at attending-level quality\nGrade AI-generated responses against structured rubrics\nProvide written feedback the research team uses to improve model behavior\nParticipate in onboarding office hours and specialty calibration sessions\nWho You Are\nAttending Physicians: Must be board certified with current, active, unrestricted medical license\nResident physicians: Must be in final year of residency (recent graduates must be board-eligible)\nFellows: Must be board-certified/board-eligible in primary specialty and have current active, unrestricted, medical license.\nRates\nRates are set per specialty and seniority tier, benchmarked to Mercor. Your specific rate will be confirmed in your offer.\nEngagement\nRemote, 100% asynchronous\n20 hrs/wk default (can be raised after onboarding based on demand)\nPaid weekly via Mercor\nStart: rolling, after onboarding sign-off\nDuration: ongoing, reviewed monthly\nBefore Your First Task\nYou'll receive an onboarding doc and a calendar invite for Onboarding Office Hours after you accept.\nWe consider all qualified applicants without regard to legally protected characteristics and provide reasonable accommodations upon request.\nContract and Payment Terms\nYou will be engaged as an independent contractor.\nThis is a fully remote role that can be completed on your own schedule.\nProjects can be extended, shortened, or concluded early depending on needs and performance.\nYour work at Mercor will not involve access to confidential or proprietary information from any employer, client, or institution.\nPayments are weekly on Stripe or Wise based on services rendered.\nPlease note: We are unable to support H1-B or STEM OPT candidates at this time.",
+    "role": "Medical Expert",
+    "raw_jd_snippet": "Medical Expert\nHourly contract\nRemote\nF\nA\nP\n266 hired this month\n$130-$180\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocation requirements\nCana...",
+    "cache_key": "06ed2274f414571916da2c1346e5a1ad",
+    "data": {
+      "jd": "<b>Work Snapshot</b><br>\n<b>Type:</b> Hourly contract<br>\n<b>Location:</b> Canada<br>\n<b>Commitment:</b> 10-40 hrs/week<br>\n<b>Commission:</b> $130-$180 per hour<br><br>\n\n<b>What You’ll Be Doing</b>\n<ul>\n<li>Design clinically realistic prompts and scenarios from your specialty.</li>\n<li>Write 'golden' reference responses at attending-level quality.</li>\n<li>Grade AI-generated responses against structured rubrics.</li>\n<li>Provide written feedback to improve model behavior.</li>\n<li>Participate in onboarding office hours and specialty calibration sessions.</li>\n</ul><br>\n\n<b>What We’re Looking For</b>\n<ul>\n<li>Attending Physicians: Must be board certified with current, active, unrestricted medical license.</li>\n<li>Fellows: Must be board-certified/board-eligible in primary specialty with current active, unrestricted medical license.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Submit your application through the Easy Apply button.</li>\n<li>Each application will be reviewed against the role requirements.</li>\n<li>Candidates who meet the requirements will receive an email with the next steps.</li>\n<li>Follow the instructions provided in the email to complete the remainder of the application process.</li>\n</ul><br>\n\n#LI-CH",
+      "email": "",
+      "inmail_draft": "Hi {firstName},<br><br>\n\nI'm from <b>CodeGeniusRecruit</b>. Based on your profile, we think you could be a strong fit for the <a href=\"mercor.com\"><b>Medical Expert</b></a> position at <b>Mercor</b>.<br><br>\n\n<b>Role highlights:</b> Mercor | Canada | Hourly contract | $130-$180 per hour<br><br>\n\nWe’d like to refer you for this opportunity. As a Medical Expert, you'll design clinical scenarios, evaluate AI model outputs, and contribute to advancing AI reasoning in patient care.<br><br>\n\n<b>Application Process</b>\n<ul>\n<li>Open the Mercor application link included in this email.</li>\n<li>Register for a Mercor account if you do not already have one, or log in to your existing account.</li>\n<li>After signing in, submit your application for the role on Mercor.</li>\n</ul><br>\n\n<b>To apply, kindly use the link below:</b><br>\n<a href=\"mercor.com\"><b>Medical Expert</b></a><br><br>\n\n<b>You can also checkout these Opportunities as well:</b><br><br>\n\nSince applications are reviewed on a rolling basis, earlier submissions receive priority consideration.<br><br>\n\n<i>P.S. For any queries or assistance, feel free to reach out at support@mercor.com</i><br><br>\n\nBest Regards,<br>\nCodeGeniusRecruit",
+      "email_draft": null,
+      "subject": "Medical Expert | $180/hr | Mercor",
+      "linkedin_title": "Medical Expert",
+      "skills": [
+        "Clinical reasoning",
+        "Diagnostic reasoning",
+        "Treatment planning",
+        "Risk stratification"
+      ],
+      "job_functions": [
+        "Health care provider",
+        "Research",
+        "Consulting"
+      ],
+      "industries": [
+        "Hospitals and Health Care",
+        "Medical Practices",
+        "Technology, Information and Media"
+      ],
+      "version": "v2",
+      "titles": [
+        "Clinical Data Reviewer",
+        "Medical Scenario Consultant",
+        "Clinical Quality Assessor",
+        "Healthcare Evaluation Specialist"
+      ],
+      "structured_data": {
+        "role": "Medical Expert",
+        "type": "Hourly contract",
+        "pay": "$130-$180 per hour",
+        "location": "Canada, United States",
+        "commitment": "10-40 hrs/week",
+        "role_responsibilities": [
+          "Design clinically realistic prompts and scenarios from your specialty.",
+          "Write 'golden' reference responses at attending-level quality.",
+          "Grade AI-generated responses against structured rubrics.",
+          "Provide written feedback to improve model behavior.",
+          "Participate in onboarding office hours and specialty calibration sessions."
+        ],
+        "requirements": [
+          "Attending Physicians: Must be board certified with current, active, unrestricted medical license.",
+          "Resident physicians: Must be in final year of residency or board-eligible recent graduates.",
+          "Fellows: Must be board-certified/board-eligible in primary specialty with current active, unrestricted medical license."
+        ],
+        "role_overview": "As a Medical Expert, you'll design clinical scenarios, evaluate AI model outputs, and contribute to advancing AI reasoning in patient care.",
+        "who_this_is_for": "Professionals in Family Medicine, Pediatrics, Anesthesiology, Surgery, ENT, PMR/Pain, or Occupational Medicine with board certification or eligibility.",
+        "client": "CodeGeniusRecruit",
+        "client_desc": "Mercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.",
+        "link": "mercor.com",
+        "suggested_titles": [
+          "Clinical Data Reviewer",
+          "Medical Scenario Consultant",
+          "Clinical Quality Assessor",
+          "Healthcare Evaluation Specialist"
+        ],
+        "subject": "Medical Expert | $130-$180/hr Remote | CodeGeniusRecruit x AI Labs",
+        "linkedin_title": "Medical Expert",
+        "skills": [
+          "Clinical reasoning",
+          "Diagnostic reasoning",
+          "Treatment planning",
+          "Risk stratification"
+        ],
+        "job_functions": [
+          "Health care provider",
+          "Research",
+          "Consulting"
+        ],
+        "industries": [
+          "Hospitals and Health Care",
+          "Medical Practices",
+          "Technology, Information and Media"
+        ],
+        "justifications": {
+          "Medical AI Evaluator": "Emphasizes evaluating AI responses using evidence-based clinical reasoning and realistic scenario design.",
+          "Clinical Data Reviewer": "Highlights reviewing AI-generated outputs against structured rubrics and evidence standards in healthcare.",
+          "Medical Scenario Consultant": "Reflects the task of designing clinical scenarios and advising on specialty-driven reference responses.",
+          "Clinical Quality Assessor": "Focuses on grading and assessing AI outputs with high clinical quality benchmarks.",
+          "Healthcare Evaluation Specialist": "Captures the integration of healthcare expertise with the evaluation of AI-driven patient care insights.",
+          "Clinical reasoning": "Directly aligns with the need to assess diagnostic and treatment pathways in designed clinical scenarios.",
+          "Diagnostic reasoning": "Crucial for evaluating AI responses against evidence-based diagnostic standards in patient care.",
+          "Treatment planning": "Reflects the requirement to frame realistic treatment plans and reference responses for AI training.",
+          "Risk stratification": "Pertinent for assessing patient risk levels as part of guideline concordance in clinical scenarios.",
+          "Health care provider": "Requires board-certified medical professionals engaging in clinical evaluations and patient care reasoning.",
+          "Research": "Involves providing detailed feedback and participating in calibration sessions to improve AI model outputs.",
+          "Consulting": "Represents the independent contractor role advising an AI lab on clinical scenario design and model evaluation.",
+          "Hospitals and Health Care": "Demands medical expertise familiar with hospital environments and evidence-based patient care.",
+          "Medical Practices": "Directly involves practicing physicians generating reference clinical responses and realistic scenarios.",
+          "Technology, Information and Media": "Integrates healthcare expertise within an AI lab setting focused on advanced technology solutions."
+        },
+        "where_you_will": "contribute to training advanced AI models and ensuring high-quality system integration"
+      },
+      "justifications": {
+        "Clinical Data Reviewer": "Highlights reviewing AI-generated outputs against structured rubrics and evidence standards in healthcare.",
+        "Medical Scenario Consultant": "Reflects the task of designing clinical scenarios and advising on specialty-driven reference responses.",
+        "Clinical Quality Assessor": "Focuses on grading and assessing AI outputs with high clinical quality benchmarks.",
+        "Healthcare Evaluation Specialist": "Captures the integration of healthcare expertise with the evaluation of AI-driven patient care insights.",
+        "Clinical reasoning": "Directly aligns with the need to assess diagnostic and treatment pathways in designed clinical scenarios.",
+        "Diagnostic reasoning": "Crucial for evaluating AI responses against evidence-based diagnostic standards in patient care.",
+        "Treatment planning": "Reflects the requirement to frame realistic treatment plans and reference responses for AI training.",
+        "Risk stratification": "Pertinent for assessing patient risk levels as part of guideline concordance in clinical scenarios.",
+        "Health care provider": "Requires board-certified medical professionals engaging in clinical evaluations and patient care reasoning.",
+        "Research": "Involves providing detailed feedback and participating in calibration sessions to improve AI model outputs.",
+        "Consulting": "Represents the independent contractor role advising an AI lab on clinical scenario design and model evaluation.",
+        "Hospitals and Health Care": "Demands medical expertise familiar with hospital environments and evidence-based patient care.",
+        "Medical Practices": "Directly involves practicing physicians generating reference clinical responses and realistic scenarios.",
+        "Technology, Information and Media": "Integrates healthcare expertise within an AI lab setting focused on advanced technology solutions."
+      },
+      "is_domain_page": true
+    }
+  },
+  {
+    "id": "da4b670f-171f-45ec-98bb-a3e9e32cab1f",
+    "timestamp": "2026-07-11T11:11:44.521575Z",
+    "client": "designmeshai",
+    "url": "",
+    "raw_jd": "Household Activity Video Contributor (US Based)\nHourly contract\nRemote\nNew opportunity\n$10-$15\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocation requirements\nUnited States\nAbout this opportunity\nMercor is partnering with a leading physical AI company to collect first-person video of everyday household activities for training the next generation of robotics and physical AI systems. In this role, you will record short, first-person clips of ordinary tasks around your home, helping build and refine the datasets these models learn from. Your recordings will directly support the development of systems that can understand how people move, reach, and handle objects in real-world environments, the everyday actions that come naturally to people but remain difficult for machines to learn.\nWhat you will do\nRecord short first-person clips of normal everyday activities at home, using a simple head mount phone holder so the camera sees what you see\nExample tasks: loading the dishwasher, folding laundry, wiping down counters, putting away groceries, tidying a room, making a bed\nUpload your recordings through a provided app\nContributors typically record & upload 10 to 20 hours a week\nEligibility\nYou must be located in the United States and at least 18 years old\nThis opportunity is not currently available to residents of California, Illinois, Texas, or Washington\nYou have an iPhone (12 or newer, not including 16e or 17e), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer)\nYou are able to wear a simple head mounted phone holder. If you are accepted and need a head mount, we can provide one at no cost to you\nYou have a home environment where you can record everyday activities\nHow it works\nApply to the opportunity listing & complete a brief intake form (~5-10 min)\nComplete a short, AI-led interview (~15 min)\nMost applicants will hear back within 1 to 14 days of applying\nWe consider all qualified applicants without regard to legally protected characteristics and provide reasonable accommodations upon request.\nContract and Payment Terms\nYou will be engaged as an independent contractor.\nThis is a fully remote role that can be completed on your own schedule.\nProjects can be extended, shortened, or concluded early depending on needs and performance.\nYour work at Mercor will not involve access to confidential or proprietary information from any employer, client, or institution.\nPayments are weekly on Stripe or Wise based on services rendered.\nPlease note: We are unable to support H1-B or STEM OPT candidates at this time.\nAbout Mercor\nMercor partners with leading AI labs and enterprises to train frontier models using human expertise. You will work on projects that focus on training and enhancing AI systems. You will be paid competitively, collaborate with leading researchers, and help shape the next generation of AI systems in your area of expertise.",
+    "role": "Household Activity Video Contributor",
+    "raw_jd_snippet": "Household Activity Video Contributor (US Based)\nHourly contract\nRemote\nNew opportunity\n$10-$15\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocati...",
+    "cache_key": "422b0757da00371ecc1f2a25a59299c9",
+    "data": {
+      "jd": "<b>Household Activity Video Contributor</b><br><br>\n<b>Role Summary</b><br>\nAs a Video Contributor, you will record and upload first-person videos of household activities to support the development of AI systems that learn human movements and interactions with objects.<br><br>\n\n<b>Deliverables</b>\n<ul>\n<li>Record short first-person clips of normal everyday activities at home using a head mount phone holder.</li>\n<li>Upload recordings through a provided app.</li>\n<li>Contribute 10 to 20 hours of recordings weekly.</li>\n</ul><br>\n\n<b>Requirements</b>\n<ul>\n<li>Candidates must be at least 21 years old.</li>\n<li>Must have an iPhone (12 or newer), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer).</li>\n<li>Ability to wear a head mounted phone holder.</li>\n<li>Home environment suitable for recording everyday activities.</li>\n</ul><br>\n\n<b>Details</b><br>\n<b>Job Type:</b> Hourly contract<br>\n<b>Compensation:</b> $10-$15 per hour<br>\n<b>Work Setup:</b> Remote<br><br>\n\n<b>Application Process</b>\n<ul>\n<li>Complete your application using the Easy Apply button.</li>\n<li>Your application will be reviewed according to the role requirements.</li>\n<li>Qualified candidates will receive an email outlining the next stage of the application process.</li>\n<li>Follow the instructions in the email to proceed with the remaining steps.</li>\n</ul><br>\n\n#LI-CH",
+      "email": "",
+      "inmail_draft": "Hi {firstName},<br><br>\n\nI'm reaching out from <b>DesignMeshAI</b> to refer you for the role of <a href=\"mercor.com\"><b>Household Activity Video Contributor</b></a> at <b>Mercor</b>.<br><br>\n\n<b>About the Role</b><br>\nAs a Video Contributor, you will record and upload first-person videos of household activities to support the development of AI systems that learn human movements and interactions with objects.<br><br>\n\n<b>Organization:</b> Mercor<br>\n<b>Referred by:</b> DesignMeshAI<br>\n<b>Engagement:</b> Hourly contract<br>\n<b>Pay:</b> $10-$15 per hour<br>\n<b>Mode:</b> Remote<br><br>\n\n<b>Key Responsibilities</b>\n<ul>\n<li>Record short first-person clips of normal everyday activities at home using a head mount phone holder.</li>\n<li>Upload recordings through a provided app.</li>\n<li>Contribute 10 to 20 hours of recordings weekly.</li>\n</ul><br>\n\n<b>Who We're Looking For</b>\n<ul>\n<li>Candidates must be at least 21 years old.</li>\n<li>Must have an iPhone (12 or newer), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer).</li>\n<li>Ability to wear a head mounted phone holder.</li>\n<li>Home environment suitable for recording everyday activities.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Click the Mercor application link shared in this email.</li>\n<li>Sign up for a Mercor account if required, or log in to continue.</li>\n<li>After accessing your account, submit your application to finalize the process.</li>\n</ul><br>\n\n<b>Apply here:</b> <a href=\"mercor.com\"><b>Household Activity Video Contributor</b></a><br><br>\n\n<b>You can also checkout these Opportunities as well:</b><br><br>\n\n<i>P.S. For immediate support, contact support@mercor.com</i><br><br>\n\nBest Regards,<br>\nDesignMeshAI",
+      "email_draft": null,
+      "subject": "Household Activity Video Contributor | $15/hr | Mercor",
+      "linkedin_title": "Household Activity Video Contributor | $15/hr",
+      "skills": [
+        "Video Recording",
+        "Mobile Technology",
+        "Data Upload",
+        "Content Capture"
+      ],
+      "job_functions": [
+        "Research",
+        "General Business",
+        "IT"
+      ],
+      "industries": [
+        "Technology, Information and Media",
+        "Research Services",
+        "Professional Services"
+      ],
+      "version": "v2",
+      "titles": [
+        "Video Content Contributor",
+        "Data Collection Specialist",
+        "Crowdsourced Video Contributor",
+        "Home Activity Recorder"
+      ],
+      "structured_data": {
+        "role": "Household Activity Video Contributor",
+        "type": "Hourly contract",
+        "pay": "$10-$15 per hour",
+        "location": "United States",
+        "commitment": "10-40 hrs/week",
+        "role_responsibilities": [
+          "Record short first-person clips of normal everyday activities at home using a head mount phone holder.",
+          "Upload recordings through a provided app.",
+          "Contribute 10 to 20 hours of recordings weekly."
+        ],
+        "requirements": [
+          "Must be located in the United States and at least old.",
+          "Not available to residents of California, Illinois, Texas, or Washington.",
+          "Must have an iPhone (12 or newer), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer).",
+          "Ability to wear a head mounted phone holder.",
+          "Home environment suitable for recording everyday activities."
+        ],
+        "role_overview": "As a Video Contributor, you will record and upload first-person videos of household activities to support the development of AI systems that learn human movements and interactions with objects.",
+        "who_this_is_for": "This role is ideal for individuals in the United States with a suitable smartphone and home environment, interested in contributing to AI training by recording everyday activities.",
+        "client": "DesignMeshAI",
+        "client_desc": "Mercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.",
+        "link": "mercor.com",
+        "suggested_titles": [
+          "Video Content Contributor",
+          "Data Collection Specialist",
+          "Crowdsourced Video Contributor",
+          "Home Activity Recorder"
+        ],
+        "subject": "Video Contributor | $10-$15/hr Remote | DesignMeshAI x AI Labs",
+        "linkedin_title": "Video Contributor",
+        "skills": [
+          "Video Recording",
+          "Mobile Technology",
+          "Data Upload",
+          "Content Capture"
+        ],
+        "job_functions": [
+          "Research",
+          "General Business",
+          "IT"
+        ],
+        "industries": [
+          "Technology, Information and Media",
+          "Research Services",
+          "Professional Services"
+        ],
+        "justifications": {
+          "Video Content Contributor": "Reflects recording first-person household videos contributing directly to AI training datasets.",
+          "Data Collection Specialist": "Highlights independent contractor tasks capturing video data for next-generation robotics development.",
+          "Crowdsourced Video Contributor": "Emphasizes user-generated home video contributions for training physical AI models.",
+          "AI Data Collector": "Directly addresses the role’s focus on gathering data used in AI system training.",
+          "Home Activity Recorder": "Clearly maps to recording everyday tasks at home using head-mounted devices.",
+          "Video Recording": "Essential for capturing clear first-person clips of household activities.",
+          "Mobile Technology": "Critical due to reliance on modern smartphones and head-mounted setups for recording.",
+          "Data Upload": "Necessary for transferring videos via the provided app as described.",
+          "Content Capture": "Focuses on obtaining authentic visuals of daily household tasks for dataset creation.",
+          "Research": "Directly supports data collection for AI model training and experimental datasets.",
+          "General Business": "Reflects independent contractor operations and routine task execution within a business framework.",
+          "IT": "Involves managing mobile devices and app-based video upload processes outlined in the description.",
+          "Technology, Information and Media": "Aligns with the advanced digital and AI applications central to the project.",
+          "Research Services": "Pertinent to generating data that underpins research in physical AI systems.",
+          "Professional Services": "Matches the contractor role providing specialized video data to a leading AI enterprise."
+        },
+        "where_you_will": "contribute to training advanced AI models and ensuring high-quality system integration"
+      },
+      "justifications": {
+        "Video Content Contributor": "Reflects recording first-person household videos contributing directly to AI training datasets.",
+        "Data Collection Specialist": "Highlights independent contractor tasks capturing video data for next-generation robotics development.",
+        "Crowdsourced Video Contributor": "Emphasizes user-generated home video contributions for training physical AI models.",
+        "Home Activity Recorder": "Clearly maps to recording everyday tasks at home using head-mounted devices.",
+        "Video Recording": "Essential for capturing clear first-person clips of household activities.",
+        "Mobile Technology": "Critical due to reliance on modern smartphones and head-mounted setups for recording.",
+        "Data Upload": "Necessary for transferring videos via the provided app as described.",
+        "Content Capture": "Focuses on obtaining authentic visuals of daily household tasks for dataset creation.",
+        "Research": "Directly supports data collection for AI model training and experimental datasets.",
+        "General Business": "Reflects independent contractor operations and routine task execution within a business framework.",
+        "IT": "Involves managing mobile devices and app-based video upload processes outlined in the description.",
+        "Technology, Information and Media": "Aligns with the advanced digital and AI applications central to the project.",
+        "Research Services": "Pertinent to generating data that underpins research in physical AI systems.",
+        "Professional Services": "Matches the contractor role providing specialized video data to a leading AI enterprise."
+      },
+      "is_domain_page": true
+    }
+  },
+  {
+    "id": "d152a140-9967-4d87-bf8c-538f8f351ee2",
+    "timestamp": "2026-07-11T11:09:37.661765Z",
+    "client": "crossing_hurdles",
+    "url": "",
+    "raw_jd": "Household Activity Video Contributor (US Based)\nHourly contract\nRemote\nNew opportunity\n$10-$15\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocation requirements\nUnited States\nAbout this opportunity\nMercor is partnering with a leading physical AI company to collect first-person video of everyday household activities for training the next generation of robotics and physical AI systems. In this role, you will record short, first-person clips of ordinary tasks around your home, helping build and refine the datasets these models learn from. Your recordings will directly support the development of systems that can understand how people move, reach, and handle objects in real-world environments, the everyday actions that come naturally to people but remain difficult for machines to learn.\nWhat you will do\nRecord short first-person clips of normal everyday activities at home, using a simple head mount phone holder so the camera sees what you see\nExample tasks: loading the dishwasher, folding laundry, wiping down counters, putting away groceries, tidying a room, making a bed\nUpload your recordings through a provided app\nContributors typically record & upload 10 to 20 hours a week\nEligibility\nYou must be located in the United States and at least 18 years old\nThis opportunity is not currently available to residents of California, Illinois, Texas, or Washington\nYou have an iPhone (12 or newer, not including 16e or 17e), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer)\nYou are able to wear a simple head mounted phone holder. If you are accepted and need a head mount, we can provide one at no cost to you\nYou have a home environment where you can record everyday activities\nHow it works\nApply to the opportunity listing & complete a brief intake form (~5-10 min)\nComplete a short, AI-led interview (~15 min)\nMost applicants will hear back within 1 to 14 days of applying\nWe consider all qualified applicants without regard to legally protected characteristics and provide reasonable accommodations upon request.\nContract and Payment Terms\nYou will be engaged as an independent contractor.\nThis is a fully remote role that can be completed on your own schedule.\nProjects can be extended, shortened, or concluded early depending on needs and performance.\nYour work at Mercor will not involve access to confidential or proprietary information from any employer, client, or institution.\nPayments are weekly on Stripe or Wise based on services rendered.\nPlease note: We are unable to support H1-B or STEM OPT candidates at this time.\nAbout Mercor\nMercor partners with leading AI labs and enterprises to train frontier models using human expertise. You will work on projects that focus on training and enhancing AI systems. You will be paid competitively, collaborate with leading researchers, and help shape the next generation of AI systems in your area of expertise.",
+    "role": "Household Activity Video Contributor",
+    "raw_jd_snippet": "Household Activity Video Contributor (US Based)\nHourly contract\nRemote\nNew opportunity\n$10-$15\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocati...",
+    "cache_key": "bf17fb2a301f663d9bb81d63021436a7",
+    "data": {
+      "jd": "<b><u>Crossing Hurdles:</u></b><br><br>\n<b>Position:</b> Household Activity Video Contributor<br>\n<b>Type:</b> Hourly contract<br>\n<b>Compensation:</b> $10-$15 per hour<br>\n<b>Location:</b> United States<br>\n<b>Commitment:</b> 10-40 hrs/week<br><br>\n\n<b>Role Responsibilities:</b>\n<ul>\n<li>Record short first-person clips of normal everyday activities at home using a head-mounted phone holder.</li>\n<li>Upload recordings through a provided app.</li>\n<li>Contribute 10 to 20 hours of recordings weekly.</li>\n</ul><br>\n\n<b>Requirements:</b>\n<ul>\n<li>Be located in the United States and at least old.</li>\n<li>Possess an iPhone (12 or newer), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer).</li>\n<li>Ability to wear a head-mounted phone holder.</li>\n<li>Have a home environment suitable for recording everyday activities.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Apply using the Easy Apply button and submit your application.</li>\n<li>Applications will be reviewed based on the role requirements.</li>\n<li>Eligible candidates will receive an InMail with instructions to continue the application process.</li>\n<li>Follow the instructions in the InMail to complete the remaining application steps.</li>\n</ul><br>\n\n#LI-CH",
+      "email": "",
+      "inmail_draft": "Hi {firstName},<br><br>\n\nI'm from <b>Crossing Hurdles</b>, Based on your profile, we think you could be a strong fit for the <a href=\"mercor.com\"><b>Household Activity Video Contributor</b></a> position at <b>Mercor</b>.<br><br>\n\n<b>Organization:</b> Mercor<br>\n<b>Referral by:</b> Crossing Hurdles<br>\n<b>Role:</b> Household Activity Video Contributor<br>\n<b>Type:</b> Hourly contract<br>\n<b>Pay:</b> $10-$15 per hour<br>\n<b>Location:</b> United States<br><br>\n\n<b>Application Process</b>\n<ul>\n<li>Click the Mercor application link provided in this message.</li>\n<li>Create a Mercor account if you are a new user, or sign in to your existing account.</li>\n<li>Once signed in, submit your application for the role to complete the application process.</li>\n</ul><br>\n\n<b>Apply here (reviewed on a rolling basis):</b><br>\n<a href=\"mercor.com\"><b>Household Activity Video Contributor</b></a> – $10-$15 per hour<br><br>\n\n<b>You can also checkout these Opportunities as well:</b><br><br>\n\n<b>Take Steps to Boost Your Profile:</b>\n<ul>\n<li>Need tips to improve your chances of selection? Check out the <a href=\"https://docs.google.com/document/d/1xYe9X4t2Bv6BEScXwwvix35Kmlc92xiulEpBDLcCZb8/edit?usp=sharing\">Interview Preparation Playbook</a></li>\n<li>You can strengthen your profile through the <a href=\"https://work.mercor.com/home?tab=assessments&referralCode=c88e7e37-c849-4793-a401-f58c8615e4c7\">Assessment tab</a> in your dashboard. Completing skill based assessments can help unlock future opportunities, including roles you have not applied to or roles that may not be publicly listed.</li>\n</ul><br>\n\n<i>P.S. For immediate support, contact support@mercor.com</i>",
+      "email_draft": null,
+      "subject": "Household Activity Video Contributor | $15/hr | Mercor x AI Labs",
+      "linkedin_title": "Household Activity Video Contributor | $15/hr",
+      "skills": [
+        "Video Recording",
+        "Mobile Devices",
+        "Data Upload",
+        "Camera Operation"
+      ],
+      "job_functions": [
+        "Analytics",
+        "Research",
+        "General Business"
+      ],
+      "industries": [
+        "Technology, Information and Media",
+        "Research Services",
+        "Professional Services"
+      ],
+      "version": "v2",
+      "titles": [
+        "Video Data Collection Specialist",
+        "Remote Data Collection Specialist",
+        "Video Content Contributor",
+        "Data Collection Associate",
+        "Household Video Recorder"
+      ],
+      "structured_data": {
+        "role": "Household Activity Video Contributor",
+        "type": "Hourly contract",
+        "pay": "$10-$15 per hour",
+        "location": "United States",
+        "commitment": "10-40 hrs/week",
+        "role_responsibilities": [
+          "Record short first-person clips of normal everyday activities at home using a head-mounted phone holder.",
+          "Upload recordings through a provided app.",
+          "Contribute 10 to 20 hours of recordings weekly."
+        ],
+        "requirements": [
+          "Be located in the United States and at least old.",
+          "Possess an iPhone (12 or newer), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer).",
+          "Ability to wear a head-mounted phone holder.",
+          "Have a home environment suitable for recording everyday activities."
+        ],
+        "role_overview": "As a Video Contributor, you will record first-person videos of household activities to support AI training, helping systems learn real-world human actions.",
+        "who_this_is_for": "This role is ideal for individuals in the US with a compatible smartphone, comfortable recording daily tasks to aid AI development.",
+        "client": "Crossing Hurdles",
+        "client_desc": "Mercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.",
+        "link": "mercor.com",
+        "suggested_titles": [
+          "Video Data Collection Specialist",
+          "Remote Data Collection Specialist",
+          "Video Content Contributor",
+          "Data Collection Associate",
+          "Household Video Recorder"
+        ],
+        "subject": "Video Contributor | $10-$15/hr Remote | Crossing Hurdles x AI Labs",
+        "linkedin_title": "Video Contributor",
+        "skills": [
+          "Video Recording",
+          "Mobile Devices",
+          "Data Upload",
+          "Camera Operation"
+        ],
+        "job_functions": [
+          "Analytics",
+          "Research",
+          "General Business"
+        ],
+        "industries": [
+          "Technology, Information and Media",
+          "Research Services",
+          "Professional Services"
+        ],
+        "justifications": {
+          "Video Data Collection Specialist": "Emphasizes specialized video gathering tasks for training physical AI systems.",
+          "Remote Data Collection Specialist": "Highlights the remote, contract-based role of collecting household video data.",
+          "Video Content Contributor": "Focuses on contributing first-person video clips using standard mobile technology.",
+          "Data Collection Associate": "Indicates support in recording and uploading video content for dataset development.",
+          "Household Video Recorder": "Specifies the role of capturing everyday household activities via smartphone.",
+          "Video Recording": "Essential for capturing accurate household activity footage for AI dataset creation.",
+          "Mobile Devices": "Required to use smartphones like iPhone or Android models to record and submit videos.",
+          "Data Upload": "Involves transferring recorded clips through a dedicated app as described.",
+          "Camera Operation": "Critical for managing head-mounted smartphone recording equipment effectively.",
+          "Analytics": "Recorded videos feed into analytical models for developing physical AI systems.",
+          "Research": "Collected data is integral to research in robotics and machine learning applications.",
+          "General Business": "Reflects the structured, contract-based nature of task and workflow management.",
+          "Technology, Information and Media": "Aligns with the use of advanced devices and AI systems in the tech sector.",
+          "Research Services": "Supports experimental initiatives through the provision of real-world video data.",
+          "Professional Services": "Represents the independent contractor role delivering specialized AI training services."
+        },
+        "where_you_will": "contribute to training advanced AI models and ensuring high-quality system integration"
+      },
+      "justifications": {
+        "Video Data Collection Specialist": "Emphasizes specialized video gathering tasks for training physical AI systems.",
+        "Remote Data Collection Specialist": "Highlights the remote, contract-based role of collecting household video data.",
+        "Video Content Contributor": "Focuses on contributing first-person video clips using standard mobile technology.",
+        "Data Collection Associate": "Indicates support in recording and uploading video content for dataset development.",
+        "Household Video Recorder": "Specifies the role of capturing everyday household activities via smartphone.",
+        "Video Recording": "Essential for capturing accurate household activity footage for AI dataset creation.",
+        "Mobile Devices": "Required to use smartphones like iPhone or Android models to record and submit videos.",
+        "Data Upload": "Involves transferring recorded clips through a dedicated app as described.",
+        "Camera Operation": "Critical for managing head-mounted smartphone recording equipment effectively.",
+        "Analytics": "Recorded videos feed into analytical models for developing physical AI systems.",
+        "Research": "Collected data is integral to research in robotics and machine learning applications.",
+        "General Business": "Reflects the structured, contract-based nature of task and workflow management.",
+        "Technology, Information and Media": "Aligns with the use of advanced devices and AI systems in the tech sector.",
+        "Research Services": "Supports experimental initiatives through the provision of real-world video data.",
+        "Professional Services": "Represents the independent contractor role delivering specialized AI training services."
+      },
+      "is_domain_page": true
+    }
+  },
+  {
+    "id": "fa296616-d4dd-4026-a89e-8dbd8aefb996",
+    "timestamp": "2026-07-11T08:49:43.187260Z",
+    "client": "legaltrustai",
+    "url": "google.com",
+    "raw_jd": "Household Activity Video Contributor (US Based)\nHourly contract\nRemote\nNew opportunity\n$10-$15\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocation requirements\nUnited States\nAbout this opportunity\nMercor is partnering with a leading physical AI company to collect first-person video of everyday household activities for training the next generation of robotics and physical AI systems. In this role, you will record short, first-person clips of ordinary tasks around your home, helping build and refine the datasets these models learn from. Your recordings will directly support the development of systems that can understand how people move, reach, and handle objects in real-world environments, the everyday actions that come naturally to people but remain difficult for machines to learn.\nWhat you will do\nRecord short first-person clips of normal everyday activities at home, using a simple head mount phone holder so the camera sees what you see\nExample tasks: loading the dishwasher, folding laundry, wiping down counters, putting away groceries, tidying a room, making a bed\nUpload your recordings through a provided app\nContributors typically record & upload 10 to 20 hours a week\nEligibility\nYou must be located in the United States and at least 18 years old\nThis opportunity is not currently available to residents of California, Illinois, Texas, or Washington\nYou have an iPhone (12 or newer, not including 16e or 17e), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer)\nYou are able to wear a simple head mounted phone holder. If you are accepted and need a head mount, we can provide one at no cost to you\nYou have a home environment where you can record everyday activities\nHow it works\nApply to the opportunity listing & complete a brief intake form (~5-10 min)\nComplete a short, AI-led interview (~15 min)\nMost applicants will hear back within 1 to 14 days of applying\nWe consider all qualified applicants without regard to legally protected characteristics and provide reasonable accommodations upon request.\nContract and Payment Terms\nYou will be engaged as an independent contractor.\nThis is a fully remote role that can be completed on your own schedule.\nProjects can be extended, shortened, or concluded early depending on needs and performance.\nYour work at Mercor will not involve access to confidential or proprietary information from any employer, client, or institution.\nPayments are weekly on Stripe or Wise based on services rendered.\nPlease note: We are unable to support H1-B or STEM OPT candidates at this time.\nAbout Mercor\nMercor partners with leading AI labs and enterprises to train frontier models using human expertise. You will work on projects that focus on training and enhancing AI systems. You will be paid competitively, collaborate with leading researchers, and help shape the next generation of AI systems in your area of expertise.",
+    "role": "Household Activity Video Contributor",
+    "raw_jd_snippet": "Household Activity Video Contributor (US Based)\nHourly contract\nRemote\nNew opportunity\n$10-$15\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocati...",
+    "cache_key": "7d651c8f23e7516dee2fcf00532d6d34",
+    "data": {
+      "jd": "<b><u>LegalTrustAI:</u></b><br><br>\n<b>Household Activity Video Contributor</b><br>\nHourly contract | United States<br><br>\n<b>Pay:</b> $10-$15 per hour<br>\n<b>Time Commitment:</b> 10-40 hrs/week<br><br>\n\n<b>Role Snapshot</b><br>\nAs a Video Contributor, you will record first-person videos of household activities to support the development of AI systems that learn human movements and interactions with objects.<br><br>\n\n<b>Core Responsibilities</b>\n<ul>\n<li>Record short first-person clips of normal everyday activities at home using a head-mounted phone holder.</li>\n<li>Upload recordings through a provided app.</li>\n<li>Contribute 10 to 20 hours of recordings weekly.</li>\n</ul><br>\n\n<b>Ideal Candidate Profile</b>\n<ul>\n<li>Be located in the United States and at least old.</li>\n<li>Possess an iPhone (12 or newer), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer).</li>\n<li>Ability to wear a head-mounted phone holder.</li>\n<li>Have a home environment suitable for recording everyday activities.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Submit your details using the Easy Apply button.</li>\n<li>Our team will review applications against the specified role requirements.</li>\n<li>Candidates who are eligible to move forward will receive an email with further guidance.</li>\n<li>Follow the instructions provided to complete the rest of the application process.</li>\n</ul><br>\n\n#LI-CH",
+      "email": "",
+      "inmail_draft": "Hi {firstName},<br><br>\n\nI’m reaching out from <b>LegalTrustAI</b> to refer you for a remote opportunity at <b>Mercor</b>.<br><br>\n\n<b>Position Details</b><br>\n<a href=\"google.com\"><b>Household Activity Video Contributor</b></a><br>\n<b>Organisation:</b> Mercor<br>\n<b>Referred by:</b> LegalTrustAI<br>\n<b>Compensation:</b> $10-$15 per hour<br>\n<b>Location:</b> United States<br><br>\n\n<b>Key Responsibilities</b>\n<ul>\n<li>Record short first-person clips of normal everyday activities at home using a head-mounted phone holder.</li>\n<li>Upload recordings through a provided app.</li>\n<li>Contribute 10 to 20 hours of recordings weekly.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Visit the Mercor application page using the link provided.</li>\n<li>Sign up for a Mercor account if you are a new user, or sign in if you already have one.</li>\n<li>Once logged in, submit your application to complete the process.</li>\n</ul><br>\n\n<b>Apply Here:</b> <a href=\"google.com\"><b>Household Activity Video Contributor</b></a><br><br>\n\n<b>You can also checkout these Opportunities as well:</b><br><br>\n\n<i>P.S. For any queries or assistance, feel free to reach out at support@mercor.com</i><br><br>\n\nBest Regards,<br>\nLegalTrustAI",
+      "email_draft": null,
+      "subject": "Household Activity Video Contributor | $15/hr | Mercor",
+      "linkedin_title": "Household Activity Video Contributor | $15/hr",
+      "skills": [
+        "Video Recording",
+        "Data Uploading",
+        "Mobile Devices",
+        "Camera Operation",
+        "Headset Usage"
+      ],
+      "job_functions": [
+        "Research",
+        "General Business",
+        "IT"
+      ],
+      "industries": [
+        "Technology, Information and Media",
+        "Research Services",
+        "Professional Services"
+      ],
+      "version": "v2",
+      "titles": [
+        "Video Data Contributor",
+        "Household Video Recorder",
+        "Mobile Video Contributor",
+        "Activity Data Collector",
+        "Remote Video Recorder"
+      ],
+      "structured_data": {
+        "role": "Household Activity Video Contributor",
+        "type": "Hourly contract",
+        "pay": "$10-$15 per hour",
+        "location": "United States",
+        "commitment": "10-40 hrs/week",
+        "role_responsibilities": [
+          "Record short first-person clips of normal everyday activities at home using a head-mounted phone holder.",
+          "Upload recordings through a provided app.",
+          "Contribute 10 to 20 hours of recordings weekly."
+        ],
+        "requirements": [
+          "Be located in the United States and at least old.",
+          "Possess an iPhone (12 or newer), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer).",
+          "Ability to wear a head-mounted phone holder.",
+          "Have a home environment suitable for recording everyday activities."
+        ],
+        "role_overview": "As a Video Contributor, you will record first-person videos of household activities to support the development of AI systems that learn human movements and interactions with objects.",
+        "who_this_is_for": "This role is ideal for individuals in the United States with access to a modern smartphone and a suitable home environment for recording everyday tasks.",
+        "client": "LegalTrustAI",
+        "client_desc": "Mercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.",
+        "link": "google.com",
+        "suggested_titles": [
+          "Video Data Contributor",
+          "Household Video Recorder",
+          "Mobile Video Contributor",
+          "Activity Data Collector",
+          "Remote Video Recorder"
+        ],
+        "subject": "Video Contributor | $10-$15/hr Remote | LegalTrustAI x AI Labs",
+        "linkedin_title": "Video Contributor",
+        "skills": [
+          "Video Recording",
+          "Data Uploading",
+          "Mobile Devices",
+          "Camera Operation",
+          "Headset Usage"
+        ],
+        "job_functions": [
+          "Research",
+          "General Business",
+          "IT"
+        ],
+        "industries": [
+          "Technology, Information and Media",
+          "Research Services",
+          "Professional Services"
+        ],
+        "justifications": {
+          "Video Data Contributor": "Emphasizes recording and uploading first-person videos for AI model training as described.",
+          "Household Video Recorder": "Reflects capturing everyday household activities using personal devices in a residential setting.",
+          "Mobile Video Contributor": "Highlights use of mobile devices and head-mounted holders for recording daily tasks.",
+          "Activity Data Collector": "Indicates gathering first-person data for advancing robotics and physical AI systems.",
+          "Remote Video Recorder": "Specifies remote contracting with home-based recording of routine household activities.",
+          "Video Recording": "Essential for capturing clear, first-person clips of daily household actions.",
+          "Data Uploading": "Critical for transferring recorded clips via the provided app consistently.",
+          "Mobile Devices": "Relevant due to the requirement to use modern smartphones like iPhone, Google Pixel, or Samsung Galaxy.",
+          "Camera Operation": "Important for effectively handling the head-mounted recording equipment.",
+          "Headset Usage": "Key for proper use of the head mount device provided for first-person recording.",
+          "Research": "Supports AI labs by supplying real-world video data crucial for model training.",
+          "General Business": "Engages independent contractors in structured content contribution for commercial AI projects.",
+          "IT": "Involves technical recording and app-based uploading, aligning with digital IT operational tasks.",
+          "Technology, Information and Media": "Aligns with digital content creation and AI system development through modern tech.",
+          "Research Services": "Enables empirical video data collection feeding into advanced AI and robotics research.",
+          "Professional Services": "Operates within a contracted, service-based framework supporting leading AI enterprises."
+        },
+        "where_you_will": "contribute to training advanced AI models and ensuring high-quality system integration"
+      },
+      "justifications": {
+        "Video Data Contributor": "Emphasizes recording and uploading first-person videos for AI model training as described.",
+        "Household Video Recorder": "Reflects capturing everyday household activities using personal devices in a residential setting.",
+        "Mobile Video Contributor": "Highlights use of mobile devices and head-mounted holders for recording daily tasks.",
+        "Activity Data Collector": "Indicates gathering first-person data for advancing robotics and physical AI systems.",
+        "Remote Video Recorder": "Specifies remote contracting with home-based recording of routine household activities.",
+        "Video Recording": "Essential for capturing clear, first-person clips of daily household actions.",
+        "Data Uploading": "Critical for transferring recorded clips via the provided app consistently.",
+        "Mobile Devices": "Relevant due to the requirement to use modern smartphones like iPhone, Google Pixel, or Samsung Galaxy.",
+        "Camera Operation": "Important for effectively handling the head-mounted recording equipment.",
+        "Headset Usage": "Key for proper use of the head mount device provided for first-person recording.",
+        "Research": "Supports AI labs by supplying real-world video data crucial for model training.",
+        "General Business": "Engages independent contractors in structured content contribution for commercial AI projects.",
+        "IT": "Involves technical recording and app-based uploading, aligning with digital IT operational tasks.",
+        "Technology, Information and Media": "Aligns with digital content creation and AI system development through modern tech.",
+        "Research Services": "Enables empirical video data collection feeding into advanced AI and robotics research.",
+        "Professional Services": "Operates within a contracted, service-based framework supporting leading AI enterprises."
+      },
+      "is_domain_page": true
+    }
+  },
+  {
+    "id": "d9628f39-e0d4-4562-bb2a-1b9ccf7b2fb1",
+    "timestamp": "2026-07-11T08:31:26.400423Z",
+    "client": "legaltrustai",
+    "url": "google.com",
+    "raw_jd": "Household Activity Video Contributor (US Based)\nHourly contract\nRemote\nNew opportunity\n$10-$15\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocation requirements\nAbout this opportunity\nMercor is partnering with a leading physical AI company to collect first-person video of everyday household activities for training the next generation of robotics and physical AI systems. In this role, you will record short, first-person clips of ordinary tasks around your home, helping build and refine the datasets these models learn from. Your recordings will directly support the development of systems that can understand how people move, reach, and handle objects in real-world environments, the everyday actions that come naturally to people but remain difficult for machines to learn.\nWhat you will do\nRecord short first-person clips of normal everyday activities at home, using a simple head mount phone holder so the camera sees what you see\nExample tasks: loading the dishwasher, folding laundry, wiping down counters, putting away groceries, tidying a room, making a bed\nUpload your recordings through a provided app\nContributors typically record & upload 10 to 20 hours a week\nEligibility\nYou must be located in the United States and at least 18 years old\nThis opportunity is not currently available to residents of California, Illinois, Texas, or Washington\nYou have an iPhone (12 or newer, not including 16e or 17e), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer)\nYou are able to wear a simple head mounted phone holder. If you are accepted and need a head mount, we can provide one at no cost to you\nYou have a home environment where you can record everyday activities\nHow it works\nApply to the opportunity listing & complete a brief intake form (~5-10 min)\nComplete a short, AI-led interview (~15 min)\nMost applicants will hear back within 1 to 14 days of applying\nWe consider all qualified applicants without regard to legally protected characteristics and provide reasonable accommodations upon request.\nContract and Payment Terms\nYou will be engaged as an independent contractor.\nThis is a fully remote role that can be completed on your own schedule.\nProjects can be extended, shortened, or concluded early depending on needs and performance.\nYour work at Mercor will not involve access to confidential or proprietary information from any employer, client, or institution.\nPayments are weekly on Stripe or Wise based on services rendered.\nPlease note: We are unable to support H1-B or STEM OPT candidates at this time.\nAbout Mercor\nMercor partners with leading AI labs and enterprises to train frontier models using human expertise. You will work on projects that focus on training and enhancing AI systems. You will be paid competitively, collaborate with leading researchers, and help shape the next generation of AI systems in your area of expertise.",
+    "role": "Household Activity Video Contributor",
+    "raw_jd_snippet": "Household Activity Video Contributor (US Based)\nHourly contract\nRemote\nNew opportunity\n$10-$15\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocati...",
+    "cache_key": "945859554ed4cc9db690face9f8ca0f6",
+    "data": {
+      "jd": "<b><u>LegalTrustAI:</u></b><br><br>\n<b>Household Activity Video Contributor</b><br>\nHourly contract | Remote<br><br>\n<b>Pay:</b> $10-$15 per hour<br>\n<b>Time Commitment:</b> 10-40 hrs/week<br><br>\n\n<b>Role Snapshot</b><br>\nAs a Video Contributor, you will record first-person videos of household activities to support the development of AI systems that learn human movements and interactions with objects in real-world settings.<br><br>\n\n<b>Core Responsibilities</b>\n<ul>\n<li>Record short first-person clips of normal everyday activities at home.</li>\n<li>Use a head-mounted phone holder to capture video from your perspective.</li>\n<li>Upload recordings through a provided app.</li>\n<li>Contribute 10 to 20 hours of video content weekly.</li>\n</ul><br>\n\n<b>Ideal Candidate Profile</b>\n<ul>\n<li>Must be located in the United States and at least old.</li>\n<li>Not available to residents of California, Illinois, Texas, or Washington.</li>\n<li>Own an iPhone (12 or newer), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer).</li>\n<li>Able to wear a head-mounted phone holder.</li>\n<li>Have a home environment suitable for recording everyday activities.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Submit your details using the Easy Apply button.</li>\n<li>Our team will review applications against the specified role requirements.</li>\n<li>Candidates who are eligible to move forward will receive an email with further guidance.</li>\n<li>Follow the instructions provided to complete the rest of the application process.</li>\n</ul><br>\n\n#LI-CH",
+      "email": "",
+      "inmail_draft": "Hi {firstName},<br><br>\n\nI’m reaching out from <b>LegalTrustAI</b> to refer you for a remote opportunity at <b>Mercor</b>.<br><br>\n\n<b>Position Details</b><br>\n<a href=\"google.com\"><b>Household Activity Video Contributor</b></a><br>\n<b>Organisation:</b> Mercor<br>\n<b>Referred by:</b> LegalTrustAI<br>\n<b>Compensation:</b> $10-$15 per hour<br>\n<b>Location:</b> Remote<br><br>\n\n<b>Key Responsibilities</b>\n<ul>\n<li>Record short first-person clips of normal everyday activities at home.</li>\n<li>Use a head-mounted phone holder to capture video from your perspective.</li>\n<li>Upload recordings through a provided app.</li>\n<li>Contribute 10 to 20 hours of video content weekly.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Visit the Mercor application page using the link provided.</li>\n<li>Sign up for a Mercor account if you are a new user, or sign in if you already have one.</li>\n<li>Once logged in, submit your application to complete the process.</li>\n</ul><br>\n\n<b>Apply Here:</b> <a href=\"google.com\"><b>Household Activity Video Contributor</b></a><br><br>\n\n<b>You can also checkout these Opportunities as well:</b><br><br>\n\n<i>P.S. For any queries or assistance, feel free to reach out at support@mercor.com</i><br><br>\n\nBest Regards,<br>\nLegalTrustAI",
+      "email_draft": null,
+      "subject": "Household Activity Video Contributor | $15/hr Remote | Mercor",
+      "linkedin_title": "Household Activity Video Contributor | $15/hr Remote",
+      "skills": [
+        "video recording",
+        "mobile devices",
+        "data capture",
+        "app usage"
+      ],
+      "job_functions": [
+        "Analytics",
+        "Research",
+        "IT"
+      ],
+      "industries": [
+        "Technology, Information and Media",
+        "Professional Services",
+        "Consumer Services"
+      ],
+      "version": "v2",
+      "titles": [
+        "Remote Data Collection Specialist",
+        "Video Data Collection Specialist",
+        "Household Activity Recorder",
+        "Activity Video Contributor",
+        "Remote Activity Recorder"
+      ],
+      "structured_data": {
+        "role": "Household Activity Video Contributor",
+        "type": "Hourly contract",
+        "pay": "$10-$15 per hour",
+        "location": "Remote",
+        "commitment": "10-40 hrs/week",
+        "role_responsibilities": [
+          "Record short first-person clips of normal everyday activities at home.",
+          "Use a head-mounted phone holder to capture video from your perspective.",
+          "Upload recordings through a provided app.",
+          "Contribute 10 to 20 hours of video content weekly."
+        ],
+        "requirements": [
+          "Must be located in the United States and at least old.",
+          "Not available to residents of California, Illinois, Texas, or Washington.",
+          "Own an iPhone (12 or newer), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer).",
+          "Able to wear a head-mounted phone holder.",
+          "Have a home environment suitable for recording everyday activities."
+        ],
+        "role_overview": "As a Video Contributor, you will record first-person videos of household activities to support the development of AI systems that learn human movements and interactions with objects in real-world settings.",
+        "who_this_is_for": "This role is ideal for individuals in the with a compatible smartphone who can record household activities, contributing to AI training datasets.",
+        "client": "LegalTrustAI",
+        "client_desc": "Mercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.",
+        "link": "google.com",
+        "suggested_titles": [
+          "Remote Data Collection Specialist",
+          "Video Data Collection Specialist",
+          "Household Activity Recorder",
+          "Activity Video Contributor",
+          "Remote Activity Recorder"
+        ],
+        "subject": "Video Contributor | $10-$15/hr Remote | LegalTrustAI x AI Labs",
+        "linkedin_title": "Video Contributor",
+        "skills": [
+          "video recording",
+          "mobile devices",
+          "data capture",
+          "app usage"
+        ],
+        "job_functions": [
+          "Analytics",
+          "Research",
+          "IT"
+        ],
+        "industries": [
+          "Technology, Information and Media",
+          "Professional Services",
+          "Consumer Services"
+        ],
+        "justifications": {
+          "Remote Data Collection Specialist": "Highlights the remote, contractual nature and data collection focus for training AI systems.",
+          "Video Data Collection Specialist": "Emphasizes the role’s responsibility to capture video data crucial for physical AI system development.",
+          "Household Activity Recorder": "Directly reflects recording everyday household tasks as described in the job requirements.",
+          "Activity Video Contributor": "Represents the contribution of first-person video clips to improve AI model training.",
+          "Remote Activity Recorder": "Indicates a mobile, home-based role using recorded activity data for AI training.",
+          "video recording": "Essential to capture the first-person clips that document everyday household activities.",
+          "mobile devices": "Critical due to the requirement of using smartphones like iPhone, Google Pixel, or Samsung Galaxy.",
+          "data capture": "Focuses on collecting raw video footage necessary for refining physical AI models.",
+          "app usage": "Necessary for uploading recorded videos through the dedicated application provided by Mercor.",
+          "Analytics": "Relates to processing and analyzing video data for training advanced robotics and AI systems.",
+          "Research": "Directly supports the research efforts in developing AI models from real-life household actions.",
+          "IT": "Involves the technical use of mobile tools and apps essential for video recording and data upload.",
+          "Technology, Information and Media": "Aligns with Mercor’s role in partnering with AI labs and leveraging advanced technological platforms.",
+          "Professional Services": "Reflects the specialized independent contractor service provided to enhance AI training datasets.",
+          "Consumer Services": "Involves capturing real-life household activity data from everyday consumer environments."
+        },
+        "where_you_will": "contribute to training advanced AI models and ensuring high-quality system integration"
+      },
+      "justifications": {
+        "Remote Data Collection Specialist": "Highlights the remote, contractual nature and data collection focus for training AI systems.",
+        "Video Data Collection Specialist": "Emphasizes the role’s responsibility to capture video data crucial for physical AI system development.",
+        "Household Activity Recorder": "Directly reflects recording everyday household tasks as described in the job requirements.",
+        "Activity Video Contributor": "Represents the contribution of first-person video clips to improve AI model training.",
+        "Remote Activity Recorder": "Indicates a mobile, home-based role using recorded activity data for AI training.",
+        "video recording": "Essential to capture the first-person clips that document everyday household activities.",
+        "mobile devices": "Critical due to the requirement of using smartphones like iPhone, Google Pixel, or Samsung Galaxy.",
+        "data capture": "Focuses on collecting raw video footage necessary for refining physical AI models.",
+        "app usage": "Necessary for uploading recorded videos through the dedicated application provided by Mercor.",
+        "Analytics": "Relates to processing and analyzing video data for training advanced robotics and AI systems.",
+        "Research": "Directly supports the research efforts in developing AI models from real-life household actions.",
+        "IT": "Involves the technical use of mobile tools and apps essential for video recording and data upload.",
+        "Technology, Information and Media": "Aligns with Mercor’s role in partnering with AI labs and leveraging advanced technological platforms.",
+        "Professional Services": "Reflects the specialized independent contractor service provided to enhance AI training datasets.",
+        "Consumer Services": "Involves capturing real-life household activity data from everyday consumer environments."
+      },
+      "is_domain_page": true
+    }
+  },
+  {
+    "id": "289c8154-52d9-4da3-bd6e-9eb88b5a2181",
+    "timestamp": "2026-07-11T08:29:13.912855Z",
+    "client": "curasenseai",
+    "url": "google.com",
+    "raw_jd": "Household Activity Video Contributor (US Based)\nHourly contract\nRemote\nNew opportunity\n$10-$15\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocation requirements\nUnited States\nAbout this opportunity\nMercor is partnering with a leading physical AI company to collect first-person video of everyday household activities for training the next generation of robotics and physical AI systems. In this role, you will record short, first-person clips of ordinary tasks around your home, helping build and refine the datasets these models learn from. Your recordings will directly support the development of systems that can understand how people move, reach, and handle objects in real-world environments, the everyday actions that come naturally to people but remain difficult for machines to learn.\nWhat you will do\nRecord short first-person clips of normal everyday activities at home, using a simple head mount phone holder so the camera sees what you see\nExample tasks: loading the dishwasher, folding laundry, wiping down counters, putting away groceries, tidying a room, making a bed\nUpload your recordings through a provided app\nContributors typically record & upload 10 to 20 hours a week\nEligibility\nYou must be located in the United States and at least 18 years old\nThis opportunity is not currently available to residents of California, Illinois, Texas, or Washington\nYou have an iPhone (12 or newer, not including 16e or 17e), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer)\nYou are able to wear a simple head mounted phone holder. If you are accepted and need a head mount, we can provide one at no cost to you\nYou have a home environment where you can record everyday activities\nHow it works\nApply to the opportunity listing & complete a brief intake form (~5-10 min)\nComplete a short, AI-led interview (~15 min)\nMost applicants will hear back within 1 to 14 days of applying\nWe consider all qualified applicants without regard to legally protected characteristics and provide reasonable accommodations upon request.\nContract and Payment Terms\nYou will be engaged as an independent contractor.\nThis is a fully remote role that can be completed on your own schedule.\nProjects can be extended, shortened, or concluded early depending on needs and performance.\nYour work at Mercor will not involve access to confidential or proprietary information from any employer, client, or institution.\nPayments are weekly on Stripe or Wise based on services rendered.\nPlease note: We are unable to support H1-B or STEM OPT candidates at this time.\nAbout Mercor\nMercor partners with leading AI labs and enterprises to train frontier models using human expertise. You will work on projects that focus on training and enhancing AI systems. You will be paid competitively, collaborate with leading researchers, and help shape the next generation of AI systems in your area of expertise.",
+    "role": "Household Activity Video Contributor",
+    "raw_jd_snippet": "Household Activity Video Contributor (US Based)\nHourly contract\nRemote\nNew opportunity\n$10-$15\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocati...",
+    "cache_key": "b0ad519342e1182d518d0d6ebfc5b316",
+    "data": {
+      "jd": "<b><u>CuraSenseAI:</u></b><br><br>\n<b>Role Overview</b><br>\nContribute to the development of robotics and physical AI systems by recording first-person video clips of household activities. Your work will help train models to understand human movements and interactions with objects in real-world settings.<br><br>\n\n<b>What You Will Be Doing</b>\n<ul>\n<li>Record short first-person clips of everyday household activities using a head-mounted phone holder.</li>\n<li>Upload recordings through a provided app.</li>\n<li>Contribute 10 to 20 hours of recordings weekly.</li>\n</ul><br>\n\n<b>Who We Are Looking For</b>\n<ul>\n<li>Be located in the United States and at least old.</li>\n<li>Possess an iPhone (12 or newer), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer).</li>\n<li>Ability to wear a head-mounted phone holder.</li>\n<li>Have a suitable home environment for recording everyday activities.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Use the Easy Apply button to submit your application.</li>\n<li>All applications will be assessed based on the requirements of the role.</li>\n<li>Eligible applicants will receive an email with further application instructions.</li>\n<li>Complete the remaining application steps by following the instructions in the email.</li>\n</ul><br>\n\n<b>Role Details</b><br>\n<b>Compensation:</b> $10-$15 per hour<br>\n<b>Work style:</b> Fully remote, flexible schedule<br>\n<b>Duration:</b> Hourly contract<br><br>\n\n#LI-CH",
+      "email": "",
+      "inmail_draft": "Hi {firstName},<br><br>\n\nI’m reaching out from <b>CuraSenseAI</b> to refer you for the role of <a href=\"google.com\"><b>Household Activity Video Contributor</b></a> at <b>Mercor</b>.<br><br>\n\n<b>About the Role</b><br>\nContribute to the development of robotics and physical AI systems by recording first-person video clips of household activities. Your work will help train models to understand human movements and interactions with objects in real-world settings.<br><br>\n\n<b>Organization:</b> Mercor<br>\n<b>Referred by:</b> CuraSenseAI<br>\n<b>Nature:</b> United States<br>\n<b>Engagement Type:</b> Hourly contract<br>\n<b>Pay:</b> $10-$15 per hour<br>\n<b>Location:</b> United States<br><br>\n\n<b>Key Responsibilities</b>\n<ul>\n<li>Record short first-person clips of everyday household activities using a head-mounted phone holder.</li>\n<li>Upload recordings through a provided app.</li>\n<li>Contribute 10 to 20 hours of recordings weekly.</li>\n</ul><br>\n\n<b>Candidate Profile</b>\n<ul>\n<li>Be located in the United States and at least old.</li>\n<li>Possess an iPhone (12 or newer), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer).</li>\n<li>Ability to wear a head-mounted phone holder.</li>\n<li>Have a suitable home environment for recording everyday activities.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Access the role using the Mercor application link below.</li>\n<li>Create a Mercor account or sign in to your existing account.</li>\n<li>Complete your application by submitting it for the role on Mercor.</li>\n</ul><br>\n\n<b>Click below to apply and continue your application process:</b><br>\n<a href=\"google.com\"><b>Household Activity Video Contributor</b></a><br><br>\n\n<b>You can also checkout these Opportunities as well:</b><br><br>\n\n<i>P.S. For any queries or assistance, feel free to reach out at support@mercor.com</i><br><br>\n\nBest Regards,<br>\nCuraSenseAI",
+      "email_draft": null,
+      "subject": "Household Activity Video Contributor | $15/hr | Mercor",
+      "linkedin_title": "Household Activity Video Contributor | $15/hr",
+      "skills": [
+        "video recording",
+        "mobile technology",
+        "data collection",
+        "crowdsourcing"
+      ],
+      "job_functions": [
+        "Research",
+        "Analytics",
+        "General Business"
+      ],
+      "industries": [
+        "Technology, Information and Media",
+        "Research Services",
+        "Professional Services"
+      ],
+      "version": "v2",
+      "titles": [
+        "Video Data Contributor",
+        "Household Video Contributor",
+        "Remote Video Recorder",
+        "User Generated Content Specialist",
+        "Crowdsourced Data Collector"
+      ],
+      "structured_data": {
+        "role": "Household Activity Video Contributor",
+        "type": "Hourly contract",
+        "pay": "$10-$15 per hour",
+        "location": "United States",
+        "commitment": "10-40 hrs/week",
+        "role_responsibilities": [
+          "Record short first-person clips of everyday household activities using a head-mounted phone holder.",
+          "Upload recordings through a provided app.",
+          "Contribute 10 to 20 hours of recordings weekly."
+        ],
+        "requirements": [
+          "Be located in the United States and at least old.",
+          "Possess an iPhone (12 or newer), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer).",
+          "Ability to wear a head-mounted phone holder.",
+          "Have a suitable home environment for recording everyday activities."
+        ],
+        "role_overview": "Contribute to the development of robotics and physical AI systems by recording first-person video clips of household activities. Your work will help train models to understand human movements and interactions with objects in real-world settings.",
+        "who_this_is_for": "Individuals based in the US with access to modern smartphones and a suitable home environment, interested in contributing to AI training by recording everyday activities.",
+        "client": "CuraSenseAI",
+        "client_desc": "Mercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.",
+        "link": "google.com",
+        "suggested_titles": [
+          "Video Data Contributor",
+          "Household Video Contributor",
+          "Remote Video Recorder",
+          "User Generated Content Specialist",
+          "Crowdsourced Data Collector"
+        ],
+        "subject": "Video Data Contributor | $10-$15/hr Remote | CuraSenseAI x AI Labs",
+        "linkedin_title": "Video Data Contributor",
+        "skills": [
+          "video recording",
+          "mobile technology",
+          "data collection",
+          "crowdsourcing"
+        ],
+        "job_functions": [
+          "Research",
+          "Analytics",
+          "General Business"
+        ],
+        "industries": [
+          "Technology, Information and Media",
+          "Research Services",
+          "Professional Services"
+        ],
+        "justifications": {
+          "Video Data Contributor": "Highlights the role’s focus on capturing video data for physical AI training from household activities.",
+          "Household Video Contributor": "Directly reflects the requirement to record home-based tasks using a head-mounted phone holder.",
+          "Remote Video Recorder": "Emphasizes the remote nature and video recording responsibility with specified smartphone criteria.",
+          "User Generated Content Specialist": "Indicates the creation of user-driven video content critical for training AI models.",
+          "Crowdsourced Data Collector": "Captures the essence of gathering distributed household video data for large-scale AI dataset development.",
+          "video recording": "Specifically needed to capture first-person clips of everyday home activities using mobile devices.",
+          "mobile technology": "References the requirement to use recent smartphones like iPhone, Google Pixel, or Samsung Galaxy.",
+          "data collection": "Core function involves assembling video datasets to train and refine physical AI systems.",
+          "crowdsourcing": "Reflects the independent contractor model contributing video data from varied household environments.",
+          "Research": "The video contributions directly support data-driven research on human movement and AI model training.",
+          "Analytics": "Collected data is used for analyzing real-world household activity patterns to improve AI performance.",
+          "General Business": "The independent contractor model follows flexible business terms without traditional employer constraints.",
+          "Technology, Information and Media": "Engages with a physical AI company operating within the advanced technology sector.",
+          "Research Services": "Supports generating real-world data for AI research and development in physical systems.",
+          "Professional Services": "Provides specialized, independent video contributions as a form of professional data service."
+        },
+        "where_you_will": "contribute to training advanced AI models and ensuring high-quality system integration"
+      },
+      "justifications": {
+        "Video Data Contributor": "Highlights the role’s focus on capturing video data for physical AI training from household activities.",
+        "Household Video Contributor": "Directly reflects the requirement to record home-based tasks using a head-mounted phone holder.",
+        "Remote Video Recorder": "Emphasizes the remote nature and video recording responsibility with specified smartphone criteria.",
+        "User Generated Content Specialist": "Indicates the creation of user-driven video content critical for training AI models.",
+        "Crowdsourced Data Collector": "Captures the essence of gathering distributed household video data for large-scale AI dataset development.",
+        "video recording": "Specifically needed to capture first-person clips of everyday home activities using mobile devices.",
+        "mobile technology": "References the requirement to use recent smartphones like iPhone, Google Pixel, or Samsung Galaxy.",
+        "data collection": "Core function involves assembling video datasets to train and refine physical AI systems.",
+        "crowdsourcing": "Reflects the independent contractor model contributing video data from varied household environments.",
+        "Research": "The video contributions directly support data-driven research on human movement and AI model training.",
+        "Analytics": "Collected data is used for analyzing real-world household activity patterns to improve AI performance.",
+        "General Business": "The independent contractor model follows flexible business terms without traditional employer constraints.",
+        "Technology, Information and Media": "Engages with a physical AI company operating within the advanced technology sector.",
+        "Research Services": "Supports generating real-world data for AI research and development in physical systems.",
+        "Professional Services": "Provides specialized, independent video contributions as a form of professional data service."
+      },
+      "is_domain_page": true
+    }
+  },
+  {
+    "id": "c309957b-9c4d-4097-ae79-d686782ce7df",
+    "timestamp": "2026-07-11T08:28:34.319739Z",
+    "client": "codegeniusrecruit",
+    "url": "google.com",
+    "raw_jd": "Household Activity Video Contributor (US Based)\nHourly contract\nRemote\nNew opportunity\n$10-$15\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocation requirements\nUnited States\nAbout this opportunity\nMercor is partnering with a leading physical AI company to collect first-person video of everyday household activities for training the next generation of robotics and physical AI systems. In this role, you will record short, first-person clips of ordinary tasks around your home, helping build and refine the datasets these models learn from. Your recordings will directly support the development of systems that can understand how people move, reach, and handle objects in real-world environments, the everyday actions that come naturally to people but remain difficult for machines to learn.\nWhat you will do\nRecord short first-person clips of normal everyday activities at home, using a simple head mount phone holder so the camera sees what you see\nExample tasks: loading the dishwasher, folding laundry, wiping down counters, putting away groceries, tidying a room, making a bed\nUpload your recordings through a provided app\nContributors typically record & upload 10 to 20 hours a week\nEligibility\nYou must be located in the United States and at least 18 years old\nThis opportunity is not currently available to residents of California, Illinois, Texas, or Washington\nYou have an iPhone (12 or newer, not including 16e or 17e), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer)\nYou are able to wear a simple head mounted phone holder. If you are accepted and need a head mount, we can provide one at no cost to you\nYou have a home environment where you can record everyday activities\nHow it works\nApply to the opportunity listing & complete a brief intake form (~5-10 min)\nComplete a short, AI-led interview (~15 min)\nMost applicants will hear back within 1 to 14 days of applying\nWe consider all qualified applicants without regard to legally protected characteristics and provide reasonable accommodations upon request.\nContract and Payment Terms\nYou will be engaged as an independent contractor.\nThis is a fully remote role that can be completed on your own schedule.\nProjects can be extended, shortened, or concluded early depending on needs and performance.\nYour work at Mercor will not involve access to confidential or proprietary information from any employer, client, or institution.\nPayments are weekly on Stripe or Wise based on services rendered.\nPlease note: We are unable to support H1-B or STEM OPT candidates at this time.\nAbout Mercor\nMercor partners with leading AI labs and enterprises to train frontier models using human expertise. You will work on projects that focus on training and enhancing AI systems. You will be paid competitively, collaborate with leading researchers, and help shape the next generation of AI systems in your area of expertise.",
+    "role": "Household Activity Video Contributor",
+    "raw_jd_snippet": "Household Activity Video Contributor (US Based)\nHourly contract\nRemote\nNew opportunity\n$10-$15\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocati...",
+    "cache_key": "048e2e62a2b7851afea30bd3ac019da0",
+    "data": {
+      "jd": "<b><u>CodeGeniusRecruit:</u></b><br><br>\n<b>Work Snapshot</b><br>\n<b>Type:</b> Hourly contract<br>\n<b>Location:</b> United States<br>\n<b>Commitment:</b> 10-40 hrs/week<br>\n<b>Commission:</b> $10-$15 per hour<br><br>\n\n<b>What You’ll Be Doing</b>\n<ul>\n<li>Record short first-person clips of normal everyday activities at home using a head-mounted phone holder.</li>\n<li>Upload recordings through a provided app.</li>\n<li>Contribute 10 to 20 hours of recordings weekly.</li>\n</ul><br>\n\n<b>What We’re Looking For</b>\n<ul>\n<li>Be located in the United States and at least old.</li>\n<li>Possess an iPhone (12 or newer), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer).</li>\n<li>Ability to wear a head-mounted phone holder.</li>\n<li>Have a home environment suitable for recording everyday activities.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Submit your application through the Easy Apply button.</li>\n<li>Each application will be reviewed against the role requirements.</li>\n<li>Candidates who meet the requirements will receive an email with the next steps.</li>\n<li>Follow the instructions provided in the email to complete the remainder of the application process.</li>\n</ul><br>\n\n#LI-CH",
+      "email": "",
+      "inmail_draft": "Hi {firstName},<br><br>\n\nI'm from <b>CodeGeniusRecruit</b>. Based on your profile, we think you could be a strong fit for the <a href=\"google.com\"><b>Household Activity Video Contributor</b></a> position at <b>Mercor</b>.<br><br>\n\n<b>Role highlights:</b> Mercor | United States | Hourly contract | $10-$15 per hour<br><br>\n\nWe’d like to refer you for this opportunity. As a Video Contributor, you will record and upload first-person video clips of household activities to support the development of AI systems that learn from real-world human actions.<br><br>\n\n<b>Application Process</b>\n<ul>\n<li>Open the Mercor application link included in this email.</li>\n<li>Register for a Mercor account if you do not already have one, or log in to your existing account.</li>\n<li>After signing in, submit your application for the role on Mercor.</li>\n</ul><br>\n\n<b>To apply, kindly use the link below:</b><br>\n<a href=\"google.com\"><b>Household Activity Video Contributor</b></a><br><br>\n\n<b>You can also checkout these Opportunities as well:</b><br><br>\n\nSince applications are reviewed on a rolling basis, earlier submissions receive priority consideration.<br><br>\n\n<i>P.S. For any queries or assistance, feel free to reach out at support@mercor.com</i><br><br>\n\nBest Regards,<br>\nCodeGeniusRecruit",
+      "email_draft": null,
+      "subject": "Household Activity Video Contributor | $15/hr | Mercor",
+      "linkedin_title": "Household Activity Video Contributor | $15/hr",
+      "skills": [
+        "Video Recording",
+        "Mobile Devices",
+        "Data Upload",
+        "Smartphone Usage",
+        "Camera Operation"
+      ],
+      "job_functions": [
+        "Research",
+        "Training",
+        "IT"
+      ],
+      "industries": [
+        "Technology, Information and Media",
+        "Professional Services",
+        "Research Services"
+      ],
+      "version": "v2",
+      "titles": [
+        "Remote Video Data Contributor",
+        "First-Person Video Recorder",
+        "Mobile Data Collection Specialist",
+        "Household Activity Recorder",
+        "Crowdsourced Video Recorder"
+      ],
+      "structured_data": {
+        "role": "Household Activity Video Contributor",
+        "type": "Hourly contract",
+        "pay": "$10-$15 per hour",
+        "location": "United States",
+        "commitment": "10-40 hrs/week",
+        "role_responsibilities": [
+          "Record short first-person clips of normal everyday activities at home using a head-mounted phone holder.",
+          "Upload recordings through a provided app.",
+          "Contribute 10 to 20 hours of recordings weekly."
+        ],
+        "requirements": [
+          "Be located in the United States and at least old.",
+          "Possess an iPhone (12 or newer), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer).",
+          "Ability to wear a head-mounted phone holder.",
+          "Have a home environment suitable for recording everyday activities."
+        ],
+        "role_overview": "As a Video Contributor, you will record and upload first-person video clips of household activities to support the development of AI systems that learn from real-world human actions.",
+        "who_this_is_for": "This role is ideal for individuals in the United States with a suitable smartphone and home environment, interested in contributing to AI training by recording everyday activities.",
+        "client": "CodeGeniusRecruit",
+        "client_desc": "Mercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.",
+        "link": "google.com",
+        "suggested_titles": [
+          "Remote Video Data Contributor",
+          "First-Person Video Recorder",
+          "Mobile Data Collection Specialist",
+          "Household Activity Recorder",
+          "Crowdsourced Video Recorder"
+        ],
+        "subject": "Video Contributor | $10-$15/hr Remote | CodeGeniusRecruit x AI Labs",
+        "linkedin_title": "Video Contributor",
+        "skills": [
+          "Video Recording",
+          "Mobile Devices",
+          "Data Upload",
+          "Smartphone Usage",
+          "Camera Operation"
+        ],
+        "job_functions": [
+          "Research",
+          "Training",
+          "IT"
+        ],
+        "industries": [
+          "Technology, Information and Media",
+          "Professional Services",
+          "Research Services"
+        ],
+        "justifications": {
+          "Remote Video Data Contributor": "Highlights the remote role of capturing video data for AI training.",
+          "First-Person Video Recorder": "Emphasizes recording first-person household activities as described.",
+          "Mobile Data Collection Specialist": "Captures the use of mobile devices for systematic data collection.",
+          "Household Activity Recorder": "Directly relates to recording everyday household tasks for dataset enhancement.",
+          "Crowdsourced Video Recorder": "Indicates a crowdsourcing approach with varied home environment contributions.",
+          "Video Recording": "Essential for producing clear first-person clips using provided smartphone devices.",
+          "Mobile Devices": "Reflects the requirement to use specific smartphones for recording tasks.",
+          "Data Upload": "Crucial for transferring recordings through the dedicated app.",
+          "Smartphone Usage": "Highlights proficiency with modern phones necessary to capture activity videos.",
+          "Camera Operation": "Pertinent for using head-mounted mounts to stabilize first-person video capture.",
+          "Research": "Directly supports the collection of real-world data for physical AI model training.",
+          "Training": "Connects to preparing datasets that improve robotics training and AI learning.",
+          "IT": "Involves using technology like apps and smartphones to manage video submissions.",
+          "Technology, Information and Media": "Aligns with the physical AI and robotics focus of the project.",
+          "Professional Services": "Represents the independent contractor model servicing advanced AI labs.",
+          "Research Services": "Pertinent for creating datasets essential for ongoing AI research efforts."
+        },
+        "where_you_will": "contribute to training advanced AI models and ensuring high-quality system integration"
+      },
+      "justifications": {
+        "Remote Video Data Contributor": "Highlights the remote role of capturing video data for AI training.",
+        "First-Person Video Recorder": "Emphasizes recording first-person household activities as described.",
+        "Mobile Data Collection Specialist": "Captures the use of mobile devices for systematic data collection.",
+        "Household Activity Recorder": "Directly relates to recording everyday household tasks for dataset enhancement.",
+        "Crowdsourced Video Recorder": "Indicates a crowdsourcing approach with varied home environment contributions.",
+        "Video Recording": "Essential for producing clear first-person clips using provided smartphone devices.",
+        "Mobile Devices": "Reflects the requirement to use specific smartphones for recording tasks.",
+        "Data Upload": "Crucial for transferring recordings through the dedicated app.",
+        "Smartphone Usage": "Highlights proficiency with modern phones necessary to capture activity videos.",
+        "Camera Operation": "Pertinent for using head-mounted mounts to stabilize first-person video capture.",
+        "Research": "Directly supports the collection of real-world data for physical AI model training.",
+        "Training": "Connects to preparing datasets that improve robotics training and AI learning.",
+        "IT": "Involves using technology like apps and smartphones to manage video submissions.",
+        "Technology, Information and Media": "Aligns with the physical AI and robotics focus of the project.",
+        "Professional Services": "Represents the independent contractor model servicing advanced AI labs.",
+        "Research Services": "Pertinent for creating datasets essential for ongoing AI research efforts."
+      },
+      "is_domain_page": true
+    }
+  },
+  {
+    "id": "795efee0-e82b-435a-bc18-f4ef3da2b1e5",
+    "timestamp": "2026-07-11T08:24:22.373692Z",
+    "client": "crossing_hurdles",
+    "url": "google.com",
+    "raw_jd": "Household Activity Video Contributor (US Based)\nHourly contract\nRemote\nNew opportunity\n$10-$15\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocation requirements\nUnited States\nAbout this opportunity\nMercor is partnering with a leading physical AI company to collect first-person video of everyday household activities for training the next generation of robotics and physical AI systems. In this role, you will record short, first-person clips of ordinary tasks around your home, helping build and refine the datasets these models learn from. Your recordings will directly support the development of systems that can understand how people move, reach, and handle objects in real-world environments, the everyday actions that come naturally to people but remain difficult for machines to learn.\nWhat you will do\nRecord short first-person clips of normal everyday activities at home, using a simple head mount phone holder so the camera sees what you see\nExample tasks: loading the dishwasher, folding laundry, wiping down counters, putting away groceries, tidying a room, making a bed\nUpload your recordings through a provided app\nContributors typically record & upload 10 to 20 hours a week\nEligibility\nYou must be located in the United States and at least 18 years old\nThis opportunity is not currently available to residents of California, Illinois, Texas, or Washington\nYou have an iPhone (12 or newer, not including 16e or 17e), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer)\nYou are able to wear a simple head mounted phone holder. If you are accepted and need a head mount, we can provide one at no cost to you\nYou have a home environment where you can record everyday activities\nHow it works\nApply to the opportunity listing & complete a brief intake form (~5-10 min)\nComplete a short, AI-led interview (~15 min)\nMost applicants will hear back within 1 to 14 days of applying\nWe consider all qualified applicants without regard to legally protected characteristics and provide reasonable accommodations upon request.\nContract and Payment Terms\nYou will be engaged as an independent contractor.\nThis is a fully remote role that can be completed on your own schedule.\nProjects can be extended, shortened, or concluded early depending on needs and performance.\nYour work at Mercor will not involve access to confidential or proprietary information from any employer, client, or institution.\nPayments are weekly on Stripe or Wise based on services rendered.\nPlease note: We are unable to support H1-B or STEM OPT candidates at this time.\nAbout Mercor\nMercor partners with leading AI labs and enterprises to train frontier models using human expertise. You will work on projects that focus on training and enhancing AI systems. You will be paid competitively, collaborate with leading researchers, and help shape the next generation of AI systems in your area of expertise.",
+    "role": "Household Activity Video Contributor",
+    "raw_jd_snippet": "Household Activity Video Contributor (US Based)\nHourly contract\nRemote\nNew opportunity\n$10-$15\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\nLocati...",
+    "cache_key": "e4e361466aa767ec07f4b5cce0a764ff",
+    "data": {
+      "jd": "<b><u>Crossing Hurdles:</u></b><br><br>\n<b>Position:</b> Household Activity Video Contributor<br>\n<b>Type:</b> Hourly contract<br>\n<b>Compensation:</b> $10-$15 per hour<br>\n<b>Location:</b> United States<br>\n<b>Commitment:</b> 10-40 hrs/week<br><br>\n\n<b>Role Responsibilities:</b>\n<ul>\n<li>Record short first-person clips of normal everyday activities at home using a head-mounted phone holder.</li>\n<li>Upload recordings through a provided app.</li>\n<li>Contribute 10 to 20 hours of recordings weekly.</li>\n</ul><br>\n\n<b>Requirements:</b>\n<ul>\n<li>Be located in the United States and at least old.</li>\n<li>Possess an iPhone (12 or newer), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer).</li>\n<li>Ability to wear a head-mounted phone holder.</li>\n<li>Have a home environment suitable for recording everyday activities.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Apply using the Easy Apply button and submit your application.</li>\n<li>Applications will be reviewed based on the role requirements.</li>\n<li>Eligible candidates will receive an InMail with instructions to continue the application process.</li>\n<li>Follow the instructions in the InMail to complete the remaining application steps.</li>\n</ul><br>\n\n#LI-CH",
+      "email": "",
+      "inmail_draft": "Hi {firstName},<br><br>\n\nI'm from <b>Crossing Hurdles</b>, Based on your profile, we think you could be a strong fit for the <a href=\"google.com\"><b>Household Activity Video Contributor</b></a> position at <b>Mercor</b>.<br><br>\n\n<b>Organization:</b> Mercor<br>\n<b>Referral by:</b> Crossing Hurdles<br>\n<b>Role:</b> Household Activity Video Contributor<br>\n<b>Type:</b> Hourly contract<br>\n<b>Pay:</b> $10-$15 per hour<br>\n<b>Location:</b> United States<br><br>\n\n<b>Application Process</b>\n<ul>\n<li>Click the Mercor application link provided in this message.</li>\n<li>Create a Mercor account if you are a new user, or sign in to your existing account.</li>\n<li>Once signed in, submit your application for the role to complete the application process.</li>\n</ul><br>\n\n<b>Apply here (reviewed on a rolling basis):</b><br>\n<a href=\"google.com\"><b>Household Activity Video Contributor</b></a> – $10-$15 per hour<br><br>\n\n<b>You can also checkout these Opportunities as well:</b><br><br>\n\n<b>Take Steps to Boost Your Profile:</b>\n<ul>\n<li>Need tips to improve your chances of selection? Check out the <a href=\"https://docs.google.com/document/d/1xYe9X4t2Bv6BEScXwwvix35Kmlc92xiulEpBDLcCZb8/edit?usp=sharing\">Interview Preparation Playbook</a></li>\n<li>You can strengthen your profile through the <a href=\"https://work.mercor.com/home?tab=assessments&referralCode=c88e7e37-c849-4793-a401-f58c8615e4c7\">Assessment tab</a> in your dashboard. Completing skill based assessments can help unlock future opportunities, including roles you have not applied to or roles that may not be publicly listed.</li>\n</ul><br>\n\n<i>P.S. For immediate support, contact support@mercor.com</i>",
+      "email_draft": null,
+      "subject": "Household Activity Video Contributor | $15/hr | Mercor x AI Labs",
+      "linkedin_title": "Household Activity Video Contributor | $15/hr",
+      "skills": [
+        "Video capture",
+        "Smartphone usage",
+        "Data upload",
+        "Content recording"
+      ],
+      "job_functions": [
+        "Analytics",
+        "Research",
+        "General Business"
+      ],
+      "industries": [
+        "Technology, Information and Media",
+        "Administrative and Support Services",
+        "Research Services"
+      ],
+      "version": "v2",
+      "titles": [
+        "Video Content Contributor",
+        "User-Generated Content Creator",
+        "Field Data Collector",
+        "Video Data Specialist"
+      ],
+      "structured_data": {
+        "role": "Household Activity Video Contributor",
+        "type": "Hourly contract",
+        "pay": "$10-$15 per hour",
+        "location": "United States",
+        "commitment": "10-40 hrs/week",
+        "role_responsibilities": [
+          "Record short first-person clips of normal everyday activities at home using a head-mounted phone holder.",
+          "Upload recordings through a provided app.",
+          "Contribute 10 to 20 hours of recordings weekly."
+        ],
+        "requirements": [
+          "Be located in the United States and at least old.",
+          "Possess an iPhone (12 or newer), Google Pixel (6 or newer), or Samsung Galaxy (S21 or newer).",
+          "Ability to wear a head-mounted phone holder.",
+          "Have a home environment suitable for recording everyday activities."
+        ],
+        "role_overview": "As a Video Contributor, you will record first-person videos of household activities to support AI training, helping systems learn real-world object handling and movement.",
+        "who_this_is_for": "This role is ideal for individuals in the US with a suitable smartphone and home environment, interested in contributing to AI training through video recordings.",
+        "client": "Crossing Hurdles",
+        "client_desc": "Mercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.",
+        "link": "google.com",
+        "suggested_titles": [
+          "Video Content Contributor",
+          "User-Generated Content Creator",
+          "Field Data Collector",
+          "Video Data Specialist"
+        ],
+        "subject": "Video Contributor | $10-$15/hr Remote | Crossing Hurdles x AI Labs",
+        "linkedin_title": "Video Contributor",
+        "skills": [
+          "Video capture",
+          "Smartphone usage",
+          "Data upload",
+          "Content recording"
+        ],
+        "job_functions": [
+          "Analytics",
+          "Research",
+          "General Business"
+        ],
+        "industries": [
+          "Technology, Information and Media",
+          "Administrative and Support Services",
+          "Research Services"
+        ],
+        "justifications": {
+          "Video Content Contributor": "Highlights a role focused on recording household video clips for AI training dataset creation.",
+          "User-Generated Content Creator": "Emphasizes candidate-driven recording and uploading of real-life tasks as described in the job.",
+          "Field Data Collector": "Stresses the collection of real-world, first-person video data for enhancing physical AI systems.",
+          "Video Data Specialist": "Indicates specialized video capture and handling tasks key to building AI model datasets.",
+          "AI Data Collection Associate": "Connects the role with AI projects through systematic household data collection.",
+          "Video capture": "Directly related to recording first-person clips of daily household activities required for dataset building.",
+          "Smartphone usage": "Essential for operating approved devices like iPhone, Google Pixel, or Samsung Galaxy for recordings.",
+          "Data upload": "Critical for transferring recorded video clips via the specified application in the process.",
+          "Content recording": "Specifically targets capturing ordinary household tasks, as detailed in the job description.",
+          "Analytics": "Involves the examination of recorded data to support and refine AI training models.",
+          "Research": "Supports the development of AI systems by contributing validated household activity data.",
+          "General Business": "Represents the contract-based, remote gig role contributing to business operations in AI research.",
+          "Technology, Information and Media": "Aligns with the AI-focused technological environment and digital data collection methods.",
+          "Administrative and Support Services": "Reflects the gig-based, remote contracting nature of the role with structured task support.",
+          "Research Services": "Captures the role's contribution to building datasets central to scientific and AI research initiatives."
+        },
+        "where_you_will": "contribute to training advanced AI models and ensuring high-quality system integration"
+      },
+      "justifications": {
+        "Video Content Contributor": "Highlights a role focused on recording household video clips for AI training dataset creation.",
+        "User-Generated Content Creator": "Emphasizes candidate-driven recording and uploading of real-life tasks as described in the job.",
+        "Field Data Collector": "Stresses the collection of real-world, first-person video data for enhancing physical AI systems.",
+        "Video Data Specialist": "Indicates specialized video capture and handling tasks key to building AI model datasets.",
+        "Video capture": "Directly related to recording first-person clips of daily household activities required for dataset building.",
+        "Smartphone usage": "Essential for operating approved devices like iPhone, Google Pixel, or Samsung Galaxy for recordings.",
+        "Data upload": "Critical for transferring recorded video clips via the specified application in the process.",
+        "Content recording": "Specifically targets capturing ordinary household tasks, as detailed in the job description.",
+        "Analytics": "Involves the examination of recorded data to support and refine AI training models.",
+        "Research": "Supports the development of AI systems by contributing validated household activity data.",
+        "General Business": "Represents the contract-based, remote gig role contributing to business operations in AI research.",
+        "Technology, Information and Media": "Aligns with the AI-focused technological environment and digital data collection methods.",
+        "Administrative and Support Services": "Reflects the gig-based, remote contracting nature of the role with structured task support.",
+        "Research Services": "Captures the role's contribution to building datasets central to scientific and AI research initiatives."
+      },
+      "is_domain_page": true
+    }
+  },
+  {
+    "id": "23b2c902-a862-4af7-9f81-f1b5889e6cee",
+    "timestamp": "2026-07-10T13:36:42.081873Z",
+    "client": "crossing_hurdles",
+    "url": "",
+    "raw_jd": "ID: 78722 | Research Quality Specialist - Computational Chemistry (Task based)\nRole Research Quality Specialist - Computational Chemistry (Task based)\nType of Role Short-term contract\nGeo Bangladesh, Brazil, Colombia, Egypt, Ghana, India, Pakistan, Indonesia,\nKenya, Nigeria, Turkey, Vietnam\nTotal Number\nof Positions\n30\nEngagement\nType\nShort Term Contract ( 4 weeks)\nStart Date Immediate\nVetting Online Task. Please send this link to the approved candidates:\nhttps://developers.turing.com/vetsmith-subscribe/F2044-9Z2WY4G7E\nRate $80/task upon approval\nComplex task expected to take 4 hours to complete\nSkill ● PhD or PhD Candidates in Computational Chemistry\n● Has published at least 1 peer-reviewed paper\n● Advanced proficiency in Python programming for scientific coding is\npreferred\n● Excellent analytical, logical thinking, and problem-solving skills\nAvailability 8 hours per day with an overlap of 4 hours with PST.\nSpecifics LinkedIn is mandatory\nAbout Turing:\nBased in San Francisco, California, Turing is the world’s leading research accelerator for frontier\nAI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing\nsupports customers in two ways: first, by accelerating frontier research with high-quality data,\nadvanced training pipelines, plus top AI researchers who specialize in coding, reasoning,\nSTEM, multilinguality, multimodality, and agents; and second, by applying that expertise to help\nenterprises transform AI from proof of concept into proprietary intelligence with systems that\nperform reliably, deliver measurable impact, and drive lasting results on the P&L\nRole Overview\nWe are seeking a highly analytical and computationally proficient individual to join our team with\na strong research background. You will be instrumental in contributing to this role by either\ncrafting challenging and insightful problems in your respective research domain, devising\nelegant computational solutions.\nResponsibilities:\nQuantitative Problem Design and Solutioning:\n● Develop and conceptualize original, research-grade or graduate-level scientific\nproblems with scientific coding/ programming, using Python.\n● Rigorously define problem categories, secondary tags, and assign appropriate difficulty\nlevels.\n● Rigorously solve formulated problems using sound principles, ensuring absolute\naccuracy, reliability, and logical coherence of the solution path.\nQuality Assurance & Collaboration:\n● Actively participate in two-tier reviews, meticulously evaluating both accuracy of\nproblems and solutions.\n● Collaborate effectively with reviewers and team leads, demonstrating a proactive\napproach to incorporating feedback, refining content, and enhancing overall quality\npromptly.\nRequired Qualifications:\n● PhD or PhD Candidates in Computational Chemistry\n● Has published at least 1 peer-reviewed paper\n● Advanced proficiency in Python programming for scientific coding is preferred\n● Excellent analytical, logical thinking, and problem-solving skills\n● Strong written and verbal communication skills for clear documentation and\ncollaboration\nPerks of Freelancing With Turing\n● Work on cutting-edge AI projects with leading foundation model companies\n● Collaborate on high-impact work at the frontier of LLM evaluation and reasoning\n● Remote, flexible opportunities with global teams\nOffer Details\n● Commitments Required: 8 hours per day with a 4-hour overlap with PST.\n● Employment Type: Contractor position (Note: this role does not include medical/paid\nleave).\n● Duration of Contract: 8 weeks; [expected start date is next week].\n● Location : Bangladesh, Brazil, Colombia, Egypt, Ghana, India, Pakistan, Indonesia,\nKenya, Nigeria, Turkey, Vietnam",
+    "role": "Research Quality Specialist - Computational Chemistry",
+    "raw_jd_snippet": "ID: 78722 | Research Quality Specialist - Computational Chemistry (Task based)\nRole Research Quality Specialist - Computational Chemistry (Task based)...",
+    "cache_key": "cb1b9c555ed6b428c959845cb8f8a8e8",
+    "data": {
+      "jd": "<b><u>Crossing Hurdles:</u></b><br><br>\n<b>Position:</b> Research Quality Specialist - Computational Chemistry<br>\n<b>Type:</b> Short-term contract<br>\n<b>Compensation:</b> $80/task upon approval<br>\n<b>Location:</b> Bangladesh, Brazil, Colombia, Egypt, Ghana, India, Pakistan, Indonesia, Kenya, Nigeria, Turkey, Vietnam<br>\n<b>Commitment:</b> 10-40 hrs/week<br><br>\n\n<b>Role Responsibilities:</b>\n<ul>\n<li>Develop and conceptualize original, research-grade scientific problems using Python.</li>\n<li>Define problem categories, secondary tags, and assign appropriate difficulty levels.</li>\n<li>Solve formulated problems ensuring accuracy, reliability, and logical coherence.</li>\n<li>Participate in two-tier reviews, evaluating accuracy of problems and solutions.</li>\n<li>Collaborate with reviewers and team leads to refine content and enhance quality.</li>\n</ul><br>\n\n<b>Requirements:</b>\n<ul>\n<li>Have strong relevant experience in Computational Chemistry.</li>\n<li>Must have published at least one peer-reviewed paper.</li>\n<li>Advanced proficiency in Python programming for scientific coding is preferred.</li>\n<li>Excellent analytical, logical thinking, and problem-solving skills.</li>\n<li>Strong written and verbal communication skills for documentation and collaboration.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Apply using the Easy Apply button and submit your application.</li>\n<li>Applications will be reviewed based on the role requirements.</li>\n<li>Eligible candidates will receive an InMail with instructions to continue the application process.</li>\n<li>Follow the instructions in the InMail to complete the remaining application steps.</li>\n</ul><br>\n\n#LI-CH",
+      "email": "",
+      "inmail_draft": "Hi {firstName},<br><br>\n\nI'm from <b>Crossing Hurdles</b>, Based on your profile, we think you could be a strong fit for the <a href=\"https://developers.turing.com/vetsmith-subscribe/F2044-9Z2WY4G7E\"><b>Research Quality Specialist - Computational Chemistry</b></a> position at <b>Mercor</b>.<br><br>\n\n<b>Organization:</b> Mercor<br>\n<b>Referral by:</b> Crossing Hurdles<br>\n<b>Role:</b> Research Quality Specialist - Computational Chemistry<br>\n<b>Type:</b> Short-term contract<br>\n<b>Pay:</b> $80/task upon approval<br>\n<b>Location:</b> Bangladesh, Brazil, Colombia, Egypt, Ghana, India, Pakistan, Indonesia, Kenya, Nigeria, Turkey, Vietnam<br><br>\n\n<b>Application Process</b>\n<ul>\n<li>Click the Mercor application link provided in this message.</li>\n<li>Create a Mercor account if you are a new user, or sign in to your existing account.</li>\n<li>Once signed in, submit your application for the role to complete the application process.</li>\n</ul><br>\n\n<b>Apply here (reviewed on a rolling basis):</b><br>\n<a href=\"https://developers.turing.com/vetsmith-subscribe/F2044-9Z2WY4G7E\"><b>Research Quality Specialist - Computational Chemistry</b></a> – $80/task upon approval<br><br>\n\n<b>You can also checkout these Opportunities as well:</b><br><br>\n\n<b>Take Steps to Boost Your Profile:</b>\n<ul>\n<li>Need tips to improve your chances of selection? Check out the <a href=\"https://docs.google.com/document/d/1xYe9X4t2Bv6BEScXwwvix35Kmlc92xiulEpBDLcCZb8/edit?usp=sharing\">Interview Preparation Playbook</a></li>\n<li>You can strengthen your profile through the <a href=\"https://work.mercor.com/home?tab=assessments&referralCode=c88e7e37-c849-4793-a401-f58c8615e4c7\">Assessment tab</a> in your dashboard. Completing skill based assessments can help unlock future opportunities, including roles you have not applied to or roles that may not be publicly listed.</li>\n</ul><br>\n\n<i>P.S. For immediate support, contact support@mercor.com</i>",
+      "email_draft": null,
+      "subject": "Research Quality Specialist - Computational Chemistry | $80 | Mercor x AI Labs",
+      "linkedin_title": "Research Quality Specialist - Computational Chemistry | $80",
+      "skills": [
+        "Python",
+        "Computational Chemistry",
+        "Scientific Coding",
+        "Data Analysis"
+      ],
+      "job_functions": [
+        "Research",
+        "Analytics",
+        "Engineering"
+      ],
+      "industries": [
+        "Technology, Information and Media",
+        "Research Services",
+        "Professional Services"
+      ],
+      "version": "v2",
+      "titles": [
+        "Research Scientist - Computational Chemistry",
+        "Computational Chemist",
+        "Scientific Research Specialist",
+        "Computational Research Analyst",
+        "Research Quality Analyst"
+      ],
+      "structured_data": {
+        "role": "Research Quality Specialist - Computational Chemistry",
+        "type": "Short-term contract",
+        "pay": "$80/task upon approval",
+        "location": "Bangladesh, Brazil, Colombia, Egypt, Ghana, India, Pakistan, Indonesia, Kenya, Nigeria, Turkey, Vietnam",
+        "commitment": "10-40 hrs/week",
+        "role_responsibilities": [
+          "Develop and conceptualize original, research-grade scientific problems using Python.",
+          "Define problem categories, secondary tags, and assign appropriate difficulty levels.",
+          "Solve formulated problems ensuring accuracy, reliability, and logical coherence.",
+          "Participate in two-tier reviews, evaluating accuracy of problems and solutions.",
+          "Collaborate with reviewers and team leads to refine content and enhance quality."
+        ],
+        "requirements": [
+          "Have strong relevant experience in Computational Chemistry.",
+          "Must have published at least one peer-reviewed paper.",
+          "Advanced proficiency in Python programming for scientific coding is preferred.",
+          "Excellent analytical, logical thinking, and problem-solving skills.",
+          "Strong written and verbal communication skills for documentation and collaboration."
+        ],
+        "role_overview": "Join our team to craft challenging problems in computational chemistry, devise computational solutions, and ensure quality through rigorous reviews, contributing to high-impact AI projects.",
+        "who_this_is_for": "Professionals with a PhD or PhD candidacy in Computational Chemistry, experienced in scientific coding and problem-solving, who have published peer-reviewed research.",
+        "client": "Crossing Hurdles",
+        "client_desc": "Mercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.",
+        "link": "https://developers.turing.com/vetsmith-subscribe/F2044-9Z2WY4G7E",
+        "suggested_titles": [
+          "Research Scientist - Computational Chemistry",
+          "Computational Chemist",
+          "Scientific Research Specialist",
+          "Computational Research Analyst",
+          "Research Quality Analyst"
+        ],
+        "subject": "Research Quality Specialist - Computational Chemistry | $80/task | Crossing Hurdles x AI Labs",
+        "linkedin_title": "Research Quality Specialist - Computational Chemistry",
+        "skills": [
+          "Python",
+          "Computational Chemistry",
+          "Scientific Coding",
+          "Data Analysis"
+        ],
+        "job_functions": [
+          "Research",
+          "Analytics",
+          "Engineering"
+        ],
+        "industries": [
+          "Technology, Information and Media",
+          "Research Services",
+          "Professional Services"
+        ],
+        "justifications": {
+          "Research Scientist - Computational Chemistry": "Matches the PhD-level research, scientific coding, and computational chemistry focus detailed in the role.",
+          "Computational Chemist": "Emphasizes the domain expertise required in chemical computations and peer-reviewed research accomplishments.",
+          "Scientific Research Specialist": "Highlights the role’s need for designing rigorous scientific problems and applying research-grade analytical methods.",
+          "Computational Research Analyst": "Reflects responsibilities in analytical solutioning and using Python for computational problem solving.",
+          "Research Quality Analyst": "Focuses on the quality assurance and review process essential for ensuring research-grade problem accuracy.",
+          "Python": "Essential for developing the high-quality scientific coding and computational solutions as outlined.",
+          "Computational Chemistry": "Directly addresses the PhD-level domain requirement and research-focused computations.",
+          "Scientific Coding": "Required for crafting and rigorously solving graduate-level scientific problems with accuracy.",
+          "Data Analysis": "Supports quantitative problem evaluation and solution verification as described in the responsibilities.",
+          "Research": "Directly taken from the role’s emphasis on developing, testing, and rigorously reviewing scientific problems.",
+          "Analytics": "Highlights the need for analytical evaluation of complex computational approaches and solution accuracy.",
+          "Engineering": "Captures the technical design and coding elements involved in constructing computational solutions.",
+          "Technology, Information and Media": "Aligns with Turing’s innovative AI environment and advanced technological research applications.",
+          "Research Services": "Directly relates to creating and managing research-grade problems with scientific rigor.",
+          "Professional Services": "Reflects the contractor and consultancy nature of the role in advanced research projects."
+        },
+        "where_you_will": "contribute to training advanced AI models and ensuring high-quality system integration"
+      },
+      "justifications": {
+        "Research Scientist - Computational Chemistry": "Matches the PhD-level research, scientific coding, and computational chemistry focus detailed in the role.",
+        "Computational Chemist": "Emphasizes the domain expertise required in chemical computations and peer-reviewed research accomplishments.",
+        "Scientific Research Specialist": "Highlights the role’s need for designing rigorous scientific problems and applying research-grade analytical methods.",
+        "Computational Research Analyst": "Reflects responsibilities in analytical solutioning and using Python for computational problem solving.",
+        "Research Quality Analyst": "Focuses on the quality assurance and review process essential for ensuring research-grade problem accuracy.",
+        "Python": "Essential for developing the high-quality scientific coding and computational solutions as outlined.",
+        "Computational Chemistry": "Directly addresses the PhD-level domain requirement and research-focused computations.",
+        "Scientific Coding": "Required for crafting and rigorously solving graduate-level scientific problems with accuracy.",
+        "Data Analysis": "Supports quantitative problem evaluation and solution verification as described in the responsibilities.",
+        "Research": "Directly taken from the role’s emphasis on developing, testing, and rigorously reviewing scientific problems.",
+        "Analytics": "Highlights the need for analytical evaluation of complex computational approaches and solution accuracy.",
+        "Engineering": "Captures the technical design and coding elements involved in constructing computational solutions.",
+        "Technology, Information and Media": "Aligns with Turing’s innovative AI environment and advanced technological research applications.",
+        "Research Services": "Directly relates to creating and managing research-grade problems with scientific rigor.",
+        "Professional Services": "Reflects the contractor and consultancy nature of the role in advanced research projects."
+      },
+      "is_domain_page": true
+    }
+  }
+]

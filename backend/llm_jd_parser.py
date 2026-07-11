@@ -778,7 +778,29 @@ def get_valid_llm_output(raw_jd: str, url: str = None, client: str = "mercor") -
 
             # Policy Enforcement
             is_remote = is_remote_role(result)
-            if client_id == "turing":
+            
+            # Detect location from first 10 non-empty lines of the input JD
+            first_lines = [line.strip().lower() for line in raw_jd.split('\n') if line.strip()][:10]
+            detected_loc = None
+            for line in first_lines:
+                if "remote" in line:
+                    detected_loc = "Remote"
+                    break
+                elif "hybrid" in line:
+                    detected_loc = "Hybrid"
+                    break
+                elif "on-site" in line or "onsite" in line:
+                    detected_loc = "Onsite"
+                    break
+            
+            if detected_loc:
+                if detected_loc == "Remote":
+                    is_remote = True
+                    result["location"] = "Remote"
+                else:
+                    is_remote = False
+                    result["location"] = detected_loc
+            elif client_id == "turing":
                 loc_lower = result.get("location", "").lower()
                 if "onsite" in loc_lower or "on-site" in loc_lower or "hybrid" in loc_lower:
                     is_remote = False
@@ -787,6 +809,8 @@ def get_valid_llm_output(raw_jd: str, url: str = None, client: str = "mercor") -
                     result["location"] = "Remote"
             elif is_remote:
                 result["location"] = "Remote"
+
+            if is_remote:
                 result["role_overview"] = remove_geography_sentences(result.get("role_overview", ""))
                 result["who_this_is_for"] = remove_geography_sentences(result.get("who_this_is_for", ""))
                 result["role_overview"] = remove_inline_geography(result.get("role_overview", ""))
