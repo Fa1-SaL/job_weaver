@@ -637,7 +637,7 @@ class CapitexAIFormatter(MercorFormatter):
 
         return f"""Hi {{firstName}},<br><br>
 
-I’m reaching out from <b>Capitex</b> to refer you for the role of <a href="{link}"><b>{role}</b></a> at <b>Mercor</b>.<br><br>
+I’m reaching out from <b>Capitex AI</b> to refer you for the role of <a href="{link}"><b>{role}</b></a> at <b>Mercor</b>.<br><br>
 
 <b>{highlights}</b><br><br>
 
