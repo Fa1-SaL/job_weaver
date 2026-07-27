@@ -292,7 +292,7 @@ class CodeGeniusRecruitFormatter(MercorFormatter):
 <li>Follow the instructions provided in the email to complete the remainder of the application process.</li>
 </ul><br>
 
-#LI-DP""".strip()
+#LI-CH""".strip()
         return scrub_all_client_orgs_from_jd(jd_text)
 
     def format_email(self, data: dict) -> str:
@@ -399,7 +399,7 @@ class CuraSenseAIFormatter(MercorFormatter):
 <b>Work style:</b> {work_style}<br>
 <b>Duration:</b> {duration}<br><br>
 
-#LI-DP""".strip()
+#LI-CH""".strip()
         return scrub_all_client_orgs_from_jd(jd_text)
 
     def format_email(self, data: dict) -> str:
@@ -539,7 +539,7 @@ class LegalTrustAIFormatter(MercorFormatter):
 <li>Follow the instructions provided to complete the rest of the application process.</li>
 </ul><br>
 
-#LI-DP""".strip()
+#LI-CH""".strip()
         return scrub_all_client_orgs_from_jd(jd_text)
 
     def format_email(self, data: dict) -> str:
@@ -668,7 +668,7 @@ class CapitexAIFormatter(MercorFormatter):
 <li>Follow the instructions in the email to complete the remaining application requirements.</li>
 </ul><br>
 
-#LI-DP""".strip()
+#LI-CH""".strip()
         return scrub_all_client_orgs_from_jd(jd_text)
 
     def format_email(self, data: dict) -> str:
@@ -780,7 +780,7 @@ class STEMSyncAIFormatter(MercorFormatter):
 <li>Use the instructions in the email to complete the remaining application steps.</li>
 </ul><br>
 
-#LI-DP""".strip()
+#LI-CH""".strip()
         return scrub_all_client_orgs_from_jd(jd_text)
 
     def format_email(self, data: dict) -> str:
@@ -895,7 +895,7 @@ class LinguaSenseAIFormatter(MercorFormatter):
 <li>Follow the instructions provided in the email to complete the remaining application process.</li>
 </ul><br>
 
-#LI-DP""".strip()
+#LI-CH""".strip()
         return scrub_all_client_orgs_from_jd(jd_text)
 
     def format_email(self, data: dict) -> str:
@@ -1034,7 +1034,7 @@ class DesignMeshAIFormatter(MercorFormatter):
 <li>Follow the instructions in the email to proceed with the remaining steps.</li>
 </ul><br>
 
-#LI-DP""".strip()
+#LI-CH""".strip()
         return scrub_all_client_orgs_from_jd(jd_text)
 
     def format_email(self, data: dict) -> str:
