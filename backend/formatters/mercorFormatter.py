@@ -11,10 +11,10 @@ class MercorFormatter(ClientFormatter):
 
     def format_jd(self, data: dict) -> str:
         responsibilities = "\n".join(
-            [f"<li>{r}</li>" for r in data["role_responsibilities"] if r and r.strip()]
+            [f"<li>{r}</li>" for r in data["role_responsibilities"] if r and str(r).strip()]
         )
         requirements = "\n".join(
-            [f"<li>{r}</li>" for r in data["requirements"] if r and r.strip()]
+            [f"<li>{r}</li>" for r in data["requirements"] if r and str(r).strip()]
         )
 
         commitment = data.get("commitment", "").strip()
@@ -59,14 +59,14 @@ class MercorFormatter(ClientFormatter):
         boost_items.append("""\
 <li>
 Need tips to improve your chances of selection? Check out the \
-<a href="https://docs.google.com/document/d/1xYe9X4t2Bv6BEScXwwvix35Kmlc92xiulEpBDLcCZb8/edit?usp=sharing">\
+<a href="https://docs.google.com/document/d/1xYe9X4t2Bv6BEScXwwvix35Kmlc92xiulEpBDLcCZb8/edit?usp=sharing" style="color: #0066cc;">\
 Interview Preparation Playbook\
 </a>
 </li>""")
         boost_items.append("""\
 <li>
 You can strengthen your profile through the \
-<a href="https://work.mercor.com/home?tab=assessments&referralCode=c88e7e37-c849-4793-a401-f58c8615e4c7">\
+<a href="https://work.mercor.com/home?tab=assessments&referralCode=c88e7e37-c849-4793-a401-f58c8615e4c7" style="color: #0066cc;">\
 Assessment tab\
 </a> in your dashboard. Completing skill based assessments can help unlock future opportunities, \
 including roles you have not applied to or roles that may not be publicly listed.
@@ -74,15 +74,14 @@ including roles you have not applied to or roles that may not be publicly listed
         boost_items.append("""\
 <li>
 You may also explore additional opportunities with \
-<a href="https://t.mercor.com/cU1Py">Mercor</a> and \
-<a href="https://refer.micro1.ai/referral/jobs?referralCode=463495f6-7cc6-49ed-8e8f-5ef2a1cc3fd7\
-&utm_source=referral&utm_medium=share&utm_campaign=job_referral">Micro1</a>, \
+<a href="https://t.mercor.com/cU1Py" style="color: #0066cc;">Mercor</a> and \
+<a href="https://refer.micro1.ai/referral/jobs?referralCode=463495f6-7cc6-49ed-8e8f-5ef2a1cc3fd7&utm_source=referral&utm_medium=share&utm_campaign=job_referral" style="color: #0066cc;">Micro1</a>, \
 both platforms connecting skilled professionals to AI training projects.
 </li>""")
         boost_items.append("""\
 <li>
 For regular updates, you can follow our \
-<a href="https://whatsapp.com/channel/0029Vb6eLrf23n3gz313El2h">WhatsApp channel</a> \
+<a href="https://whatsapp.com/channel/0029Vb6eLrf23n3gz313El2h" style="color: #0066cc;">WhatsApp channel</a> \
 for upcoming openings.
 </li>""")
 
@@ -100,7 +99,7 @@ for upcoming openings.
         pay_display = f" – {data['pay']}" if data.get("pay") else ""
         apply_line = (
             f"<b>Apply asap (reviewed on a rolling basis):</b><br>\n"
-            f"<a href=\"{data['link']}\">{data['role']}</a>{pay_display}<br><br>"
+            f"<a href=\"{data['link']}\" style=\"color: #0066cc;\">{data['role']}</a>{pay_display}<br><br>"
         )
 
         return f"""<br>I'm from Crossing Hurdles, a global recruitment firm. We would like to refer you for an interesting opportunity that involves leveraging your expertise to train AI models.<br><br>
@@ -109,7 +108,7 @@ for upcoming openings.
 {referral_partner}<b>Role:</b> {data['role']}<br>
 <b>Type:</b> {data['type']}<br>
 {pay_line}<b>Location:</b> {data['location']}<br>
-<b>Apply Here:</b> <a href="{data['link']}">{data['role']}</a><br><br>
+<b>Apply Here:</b> <a href="{data['link']}" style="color: #0066cc;">{data['role']}</a><br><br>
 
 <b>About {data['client']}:</b><br>
 {data['client_desc']}<br><br>

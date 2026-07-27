@@ -468,15 +468,47 @@ body {
 .rich-text-content li {
   margin-bottom: 8px;
 }
-.rich-text-content a {
-  color: var(--primary-blue);
-  text-decoration: underline;
+a,
+a:link,
+a:visited,
+a:hover,
+a:active,
+a *,
+a:link *,
+a:visited *,
+a:hover *,
+a:active *,
+b a,
+b a *,
+strong a,
+strong a *,
+.rich-text-content a,
+.rich-text-content a:link,
+.rich-text-content a:visited,
+.rich-text-content a *,
+.rich-text-content a:link *,
+.rich-text-content a:visited *,
+.rich-text-content a b,
+.rich-text-content a:visited b,
+.rich-text-content a strong,
+.rich-text-content a:visited strong,
+.rich-text-content b a,
+.rich-text-content b a *,
+.rich-text-content strong a,
+.rich-text-content strong a * {
+  color: #0066cc !important;
+  text-decoration: underline !important;
   font-weight: 600;
   cursor: pointer;
 }
-.rich-text-content a:hover {
-  text-decoration: underline;
-  color: #1d4ed8;
+.rich-text-content a:hover,
+.rich-text-content a:hover *,
+.rich-text-content a:hover b,
+.rich-text-content a:hover strong,
+a:hover,
+a:hover * {
+  text-decoration: underline !important;
+  color: #004499 !important;
 }
 
 /* Right Col Elements */

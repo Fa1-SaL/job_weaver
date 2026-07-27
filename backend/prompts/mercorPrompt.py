@@ -45,6 +45,7 @@ Rules:
 - no explanation outside JSON
 - role must be a market-standard job title (no vague terms like "expert")
 - CRITICAL DEADLINE EXCLUSION: Completely omit any deadlines, completion dates, or turnaround time windows mentioned in the JD (e.g. "Your turnaround time will be 3 hours of conversation that needs to be filled before 12/28"). The output must not hint anything regarding deadlines while keeping all other details covered.
+- DOMAIN PAGES CONFIDENTIALITY: Never mention Mercor, Cincinnatus, or any client/platform organization name even if present in the raw JD. Keep the client confidential sneakingly by omitting company names without stating that it is confidential.
 
 RESPONSIBILITIES RULES:
 - Extract ALL meaningful actions from the JD (even if implicit)

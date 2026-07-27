@@ -1,5 +1,1189 @@
 [
   {
+    "id": "d4616f3f-2542-4037-9c30-210076837636",
+    "timestamp": "2026-07-27T08:59:06.271956Z",
+    "client": "designmeshai",
+    "url": "",
+    "raw_jd": "CUDA Engineering Expert\nHourly contract\nRemote\nK\n94 hired this month\n$80-$100\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\n1. Role Overview\nMercor is seeking GPU kernel optimization experts to contribute to a project with a leading AI lab. This opportunity is designed for freelancers with strong C++ skills, practical GPU programming experience, and the ability to improve kernel performance using profiler-guided analysis. You’ll help evaluate, optimize, and reason about GPU kernels across modern hardware environments. This is a contract-based opportunity for specialists who enjoy squeezing performance out of modern GPU architectures.\n2. Key Responsibilities\nAnalyze and optimize GPU kernels for performance, efficiency, and hardware utilization\nUse profiler metrics such as L2 cache hit rate, L2 throughput, occupancy, and related signals to guide kernel improvements\nReview GPU kernel implementations and identify bottlenecks without requiring extensive background in the underlying algorithms\nWrite, modify, and reason about C++17, Python, and GPU programming code\nApply CUDA, HIP, shader programming, or related kernel programming expertise to improve performance outcomes\nDocument optimization decisions clearly, including when specific profiler metrics are or are not useful\n3. Ideal Qualifications\nAvailable to work at least 20 hrs/wk\nFluent in core C++ features through C++17\nWorking knowledge of Python and Git\nFluent in at least one GPU programming model, such as CUDA, HIP, Slang, HLSL, GLSL, or related kernel programming\nAt least 1 year of professional or graduate-level research experience working with GPUs\nStrong understanding of GPU profiler performance metrics and how to use them to optimize kernels\nAbility to optimize GPU kernels without needing deep prior context on every algorithm\nExperience with CUDA, HIP, CUDA C++ Core Libraries, inline PTX assembly, or tensor core-level optimization is a plus\nExperience optimizing kernels for NVIDIA Blackwell hardware is a plus\nFamiliarity with NSight Compute is a plus\nPrior experience with GPU hardware organizations such as NVIDIA, AMD, or Qualcomm is a plus\nOpen-source contributions related to GPU kernel optimization are a plus\n4. Application Process\nSubmit your resume or relevant technical background to get started\nQualified applicants may be asked to complete a brief technical assessment or submit additional information\nWe consider all qualified applicants without regard to legally protected characteristics and provide reasonable accommodations upon request.\nContract and Payment Terms\nYou will be engaged as an independent contractor.\nThis is a fully remote role that can be completed on your own schedule.\nProjects can be extended, shortened, or concluded early depending on needs and performance.\nYour work at Mercor will not involve access to confidential or proprietary information from any employer, client, or institution.\nPayments are weekly on Stripe or Wise based on services rendered.\nPlease note: We are unable to support H1-B or STEM OPT candidates at this time.",
+    "role": "CUDA Engineering Expert",
+    "raw_jd_snippet": "CUDA Engineering Expert\nHourly contract\nRemote\nK\n94 hired this month\n$80-$100\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\n1. Role Overview\nMercor...",
+    "cache_key": "322b2ad643bad48019d2635b15690171",
+    "data": {
+      "jd": "<b>CUDA Engineering Expert</b><br><br>\n<b>Role Summary</b><br>\nContribute to a leading AI lab by optimizing GPU kernels for performance and efficiency. Utilize C++ and GPU programming expertise to enhance kernel performance across modern hardware environments.<br><br> <b>Deliverables</b>\n<ul>\n<li>Analyze and optimize GPU kernels for performance, efficiency, and hardware utilization.</li>\n<li>Use profiler metrics to guide kernel improvements and identify bottlenecks.</li>\n<li>Write, modify, and reason about C++17, Python, and GPU programming code.</li>\n<li>Apply CUDA, HIP, or shader programming expertise to improve performance outcomes.</li>\n<li>Document optimization decisions clearly, including the usefulness of specific profiler metrics.</li>\n</ul><br> <b>Requirements</b>\n<ul>\n<li>Have strong relevant experience in the domain.</li>\n<li>Fluent in core C++ features through C++17.</li>\n<li>Working knowledge of Python and Git.</li>\n<li>Fluent in at least one GPU programming model such as CUDA, HIP, or related.</li>\n<li>Strong understanding of GPU profiler performance metrics for kernel optimization.</li>\n</ul><br> <b>Details</b><br>\n<b>Job Type:</b> Hourly contract<br>\n<b>Compensation:</b> $80-$100 per hour<br>\n<b>Work Setup:</b> Remote<br><br> <b>Application Process</b>\n<ul>\n<li>Complete your application using the Easy Apply button.</li>\n<li>Your application will be reviewed according to the role requirements.</li>\n<li>Qualified candidates will receive an email outlining the next stage of the application process.</li>\n<li>Follow the instructions in the email to proceed with the remaining steps.</li>\n</ul><br> #LI-DP",
+      "email": "",
+      "inmail_draft": "Hi {firstName},<br><br>\n\nI'm reaching out from <b>DesignMeshAI</b> to refer you for the role of <span style=\"color: #0066cc !important; font-weight: bold;\">CUDA Engineering Expert</span> at <b>Mercor</b>.<br><br>\n\n<b>About the Role</b><br>\nContribute to a leading AI lab by optimizing GPU kernels for performance and efficiency. Utilize C++ and GPU programming expertise to enhance kernel performance across modern hardware environments.<br><br>\n\n<b>Organization:</b> Mercor<br>\n<b>Referred by:</b> DesignMeshAI<br>\n<b>Engagement:</b> Hourly contract<br>\n<b>Pay:</b> $80-$100 per hour<br>\n<b>Mode:</b> Remote<br><br>\n\n<b>Key Responsibilities</b>\n<ul>\n<li>Analyze and optimize GPU kernels for performance, efficiency, and hardware utilization.</li>\n<li>Use profiler metrics to guide kernel improvements and identify bottlenecks.</li>\n<li>Write, modify, and reason about C++17, Python, and GPU programming code.</li>\n<li>Apply CUDA, HIP, or shader programming expertise to improve performance outcomes.</li>\n<li>Document optimization decisions clearly, including the usefulness of specific profiler metrics.</li>\n</ul><br>\n\n<b>Who We're Looking For</b>\n<ul>\n<li>Have strong relevant experience in the domain.</li>\n<li>Fluent in core C++ features through C++17.</li>\n<li>Working knowledge of Python and Git.</li>\n<li>Fluent in at least one GPU programming model such as CUDA, HIP, or related.</li>\n<li>Strong understanding of GPU profiler performance metrics for kernel optimization.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Click the Mercor application link shared in this email.</li>\n<li>Sign up for a Mercor account if required, or log in to continue.</li>\n<li>After accessing your account, submit your application to finalize the process.</li>\n</ul><br>\n\n<b>Apply here:</b> <span style=\"color: #0066cc !important; font-weight: bold;\">CUDA Engineering Expert</span><br><br>\n\n<b>You can also checkout these Opportunities as well:</b><br><br>\n\n<i>P.S. For immediate support, contact support@mercor.com</i><br><br>\n\nBest Regards,<br>\nDesignMeshAI",
+      "email_draft": null,
+      "subject": "CUDA Engineering Expert | $100/hr Remote | Mercor",
+      "linkedin_title": "CUDA Engineering Expert | Remote",
+      "skills": [
+        "C++",
+        "CUDA",
+        "Python",
+        "GPU profiling",
+        "Kernel optimization"
+      ],
+      "job_functions": [
+        "Engineering",
+        "Research",
+        "Analytics"
+      ],
+      "industries": [
+        "Technology, Information and Media",
+        "Professional Services",
+        "Research Services"
+      ],
+      "version": "v2",
+      "titles": [
+        "GPU Kernel Optimization Engineer",
+        "CUDA Performance Engineer",
+        "GPU Programming Engineer",
+        "GPU Optimization Specialist",
+        "C++ GPU Developer"
+      ],
+      "structured_data": {
+        "role": "CUDA Engineering Expert",
+        "type": "Hourly contract",
+        "pay": "$80-$100 per hour",
+        "location": "Remote",
+        "commitment": "10-40 hrs/week",
+        "role_responsibilities": [
+          "Analyze and optimize GPU kernels for performance, efficiency, and hardware utilization.",
+          "Use profiler metrics to guide kernel improvements and identify bottlenecks.",
+          "Write, modify, and reason about C++17, Python, and GPU programming code.",
+          "Apply CUDA, HIP, or shader programming expertise to improve performance outcomes.",
+          "Document optimization decisions clearly, including the usefulness of specific profiler metrics."
+        ],
+        "requirements": [
+          "Have strong relevant experience in the domain.",
+          "Fluent in core C++ features through C++17.",
+          "Working knowledge of Python and Git.",
+          "Fluent in at least one GPU programming model such as CUDA, HIP, or related.",
+          "Strong understanding of GPU profiler performance metrics for kernel optimization."
+        ],
+        "role_overview": "Contribute to a leading AI lab by optimizing GPU kernels for performance and efficiency. Utilize C++ and GPU programming expertise to enhance kernel performance across modern hardware environments.",
+        "who_this_is_for": "Professionals with experience in GPU programming and optimization, familiar with C++ and Python, and capable of improving kernel performance using profiler metrics.",
+        "client": "DesignMeshAI",
+        "client_desc": "Mercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.",
+        "link": "",
+        "suggested_titles": [
+          "GPU Kernel Optimization Engineer",
+          "CUDA Performance Engineer",
+          "GPU Programming Engineer",
+          "GPU Optimization Specialist",
+          "C++ GPU Developer"
+        ],
+        "subject": "GPU Kernel Optimization Engineer | $80-$100/hr Remote | DesignMeshAI x AI Labs",
+        "linkedin_title": "GPU Kernel Optimization Engineer",
+        "skills": [
+          "C++",
+          "CUDA",
+          "Python",
+          "GPU profiling",
+          "Kernel optimization"
+        ],
+        "job_functions": [
+          "Engineering",
+          "Research",
+          "Analytics"
+        ],
+        "industries": [
+          "Technology, Information and Media",
+          "Professional Services",
+          "Research Services"
+        ],
+        "justifications": {
+          "GPU Kernel Optimization Engineer": "Focuses on analyzing and optimizing GPU kernels using C++ and profiler metrics as specified.",
+          "CUDA Performance Engineer": "Emphasizes performance tuning with CUDA and metric-guided kernel improvements.",
+          "GPU Programming Engineer": "Highlights expertise in GPU programming and utilization of modern hardware features.",
+          "GPU Optimization Specialist": "Targets contract work in refining GPU kernel efficiency through detailed performance analysis.",
+          "C++ GPU Developer": "Reflects strong C++ background required for developing and optimizing GPU kernels.",
+          "C++": "Core requirement highlighted by the need to utilize C++17 for performance-critical code.",
+          "CUDA": "Essential for developing, optimizing, and analyzing GPU kernels on modern architectures.",
+          "Python": "Supports scripting needs and code modifications in the GPU programming environment.",
+          "GPU profiling": "Needed for analyzing performance metrics like L2 cache hit rate and occupancy for optimization.",
+          "Kernel optimization": "Directly related to improving GPU workload performance as described in the role.",
+          "Engineering": "Central to the design, analysis, and optimization of GPU kernels described in the posting.",
+          "Research": "Involves evaluating performance metrics and testing improvements within an AI lab framework.",
+          "Analytics": "Utilizes profiler metrics for informed, data-driven decisions on GPU kernel enhancements.",
+          "Technology, Information and Media": "Aligns with the role's focus on cutting-edge GPU and AI lab technologies.",
+          "Professional Services": "Reflects the contractor nature of the role that delivers specialized technical expertise.",
+          "Research Services": "Matches the collaboration with an AI lab and detailed performance analysis requirements."
+        },
+        "where_you_will": "contribute to training advanced AI models and ensuring high-quality system integration"
+      },
+      "justifications": {
+        "GPU Kernel Optimization Engineer": "Focuses on analyzing and optimizing GPU kernels using C++ and profiler metrics as specified.",
+        "CUDA Performance Engineer": "Emphasizes performance tuning with CUDA and metric-guided kernel improvements.",
+        "GPU Programming Engineer": "Highlights expertise in GPU programming and utilization of modern hardware features.",
+        "GPU Optimization Specialist": "Targets contract work in refining GPU kernel efficiency through detailed performance analysis.",
+        "C++ GPU Developer": "Reflects strong C++ background required for developing and optimizing GPU kernels.",
+        "C++": "Core requirement highlighted by the need to utilize C++17 for performance-critical code.",
+        "CUDA": "Essential for developing, optimizing, and analyzing GPU kernels on modern architectures.",
+        "Python": "Supports scripting needs and code modifications in the GPU programming environment.",
+        "GPU profiling": "Needed for analyzing performance metrics like L2 cache hit rate and occupancy for optimization.",
+        "Kernel optimization": "Directly related to improving GPU workload performance as described in the role.",
+        "Engineering": "Central to the design, analysis, and optimization of GPU kernels described in the posting.",
+        "Research": "Involves evaluating performance metrics and testing improvements within an AI lab framework.",
+        "Analytics": "Utilizes profiler metrics for informed, data-driven decisions on GPU kernel enhancements.",
+        "Technology, Information and Media": "Aligns with the role's focus on cutting-edge GPU and AI lab technologies.",
+        "Professional Services": "Reflects the contractor nature of the role that delivers specialized technical expertise.",
+        "Research Services": "Matches the collaboration with an AI lab and detailed performance analysis requirements."
+      },
+      "is_domain_page": true
+    }
+  },
+  {
+    "id": "ade70a6a-ddc5-4a42-a82f-400a8d68ef7c",
+    "timestamp": "2026-07-27T08:05:02.892572Z",
+    "client": "codegeniusrecruit",
+    "url": "sd.asdf",
+    "raw_jd": "CUDA Engineering Expert\nHourly contract\nRemote\nB\nR\nK\n94 hired this month\n$80-$100\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\n1. Role Overview\nMercor is seeking GPU kernel optimization experts to contribute to a project with a leading AI lab. This opportunity is designed for freelancers with strong C++ skills, practical GPU programming experience, and the ability to improve kernel performance using profiler-guided analysis. You’ll help evaluate, optimize, and reason about GPU kernels across modern hardware environments. This is a contract-based opportunity for specialists who enjoy squeezing performance out of modern GPU architectures.\n2. Key Responsibilities\nAnalyze and optimize GPU kernels for performance, efficiency, and hardware utilization\nUse profiler metrics such as L2 cache hit rate, L2 throughput, occupancy, and related signals to guide kernel improvements\nReview GPU kernel implementations and identify bottlenecks without requiring extensive background in the underlying algorithms\nWrite, modify, and reason about C++17, Python, and GPU programming code\nApply CUDA, HIP, shader programming, or related kernel programming expertise to improve performance outcomes\nDocument optimization decisions clearly, including when specific profiler metrics are or are not useful\n3. Ideal Qualifications\nAvailable to work at least 20 hrs/wk\nFluent in core C++ features through C++17\nWorking knowledge of Python and Git\nFluent in at least one GPU programming model, such as CUDA, HIP, Slang, HLSL, GLSL, or related kernel programming\nAt least 1 year of professional or graduate-level research experience working with GPUs\nStrong understanding of GPU profiler performance metrics and how to use them to optimize kernels\nAbility to optimize GPU kernels without needing deep prior context on every algorithm\nExperience with CUDA, HIP, CUDA C++ Core Libraries, inline PTX assembly, or tensor core-level optimization is a plus\nExperience optimizing kernels for NVIDIA Blackwell hardware is a plus\nFamiliarity with NSight Compute is a plus\nPrior experience with GPU hardware organizations such as NVIDIA, AMD, or Qualcomm is a plus\nOpen-source contributions related to GPU kernel optimization are a plus\n4. Application Process\nSubmit your resume or relevant technical background to get started\nQualified applicants may be asked to complete a brief technical assessment or submit additional information\nWe consider all qualified applicants without regard to legally protected characteristics and provide reasonable accommodations upon request.\nContract and Payment Terms\nYou will be engaged as an independent contractor.\nThis is a fully remote role that can be completed on your own schedule.\nProjects can be extended, shortened, or concluded early depending on needs and performance.\nYour work at Mercor will not involve access to confidential or proprietary information from any employer, client, or institution.\nPayments are weekly on Stripe or Wise based on services rendered.\nPlease note: We are unable to support H1-B or STEM OPT candidates at this time.",
+    "role": "CUDA Engineering Expert",
+    "raw_jd_snippet": "CUDA Engineering Expert\nHourly contract\nRemote\nB\nR\nK\n94 hired this month\n$80-$100\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\n1. Role Overview\nMe...",
+    "cache_key": "29655b3593dc6de496a955ca0a34b926",
+    "data": {
+      "jd": "<b>Work Snapshot</b><br>\n<b>Type:</b> Hourly contract<br>\n<b>Location:</b> Remote<br>\n<b>Commitment:</b> 10-40 hrs/week<br>\n<b>Commission:</b> $80-$100 per hour<br><br>\n\n<b>What You’ll Be Doing</b>\n<ul>\n<li>Analyze and optimize GPU kernels for performance, efficiency, and hardware utilization.</li>\n<li>Use profiler metrics to guide kernel improvements.</li>\n<li>Review GPU kernel implementations and identify bottlenecks.</li>\n<li>Write, modify, and reason about C++17, Python, and GPU programming code.</li>\n<li>Apply CUDA, HIP, or related kernel programming expertise to improve performance outcomes.</li>\n<li>Document optimization decisions clearly.</li>\n</ul><br>\n\n<b>What We’re Looking For</b>\n<ul>\n<li>Have strong relevant experience in the domain.</li>\n<li>Fluent in core C++ features through C++17.</li>\n<li>Working knowledge of Python and Git.</li>\n<li>Fluent in at least one GPU programming model such as CUDA or HIP.</li>\n<li>Strong understanding of GPU profiler performance metrics.</li>\n<li>Experience with CUDA, HIP, or related technologies is a plus.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Submit your application through the Easy Apply button.</li>\n<li>Each application will be reviewed against the role requirements.</li>\n<li>Candidates who meet the requirements will receive an email with the next steps.</li>\n<li>Follow the instructions provided in the email to complete the remainder of the application process.</li>\n</ul><br>\n\n#LI-CH",
+      "email": "",
+      "inmail_draft": "Hi {firstName},<br><br>\n\nI'm from <b>CodeGeniusRecruit</b>. Based on your profile, we think you could be a strong fit for the <a href=\"sd.asdf\" style=\"color: #0066cc;\"><b>CUDA Engineering Expert</b></a> position.<br><br>\n\n<b>Role highlights:</b> Remote | Hourly contract | $80-$100 per hour<br><br>\n\nWe’d like to refer you for this opportunity. Contribute to a project with a leading AI lab by optimizing GPU kernels for performance and efficiency. Utilize profiler-guided analysis to enhance kernel performance across modern hardware environments, ensuring optimal utilization of GPU architectures.<br><br>\n\n<b>Application Process</b>\n<ul>\n<li>Open the application link included in this email.</li>\n<li>Register for an account if you do not already have one, or log in to your existing account.</li>\n<li>After signing in, submit your application for the role.</li>\n</ul><br>\n\n<b>To apply, kindly use the link below:</b><br>\n<a href=\"sd.asdf\" style=\"color: #0066cc;\"><b>CUDA Engineering Expert</b></a><br><br>\n\n<b>You can also checkout these Opportunities as well:</b><br><br>\n\nSince applications are reviewed on a rolling basis, earlier submissions receive priority consideration.<br><br>\n\n<i>P.S. For any queries or assistance, feel free to reach out at support@crossinghurdles.com</i><br><br>\n\nBest Regards,<br>\nCodeGeniusRecruit",
+      "email_draft": null,
+      "subject": "CUDA Engineering Expert | $100/hr Remote | Mercor",
+      "linkedin_title": "CUDA Engineering Expert | Remote",
+      "skills": [
+        "C++",
+        "CUDA",
+        "Python",
+        "Git",
+        "Profiling"
+      ],
+      "job_functions": [
+        "Engineering",
+        "Research",
+        "Analytics"
+      ],
+      "industries": [
+        "Technology, Information and Media",
+        "Professional Services",
+        "Research Services"
+      ],
+      "version": "v2",
+      "titles": [
+        "GPU Performance Engineer",
+        "CUDA Optimization Engineer",
+        "GPU Kernel Optimization Engineer",
+        "C++ GPU Developer",
+        "GPU Software Engineer"
+      ],
+      "structured_data": {
+        "role": "CUDA Engineering Expert",
+        "type": "Hourly contract",
+        "pay": "$80-$100 per hour",
+        "location": "Remote",
+        "commitment": "10-40 hrs/week",
+        "role_responsibilities": [
+          "Analyze and optimize GPU kernels for performance, efficiency, and hardware utilization.",
+          "Use profiler metrics to guide kernel improvements.",
+          "Review GPU kernel implementations and identify bottlenecks.",
+          "Write, modify, and reason about C++17, Python, and GPU programming code.",
+          "Apply CUDA, HIP, or related kernel programming expertise to improve performance outcomes.",
+          "Document optimization decisions clearly."
+        ],
+        "requirements": [
+          "Have strong relevant experience in the domain.",
+          "Fluent in core C++ features through C++17.",
+          "Working knowledge of Python and Git.",
+          "Fluent in at least one GPU programming model such as CUDA or HIP.",
+          "Strong understanding of GPU profiler performance metrics.",
+          "Experience with CUDA, HIP, or related technologies is a plus."
+        ],
+        "role_overview": "Contribute to a project with a leading AI lab by optimizing GPU kernels for performance and efficiency. Utilize profiler-guided analysis to enhance kernel performance across modern hardware environments, ensuring optimal utilization of GPU architectures.",
+        "who_this_is_for": "Professionals with experience in GPU programming and optimization, familiar with C++ and Python, and capable of enhancing kernel performance using profiler metrics. Ideal for those with a background in AI lab projects or similar environments.",
+        "client": "CodeGeniusRecruit",
+        "client_desc": "Mercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.",
+        "link": "sd.asdf",
+        "suggested_titles": [
+          "GPU Performance Engineer",
+          "CUDA Optimization Engineer",
+          "GPU Kernel Optimization Engineer",
+          "C++ GPU Developer",
+          "GPU Software Engineer"
+        ],
+        "subject": "GPU Kernel Optimization Engineer | $80-$100/hr Remote | CodeGeniusRecruit x AI Labs",
+        "linkedin_title": "GPU Kernel Optimization Engineer",
+        "skills": [
+          "C++",
+          "CUDA",
+          "Python",
+          "Git",
+          "Profiling"
+        ],
+        "job_functions": [
+          "Engineering",
+          "Research",
+          "Analytics"
+        ],
+        "industries": [
+          "Technology, Information and Media",
+          "Professional Services",
+          "Research Services"
+        ],
+        "justifications": {
+          "GPU Performance Engineer": "Emphasizes performance optimization using profiling metrics for modern GPU architectures.",
+          "CUDA Optimization Engineer": "Highlights specialization in CUDA and kernel tuning required by the AI lab project.",
+          "GPU Kernel Optimization Engineer": "Directly mirrors duties focused on analyzing and optimizing GPU kernel performance.",
+          "C++ GPU Developer": "Reflects the necessity of advanced C++ programming combined with GPU code optimization.",
+          "GPU Software Engineer": "Captures broad software development in GPU environments and performance enhancements.",
+          "C++": "Essential for leveraging C++17 in developing and optimizing GPU kernels.",
+          "CUDA": "Core to performing GPU programming and optimization for NVIDIA architectures.",
+          "Python": "Utilized for scripting tasks and integration within the kernel optimization workflow.",
+          "Git": "Required for managing version control in collaborative, contract-based code deployments.",
+          "Profiling": "Vital for interpreting performance metrics to guide GPU kernel improvements.",
+          "Engineering": "Involves detailed coding, performance engineering, and hardware utilization optimization.",
+          "Research": "Reflects the graduate-level research experience applied in kernel performance analysis.",
+          "Analytics": "Applies profiler metrics analysis to accelerate efficient GPU kernel optimization.",
+          "Technology, Information and Media": "Targets AI lab projects within advanced technological and media innovation fields.",
+          "Professional Services": "Represents the contract-based, consultant nature of freelance GPU optimization roles.",
+          "Research Services": "Aligns with the research-driven approach in analyzing and enhancing GPU kernel performance."
+        },
+        "where_you_will": "contribute to training advanced AI models and ensuring high-quality system integration"
+      },
+      "justifications": {
+        "GPU Performance Engineer": "Emphasizes performance optimization using profiling metrics for modern GPU architectures.",
+        "CUDA Optimization Engineer": "Highlights specialization in CUDA and kernel tuning required by the AI lab project.",
+        "GPU Kernel Optimization Engineer": "Directly mirrors duties focused on analyzing and optimizing GPU kernel performance.",
+        "C++ GPU Developer": "Reflects the necessity of advanced C++ programming combined with GPU code optimization.",
+        "GPU Software Engineer": "Captures broad software development in GPU environments and performance enhancements.",
+        "C++": "Essential for leveraging C++17 in developing and optimizing GPU kernels.",
+        "CUDA": "Core to performing GPU programming and optimization for NVIDIA architectures.",
+        "Python": "Utilized for scripting tasks and integration within the kernel optimization workflow.",
+        "Git": "Required for managing version control in collaborative, contract-based code deployments.",
+        "Profiling": "Vital for interpreting performance metrics to guide GPU kernel improvements.",
+        "Engineering": "Involves detailed coding, performance engineering, and hardware utilization optimization.",
+        "Research": "Reflects the graduate-level research experience applied in kernel performance analysis.",
+        "Analytics": "Applies profiler metrics analysis to accelerate efficient GPU kernel optimization.",
+        "Technology, Information and Media": "Targets AI lab projects within advanced technological and media innovation fields.",
+        "Professional Services": "Represents the contract-based, consultant nature of freelance GPU optimization roles.",
+        "Research Services": "Aligns with the research-driven approach in analyzing and enhancing GPU kernel performance."
+      },
+      "is_domain_page": true
+    }
+  },
+  {
+    "id": "39592560-4e54-4f0b-9a92-a289f4b5cb13",
+    "timestamp": "2026-07-27T08:03:15.762688Z",
+    "client": "codegeniusrecruit",
+    "url": "sd.asdf",
+    "raw_jd": "CUDA Engineering Expert\nHourly contract\nRemote\nB\nR\nK\n94 hired this month\n$80-$100\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\n1. Role Overview\nMercor is seeking GPU kernel optimization experts to contribute to a project with a leading AI lab. This opportunity is designed for freelancers with strong C++ skills, practical GPU programming experience, and the ability to improve kernel performance using profiler-guided analysis. You’ll help evaluate, optimize, and reason about GPU kernels across modern hardware environments. This is a contract-based opportunity for specialists who enjoy squeezing performance out of modern GPU architectures.\n2. Key Responsibilities\nAnalyze and optimize GPU kernels for performance, efficiency, and hardware utilization\nUse profiler metrics such as L2 cache hit rate, L2 throughput, occupancy, and related signals to guide kernel improvements\nReview GPU kernel implementations and identify bottlenecks without requiring extensive background in the underlying algorithms\nWrite, modify, and reason about C++17, Python, and GPU programming code\nApply CUDA, HIP, shader programming, or related kernel programming expertise to improve performance outcomes\nDocument optimization decisions clearly, including when specific profiler metrics are or are not useful\n3. Ideal Qualifications\nAvailable to work at least 20 hrs/wk\nFluent in core C++ features through C++17\nWorking knowledge of Python and Git\nFluent in at least one GPU programming model, such as CUDA, HIP, Slang, HLSL, GLSL, or related kernel programming\nAt least 1 year of professional or graduate-level research experience working with GPUs\nStrong understanding of GPU profiler performance metrics and how to use them to optimize kernels\nAbility to optimize GPU kernels without needing deep prior context on every algorithm\nExperience with CUDA, HIP, CUDA C++ Core Libraries, inline PTX assembly, or tensor core-level optimization is a plus\nExperience optimizing kernels for NVIDIA Blackwell hardware is a plus\nFamiliarity with NSight Compute is a plus\nPrior experience with GPU hardware organizations such as NVIDIA, AMD, or Qualcomm is a plus\nOpen-source contributions related to GPU kernel optimization are a plus\n4. Application Process\nSubmit your resume or relevant technical background to get started\nQualified applicants may be asked to complete a brief technical assessment or submit additional information\nWe consider all qualified applicants without regard to legally protected characteristics and provide reasonable accommodations upon request.\nContract and Payment Terms\nYou will be engaged as an independent contractor.\nThis is a fully remote role that can be completed on your own schedule.\nProjects can be extended, shortened, or concluded early depending on needs and performance.\nYour work at Mercor will not involve access to confidential or proprietary information from any employer, client, or institution.\nPayments are weekly on Stripe or Wise based on services rendered.\nPlease note: We are unable to support H1-B or STEM OPT candidates at this time.\nAbout Mercor\nMercor partners with leading AI labs and enterprises to train frontier models using human expertise. You will work on projects that focus on training and enhancing AI systems. You will be paid competitively, collaborate with leading researchers, and help shape the next generation of AI systems in your area of expertise.\nEarn up to $480 by referring\nShare the referral link below, and earn up to $480 for each successful referral through this unique link. There's no limit on how many people you can refer. Restrictions may apply. Learn more",
+    "role": "CUDA Engineering Expert",
+    "raw_jd_snippet": "CUDA Engineering Expert\nHourly contract\nRemote\nB\nR\nK\n94 hired this month\n$80-$100\nper hour\nMercor logo\nPosted by Mercor\nmercor.com\n1. Role Overview\nMe...",
+    "cache_key": "3e77f386a5530722bc4ba15f27166da4",
+    "data": {
+      "jd": "<b>Work Snapshot</b><br>\n<b>Type:</b> Hourly contract<br>\n<b>Location:</b> Remote<br>\n<b>Commitment:</b> 10-40 hrs/week<br>\n<b>Commission:</b> $80-$100 per hour<br><br>\n\n<b>What You’ll Be Doing</b>\n<ul>\n<li>Analyze and optimize GPU kernels for performance, efficiency, and hardware utilization.</li>\n<li>Use profiler metrics to guide kernel improvements and identify bottlenecks.</li>\n<li>Write, modify, and reason about C++17, Python, and GPU programming code.</li>\n<li>Apply CUDA, HIP, or shader programming expertise to improve performance outcomes.</li>\n<li>Document optimization decisions clearly, including the usefulness of specific profiler metrics.</li>\n</ul><br>\n\n<b>What We’re Looking For</b>\n<ul>\n<li>Have strong relevant experience in the domain.</li>\n<li>Fluent in core C++ features through C++17.</li>\n<li>Working knowledge of Python and Git.</li>\n<li>Fluent in at least one GPU programming model such as CUDA, HIP, or related.</li>\n<li>Strong understanding of GPU profiler performance metrics for kernel optimization.</li>\n</ul><br>\n\n<b>Application Process</b>\n<ul>\n<li>Submit your application through the Easy Apply button.</li>\n<li>Each application will be reviewed against the role requirements.</li>\n<li>Candidates who meet the requirements will receive an email with the next steps.</li>\n<li>Follow the instructions provided in the email to complete the remainder of the application process.</li>\n</ul><br>\n\n#LI-CH",
+      "email": "",
+      "inmail_draft": "Hi {firstName},<br><br>\n\nI'm from <b>CodeGeniusRecruit</b>. Based on your profile, we think you could be a strong fit for the <a href=\"sd.asdf\" style=\"color: #0066cc;\"><b>CUDA Engineering Expert</b></a> position.<br><br>\n\n<b>Role highlights:</b> Remote | Hourly contract | $80-$100 per hour<br><br>\n\nWe’d like to refer you for this opportunity. Contribute to a project with a leading AI lab by optimizing GPU kernels for performance and efficiency. Utilize profiler-guided analysis to enhance kernel performance across modern hardware environments, collaborating with top researchers in the field.<br><br>\n\n<b>Application Process</b>\n<ul>\n<li>Open the application link included in this email.</li>\n<li>Register for an account if you do not already have one, or log in to your existing account.</li>\n<li>After signing in, submit your application for the role.</li>\n</ul><br>\n\n<b>To apply, kindly use the link below:</b><br>\n<a href=\"sd.asdf\" style=\"color: #0066cc;\"><b>CUDA Engineering Expert</b></a><br><br>\n\n<b>You can also checkout these Opportunities as well:</b><br><br>\n\nSince applications are reviewed on a rolling basis, earlier submissions receive priority consideration.<br><br>\n\n<i>P.S. For any queries or assistance, feel free to reach out at support@crossinghurdles.com</i><br><br>\n\nBest Regards,<br>\nCodeGeniusRecruit",
+      "email_draft": null,
+      "subject": "CUDA Engineering Expert | $100/hr Remote | Mercor",
+      "linkedin_title": "CUDA Engineering Expert | Remote",
+      "skills": [
+        "C++17",
+        "CUDA",
+        "Python",
+        "GPU Profiling",
+        "Git"
+      ],
+      "job_functions": [
+        "Engineering",
+        "Research",
+        "Analytics"
+      ],
+      "industries": [
+        "Technology, Information and Media",
+        "Research Services",
+        "Professional Services"
+      ],
+      "version": "v2",
+      "titles": [
+        "GPU Kernel Optimization Engineer",
+        "CUDA Performance Engineer",
+        "GPU Acceleration Engineer",
+        "Parallel Computing Engineer",
+        "C++ GPU Engineer"
+      ],
+      "structured_data": {
+        "role": "CUDA Engineering Expert",
+        "type": "Hourly contract",
+        "pay": "$80-$100 per hour",
+        "location": "Remote",
+        "commitment": "10-40 hrs/week",
+        "role_responsibilities": [
+          "Analyze and optimize GPU kernels for performance, efficiency, and hardware utilization.",
+          "Use profiler metrics to guide kernel improvements and identify bottlenecks.",
+          "Write, modify, and reason about C++17, Python, and GPU programming code.",
+          "Apply CUDA, HIP, or shader programming expertise to improve performance outcomes.",
+          "Document optimization decisions clearly, including the usefulness of specific profiler metrics."
+        ],
+        "requirements": [
+          "Have strong relevant experience in the domain.",
+          "Fluent in core C++ features through C++17.",
+          "Working knowledge of Python and Git.",
+          "Fluent in at least one GPU programming model such as CUDA, HIP, or related.",
+          "Strong understanding of GPU profiler performance metrics for kernel optimization."
+        ],
+        "role_overview": "Contribute to a project with a leading AI lab by optimizing GPU kernels for performance and efficiency. Utilize profiler-guided analysis to enhance kernel performance across modern hardware environments, collaborating with top researchers in the field.",
+        "who_this_is_for": "Professionals with hands-on experience in GPU programming and optimization, familiar with C++ and Python, and capable of enhancing performance in AI-driven environments.",
+        "client": "CodeGeniusRecruit",
+        "client_desc": "Mercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.",
+        "link": "sd.asdf",
+        "suggested_titles": [
+          "GPU Kernel Optimization Engineer",
+          "CUDA Performance Engineer",
+          "GPU Acceleration Engineer",
+          "Parallel Computing Engineer",
+          "C++ GPU Engineer"
+        ],
+        "subject": "GPU Kernel Optimization Engineer | $80-$100/hr Remote | CodeGeniusRecruit x AI Labs",
+        "linkedin_title": "GPU Kernel Optimization Engineer",
+        "skills": [
+          "C++17",
+          "CUDA",
+          "Python",
+          "GPU Profiling",
+          "Git"
+        ],
+        "job_functions": [
+          "Engineering",
+          "Research",
+          "Analytics"
+        ],
+        "industries": [
+          "Technology, Information and Media",
+          "Research Services",
+          "Professional Services"
+        ],
+        "justifications": {
+          "GPU Kernel Optimization Engineer": "Emphasizes evaluating and optimizing GPU kernels using profiler-guided analysis for performance improvements.",
+          "CUDA Performance Engineer": "Highlights the need for CUDA expertise to boost kernel efficiency and leverage modern GPU architectures.",
+          "GPU Acceleration Engineer": "Focuses on accelerating GPU operations via kernel optimization techniques and deep hardware profiling.",
+          "Parallel Computing Engineer": "Reflects the role’s requirement for optimizing parallel GPU tasks using profiler metrics and C++17.",
+          "C++ GPU Engineer": "Combines core C++17 skills with GPU optimization for enhanced performance tuning on modern hardware.",
+          "C++17": "Critical for writing, modifying, and reasoning about high-performance GPU code as specified in the role.",
+          "CUDA": "Fundamental to the role's kernel optimization and GPU programming requirements using profiler metrics.",
+          "Python": "Utilized for scripting and modifying code alongside C++ in the optimization process.",
+          "GPU Profiling": "Essential for analyzing metrics like L2 cache and throughput to identify performance bottlenecks.",
+          "Git": "Necessary for version control and collaboration in managing GPU kernel code changes.",
+          "Engineering": "Directly corresponds to analyzing and optimizing GPU kernels across modern hardware environments.",
+          "Research": "Leveraged through graduate-level or professional research experience in GPU related projects.",
+          "Analytics": "Involves analyzing profiler metrics and data to drive performance improvements in GPU kernels.",
+          "Technology, Information and Media": "Pertains to cutting-edge AI lab projects focused on GPU kernel optimization within the tech sector.",
+          "Research Services": "Relates to projects that involve frontier research and experimentation in GPU performance.",
+          "Professional Services": "Reflects the independent contracting nature and specialized client services in AI lab partnerships."
+        },
+        "where_you_will": "contribute to training advanced AI models and ensuring high-quality system integration"
+      },
+      "justifications": {
+        "GPU Kernel Optimization Engineer": "Emphasizes evaluating and optimizing GPU kernels using profiler-guided analysis for performance improvements.",
+        "CUDA Performance Engineer": "Highlights the need for CUDA expertise to boost kernel efficiency and leverage modern GPU architectures.",
+        "GPU Acceleration Engineer": "Focuses on accelerating GPU operations via kernel optimization techniques and deep hardware profiling.",
+        "Parallel Computing Engineer": "Reflects the role’s requirement for optimizing parallel GPU tasks using profiler metrics and C++17.",
+        "C++ GPU Engineer": "Combines core C++17 skills with GPU optimization for enhanced performance tuning on modern hardware.",
+        "C++17": "Critical for writing, modifying, and reasoning about high-performance GPU code as specified in the role.",
+        "CUDA": "Fundamental to the role's kernel optimization and GPU programming requirements using profiler metrics.",
+        "Python": "Utilized for scripting and modifying code alongside C++ in the optimization process.",
+        "GPU Profiling": "Essential for analyzing metrics like L2 cache and throughput to identify performance bottlenecks.",
+        "Git": "Necessary for version control and collaboration in managing GPU kernel code changes.",
+        "Engineering": "Directly corresponds to analyzing and optimizing GPU kernels across modern hardware environments.",
+        "Research": "Leveraged through graduate-level or professional research experience in GPU related projects.",
+        "Analytics": "Involves analyzing profiler metrics and data to drive performance improvements in GPU kernels.",
+        "Technology, Information and Media": "Pertains to cutting-edge AI lab projects focused on GPU kernel optimization within the tech sector.",
+        "Research Services": "Relates to projects that involve frontier research and experimentation in GPU performance.",
+        "Professional Services": "Reflects the independent contracting nature and specialized client services in AI lab partnerships."
+      },
+      "is_domain_page": true
+    }
+  },
+  {
+    "id": "e64d11dc-94ec-460a-b897-56de658f4431",
+    "timestamp": "2026-07-27T08:00:14.516894Z",
+    "client": "turing",
+    "url": "dfghj",
+    "raw_jd": "Medicine Physician (MD/DO/Doctoral study/PhD)\nMedicine Physician (MD/DO/Doctoral study/PhD)\nGeo\nIndia, Pakistan, Nigeria, Kenya, Egypt, Ghana, Bangladesh, Turkey, Mexico\nYoE\n1+ years\nEngagement Type\nFull Time Contract (1 months)\nTotal number of positions\n150\nStart Date\nNot Confirmed. Bench role\nMax Rate Range\n$150 Per hour\nVetting\nOnline assessment\nSkill\nMinimum 1 year of clinical practice experience in the US, Canada, or Western Europe\nBackground in any of the following areas is preferred: Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties\nStrong communication skills and ability to collaborate effectively with technical research teams\nAvailability\nFull Time Availability (8 Hrs) and 4 hours overlap with PST time zone\nAbout Turing\nBased in San Francisco, California, Turing is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports customers in two ways: first, by accelerating frontier research with high-quality data, advanced training pipelines, plus top AI researchers who specialize in coding, reasoning, STEM, multilinguality, multimodality, and agents; and second, by applying that expertise to help enterprises transform AI from proof of concept into proprietary intelligence with systems that perform reliably, deliver measurable impact, and drive lasting results on the P&L\nWhat does day-to-day look like:\nAs a medical specialist, you will bring your subject-matter knowledge to help train and evaluate frontier AI systems. Work might include:\nDesign and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews\nReview AI-generated answers, assessing their accuracy, depth of reasoning, and clarity\nSpot knowledge gaps and edge cases, and propose improvements to strengthen model performance\nCollaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks\nProvide structured feedback and insights that guide the development of next-generation AI for medicine and science\nCandidate Requirements:\nAttending physicians are welcome to apply\nMinimum 1 year of clinical practice experience in the US, Canada, or Western Europe\nBackground in any of the following areas is preferred: Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties\nStrong communication skills and ability to collaborate effectively with technical research teams\nEngagement details:\nCommitment: flexible engagement, remote working, up to 30 hrs/week\nDuration: 1 month, with potential extensions based on performance and fit",
+    "role": "Medicine Physician",
+    "raw_jd_snippet": "Medicine Physician (MD/DO/Doctoral study/PhD)\nMedicine Physician (MD/DO/Doctoral study/PhD)\nGeo\nIndia, Pakistan, Nigeria, Kenya, Egypt, Ghana, Banglad...",
+    "cache_key": "0e0f8fb63d5c8c9f59ee604f1ca977c9",
+    "data": {
+      "jd": "<b>Position:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br><b>Location:</b> Remote<br>\n<b>Commitment:</b> 10-40 hrs/week<br>\n<br>\n\n<b>Role Responsibilities:</b>\n<ul>\n<li>Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.</li>\n<li>Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.</li>\n<li>Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.</li>\n<li>Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.</li>\n<li>Provide structured feedback and insights that guide the development of next-generation AI for medicine and science.</li>\n</ul>\n<br>\n\n<b>Requirements:</b>\n<ul>\n<li>Attending physicians are welcome to apply.</li>\n<li>Possess a background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties.</li>\n<li>Demonstrate strong communication skills and ability to collaborate effectively with technical research teams.</li>\n</ul>\n<br>\n\n<b>Application Process</b>\n<ul>\n<li>Apply via Easy Apply</li>\n<li>Check email for next steps</li>\n</ul>\n<br>\n#LI-CH",
+      "email": "I’m from Crossing Hurdles, a global recruitment firm. We would like to refer you for an exciting short-term contract opportunity with Turing as an <b>Medicine Physician</b>, where you will help train and evaluate frontier AI systems in medical contexts.<br>\n<br>\n<b>Organization:</b> Turing<br>\n<b>Referral Partner:</b> Crossing Hurdles<br>\n<b>Role:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br>\n<b>Location:</b> Remote<br>\n<b>Work Schedule:</b> 10-40 hrs/week<br>\n<b>Start Date:</b> Immediate<br>\n<b>Application Form Link – <a href=\"dfghj\" style=\"color: #0066cc;\">Apply Here</a></b><br>\n<br>\n<b>About Turing:</b><br>\nTuring is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports organizations by accelerating frontier AI research through high-quality data, advanced training pipelines, and expert talent specializing in STEM, reasoning, multilinguality, multimodality, coding, and AI agents.<br>\n<br>\n<b>Role Overview:</b><br>\nThe candidate will leverage their medical expertise to train and evaluate AI systems, impacting the development of advanced medical AI solutions. They will collaborate with AI researchers to enhance model performance and provide insights for next-generation AI in medicine.<br>\n<br>\n<b>What You'll Work On:</b><br>\n<ul>\n<li>Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.</li>\n<li>Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.</li>\n<li>Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.</li>\n<li>Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.</li>\n<li>Provide structured feedback and insights that guide the development of next-generation AI for medicine and science.</li>\n</ul>\n<br>\n<b>Who This Is For:</b><br>\n<ul>\n<li>Attending physicians are welcome to apply.</li>\n<li>Possess a background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties.</li>\n<li>Demonstrate strong communication skills and ability to collaborate effectively with technical research teams.</li>\n</ul>\n<br>\n<b>Application Process:</b><br>\nComplete the application form by <a href=\"dfghj\" style=\"color: #0066cc;\">clicking here</a> to apply for the role.<br>\n<br>\n<b>Assessment Process (After Shortlisting):</b><br>\nShortlisted candidates will receive a Take Home Assessment. Candidates who successfully clear the assessment will proceed to the Delivery Review stage. Successful candidates will then be contacted regarding onboarding.<br>\n<br>\n<b>Take Steps to Boost Your Profile:</b><br>\n<ul>\n<li>You may also explore additional opportunities with <a href=\"https://t.mercor.com/cU1Py\" style=\"color: #0066cc;\">Mercor</a> and <a href=\"https://refer.micro1.ai/referral/jobs?referralCode=463495f6-7cc6-49ed-8e8f-5ef2a1cc3fd7&utm_source=referral&utm_medium=share&utm_campaign=job_referral\" style=\"color: #0066cc;\">Micro1</a>, both platforms connecting skilled professionals to AI training projects.</li>\n<li>For regular updates, you can follow our <a href=\"https://whatsapp.com/channel/0029Vb6eLrf23n3gz313El2h\" style=\"color: #0066cc;\">WhatsApp channel</a> for upcoming openings.</li>\n</ul>\n<br>\n<i>P.S. We're committed to addressing your queries, though responses may take longer than usual. Meanwhile, for immediate assistance, please reach out to <a href=\"mailto:support@turing.com\" style=\"color: #0066cc;\">support@turing.com</a></i>",
+      "inmail_draft": null,
+      "email_draft": "I’m from Crossing Hurdles, a global recruitment firm. We would like to refer you for an exciting short-term contract opportunity with Turing as an <b>Medicine Physician</b>, where you will help train and evaluate frontier AI systems in medical contexts.<br>\n<br>\n<b>Organization:</b> Turing<br>\n<b>Referral Partner:</b> Crossing Hurdles<br>\n<b>Role:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br>\n<b>Location:</b> Remote<br>\n<b>Work Schedule:</b> 10-40 hrs/week<br>\n<b>Start Date:</b> Immediate<br>\n<b>Application Form Link – <a href=\"dfghj\" style=\"color: #0066cc;\">Apply Here</a></b><br>\n<br>\n<b>About Turing:</b><br>\nTuring is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports organizations by accelerating frontier AI research through high-quality data, advanced training pipelines, and expert talent specializing in STEM, reasoning, multilinguality, multimodality, coding, and AI agents.<br>\n<br>\n<b>Role Overview:</b><br>\nThe candidate will leverage their medical expertise to train and evaluate AI systems, impacting the development of advanced medical AI solutions. They will collaborate with AI researchers to enhance model performance and provide insights for next-generation AI in medicine.<br>\n<br>\n<b>What You'll Work On:</b><br>\n<ul>\n<li>Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.</li>\n<li>Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.</li>\n<li>Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.</li>\n<li>Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.</li>\n<li>Provide structured feedback and insights that guide the development of next-generation AI for medicine and science.</li>\n</ul>\n<br>\n<b>Who This Is For:</b><br>\n<ul>\n<li>Attending physicians are welcome to apply.</li>\n<li>Possess a background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties.</li>\n<li>Demonstrate strong communication skills and ability to collaborate effectively with technical research teams.</li>\n</ul>\n<br>\n<b>Application Process:</b><br>\nComplete the application form by <a href=\"dfghj\" style=\"color: #0066cc;\">clicking here</a> to apply for the role.<br>\n<br>\n<b>Assessment Process (After Shortlisting):</b><br>\nShortlisted candidates will receive a Take Home Assessment. Candidates who successfully clear the assessment will proceed to the Delivery Review stage. Successful candidates will then be contacted regarding onboarding.<br>\n<br>\n<b>Take Steps to Boost Your Profile:</b><br>\n<ul>\n<li>You may also explore additional opportunities with <a href=\"https://t.mercor.com/cU1Py\" style=\"color: #0066cc;\">Mercor</a> and <a href=\"https://refer.micro1.ai/referral/jobs?referralCode=463495f6-7cc6-49ed-8e8f-5ef2a1cc3fd7&utm_source=referral&utm_medium=share&utm_campaign=job_referral\" style=\"color: #0066cc;\">Micro1</a>, both platforms connecting skilled professionals to AI training projects.</li>\n<li>For regular updates, you can follow our <a href=\"https://whatsapp.com/channel/0029Vb6eLrf23n3gz313El2h\" style=\"color: #0066cc;\">WhatsApp channel</a> for upcoming openings.</li>\n</ul>\n<br>\n<i>P.S. We're committed to addressing your queries, though responses may take longer than usual. Meanwhile, for immediate assistance, please reach out to <a href=\"mailto:support@turing.com\" style=\"color: #0066cc;\">support@turing.com</a></i>",
+      "subject": "Medicine Physician | $150/hr Remote | Turing x AI Labs",
+      "linkedin_title": "Medicine Physician | Remote",
+      "skills": [
+        "Clinical Practice",
+        "Diagnostic Analysis",
+        "AI Systems",
+        "Data Evaluation",
+        "Research Methodology"
+      ],
+      "job_functions": [
+        "Research",
+        "Health care provider",
+        "Consulting"
+      ],
+      "industries": [
+        "Hospitals and Health Care",
+        "Medical Practices",
+        "Technology, Information and Media"
+      ],
+      "version": "v2",
+      "titles": [
+        "Clinical Evaluation Physician",
+        "Physician Research Advisor",
+        "Clinical Diagnostic Specialist",
+        "Medical Reviewer"
+      ],
+      "structured_data": {
+        "role": "Medicine Physician",
+        "type": "Full Time Contract",
+        "pay": "$150 Per hour",
+        "location": "Remote",
+        "commitment": "10-40 hrs/week",
+        "start_date": "Immediate",
+        "role_responsibilities": [
+          "Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.",
+          "Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.",
+          "Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.",
+          "Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.",
+          "Provide structured feedback and insights that guide the development of next-generation AI for medicine and science."
+        ],
+        "requirements": [
+          "Attending physicians are welcome to apply.",
+          "Possess a background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties.",
+          "Demonstrate strong communication skills and ability to collaborate effectively with technical research teams."
+        ],
+        "preferred_qualifications": [],
+        "role_overview": "The candidate will leverage their medical expertise to train and evaluate AI systems, impacting the development of advanced medical AI solutions. They will collaborate with AI researchers to enhance model performance and provide insights for next-generation AI in medicine.",
+        "who_this_is_for": "This role is ideal for experienced physicians with a background in clinical practice and a passion for AI. Candidates should have expertise in areas like Internal Medicine or Pediatrics and be eager to collaborate with technical teams.",
+        "where_you_will": "help train and evaluate frontier AI systems in medical contexts",
+        "client": "Turing",
+        "client_desc": "Turing is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports organizations by accelerating frontier AI research through high-quality data, advanced training pipelines, and expert talent specializing in STEM, reasoning, multilinguality, multimodality, coding, and AI agents.",
+        "link": "dfghj",
+        "suggested_titles": [
+          "Clinical Evaluation Physician",
+          "Physician Research Advisor",
+          "Clinical Diagnostic Specialist",
+          "Medical Reviewer"
+        ],
+        "subject": "Medicine Physician Opportunity with Turing",
+        "linkedin_title": "Medicine Physician for AI Systems",
+        "skills": [
+          "Clinical Practice",
+          "Diagnostic Analysis",
+          "AI Systems",
+          "Data Evaluation",
+          "Research Methodology"
+        ],
+        "job_functions": [
+          "Research",
+          "Health care provider",
+          "Consulting"
+        ],
+        "industries": [
+          "Hospitals and Health Care",
+          "Medical Practices",
+          "Technology, Information and Media"
+        ],
+        "justifications": {
+          "Clinical Evaluation Physician": "Highlights integration of clinical expertise to assess AI-generated diagnostic scenarios.",
+          "Medical AI Consultant": "Emphasizes advisory role in shaping AI training pipelines with clinical background.",
+          "Physician Research Advisor": "Reflects collaboration with AI researchers and contribution to advanced clinical case reviews.",
+          "Clinical Diagnostic Specialist": "Focuses on designing and resolving complex diagnostic challenges in AI applications.",
+          "Medical Reviewer": "Represents the responsibility of scrutinizing AI-generated answers for clinical accuracy.",
+          "Clinical Practice": "Based on the requirement of 1+ year clinical experience in US, Canada, or Western Europe.",
+          "Diagnostic Analysis": "Aligns with evaluating and interpreting complex clinical and diagnostic scenarios.",
+          "AI Systems": "Indicates involvement in frontier AI research accelerator initiatives as described.",
+          "Data Evaluation": "Pertains to reviewing AI outputs and providing structured feedback on performance.",
+          "Research Methodology": "Essential for guiding training methods and benchmarking strategies in AI development.",
+          "Research": "Directly tied to evaluating and improving AI through empirical clinical case analysis.",
+          "Health care provider": "Utilizes validated medical expertise from fields like internal medicine and pediatrics.",
+          "Consulting": "Captures the role of advising on AI integration and enhancing diagnostic evaluation processes.",
+          "Hospitals and Health Care": "Reflects the candidate’s clinical practice setting and healthcare environment experience.",
+          "Medical Practices": "Directly relates to clinical specialties such as internal medicine, pediatrics, and surgery.",
+          "Technology, Information and Media": "Represents the AI research accelerator’s focus on advanced technology applications."
+        }
+      },
+      "justifications": {
+        "Clinical Evaluation Physician": "Highlights integration of clinical expertise to assess AI-generated diagnostic scenarios.",
+        "Physician Research Advisor": "Reflects collaboration with AI researchers and contribution to advanced clinical case reviews.",
+        "Clinical Diagnostic Specialist": "Focuses on designing and resolving complex diagnostic challenges in AI applications.",
+        "Medical Reviewer": "Represents the responsibility of scrutinizing AI-generated answers for clinical accuracy.",
+        "Clinical Practice": "Based on the requirement of 1+ year clinical experience in US, Canada, or Western Europe.",
+        "Diagnostic Analysis": "Aligns with evaluating and interpreting complex clinical and diagnostic scenarios.",
+        "AI Systems": "Indicates involvement in frontier AI research accelerator initiatives as described.",
+        "Data Evaluation": "Pertains to reviewing AI outputs and providing structured feedback on performance.",
+        "Research Methodology": "Essential for guiding training methods and benchmarking strategies in AI development.",
+        "Research": "Directly tied to evaluating and improving AI through empirical clinical case analysis.",
+        "Health care provider": "Utilizes validated medical expertise from fields like internal medicine and pediatrics.",
+        "Consulting": "Captures the role of advising on AI integration and enhancing diagnostic evaluation processes.",
+        "Hospitals and Health Care": "Reflects the candidate’s clinical practice setting and healthcare environment experience.",
+        "Medical Practices": "Directly relates to clinical specialties such as internal medicine, pediatrics, and surgery.",
+        "Technology, Information and Media": "Represents the AI research accelerator’s focus on advanced technology applications."
+      },
+      "is_domain_page": false
+    }
+  },
+  {
+    "id": "64df3a52-0e40-4198-a33e-d9ac6dc88c11",
+    "timestamp": "2026-07-27T07:38:10.438602Z",
+    "client": "turing",
+    "url": "saedrfghj",
+    "raw_jd": "Medicine Physician (MD/DO/Doctoral study/PhD)\nRole\nMedicine Physician (MD/DO/Doctoral study/PhD)\nGeo\nIndia, Pakistan, Nigeria, Kenya, Egypt, Ghana, Bangladesh, Turkey, Mexico\nYoE\n1+ years\nEngagement Type\nFull Time Contract (1 months)\nTotal number of positions\n150\nStart Date\nNot Confirmed. Bench role\nMax Rate Range\n$150 Per hour\nVetting\nOnline assessment\nSkill\nMinimum 1 year of clinical practice experience in the US, Canada, or Western Europe\nBackground in any of the following areas is preferred: Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties\nStrong communication skills and ability to collaborate effectively with technical research teams\nAvailability\nFull Time Availability (8 Hrs) and 4 hours overlap with PST time zone\nAbout Turing\nBased in San Francisco, California, Turing is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports customers in two ways: first, by accelerating frontier research with high-quality data, advanced training pipelines, plus top AI researchers who specialize in coding, reasoning, STEM, multilinguality, multimodality, and agents; and second, by applying that expertise to help enterprises transform AI from proof of concept into proprietary intelligence with systems that perform reliably, deliver measurable impact, and drive lasting results on the P&L\nWhat does day-to-day look like:\nAs a medical specialist, you will bring your subject-matter knowledge to help train and evaluate frontier AI systems. Work might include:\nDesign and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews\nReview AI-generated answers, assessing their accuracy, depth of reasoning, and clarity\nSpot knowledge gaps and edge cases, and propose improvements to strengthen model performance\nCollaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks\nProvide structured feedback and insights that guide the development of next-generation AI for medicine and science\nCandidate Requirements:\nAttending physicians are welcome to apply\nMinimum 1 year of clinical practice experience in the US, Canada, or Western Europe\nBackground in any of the following areas is preferred: Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties\nStrong communication skills and ability to collaborate effectively with technical research teams\nEngagement details:\nCommitment: flexible engagement, remote working, up to 30 hrs/week\nDuration: 1 month, with potential extensions based on performance and fit",
+    "role": "Medicine Physician",
+    "raw_jd_snippet": "Medicine Physician (MD/DO/Doctoral study/PhD)\nRole\nMedicine Physician (MD/DO/Doctoral study/PhD)\nGeo\nIndia, Pakistan, Nigeria, Kenya, Egypt, Ghana, Ba...",
+    "cache_key": "35f0168e4dcd482437d205cd2dc292e1",
+    "data": {
+      "jd": "<b>Position:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br><b>Location:</b> Remote<br>\n<b>Commitment:</b> 10-40 hrs/week<br>\n<br>\n\n<b>Role Responsibilities:</b>\n<ul>\n<li>Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.</li>\n<li>Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.</li>\n<li>Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.</li>\n<li>Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.</li>\n<li>Provide structured feedback and insights that guide the development of next-generation AI for medicine and science.</li>\n</ul>\n<br>\n\n<b>Requirements:</b>\n<ul>\n<li>Attending physicians are welcome to apply.</li>\n<li>Possess a background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties.</li>\n<li>Demonstrate strong communication skills and ability to collaborate effectively with technical research teams.</li>\n</ul>\n<br>\n\n<b>Application Process</b>\n<ul>\n<li>Apply via Easy Apply</li>\n<li>Check email for application form</li>\n</ul>\n<br>\n#LI-CH",
+      "email": "I’m from Crossing Hurdles, a global recruitment firm. We would like to refer you for an exciting short-term contract opportunity with Turing as an <b>Medicine Physician</b>, where you will help train and evaluate frontier AI systems in medical contexts.<br>\n<br>\n<b>Organization:</b> Turing<br>\n<b>Referral Partner:</b> Crossing Hurdles<br>\n<b>Role:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br>\n<b>Location:</b> Remote<br>\n<b>Work Schedule:</b> 10-40 hrs/week<br>\n<b>Start Date:</b> Immediate<br>\n<b>Application Form Link – <a href=\"saedrfghj\" style=\"color: #0066cc;\">Apply Here</a></b><br>\n<br>\n<b>About Turing:</b><br>\nTuring is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports organizations by accelerating frontier AI research through high-quality data, advanced training pipelines, and expert talent specializing in STEM, reasoning, multilinguality, multimodality, coding, and AI agents.<br>\n<br>\n<b>Role Overview:</b><br>\nThe candidate will leverage their medical expertise to train and evaluate AI systems, impacting the development of advanced medical solutions. They will collaborate with AI researchers to enhance model performance and provide insights for next-generation AI in medicine.<br>\n<br>\n<b>What You'll Work On:</b><br>\n<ul>\n<li>Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.</li>\n<li>Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.</li>\n<li>Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.</li>\n<li>Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.</li>\n<li>Provide structured feedback and insights that guide the development of next-generation AI for medicine and science.</li>\n</ul>\n<br>\n<b>Who This Is For:</b><br>\n<ul>\n<li>Attending physicians are welcome to apply.</li>\n<li>Possess a background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties.</li>\n<li>Demonstrate strong communication skills and ability to collaborate effectively with technical research teams.</li>\n</ul>\n<br>\n<b>Application Process:</b><br>\nComplete the application form by <a href=\"saedrfghj\" style=\"color: #0066cc;\">clicking here</a> to apply for the role.<br>\n<br>\n<b>Assessment Process (After Shortlisting):</b><br>\nShortlisted candidates will receive a Take Home Assessment. Candidates who successfully clear the assessment will proceed to the Delivery Review stage. Successful candidates will then be contacted regarding onboarding.",
+      "inmail_draft": null,
+      "email_draft": "I’m from Crossing Hurdles, a global recruitment firm. We would like to refer you for an exciting short-term contract opportunity with Turing as an <b>Medicine Physician</b>, where you will help train and evaluate frontier AI systems in medical contexts.<br>\n<br>\n<b>Organization:</b> Turing<br>\n<b>Referral Partner:</b> Crossing Hurdles<br>\n<b>Role:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br>\n<b>Location:</b> Remote<br>\n<b>Work Schedule:</b> 10-40 hrs/week<br>\n<b>Start Date:</b> Immediate<br>\n<b>Application Form Link – <a href=\"saedrfghj\" style=\"color: #0066cc;\">Apply Here</a></b><br>\n<br>\n<b>About Turing:</b><br>\nTuring is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports organizations by accelerating frontier AI research through high-quality data, advanced training pipelines, and expert talent specializing in STEM, reasoning, multilinguality, multimodality, coding, and AI agents.<br>\n<br>\n<b>Role Overview:</b><br>\nThe candidate will leverage their medical expertise to train and evaluate AI systems, impacting the development of advanced medical solutions. They will collaborate with AI researchers to enhance model performance and provide insights for next-generation AI in medicine.<br>\n<br>\n<b>What You'll Work On:</b><br>\n<ul>\n<li>Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.</li>\n<li>Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.</li>\n<li>Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.</li>\n<li>Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.</li>\n<li>Provide structured feedback and insights that guide the development of next-generation AI for medicine and science.</li>\n</ul>\n<br>\n<b>Who This Is For:</b><br>\n<ul>\n<li>Attending physicians are welcome to apply.</li>\n<li>Possess a background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties.</li>\n<li>Demonstrate strong communication skills and ability to collaborate effectively with technical research teams.</li>\n</ul>\n<br>\n<b>Application Process:</b><br>\nComplete the application form by <a href=\"saedrfghj\" style=\"color: #0066cc;\">clicking here</a> to apply for the role.<br>\n<br>\n<b>Assessment Process (After Shortlisting):</b><br>\nShortlisted candidates will receive a Take Home Assessment. Candidates who successfully clear the assessment will proceed to the Delivery Review stage. Successful candidates will then be contacted regarding onboarding.",
+      "subject": "Medicine Physician | $150/hr Remote | Turing x AI Labs",
+      "linkedin_title": "Medicine Physician | Remote",
+      "skills": [
+        "Clinical Practice",
+        "Diagnostic Reasoning",
+        "Case Analysis",
+        "AI Evaluation",
+        "Medical Research"
+      ],
+      "job_functions": [
+        "Health care provider",
+        "Research",
+        "Consulting"
+      ],
+      "industries": [
+        "Hospitals and Health Care",
+        "Medical Practices",
+        "Technology, Information and Media"
+      ],
+      "version": "v2",
+      "titles": [
+        "Clinical Evaluation Physician",
+        "Physician Research Advisor",
+        "Clinical Research Physician",
+        "Medical Consultant"
+      ],
+      "structured_data": {
+        "role": "Medicine Physician",
+        "type": "Full Time Contract",
+        "pay": "$150 Per hour",
+        "location": "Remote",
+        "commitment": "10-40 hrs/week",
+        "start_date": "Immediate",
+        "role_responsibilities": [
+          "Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.",
+          "Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.",
+          "Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.",
+          "Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.",
+          "Provide structured feedback and insights that guide the development of next-generation AI for medicine and science."
+        ],
+        "requirements": [
+          "Attending physicians are welcome to apply.",
+          "Possess a background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties.",
+          "Demonstrate strong communication skills and ability to collaborate effectively with technical research teams."
+        ],
+        "preferred_qualifications": [],
+        "role_overview": "The candidate will leverage their medical expertise to train and evaluate AI systems, impacting the development of advanced medical solutions. They will collaborate with AI researchers to enhance model performance and provide insights for next-generation AI in medicine.",
+        "who_this_is_for": "This role is ideal for experienced physicians with a background in clinical practice and a passion for AI. Candidates should have expertise in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties and be eager to collaborate with technical teams.",
+        "where_you_will": "help train and evaluate frontier AI systems in medical contexts",
+        "client": "Turing",
+        "client_desc": "Turing is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports organizations by accelerating frontier AI research through high-quality data, advanced training pipelines, and expert talent specializing in STEM, reasoning, multilinguality, multimodality, coding, and AI agents.",
+        "link": "saedrfghj",
+        "suggested_titles": [
+          "Clinical Evaluation Physician",
+          "Physician Research Advisor",
+          "Clinical Research Physician",
+          "Medical Consultant"
+        ],
+        "subject": "Medicine Physician Opportunity",
+        "linkedin_title": "Medicine Physician for AI Systems",
+        "skills": [
+          "Clinical Practice",
+          "Diagnostic Reasoning",
+          "Case Analysis",
+          "AI Evaluation",
+          "Medical Research"
+        ],
+        "job_functions": [
+          "Health care provider",
+          "Research",
+          "Consulting"
+        ],
+        "industries": [
+          "Hospitals and Health Care",
+          "Medical Practices",
+          "Technology, Information and Media"
+        ],
+        "justifications": {
+          "Medical AI Consultant": "Combines clinical expertise with AI system evaluation and development as described in frontier medical problem-solving tasks.",
+          "Clinical Evaluation Physician": "Reflects role in assessing AI-generated diagnostic outputs and guiding clinical case reviews.",
+          "Physician Research Advisor": "Highlights responsibility in collaborating with research teams to iterate and refine medical training pipelines.",
+          "Clinical Research Physician": "Emphasizes clinical background and involvement in advanced research settings for AI performance metrics.",
+          "Medical Consultant": "Indicates advisory capacity within clinical evaluations leveraging expertise in multiple medical specialties.",
+          "Clinical Practice": "Demonstrates requirement of 1+ year US/Europe clinical practice experience.",
+          "Diagnostic Reasoning": "Needed to evaluate AI-generated diagnostic scenarios with precision and clarity.",
+          "Case Analysis": "Essential for reviewing clinical cases and identifying knowledge gaps in AI responses.",
+          "AI Evaluation": "Directly linked to assessing AI model outputs and improving medical benchmarks.",
+          "Medical Research": "Supports collaborative efforts with AI researchers to enhance training and evaluation strategies.",
+          "Health care provider": "Directly reflects a physician's role in delivering targeted medical expertise.",
+          "Research": "Addresses the need for active participation in AI research and clinical evaluation pipelines.",
+          "Consulting": "Captures advisory collaboration with technical teams in shaping AI training methodologies.",
+          "Hospitals and Health Care": "Relevant given clinical practice experience and healthcare domain specialization.",
+          "Medical Practices": "Explicitly ties to MD/DO background and clinical specialties like Internal Medicine and Pediatrics.",
+          "Technology, Information and Media": "Highlights integration of AI systems within medical practice environments and digital research."
+        }
+      },
+      "justifications": {
+        "Clinical Evaluation Physician": "Reflects role in assessing AI-generated diagnostic outputs and guiding clinical case reviews.",
+        "Physician Research Advisor": "Highlights responsibility in collaborating with research teams to iterate and refine medical training pipelines.",
+        "Clinical Research Physician": "Emphasizes clinical background and involvement in advanced research settings for AI performance metrics.",
+        "Medical Consultant": "Indicates advisory capacity within clinical evaluations leveraging expertise in multiple medical specialties.",
+        "Clinical Practice": "Demonstrates requirement of 1+ year US/Europe clinical practice experience.",
+        "Diagnostic Reasoning": "Needed to evaluate AI-generated diagnostic scenarios with precision and clarity.",
+        "Case Analysis": "Essential for reviewing clinical cases and identifying knowledge gaps in AI responses.",
+        "AI Evaluation": "Directly linked to assessing AI model outputs and improving medical benchmarks.",
+        "Medical Research": "Supports collaborative efforts with AI researchers to enhance training and evaluation strategies.",
+        "Health care provider": "Directly reflects a physician's role in delivering targeted medical expertise.",
+        "Research": "Addresses the need for active participation in AI research and clinical evaluation pipelines.",
+        "Consulting": "Captures advisory collaboration with technical teams in shaping AI training methodologies.",
+        "Hospitals and Health Care": "Relevant given clinical practice experience and healthcare domain specialization.",
+        "Medical Practices": "Explicitly ties to MD/DO background and clinical specialties like Internal Medicine and Pediatrics.",
+        "Technology, Information and Media": "Highlights integration of AI systems within medical practice environments and digital research."
+      },
+      "is_domain_page": false
+    }
+  },
+  {
+    "id": "122f52b6-6c2e-4d1b-b8d5-f1cc51c2d498",
+    "timestamp": "2026-07-27T07:29:49.681428Z",
+    "client": "mercor",
+    "url": "dfgh",
+    "raw_jd": "Medicine Physician (MD/DO/Doctoral study/PhD)\nRole\nMedicine Physician (MD/DO/Doctoral study/PhD)\nGeo\nIndia, Pakistan, Nigeria, Kenya, Egypt, Ghana, Bangladesh, Turkey, Mexico\nYoE\n1+ years\nEngagement Type\nFull Time Contract (1 months)\nTotal number of positions\n150\nStart Date\nNot Confirmed. Bench role\nMax Rate Range\n$150 Per hour\nVetting\nOnline assessment\nSkill\nMinimum 1 year of clinical practice experience in the US, Canada, or Western Europe\nBackground in any of the following areas is preferred: Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties\nStrong communication skills and ability to collaborate effectively with technical research teams\nAvailability\nFull Time Availability (8 Hrs) and 4 hours overlap with PST time zone\nAbout Turing\nBased in San Francisco, California, Turing is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports customers in two ways: first, by accelerating frontier research with high-quality data, advanced training pipelines, plus top AI researchers who specialize in coding, reasoning, STEM, multilinguality, multimodality, and agents; and second, by applying that expertise to help enterprises transform AI from proof of concept into proprietary intelligence with systems that perform reliably, deliver measurable impact, and drive lasting results on the P&L\nWhat does day-to-day look like:\nAs a medical specialist, you will bring your subject-matter knowledge to help train and evaluate frontier AI systems. Work might include:\nDesign and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews\nReview AI-generated answers, assessing their accuracy, depth of reasoning, and clarity\nSpot knowledge gaps and edge cases, and propose improvements to strengthen model performance\nCollaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks\nProvide structured feedback and insights that guide the development of next-generation AI for medicine and science\nCandidate Requirements:\nAttending physicians are welcome to apply\nMinimum 1 year of clinical practice experience in the US, Canada, or Western Europe\nBackground in any of the following areas is preferred: Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties\nStrong communication skills and ability to collaborate effectively with technical research teams\nEngagement details:\nCommitment: flexible engagement, remote working, up to 30 hrs/week\nDuration: 1 month, with potential extensions based on performance and fit",
+    "role": "Medicine Physician",
+    "raw_jd_snippet": "Medicine Physician (MD/DO/Doctoral study/PhD)\nRole\nMedicine Physician (MD/DO/Doctoral study/PhD)\nGeo\nIndia, Pakistan, Nigeria, Kenya, Egypt, Ghana, Ba...",
+    "cache_key": "a5c91704a5daf4e1556a68fe037a4d14",
+    "data": {
+      "jd": "<b>Position:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br>\n<b>Location:</b> Remote<br>\n<b>Commitment:</b> 10-40 hrs/week<br>\n\n<br>\n\n<b>Role Responsibilities</b>\n<ul>\n<li>Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews</li>\n<li>Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity</li>\n<li>Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance</li>\n<li>Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks</li>\n<li>Provide structured feedback and insights that guide the development of next-generation AI for medicine and science</li>\n</ul>\n\n<b>Requirements</b>\n<ul>\n<li>Background in any of the following areas is preferred: Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties</li>\n<li>Strong communication skills and ability to collaborate effectively with technical research teams</li>\n<li>Attending physicians are welcome to apply</li>\n</ul>\n\n<br>\n\n<b>Application Process</b><br>\n<ul>\n<li>Upload resume</li>\n<li>Interview</li>\n<li>Submit form</li>\n</ul>\n\n<br>\n\n#LI-CH",
+      "email": "<br>I'm from Crossing Hurdles, a global recruitment firm. We would like to refer you for an interesting opportunity that involves leveraging your expertise to train AI models.<br><br>\n\n<b>Organization:</b> Mercor<br>\n<b>Referral Partner:</b> Crossing Hurdles<br>\n<b>Role:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br>\n<b>Location:</b> Remote<br>\n<b>Apply Here:</b> <a href=\"dfgh\" style=\"color: #0066cc;\">Medicine Physician</a><br><br>\n\n<b>About Mercor:</b><br>\nMercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.<br><br>\n\n<b>Role Overview:</b><br>\nAs a Medical Specialist, you will leverage your expertise to train and evaluate AI systems, focusing on medical problem-solving, reviewing AI outputs, and collaborating with research teams to enhance AI performance in medical applications.<br><br>\n\n<b>Who This Is For:</b><br>\nProfessionals with clinical experience in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties, who have worked in diagnostic or clinical roles and are comfortable collaborating with AI research teams.<br><br>\n\n<b>Application process:</b> (~20 Min)<br>\n<ul>\n<li>Upload resume</li>\n<li>Interview</li>\n<li>Submit form</li>\n</ul><br>\n<b>Apply asap (reviewed on a rolling basis):</b><br>\n<a href=\"dfgh\" style=\"color: #0066cc;\">Medicine Physician</a> – $150 Per hour<br><br>\n<b>Take Steps to Boost Your Profile:</b>\n<ul>\n<li>\nNeed tips to improve your chances of selection? Check out the <a href=\"https://docs.google.com/document/d/1xYe9X4t2Bv6BEScXwwvix35Kmlc92xiulEpBDLcCZb8/edit?usp=sharing\" style=\"color: #0066cc;\">Interview Preparation Playbook</a>\n</li>\n\n<li>\nYou can strengthen your profile through the <a href=\"https://work.mercor.com/home?tab=assessments&referralCode=c88e7e37-c849-4793-a401-f58c8615e4c7\" style=\"color: #0066cc;\">Assessment tab</a> in your dashboard. Completing skill based assessments can help unlock future opportunities, including roles you have not applied to or roles that may not be publicly listed.\n</li>\n\n<li>\nYou may also explore additional opportunities with <a href=\"https://t.mercor.com/cU1Py\" style=\"color: #0066cc;\">Mercor</a> and <a href=\"https://refer.micro1.ai/referral/jobs?referralCode=463495f6-7cc6-49ed-8e8f-5ef2a1cc3fd7&utm_source=referral&utm_medium=share&utm_campaign=job_referral\" style=\"color: #0066cc;\">Micro1</a>, both platforms connecting skilled professionals to AI training projects.\n</li>\n\n<li>\nFor regular updates, you can follow our <a href=\"https://whatsapp.com/channel/0029Vb6eLrf23n3gz313El2h\" style=\"color: #0066cc;\">WhatsApp channel</a> for upcoming openings.\n</li>\n</ul>\n\n<br>\n\n<i>\nP.S. We're committed to addressing your queries, though responses may take longer than usual. Meanwhile, for immediate assistance, please reach out to support@mercor.com\n</i>",
+      "inmail_draft": null,
+      "email_draft": "<br>I'm from Crossing Hurdles, a global recruitment firm. We would like to refer you for an interesting opportunity that involves leveraging your expertise to train AI models.<br><br>\n\n<b>Organization:</b> Mercor<br>\n<b>Referral Partner:</b> Crossing Hurdles<br>\n<b>Role:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br>\n<b>Location:</b> Remote<br>\n<b>Apply Here:</b> <a href=\"dfgh\" style=\"color: #0066cc;\">Medicine Physician</a><br><br>\n\n<b>About Mercor:</b><br>\nMercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.<br><br>\n\n<b>Role Overview:</b><br>\nAs a Medical Specialist, you will leverage your expertise to train and evaluate AI systems, focusing on medical problem-solving, reviewing AI outputs, and collaborating with research teams to enhance AI performance in medical applications.<br><br>\n\n<b>Who This Is For:</b><br>\nProfessionals with clinical experience in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties, who have worked in diagnostic or clinical roles and are comfortable collaborating with AI research teams.<br><br>\n\n<b>Application process:</b> (~20 Min)<br>\n<ul>\n<li>Upload resume</li>\n<li>Interview</li>\n<li>Submit form</li>\n</ul><br>\n<b>Apply asap (reviewed on a rolling basis):</b><br>\n<a href=\"dfgh\" style=\"color: #0066cc;\">Medicine Physician</a> – $150 Per hour<br><br>\n<b>Take Steps to Boost Your Profile:</b>\n<ul>\n<li>\nNeed tips to improve your chances of selection? Check out the <a href=\"https://docs.google.com/document/d/1xYe9X4t2Bv6BEScXwwvix35Kmlc92xiulEpBDLcCZb8/edit?usp=sharing\" style=\"color: #0066cc;\">Interview Preparation Playbook</a>\n</li>\n\n<li>\nYou can strengthen your profile through the <a href=\"https://work.mercor.com/home?tab=assessments&referralCode=c88e7e37-c849-4793-a401-f58c8615e4c7\" style=\"color: #0066cc;\">Assessment tab</a> in your dashboard. Completing skill based assessments can help unlock future opportunities, including roles you have not applied to or roles that may not be publicly listed.\n</li>\n\n<li>\nYou may also explore additional opportunities with <a href=\"https://t.mercor.com/cU1Py\" style=\"color: #0066cc;\">Mercor</a> and <a href=\"https://refer.micro1.ai/referral/jobs?referralCode=463495f6-7cc6-49ed-8e8f-5ef2a1cc3fd7&utm_source=referral&utm_medium=share&utm_campaign=job_referral\" style=\"color: #0066cc;\">Micro1</a>, both platforms connecting skilled professionals to AI training projects.\n</li>\n\n<li>\nFor regular updates, you can follow our <a href=\"https://whatsapp.com/channel/0029Vb6eLrf23n3gz313El2h\" style=\"color: #0066cc;\">WhatsApp channel</a> for upcoming openings.\n</li>\n</ul>\n\n<br>\n\n<i>\nP.S. We're committed to addressing your queries, though responses may take longer than usual. Meanwhile, for immediate assistance, please reach out to support@mercor.com\n</i>",
+      "subject": "Medicine Physician | $150/hr Remote | Mercor x AI Labs",
+      "linkedin_title": "Medicine Physician | Remote",
+      "skills": [
+        "Clinical Practice",
+        "Diagnostic Reasoning",
+        "Case Review",
+        "Medical Research",
+        "Clinical Evaluation"
+      ],
+      "job_functions": [
+        "Research",
+        "Consulting",
+        "Health care provider"
+      ],
+      "industries": [
+        "Hospitals and Health Care",
+        "Medical Practices",
+        "Technology, Information and Media"
+      ],
+      "version": "v2",
+      "titles": [
+        "Medical Advisor",
+        "Physician Consultant",
+        "Clinical Physician",
+        "Clinical Research Physician",
+        "Medical Reviewer"
+      ],
+      "structured_data": {
+        "role": "Medicine Physician",
+        "type": "Full Time Contract",
+        "pay": "$150 Per hour",
+        "location": "Remote",
+        "commitment": "10-40 hrs/week",
+        "role_responsibilities": [
+          "Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews",
+          "Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity",
+          "Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance",
+          "Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks",
+          "Provide structured feedback and insights that guide the development of next-generation AI for medicine and science"
+        ],
+        "requirements": [
+          "Background in any of the following areas is preferred: Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties",
+          "Strong communication skills and ability to collaborate effectively with technical research teams",
+          "Attending physicians are welcome to apply"
+        ],
+        "role_overview": "As a Medical Specialist, you will leverage your expertise to train and evaluate AI systems, focusing on medical problem-solving, reviewing AI outputs, and collaborating with research teams to enhance AI performance in medical applications.",
+        "who_this_is_for": "Professionals with clinical experience in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties, who have worked in diagnostic or clinical roles and are comfortable collaborating with AI research teams.",
+        "client": "Mercor",
+        "client_desc": "Mercor partners with leading AI labs and enterprises to train frontier AI models, offering competitive pay, collaboration with top researchers, and the opportunity to shape next generation AI systems using deep domain expertise.",
+        "link": "dfgh",
+        "suggested_titles": [
+          "Medical Advisor",
+          "Physician Consultant",
+          "Clinical Physician",
+          "Clinical Research Physician",
+          "Medical Reviewer"
+        ],
+        "subject": "Medical Specialist | $150/hr Remote | Mercor x AI Labs",
+        "linkedin_title": "Medical Specialist",
+        "skills": [
+          "Clinical Practice",
+          "Diagnostic Reasoning",
+          "Case Review",
+          "Medical Research",
+          "Clinical Evaluation"
+        ],
+        "job_functions": [
+          "Research",
+          "Consulting",
+          "Health care provider"
+        ],
+        "industries": [
+          "Hospitals and Health Care",
+          "Medical Practices",
+          "Technology, Information and Media"
+        ],
+        "justifications": {
+          "Medical Advisor": "Leverages clinical expertise to guide AI system evaluations and training strategies.",
+          "Physician Consultant": "Utilizes a strong medical background to consult on diagnostic scenarios and case improvements.",
+          "Clinical Physician": "Applies hands-on patient care experience to assess AI-generated clinical answers.",
+          "Clinical Research Physician": "Combines research skills and clinical assessments to evaluate AI performance in medicine.",
+          "Medical Reviewer": "Focuses on detailed review of AI outputs to ensure accuracy in complex medical cases.",
+          "Clinical Practice": "Demonstrates required 1+ year clinical experience in the US, Canada, or Western Europe.",
+          "Diagnostic Reasoning": "Essential for analyzing diagnostic scenarios and validating AI-generated responses.",
+          "Case Review": "Central for assessing complex clinical cases as outlined in the role responsibilities.",
+          "Medical Research": "Supports collaborative AI research by integrating clinical expertise with advanced methodologies.",
+          "Clinical Evaluation": "Crucial for providing structured feedback and improving AI system performance.",
+          "Research": "Involves detailed review and improvement of AI models using clinical insights.",
+          "Consulting": "Enables expert advisory on AI training strategies and diagnostic evaluation processes.",
+          "Health care provider": "Draws on clinical practice experience to support medical AI system development.",
+          "Hospitals and Health Care": "Reflects the candidate’s clinical environment experience in patient care settings.",
+          "Medical Practices": "Directly ties to the candidate’s background in clinical settings and diagnostic specialties.",
+          "Technology, Information and Media": "Aligns with Turing’s AI-driven research and advanced data training initiatives."
+        },
+        "where_you_will": "contribute to training advanced AI models and ensuring high-quality system integration"
+      },
+      "justifications": {
+        "Medical Advisor": "Leverages clinical expertise to guide AI system evaluations and training strategies.",
+        "Physician Consultant": "Utilizes a strong medical background to consult on diagnostic scenarios and case improvements.",
+        "Clinical Physician": "Applies hands-on patient care experience to assess AI-generated clinical answers.",
+        "Clinical Research Physician": "Combines research skills and clinical assessments to evaluate AI performance in medicine.",
+        "Medical Reviewer": "Focuses on detailed review of AI outputs to ensure accuracy in complex medical cases.",
+        "Clinical Practice": "Demonstrates required 1+ year clinical experience in the US, Canada, or Western Europe.",
+        "Diagnostic Reasoning": "Essential for analyzing diagnostic scenarios and validating AI-generated responses.",
+        "Case Review": "Central for assessing complex clinical cases as outlined in the role responsibilities.",
+        "Medical Research": "Supports collaborative AI research by integrating clinical expertise with advanced methodologies.",
+        "Clinical Evaluation": "Crucial for providing structured feedback and improving AI system performance.",
+        "Research": "Involves detailed review and improvement of AI models using clinical insights.",
+        "Consulting": "Enables expert advisory on AI training strategies and diagnostic evaluation processes.",
+        "Health care provider": "Draws on clinical practice experience to support medical AI system development.",
+        "Hospitals and Health Care": "Reflects the candidate’s clinical environment experience in patient care settings.",
+        "Medical Practices": "Directly ties to the candidate’s background in clinical settings and diagnostic specialties.",
+        "Technology, Information and Media": "Aligns with Turing’s AI-driven research and advanced data training initiatives."
+      },
+      "is_domain_page": false
+    }
+  },
+  {
+    "id": "28369ac9-35df-4a37-bd23-3b906138d120",
+    "timestamp": "2026-07-27T07:26:36.971086Z",
+    "client": "turing",
+    "url": "",
+    "raw_jd": "Medicine Physician (MD/DO/Doctoral study/PhD)\nRole\nMedicine Physician (MD/DO/Doctoral study/PhD)\nGeo\nIndia, Pakistan, Nigeria, Kenya, Egypt, Ghana, Bangladesh, Turkey, Mexico\nYoE\n1+ years\nEngagement Type\nFull Time Contract (1 months)\nTotal number of positions\n150\nStart Date\nNot Confirmed. Bench role\nMax Rate Range\n$150 Per hour\nVetting\nOnline assessment\nSkill\nMinimum 1 year of clinical practice experience in the US, Canada, or Western Europe\nBackground in any of the following areas is preferred: Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties\nStrong communication skills and ability to collaborate effectively with technical research teams\nAvailability\nFull Time Availability (8 Hrs) and 4 hours overlap with PST time zone\nAbout Turing\nBased in San Francisco, California, Turing is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports customers in two ways: first, by accelerating frontier research with high-quality data, advanced training pipelines, plus top AI researchers who specialize in coding, reasoning, STEM, multilinguality, multimodality, and agents; and second, by applying that expertise to help enterprises transform AI from proof of concept into proprietary intelligence with systems that perform reliably, deliver measurable impact, and drive lasting results on the P&L\nWhat does day-to-day look like:\nAs a medical specialist, you will bring your subject-matter knowledge to help train and evaluate frontier AI systems. Work might include:\nDesign and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews\nReview AI-generated answers, assessing their accuracy, depth of reasoning, and clarity\nSpot knowledge gaps and edge cases, and propose improvements to strengthen model performance\nCollaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks\nProvide structured feedback and insights that guide the development of next-generation AI for medicine and science\nCandidate Requirements:\nAttending physicians are welcome to apply\nMinimum 1 year of clinical practice experience in the US, Canada, or Western Europe\nBackground in any of the following areas is preferred: Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties\nStrong communication skills and ability to collaborate effectively with technical research teams\nEngagement details:\nCommitment: flexible engagement, remote working, up to 30 hrs/week\nDuration: 1 month, with potential extensions based on performance and fit",
+    "role": "Medicine Physician",
+    "raw_jd_snippet": "Medicine Physician (MD/DO/Doctoral study/PhD)\nRole\nMedicine Physician (MD/DO/Doctoral study/PhD)\nGeo\nIndia, Pakistan, Nigeria, Kenya, Egypt, Ghana, Ba...",
+    "cache_key": "7a6e22eea3094ea809d8e139f5bf54aa",
+    "data": {
+      "jd": "<b>Position:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br><b>Location:</b> Remote<br>\n<b>Commitment:</b> 10-40 hrs/week<br>\n<br>\n\n<b>Role Responsibilities:</b>\n<ul>\n<li>Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.</li>\n<li>Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.</li>\n<li>Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.</li>\n<li>Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.</li>\n<li>Provide structured feedback and insights that guide the development of next-generation AI for medicine and science.</li>\n</ul>\n<br>\n\n<b>Requirements:</b>\n<ul>\n<li>Attending physicians are welcome to apply.</li>\n<li>Possess a background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties.</li>\n<li>Demonstrate strong communication skills and ability to collaborate effectively with technical research teams.</li>\n</ul>\n<br>\n\n<b>Application Process</b>\n<ul>\n<li>Apply via Easy Apply</li>\n<li>Check email for application form</li>\n</ul>\n<br>\n#LI-CH",
+      "email": "I’m from Crossing Hurdles, a global recruitment firm. We would like to refer you for an exciting short-term contract opportunity with Turing as an <b>Medicine Physician</b>, where you will help train and evaluate frontier AI systems in medical contexts.<br>\n<br>\n<b>Organization:</b> Turing<br>\n<b>Referral Partner:</b> Crossing Hurdles<br>\n<b>Role:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br>\n<b>Location:</b> Remote<br>\n<b>Work Schedule:</b> 10-40 hrs/week<br>\n<b>Start Date:</b> Immediate<br>\n<b>Application Form Link – Apply Here</b><br>\n<br>\n<b>About Turing:</b><br>\nTuring is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports organizations by accelerating frontier AI research through high-quality data, advanced training pipelines, and expert talent specializing in STEM, reasoning, multilinguality, multimodality, coding, and AI agents.<br>\n<br>\n<b>Role Overview:</b><br>\nThe candidate will leverage their medical expertise to train and evaluate AI systems, impacting the development of advanced medical solutions. They will collaborate with AI researchers to enhance model performance and provide insights for next-generation AI in medicine.<br>\n<br>\n<b>What You'll Work On:</b><br>\n<ul>\n<li>Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.</li>\n<li>Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.</li>\n<li>Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.</li>\n<li>Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.</li>\n<li>Provide structured feedback and insights that guide the development of next-generation AI for medicine and science.</li>\n</ul>\n<br>\n<b>Who This Is For:</b><br>\n<ul>\n<li>Attending physicians are welcome to apply.</li>\n<li>Possess a background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties.</li>\n<li>Demonstrate strong communication skills and ability to collaborate effectively with technical research teams.</li>\n</ul>\n<br>\n<b>Application Process:</b><br>\nComplete the application form by clicking here to apply for the role.<br>\n<br>\n<b>Assessment Process (After Shortlisting):</b><br>\nShortlisted candidates will receive a Take Home Assessment. Candidates who successfully clear the assessment will proceed to the Delivery Review stage. Successful candidates will then be contacted regarding onboarding.",
+      "inmail_draft": null,
+      "email_draft": "I’m from Crossing Hurdles, a global recruitment firm. We would like to refer you for an exciting short-term contract opportunity with Turing as an <b>Medicine Physician</b>, where you will help train and evaluate frontier AI systems in medical contexts.<br>\n<br>\n<b>Organization:</b> Turing<br>\n<b>Referral Partner:</b> Crossing Hurdles<br>\n<b>Role:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br>\n<b>Location:</b> Remote<br>\n<b>Work Schedule:</b> 10-40 hrs/week<br>\n<b>Start Date:</b> Immediate<br>\n<b>Application Form Link – Apply Here</b><br>\n<br>\n<b>About Turing:</b><br>\nTuring is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports organizations by accelerating frontier AI research through high-quality data, advanced training pipelines, and expert talent specializing in STEM, reasoning, multilinguality, multimodality, coding, and AI agents.<br>\n<br>\n<b>Role Overview:</b><br>\nThe candidate will leverage their medical expertise to train and evaluate AI systems, impacting the development of advanced medical solutions. They will collaborate with AI researchers to enhance model performance and provide insights for next-generation AI in medicine.<br>\n<br>\n<b>What You'll Work On:</b><br>\n<ul>\n<li>Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.</li>\n<li>Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.</li>\n<li>Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.</li>\n<li>Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.</li>\n<li>Provide structured feedback and insights that guide the development of next-generation AI for medicine and science.</li>\n</ul>\n<br>\n<b>Who This Is For:</b><br>\n<ul>\n<li>Attending physicians are welcome to apply.</li>\n<li>Possess a background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties.</li>\n<li>Demonstrate strong communication skills and ability to collaborate effectively with technical research teams.</li>\n</ul>\n<br>\n<b>Application Process:</b><br>\nComplete the application form by clicking here to apply for the role.<br>\n<br>\n<b>Assessment Process (After Shortlisting):</b><br>\nShortlisted candidates will receive a Take Home Assessment. Candidates who successfully clear the assessment will proceed to the Delivery Review stage. Successful candidates will then be contacted regarding onboarding.",
+      "subject": "Medicine Physician | $150/hr Remote | Turing x AI Labs",
+      "linkedin_title": "Medicine Physician | Remote",
+      "skills": [
+        "Clinical Practice",
+        "Diagnostic Evaluation",
+        "Case Review",
+        "Research Methods"
+      ],
+      "job_functions": [
+        "Health care provider",
+        "Research",
+        "Consulting"
+      ],
+      "industries": [
+        "Hospitals and Health Care",
+        "Medical Practices",
+        "Research Services"
+      ],
+      "version": "v2",
+      "titles": [
+        "Medical Research Physician",
+        "Clinical Evaluation Physician",
+        "Medical Advisor",
+        "Physician Consultant"
+      ],
+      "structured_data": {
+        "role": "Medicine Physician",
+        "type": "Full Time Contract",
+        "pay": "$150 Per hour",
+        "location": "Remote",
+        "commitment": "10-40 hrs/week",
+        "start_date": "Immediate",
+        "role_responsibilities": [
+          "Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.",
+          "Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.",
+          "Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.",
+          "Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.",
+          "Provide structured feedback and insights that guide the development of next-generation AI for medicine and science."
+        ],
+        "requirements": [
+          "Attending physicians are welcome to apply.",
+          "Possess a background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties.",
+          "Demonstrate strong communication skills and ability to collaborate effectively with technical research teams."
+        ],
+        "preferred_qualifications": [],
+        "role_overview": "The candidate will leverage their medical expertise to train and evaluate AI systems, impacting the development of advanced medical solutions. They will collaborate with AI researchers to enhance model performance and provide insights for next-generation AI in medicine.",
+        "who_this_is_for": "This role is ideal for experienced physicians with a background in clinical practice and a passion for AI. Candidates should have expertise in Internal Medicine, Primary Care, or related fields and be eager to collaborate with technical teams.",
+        "where_you_will": "help train and evaluate frontier AI systems in medical contexts",
+        "client": "Turing",
+        "client_desc": "Turing is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports organizations by accelerating frontier AI research through high-quality data, advanced training pipelines, and expert talent specializing in STEM, reasoning, multilinguality, multimodality, coding, and AI agents.",
+        "link": "",
+        "suggested_titles": [
+          "Medical Research Physician",
+          "Clinical Evaluation Physician",
+          "Medical Advisor",
+          "Physician Consultant"
+        ],
+        "subject": "Opportunity for Medicine Physicians in AI",
+        "linkedin_title": "Medicine Physician for AI Systems",
+        "skills": [
+          "Clinical Practice",
+          "Diagnostic Evaluation",
+          "Case Review",
+          "Research Methods"
+        ],
+        "job_functions": [
+          "Health care provider",
+          "Research",
+          "Consulting"
+        ],
+        "industries": [
+          "Hospitals and Health Care",
+          "Medical Practices",
+          "Research Services"
+        ],
+        "justifications": {
+          "Clinical AI Specialist": "Emphasizes leveraging clinical expertise to evaluate and improve frontier AI systems in medicine.",
+          "Medical Research Physician": "Highlights the integration of clinical practice with research for assessing AI-generated medical insights.",
+          "Clinical Evaluation Physician": "Focuses on reviewing AI diagnostic cases and ensuring accuracy in complex clinical scenarios.",
+          "Medical Advisor": "Reflects advisory expertise in medical problem-solving and guiding improvements in AI model outputs.",
+          "Physician Consultant": "Signals a consultative role applying clinical experience to shape advanced medical AI research.",
+          "Clinical Practice": "Directly reflects the requirement of at least one year of clinical experience in Western regions.",
+          "Diagnostic Evaluation": "Crucial for assessing AI-generated diagnostic scenarios and ensuring precision in clinical outcomes.",
+          "Case Review": "Essential for analyzing and validating the accuracy and depth of AI-reviewed medical cases.",
+          "Research Methods": "Key for providing structured feedback and methodological evaluations within AI research.",
+          "Health care provider": "Directly extracted to match the clinical background requirement from experienced physicians.",
+          "Research": "Aligns with the role's focus on frontier AI research and structured evaluation of medical cases.",
+          "Consulting": "Represents the advisory function in guiding AI training and clinical problem improvement strategies.",
+          "Hospitals and Health Care": "Connects to the candidate’s extensive clinical practice background in established health systems.",
+          "Medical Practices": "Matches the specialized medical fields such as internal medicine and primary care preferred in the role.",
+          "Research Services": "Ties directly to the role's focus on advancing AI through rigorous clinical research evaluations."
+        }
+      },
+      "justifications": {
+        "Medical Research Physician": "Highlights the integration of clinical practice with research for assessing AI-generated medical insights.",
+        "Clinical Evaluation Physician": "Focuses on reviewing AI diagnostic cases and ensuring accuracy in complex clinical scenarios.",
+        "Medical Advisor": "Reflects advisory expertise in medical problem-solving and guiding improvements in AI model outputs.",
+        "Physician Consultant": "Signals a consultative role applying clinical experience to shape advanced medical AI research.",
+        "Clinical Practice": "Directly reflects the requirement of at least one year of clinical experience in Western regions.",
+        "Diagnostic Evaluation": "Crucial for assessing AI-generated diagnostic scenarios and ensuring precision in clinical outcomes.",
+        "Case Review": "Essential for analyzing and validating the accuracy and depth of AI-reviewed medical cases.",
+        "Research Methods": "Key for providing structured feedback and methodological evaluations within AI research.",
+        "Health care provider": "Directly extracted to match the clinical background requirement from experienced physicians.",
+        "Research": "Aligns with the role's focus on frontier AI research and structured evaluation of medical cases.",
+        "Consulting": "Represents the advisory function in guiding AI training and clinical problem improvement strategies.",
+        "Hospitals and Health Care": "Connects to the candidate’s extensive clinical practice background in established health systems.",
+        "Medical Practices": "Matches the specialized medical fields such as internal medicine and primary care preferred in the role.",
+        "Research Services": "Ties directly to the role's focus on advancing AI through rigorous clinical research evaluations."
+      },
+      "is_domain_page": false
+    }
+  },
+  {
+    "id": "0165fa5e-d2cc-40ea-9d53-544016c27a02",
+    "timestamp": "2026-07-27T07:24:40.745835Z",
+    "client": "turing",
+    "url": "sdfghjkl;",
+    "raw_jd": "Medicine Physician (MD/DO/Doctoral study/PhD)\nRole\nMedicine Physician (MD/DO/Doctoral study/PhD)\nGeo\nIndia, Pakistan, Nigeria, Kenya, Egypt, Ghana, Bangladesh, Turkey, Mexico\nYoE\n1+ years\nEngagement Type\nFull Time Contract (1 months)\nTotal number of positions\n150\nStart Date\nNot Confirmed. Bench role\nMax Rate Range\n$150 Per hour\nVetting\nOnline assessment\nSkill\nMinimum 1 year of clinical practice experience in the US, Canada, or Western Europe\nBackground in any of the following areas is preferred: Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties\nStrong communication skills and ability to collaborate effectively with technical research teams\nAvailability\nFull Time Availability (8 Hrs) and 4 hours overlap with PST time zone\nAbout Turing\nBased in San Francisco, California, Turing is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports customers in two ways: first, by accelerating frontier research with high-quality data, advanced training pipelines, plus top AI researchers who specialize in coding, reasoning, STEM, multilinguality, multimodality, and agents; and second, by applying that expertise to help enterprises transform AI from proof of concept into proprietary intelligence with systems that perform reliably, deliver measurable impact, and drive lasting results on the P&L\nWhat does day-to-day look like:\nAs a medical specialist, you will bring your subject-matter knowledge to help train and evaluate frontier AI systems. Work might include:\nDesign and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews\nReview AI-generated answers, assessing their accuracy, depth of reasoning, and clarity\nSpot knowledge gaps and edge cases, and propose improvements to strengthen model performance\nCollaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks\nProvide structured feedback and insights that guide the development of next-generation AI for medicine and science\nCandidate Requirements:\nAttending physicians are welcome to apply\nMinimum 1 year of clinical practice experience in the US, Canada, or Western Europe\nBackground in any of the following areas is preferred: Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties\nStrong communication skills and ability to collaborate effectively with technical research teams\nEngagement details:\nCommitment: flexible engagement, remote working, up to 30 hrs/week\nDuration: 1 month, with potential extensions based on performance and fit\nMedicine Physician (MD/DO/Doctoral study/PhD)\nRole\nMedicine Physician (MD/DO/Doctoral study/PhD)\nGeo\nIndia, Pakistan, Nigeria, Kenya, Egypt, Ghana, Bangladesh, Turkey, Mexico\nYoE\n1+ years\nEngagement Type\nFull Time Contract (1 months)\nTotal number of positions\n150\nStart Date\nNot Confirmed. Bench role\nMax Rate Range\n$150 Per hour\nVetting\nOnline assessment\nSkill\nMinimum 1 year of clinical practice experience in the US, Canada, or Western Europe\nBackground in any of the following areas is preferred: Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties\nStrong communication skills and ability to collaborate effectively with technical research teams\nAvailability\nFull Time Availability (8 Hrs) and 4 hours overlap with PST time zone\nAbout Turing\nBased in San Francisco, California, Turing is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports customers in two ways: first, by accelerating frontier research with high-quality data, advanced training pipelines, plus top AI researchers who specialize in coding, reasoning, STEM, multilinguality, multimodality, and agents; and second, by applying that expertise to help enterprises transform AI from proof of concept into proprietary intelligence with systems that perform reliably, deliver measurable impact, and drive lasting results on the P&L\nWhat does day-to-day look like:\nAs a medical specialist, you will bring your subject-matter knowledge to help train and evaluate frontier AI systems. Work might include:\nDesign and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews\nReview AI-generated answers, assessing their accuracy, depth of reasoning, and clarity\nSpot knowledge gaps and edge cases, and propose improvements to strengthen model performance\nCollaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks\nProvide structured feedback and insights that guide the development of next-generation AI for medicine and science\nCandidate Requirements:\nAttending physicians are welcome to apply\nMinimum 1 year of clinical practice experience in the US, Canada, or Western Europe\nBackground in any of the following areas is preferred: Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties\nStrong communication skills and ability to collaborate effectively with technical research teams\nEngagement details:\nCommitment: flexible engagement, remote working, up to 30 hrs/week\nDuration: 1 month, with potential extensions based on performance and fit",
+    "role": "Medicine Physician",
+    "raw_jd_snippet": "Medicine Physician (MD/DO/Doctoral study/PhD)\nRole\nMedicine Physician (MD/DO/Doctoral study/PhD)\nGeo\nIndia, Pakistan, Nigeria, Kenya, Egypt, Ghana, Ba...",
+    "cache_key": "55b957b574fe7ab78865462af36aa7c6",
+    "data": {
+      "jd": "<b>Position:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br><b>Location:</b> Remote<br>\n<b>Commitment:</b> 10-40 hrs/week<br>\n<br>\n\n<b>Role Responsibilities:</b>\n<ul>\n<li>Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.</li>\n<li>Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.</li>\n<li>Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.</li>\n<li>Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.</li>\n<li>Provide structured feedback and insights that guide the development of next-generation AI for medicine and science.</li>\n</ul>\n<br>\n\n<b>Requirements:</b>\n<ul>\n<li>Background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties is preferred.</li>\n<li>Strong communication skills and ability to collaborate effectively with technical research teams.</li>\n<li>Attending physicians are welcome to apply.</li>\n</ul>\n<br>\n\n<b>Application Process</b>\n<ul>\n<li>Apply/Easy Apply and check email for application form</li>\n<li>Fill Google form</li>\n<li>Online Assessment</li>\n<li>Delivery Review</li>\n<li>Shortlisting</li>\n</ul>\n<br>\n#LI-CH",
+      "email": "I’m from Crossing Hurdles, a global recruitment firm. We would like to refer you for an exciting short-term contract opportunity with Turing as an <b>Medicine Physician</b>, where you will help train and evaluate frontier AI systems using medical expertise.<br>\n<br>\n<b>Organization:</b> Turing<br>\n<b>Referral Partner:</b> Crossing Hurdles<br>\n<b>Role:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br>\n<b>Location:</b> Remote<br>\n<b>Work Schedule:</b> 10-40 hrs/week<br>\n<b>Start Date:</b> Immediate<br>\n<b>Application Form Link – <a href=\"sdfghjkl;\" style=\"color: #0066cc;\">Apply Here</a></b><br>\n<br>\n<b>About Turing:</b><br>\nTuring is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports organizations by accelerating frontier AI research through high-quality data, advanced training pipelines, and expert talent specializing in STEM, reasoning, multilinguality, multimodality, coding, and AI agents.<br>\n<br>\n<b>Role Overview:</b><br>\nThe candidate will leverage medical expertise to train and evaluate AI systems, impacting the development of next-generation AI for medicine. Responsibilities include solving complex medical problems, reviewing AI outputs, and collaborating with research teams to enhance AI performance.<br>\n<br>\n<b>What You'll Work On:</b><br>\n<ul>\n<li>Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.</li>\n<li>Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.</li>\n<li>Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.</li>\n<li>Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.</li>\n<li>Provide structured feedback and insights that guide the development of next-generation AI for medicine and science.</li>\n</ul>\n<br>\n<b>Who This Is For:</b><br>\n<ul>\n<li>Background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties is preferred.</li>\n<li>Strong communication skills and ability to collaborate effectively with technical research teams.</li>\n<li>Attending physicians are welcome to apply.</li>\n</ul>\n<br>\n<b>Application Process:</b><br>\nComplete the application form by <a href=\"sdfghjkl;\" style=\"color: #0066cc;\">clicking here</a> to apply for the role.<br>\n<br>\n<b>Assessment Process (After Shortlisting):</b><br>\nShortlisted candidates will receive a Take Home Assessment. Candidates who successfully clear the assessment will proceed to the Delivery Review stage. Successful candidates will then be contacted regarding onboarding.",
+      "inmail_draft": null,
+      "email_draft": "I’m from Crossing Hurdles, a global recruitment firm. We would like to refer you for an exciting short-term contract opportunity with Turing as an <b>Medicine Physician</b>, where you will help train and evaluate frontier AI systems using medical expertise.<br>\n<br>\n<b>Organization:</b> Turing<br>\n<b>Referral Partner:</b> Crossing Hurdles<br>\n<b>Role:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br>\n<b>Location:</b> Remote<br>\n<b>Work Schedule:</b> 10-40 hrs/week<br>\n<b>Start Date:</b> Immediate<br>\n<b>Application Form Link – <a href=\"sdfghjkl;\" style=\"color: #0066cc;\">Apply Here</a></b><br>\n<br>\n<b>About Turing:</b><br>\nTuring is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports organizations by accelerating frontier AI research through high-quality data, advanced training pipelines, and expert talent specializing in STEM, reasoning, multilinguality, multimodality, coding, and AI agents.<br>\n<br>\n<b>Role Overview:</b><br>\nThe candidate will leverage medical expertise to train and evaluate AI systems, impacting the development of next-generation AI for medicine. Responsibilities include solving complex medical problems, reviewing AI outputs, and collaborating with research teams to enhance AI performance.<br>\n<br>\n<b>What You'll Work On:</b><br>\n<ul>\n<li>Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.</li>\n<li>Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.</li>\n<li>Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.</li>\n<li>Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.</li>\n<li>Provide structured feedback and insights that guide the development of next-generation AI for medicine and science.</li>\n</ul>\n<br>\n<b>Who This Is For:</b><br>\n<ul>\n<li>Background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties is preferred.</li>\n<li>Strong communication skills and ability to collaborate effectively with technical research teams.</li>\n<li>Attending physicians are welcome to apply.</li>\n</ul>\n<br>\n<b>Application Process:</b><br>\nComplete the application form by <a href=\"sdfghjkl;\" style=\"color: #0066cc;\">clicking here</a> to apply for the role.<br>\n<br>\n<b>Assessment Process (After Shortlisting):</b><br>\nShortlisted candidates will receive a Take Home Assessment. Candidates who successfully clear the assessment will proceed to the Delivery Review stage. Successful candidates will then be contacted regarding onboarding.",
+      "subject": "Medicine Physician | $150/hr Remote | Turing x AI Labs",
+      "linkedin_title": "Medicine Physician | Remote",
+      "skills": [
+        "Internal Medicine",
+        "Primary Care",
+        "Pediatrics",
+        "Surgery",
+        "Anesthesia"
+      ],
+      "job_functions": [
+        "Health care provider",
+        "Research",
+        "Training"
+      ],
+      "industries": [
+        "Medical Practices",
+        "Technology, Information and Media",
+        "Research Services"
+      ],
+      "version": "v2",
+      "titles": [
+        "Attending Physician",
+        "Clinical Research Physician",
+        "Medical Consultant",
+        "Medical Advisor",
+        "Clinical Consultant"
+      ],
+      "structured_data": {
+        "role": "Medicine Physician",
+        "type": "Full Time Contract",
+        "pay": "$150 Per hour",
+        "location": "Remote",
+        "commitment": "10-40 hrs/week",
+        "start_date": "Immediate",
+        "role_responsibilities": [
+          "Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.",
+          "Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.",
+          "Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.",
+          "Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.",
+          "Provide structured feedback and insights that guide the development of next-generation AI for medicine and science."
+        ],
+        "requirements": [
+          "Background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties is preferred.",
+          "Strong communication skills and ability to collaborate effectively with technical research teams.",
+          "Attending physicians are welcome to apply."
+        ],
+        "preferred_qualifications": [],
+        "role_overview": "The candidate will leverage medical expertise to train and evaluate AI systems, impacting the development of next-generation AI for medicine. Responsibilities include solving complex medical problems, reviewing AI outputs, and collaborating with research teams to enhance AI performance.",
+        "who_this_is_for": "This role is ideal for experienced physicians with a background in clinical practice, interested in applying their expertise to AI development. Suitable for those with strong communication skills and a collaborative mindset, looking to work in a flexible, remote setting.",
+        "where_you_will": "help train and evaluate frontier AI systems using medical expertise",
+        "client": "Turing",
+        "client_desc": "Turing is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports organizations by accelerating frontier AI research through high-quality data, advanced training pipelines, and expert talent specializing in STEM, reasoning, multilinguality, multimodality, coding, and AI agents.",
+        "link": "sdfghjkl;",
+        "suggested_titles": [
+          "Attending Physician",
+          "Clinical Research Physician",
+          "Medical Consultant",
+          "Medical Advisor",
+          "Clinical Consultant"
+        ],
+        "subject": "Opportunity for Medicine Physicians in AI Development",
+        "linkedin_title": "Medicine Physician for AI System Development",
+        "skills": [
+          "Internal Medicine",
+          "Primary Care",
+          "Pediatrics",
+          "Surgery",
+          "Anesthesia"
+        ],
+        "job_functions": [
+          "Health care provider",
+          "Research",
+          "Training"
+        ],
+        "industries": [
+          "Medical Practices",
+          "Technology, Information and Media",
+          "Research Services"
+        ],
+        "justifications": {
+          "Attending Physician": "Invites physicians with proven clinical practice experience as specified for the role.",
+          "Clinical Research Physician": "Matches the need for evaluating advanced diagnostic scenarios and collaborating with AI research teams.",
+          "Medical Consultant": "Emphasizes providing expert medical feedback on AI-generated clinical answers.",
+          "Medical Advisor": "Highlights the advisory role in guiding AI training and evaluation strategies.",
+          "Clinical Consultant": "Reflects oversight in clinical case reviews and diagnosing AI outputs.",
+          "Internal Medicine": "Preferred specialty ensuring strong familiarity with complex diagnostic case reviews mentioned.",
+          "Primary Care": "Aligns with the background requirement to manage routine and complex clinical evaluations.",
+          "Pediatrics": "Directly relates to one of the preferred areas for clinical practice experience in the description.",
+          "Surgery": "Supports assessment of procedural and diagnostic cases during AI system evaluations.",
+          "Anesthesia": "Relevant for roles involving diagnostic assessments in procedural and specialty medical cases.",
+          "Health care provider": "Directly reflects the clinical expertise required for patient care and diagnostic responsibilities.",
+          "Research": "Captures the emphasis on advanced research and AI system evaluation outlined in the description.",
+          "Training": "Pertinent to the role’s need for shaping training methods and evaluation benchmarks for AI.",
+          "Medical Practices": "Directly correlates with the clinical settings and patient care experience expected.",
+          "Technology, Information and Media": "Relates to the digital innovation and AI systems the role is tasked with evaluating.",
+          "Research Services": "Reflects the central focus on clinical case research and AI-driven diagnostic analysis."
+        }
+      },
+      "justifications": {
+        "Attending Physician": "Invites physicians with proven clinical practice experience as specified for the role.",
+        "Clinical Research Physician": "Matches the need for evaluating advanced diagnostic scenarios and collaborating with AI research teams.",
+        "Medical Consultant": "Emphasizes providing expert medical feedback on AI-generated clinical answers.",
+        "Medical Advisor": "Highlights the advisory role in guiding AI training and evaluation strategies.",
+        "Clinical Consultant": "Reflects oversight in clinical case reviews and diagnosing AI outputs.",
+        "Internal Medicine": "Preferred specialty ensuring strong familiarity with complex diagnostic case reviews mentioned.",
+        "Primary Care": "Aligns with the background requirement to manage routine and complex clinical evaluations.",
+        "Pediatrics": "Directly relates to one of the preferred areas for clinical practice experience in the description.",
+        "Surgery": "Supports assessment of procedural and diagnostic cases during AI system evaluations.",
+        "Anesthesia": "Relevant for roles involving diagnostic assessments in procedural and specialty medical cases.",
+        "Health care provider": "Directly reflects the clinical expertise required for patient care and diagnostic responsibilities.",
+        "Research": "Captures the emphasis on advanced research and AI system evaluation outlined in the description.",
+        "Training": "Pertinent to the role’s need for shaping training methods and evaluation benchmarks for AI.",
+        "Medical Practices": "Directly correlates with the clinical settings and patient care experience expected.",
+        "Technology, Information and Media": "Relates to the digital innovation and AI systems the role is tasked with evaluating.",
+        "Research Services": "Reflects the central focus on clinical case research and AI-driven diagnostic analysis."
+      },
+      "is_domain_page": false
+    }
+  },
+  {
+    "id": "e6908082-0c72-489f-b961-7b1e9a31a39b",
+    "timestamp": "2026-07-27T07:15:44.266538Z",
+    "client": "turing",
+    "url": "lkjhgfx",
+    "raw_jd": "Medicine Physician (MD/DO/Doctoral study/PhD)\nRole\nMedicine Physician (MD/DO/Doctoral study/PhD)\nGeo\nIndia, Pakistan, Nigeria, Kenya, Egypt, Ghana, Bangladesh, Turkey, Mexico\nYoE\n1+ years\nEngagement Type\nFull Time Contract (1 months)\nTotal number of positions\n150\nStart Date\nNot Confirmed. Bench role\nMax Rate Range\n$150 Per hour\nVetting\nOnline assessment\nSkill\nMinimum 1 year of clinical practice experience in the US, Canada, or Western Europe\nBackground in any of the following areas is preferred: Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties\nStrong communication skills and ability to collaborate effectively with technical research teams\nAvailability\nFull Time Availability (8 Hrs) and 4 hours overlap with PST time zone\nAbout Turing\nBased in San Francisco, California, Turing is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports customers in two ways: first, by accelerating frontier research with high-quality data, advanced training pipelines, plus top AI researchers who specialize in coding, reasoning, STEM, multilinguality, multimodality, and agents; and second, by applying that expertise to help enterprises transform AI from proof of concept into proprietary intelligence with systems that perform reliably, deliver measurable impact, and drive lasting results on the P&L\nWhat does day-to-day look like:\nAs a medical specialist, you will bring your subject-matter knowledge to help train and evaluate frontier AI systems. Work might include:\nDesign and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews\nReview AI-generated answers, assessing their accuracy, depth of reasoning, and clarity\nSpot knowledge gaps and edge cases, and propose improvements to strengthen model performance\nCollaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks\nProvide structured feedback and insights that guide the development of next-generation AI for medicine and science\nCandidate Requirements:\nAttending physicians are welcome to apply\nMinimum 1 year of clinical practice experience in the US, Canada, or Western Europe\nBackground in any of the following areas is preferred: Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties\nStrong communication skills and ability to collaborate effectively with technical research teams\nEngagement details:\nCommitment: flexible engagement, remote working, up to 30 hrs/week\nDuration: 1 month, with potential extensions based on performance and fit",
+    "role": "Medicine Physician",
+    "raw_jd_snippet": "Medicine Physician (MD/DO/Doctoral study/PhD)\nRole\nMedicine Physician (MD/DO/Doctoral study/PhD)\nGeo\nIndia, Pakistan, Nigeria, Kenya, Egypt, Ghana, Ba...",
+    "cache_key": "05581b03b69340b118d4737f7b17c639",
+    "data": {
+      "jd": "<b>Position:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br><b>Location:</b> Remote<br>\n<b>Commitment:</b> 10-40 hrs/week<br>\n<br>\n\n<b>Role Responsibilities:</b>\n<ul>\n<li>Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.</li>\n<li>Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.</li>\n<li>Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.</li>\n<li>Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.</li>\n<li>Provide structured feedback and insights that guide the development of next-generation AI for medicine and science.</li>\n</ul>\n<br>\n\n<b>Requirements:</b>\n<ul>\n<li>Attending physicians are welcome to apply.</li>\n<li>Possess a background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties.</li>\n<li>Demonstrate strong communication skills and ability to collaborate effectively with technical research teams.</li>\n</ul>\n<br>\n\n<b>Application Process</b>\n<ul>\n<li>Apply/Easy Apply and check email for application form</li>\n<li>Fill Google form</li>\n<li>Online Assessment</li>\n<li>Delivery Review</li>\n<li>Shortlisting</li>\n</ul>\n<br>\n#LI-CH",
+      "email": "I’m from Crossing Hurdles, a global recruitment firm. We would like to refer you for an exciting short-term contract opportunity with Turing as an <b>Medicine Physician</b>, where you will help train and evaluate frontier AI systems in medical contexts.<br>\n<br>\n<b>Organization:</b> Turing<br>\n<b>Referral Partner:</b> Crossing Hurdles<br>\n<b>Role:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br>\n<b>Location:</b> Remote<br>\n<b>Work Schedule:</b> 10-40 hrs/week<br>\n<b>Start Date:</b> Immediate<br>\n<b>Application Form Link – <a href=\"lkjhgfx\" style=\"color: #0066cc;\">Apply Here</a></b><br>\n<br>\n<b>About Turing:</b><br>\nTuring is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports organizations by accelerating frontier AI research through high-quality data, advanced training pipelines, and expert talent specializing in STEM, reasoning, multilinguality, multimodality, coding, and AI agents.<br>\n<br>\n<b>Role Overview:</b><br>\nThe candidate will leverage their medical expertise to train and evaluate AI systems, impacting the development of advanced medical solutions. They will collaborate with AI researchers to enhance model performance and provide insights for next-generation AI in medicine.<br>\n<br>\n<b>What You'll Work On:</b><br>\n<ul>\n<li>Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.</li>\n<li>Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.</li>\n<li>Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.</li>\n<li>Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.</li>\n<li>Provide structured feedback and insights that guide the development of next-generation AI for medicine and science.</li>\n</ul>\n<br>\n<b>Who This Is For:</b><br>\n<ul>\n<li>Attending physicians are welcome to apply.</li>\n<li>Possess a background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties.</li>\n<li>Demonstrate strong communication skills and ability to collaborate effectively with technical research teams.</li>\n</ul>\n<br>\n<b>Application Process:</b><br>\nComplete the application form by <a href=\"lkjhgfx\" style=\"color: #0066cc;\">clicking here</a> to apply for the role.<br>\n<br>\n<b>Assessment Process (After Shortlisting):</b><br>\nShortlisted candidates will receive a Take Home Assessment. Candidates who successfully clear the assessment will proceed to the Delivery Review stage. Successful candidates will then be contacted regarding onboarding.",
+      "inmail_draft": null,
+      "email_draft": "I’m from Crossing Hurdles, a global recruitment firm. We would like to refer you for an exciting short-term contract opportunity with Turing as an <b>Medicine Physician</b>, where you will help train and evaluate frontier AI systems in medical contexts.<br>\n<br>\n<b>Organization:</b> Turing<br>\n<b>Referral Partner:</b> Crossing Hurdles<br>\n<b>Role:</b> Medicine Physician<br>\n<b>Type:</b> Full Time Contract<br>\n<b>Compensation:</b> $150 Per hour<br>\n<b>Location:</b> Remote<br>\n<b>Work Schedule:</b> 10-40 hrs/week<br>\n<b>Start Date:</b> Immediate<br>\n<b>Application Form Link – <a href=\"lkjhgfx\" style=\"color: #0066cc;\">Apply Here</a></b><br>\n<br>\n<b>About Turing:</b><br>\nTuring is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports organizations by accelerating frontier AI research through high-quality data, advanced training pipelines, and expert talent specializing in STEM, reasoning, multilinguality, multimodality, coding, and AI agents.<br>\n<br>\n<b>Role Overview:</b><br>\nThe candidate will leverage their medical expertise to train and evaluate AI systems, impacting the development of advanced medical solutions. They will collaborate with AI researchers to enhance model performance and provide insights for next-generation AI in medicine.<br>\n<br>\n<b>What You'll Work On:</b><br>\n<ul>\n<li>Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.</li>\n<li>Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.</li>\n<li>Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.</li>\n<li>Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.</li>\n<li>Provide structured feedback and insights that guide the development of next-generation AI for medicine and science.</li>\n</ul>\n<br>\n<b>Who This Is For:</b><br>\n<ul>\n<li>Attending physicians are welcome to apply.</li>\n<li>Possess a background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties.</li>\n<li>Demonstrate strong communication skills and ability to collaborate effectively with technical research teams.</li>\n</ul>\n<br>\n<b>Application Process:</b><br>\nComplete the application form by <a href=\"lkjhgfx\" style=\"color: #0066cc;\">clicking here</a> to apply for the role.<br>\n<br>\n<b>Assessment Process (After Shortlisting):</b><br>\nShortlisted candidates will receive a Take Home Assessment. Candidates who successfully clear the assessment will proceed to the Delivery Review stage. Successful candidates will then be contacted regarding onboarding.",
+      "subject": "Medicine Physician | $150/hr Remote | Turing x AI Labs",
+      "linkedin_title": "Medicine Physician | Remote",
+      "skills": [
+        "Clinical Practice",
+        "Internal Medicine",
+        "Primary Care",
+        "Pediatrics",
+        "Surgery"
+      ],
+      "job_functions": [
+        "Health care provider",
+        "Research",
+        "Training"
+      ],
+      "industries": [
+        "Hospitals and Health Care",
+        "Medical Practices",
+        "Technology, Information and Media"
+      ],
+      "version": "v2",
+      "titles": [
+        "Clinical Physician",
+        "Medical Specialist",
+        "Clinical Research Physician",
+        "Primary Care Physician",
+        "Internal Medicine Physician"
+      ],
+      "structured_data": {
+        "role": "Medicine Physician",
+        "type": "Full Time Contract",
+        "pay": "$150 Per hour",
+        "location": "Remote",
+        "commitment": "10-40 hrs/week",
+        "start_date": "Immediate",
+        "role_responsibilities": [
+          "Design and solve advanced medical problems, ranging from diagnostic scenarios to complex clinical case reviews.",
+          "Review AI-generated answers, assessing their accuracy, depth of reasoning, and clarity.",
+          "Spot knowledge gaps and edge cases, and propose improvements to strengthen model performance.",
+          "Collaborate with AI researchers and fellow medical experts to shape training methods, evaluation strategies, and benchmarks.",
+          "Provide structured feedback and insights that guide the development of next-generation AI for medicine and science."
+        ],
+        "requirements": [
+          "Attending physicians are welcome to apply.",
+          "Possess a background in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties.",
+          "Demonstrate strong communication skills and ability to collaborate effectively with technical research teams."
+        ],
+        "preferred_qualifications": [],
+        "role_overview": "The candidate will leverage their medical expertise to train and evaluate AI systems, impacting the development of advanced medical solutions. They will collaborate with AI researchers to enhance model performance and provide insights for next-generation AI in medicine.",
+        "who_this_is_for": "This role is ideal for experienced physicians with a background in clinical practice and a passion for AI. Candidates should have expertise in Internal Medicine, Primary Care, Pediatrics, Surgery, Anesthesia, or Diagnostic Specialties and be eager to collaborate with technical teams.",
+        "where_you_will": "help train and evaluate frontier AI systems in medical contexts",
+        "client": "Turing",
+        "client_desc": "Turing is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports organizations by accelerating frontier AI research through high-quality data, advanced training pipelines, and expert talent specializing in STEM, reasoning, multilinguality, multimodality, coding, and AI agents.",
+        "link": "lkjhgfx",
+        "suggested_titles": [
+          "Clinical Physician",
+          "Medical Specialist",
+          "Clinical Research Physician",
+          "Primary Care Physician",
+          "Internal Medicine Physician"
+        ],
+        "subject": "Medicine Physician Opportunity",
+        "linkedin_title": "Medicine Physician for AI Systems",
+        "skills": [
+          "Clinical Practice",
+          "Internal Medicine",
+          "Primary Care",
+          "Pediatrics",
+          "Surgery"
+        ],
+        "job_functions": [
+          "Health care provider",
+          "Research",
+          "Training"
+        ],
+        "industries": [
+          "Hospitals and Health Care",
+          "Medical Practices",
+          "Technology, Information and Media"
+        ],
+        "justifications": {
+          "Clinical Physician": "Emphasizes active clinical practice with experience in diagnostic and treatment evaluations.",
+          "Medical Specialist": "Highlights expertise in multiple specialties like Internal Medicine and Pediatrics for advanced case reviews.",
+          "Clinical Research Physician": "Reflects role in evaluating AI-generated clinical scenarios and contributing to medical research.",
+          "Primary Care Physician": "Aligns with the preferred background in primary care for comprehensive patient evaluations.",
+          "Internal Medicine Physician": "Directly corresponds to the preference for internal medicine experience in clinical assessments.",
+          "Clinical Practice": "Indicates the foundational clinical experience required from US, Canada, or Western Europe.",
+          "Internal Medicine": "Specifically mentioned as a preferred specialty to address complex clinical case reviews.",
+          "Primary Care": "Connects to the role’s demand for broad patient care experience in a clinical setting.",
+          "Pediatrics": "Refers to the preferred background area, essential for diverse diagnostic evaluations.",
+          "Surgery": "Supports the need for expertise in surgical case reviews and complex clinical problem solving.",
+          "Health care provider": "Directly reflects the candidate’s role as a hands-on clinical practitioner.",
+          "Research": "Matches the responsibility to review AI outputs and provide subject-specific insights.",
+          "Training": "Captures the requirement to design and evaluate AI training methods with clinical feedback.",
+          "Hospitals and Health Care": "Relates to real-world clinical settings and patient care environments mentioned in the description.",
+          "Medical Practices": "Ties directly to the physician specialties and patient management focus of the role.",
+          "Technology, Information and Media": "Connects to Turing’s focus on frontier AI systems and advanced data-driven research."
+        }
+      },
+      "justifications": {
+        "Clinical Physician": "Emphasizes active clinical practice with experience in diagnostic and treatment evaluations.",
+        "Medical Specialist": "Highlights expertise in multiple specialties like Internal Medicine and Pediatrics for advanced case reviews.",
+        "Clinical Research Physician": "Reflects role in evaluating AI-generated clinical scenarios and contributing to medical research.",
+        "Primary Care Physician": "Aligns with the preferred background in primary care for comprehensive patient evaluations.",
+        "Internal Medicine Physician": "Directly corresponds to the preference for internal medicine experience in clinical assessments.",
+        "Clinical Practice": "Indicates the foundational clinical experience required from US, Canada, or Western Europe.",
+        "Internal Medicine": "Specifically mentioned as a preferred specialty to address complex clinical case reviews.",
+        "Primary Care": "Connects to the role’s demand for broad patient care experience in a clinical setting.",
+        "Pediatrics": "Refers to the preferred background area, essential for diverse diagnostic evaluations.",
+        "Surgery": "Supports the need for expertise in surgical case reviews and complex clinical problem solving.",
+        "Health care provider": "Directly reflects the candidate’s role as a hands-on clinical practitioner.",
+        "Research": "Matches the responsibility to review AI outputs and provide subject-specific insights.",
+        "Training": "Captures the requirement to design and evaluate AI training methods with clinical feedback.",
+        "Hospitals and Health Care": "Relates to real-world clinical settings and patient care environments mentioned in the description.",
+        "Medical Practices": "Ties directly to the physician specialties and patient management focus of the role.",
+        "Technology, Information and Media": "Connects to Turing’s focus on frontier AI systems and advanced data-driven research."
+      },
+      "is_domain_page": false
+    }
+  },
+  {
     "id": "058e0edb-08ca-4271-a6e1-d00d4e645cd9",
     "timestamp": "2026-07-11T11:26:03.124245Z",
     "client": "designmeshai",

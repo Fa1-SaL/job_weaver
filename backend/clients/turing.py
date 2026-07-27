@@ -5,16 +5,20 @@ Turing client configuration.
 CONFIG = {
     "clientId": "turing",
     "displayName": "Turing",
-    "defaultCommitment": "10\u201340 hrs/week",
+    "defaultCommitment": "Flexible 40 hrs/week with a minimum 4-hour overlap with PST",
     "supportEmail": "support@turing.com",
     "description": (
-        "Turing is a leading AI company accelerating the advancement of frontier AI systems. "
-        "It partners with top AI labs and global enterprises to improve model capabilities "
-        "across reasoning, coding, and real-world system integration."
+        "Turing is the world’s leading research accelerator for frontier AI labs and a trusted partner for "
+        "global enterprises deploying advanced AI systems. Turing supports organizations by accelerating frontier "
+        "AI research through high-quality data, advanced training pipelines, and expert talent specializing in "
+        "STEM, reasoning, multilinguality, multimodality, coding, and AI agents."
     ),
     "applicationProcess": [
-        "Easy Apply on Linkedin",
-        "Check email for next steps",
+        "Apply/Easy Apply and check email for application form",
+        "Fill Google form",
+        "Online Assessment",
+        "Delivery Review",
+        "Shortlisting",
     ],
     # Subject line suffix
     "subjectSuffix": "Turing x AI Labs",

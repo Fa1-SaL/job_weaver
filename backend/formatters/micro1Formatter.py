@@ -11,10 +11,10 @@ class Micro1Formatter(ClientFormatter):
 
     def format_jd(self, data: dict) -> str:
         responsibilities = "\n".join(
-            [f"<li>{r}</li>" for r in data["role_responsibilities"] if r and r.strip()]
+            [f"<li>{r}</li>" for r in data["role_responsibilities"] if r and str(r).strip()]
         )
         requirements = "\n".join(
-            [f"<li>{r}</li>" for r in data["requirements"] if r and r.strip()]
+            [f"<li>{r}</li>" for r in data["requirements"] if r and str(r).strip()]
         )
 
         commitment = data.get("commitment", "").strip()
@@ -59,12 +59,11 @@ class Micro1Formatter(ClientFormatter):
         boost_section = """\
 <li>
 You may also explore additional opportunities with \
-<a href="https://refer.micro1.ai/referral/jobs?referralCode=463495f6-7cc6-49ed-8e8f-5ef2a1cc3fd7\
-&utm_source=referral&utm_medium=share&utm_campaign=job_referral">Micro1</a>.
+<a href="https://refer.micro1.ai/referral/jobs?referralCode=463495f6-7cc6-49ed-8e8f-5ef2a1cc3fd7&utm_source=referral&utm_medium=share&utm_campaign=job_referral" style="color: #0066cc;">Micro1</a>.
 </li>
 <li>
 For regular updates, you can follow our \
-<a href="https://whatsapp.com/channel/0029Vb6eLrf23n3gz313El2h">WhatsApp channel</a> \
+<a href="https://whatsapp.com/channel/0029Vb6eLrf23n3gz313El2h" style="color: #0066cc;">WhatsApp channel</a> \
 for upcoming openings.
 </li>"""
 
@@ -78,7 +77,7 @@ for upcoming openings.
         pay_display = f" – {data['pay']}" if data.get("pay") else ""
         apply_line = (
             f"<b>Apply asap (reviewed on a rolling basis):</b><br>\n"
-            f"<a href=\"{data['link']}\">{data['role']}</a>{pay_display}<br><br>"
+            f"<a href=\"{data['link']}\" style=\"color: #0066cc;\">{data['role']}</a>{pay_display}<br><br>"
         )
 
         return f"""<br>I'm from Crossing Hurdles, a global recruitment firm. We would like to refer you for an interesting opportunity that involves leveraging your expertise to train AI models.<br><br>
@@ -87,7 +86,7 @@ for upcoming openings.
 <b>Role:</b> {data['role']}<br>
 <b>Type:</b> {data['type']}<br>
 {pay_line}<b>Location:</b> {data['location']}<br>
-<b>Apply Here:</b> <a href="{data['link']}">{data['role']}</a><br><br>
+<b>Apply Here:</b> <a href="{data['link']}" style="color: #0066cc;">{data['role']}</a><br><br>
 
 <b>About {data['client']}:</b><br>
 {data['client_desc']}<br><br>

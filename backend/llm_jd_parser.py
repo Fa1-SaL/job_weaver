@@ -56,11 +56,24 @@ def generate_llm_output(raw_jd: str, client_name: str = "mercor") -> str:
     prompt = prompt_template.replace("{CLIENT_NAME}", config["displayName"])
     prompt = prompt + raw_jd
 
+    system_instruction = (
+        "You output strict JSON only. Do not wrap in formatting blocks. "
+        "CRITICAL INSTRUCTION: Remove any sort of date, turnaround deadline, or completion time limit if mentioned in the JD "
+        "(for example, 'Your turnaround time will be 3 hours of conversation that needs to be filled before 12/28'). "
+        "The output must not hint anything regarding deadlines, turnaround windows, or completion dates while keeping all other details covered exactly."
+    )
+    if client_name and client_name.strip().lower() in DOMAIN_PAGE_KEYS:
+        system_instruction += (
+            " CRITICAL NEGATIVE PROMPT FOR DOMAIN PAGES: Never ever mention Mercor, Cincinnatus, or any client/platform "
+            "organization name even if present in the raw input JD. Keep the client confidential without stating or mentioning "
+            "that it is confidential — sneakingly do not mention Mercor, Cincinnatus, or any client/platform organization name anywhere in the output."
+        )
+
     _t0 = time.time()
     response = _openai_client.chat.completions.create(
         model="gpt-4o",
         messages=[
-            {"role": "system", "content": "You output strict JSON only. Do not wrap in formatting blocks. CRITICAL INSTRUCTION: Remove any sort of date, turnaround deadline, or completion time limit if mentioned in the JD (for example, 'Your turnaround time will be 3 hours of conversation that needs to be filled before 12/28'). The output must not hint anything regarding deadlines, turnaround windows, or completion dates while keeping all other details covered exactly."},
+            {"role": "system", "content": system_instruction},
             {"role": "user", "content": prompt}
         ],
         temperature=0.0
@@ -836,6 +849,10 @@ def get_valid_llm_output(raw_jd: str, url: str = None, client: str = "mercor") -
             # Use the registry formatter — no more if/else branching
             jd_output = formatter.format_jd(result)
             email_output = formatter.format_email(result)
+
+            if client_id in DOMAIN_PAGE_KEYS:
+                from formatters.domainPagesFormatter import scrub_all_client_orgs_from_jd
+                jd_output = scrub_all_client_orgs_from_jd(jd_output)
 
             skills = result.get("skills", [])
             if not isinstance(skills, list):

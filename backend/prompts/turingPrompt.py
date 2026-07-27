@@ -26,8 +26,10 @@ Expected JSON structure:
   "pay": "",
   "location": "",
   "commitment": "",
+  "start_date": "Immediate",
   "role_responsibilities": [],
   "requirements": [],
+  "preferred_qualifications": [],
   "role_overview": "",
   "who_this_is_for": "",
   "where_you_will": "",
@@ -56,18 +58,15 @@ RESPONSIBILITIES RULES:
 - No markdown, no asterisks, no dashes as decorators.
 - Do NOT use bullet characters in the JSON values — output as plain strings.
 
-Example output for role_responsibilities:
-["Design and implement scalable backend systems using Node.js and Python",
- "Collaborate with cross-functional teams to define and ship product features",
- "Write and maintain comprehensive unit and integration tests",
- "Review code contributions and provide actionable technical feedback"]
-
 REQUIREMENTS RULES:
 - Concise. Each bullet must be a complete, recruiter-friendly sentence.
 - Target exactly 4-6 bullets.
 - Expand "X+ years experience" into full sentences describing depth of knowledge required.
 - No markdown, no asterisks.
 - Do NOT use bullet characters in the JSON values — output as plain strings.
+
+PREFERRED QUALIFICATIONS RULES:
+- If the JD specifies preferred/nice-to-have qualifications, extract them as an array of concise bullet strings. Otherwise return an empty array [].
 
 ROLE OVERVIEW RULES:
 - must be 40-70 words
@@ -83,8 +82,8 @@ WHO_THIS_IS_FOR RULES:
 - plain text only
 
 WHERE_YOU_WILL RULES:
-- must be a short, high-impact clause summarizing the core purpose of the role (e.g., "contribute to building the infrastructure that connects advanced AI models with real-world data systems")
-- must start with "contribute to..." or another action verb phrase
+- must be a short, high-impact clause summarizing the core purpose of the role (e.g., "help train and evaluate cutting-edge AI systems using board game, strategy, and game mechanics reasoning tasks")
+- must start with "help train...", "contribute to...", or another action verb phrase
 - max 15 words
 - plain text only, no markdown, no quotes
 
@@ -121,11 +120,6 @@ JUSTIFICATIONS RULES:
 - Return a flat JSON dictionary under the "justifications" key.
 - The dictionary must map each parsed item in suggested_titles, job_functions, industries, and skills to a specific, high-quality, and helpful one-line justification (max 20 words).
 - DO NOT use generic phrases like "matches the title", "relevant industry", or "required for the role". Instead, give a deep, domain-specific explanation referencing specific tasks or requirements from the job description.
-  Good Examples:
-  - {"Audio Visual Specialist": "Aligns with the peer-review of acoustics deliverables mentioned in section 2."}
-  - {"Python": "Required to build the scalable training pipelines and ML tool integration in core duties."}
-  - {"Research Services": "Matches Turing's focus on benchmarking and scaling model evaluation environments."}
-  - {"Engineering": "Applies directly to the backend API orchestration and multi-agent system design."}
 
 ABSOLUTE RULES:
 - No markdown anywhere

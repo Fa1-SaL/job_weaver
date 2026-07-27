@@ -1,15 +1,55 @@
 """
 Formatters for the 8 Domain Pages.
 Each formatter subclasses MercorFormatter and implements both `format_jd` and `format_email`
-to produce the exact structure and formatting shown in the LinkedIn JD and InMail Draft specifications,
-fully sanitized of geographical locations, deadlines, and improper sentences.
+to produce the exact structure and formatting shown in the LinkedIn JD and InMail Draft specifications.
+
+Rules:
+1. Hyperlinks are explicitly styled in blue (#0066cc) on both <a> and inner elements with !important.
+2. Mercor CAN be mentioned on InMails (format_email), but MUST NOT be mentioned on JDs (format_jd).
+3. Crossing Hurdles is ONLY mentioned on Crossing Hurdles domain page itself. All other 7 domain pages avoid mentioning Crossing Hurdles completely.
 """
 
 import re
 from formatters.mercorFormatter import MercorFormatter
 
 
-def sanitize_inline_geography(text: str) -> str:
+def scrub_all_client_orgs_from_jd(text: str) -> str:
+    """
+    Guarantees ABSOLUTELY ZERO occurrence of Mercor, Cincinnatus, or client platform names in JDs (format_jd).
+    Removes/replaces all variations, URLs, possessives, and brand references without adding explicit confidentiality notes.
+    """
+    if not text:
+        return ""
+    
+    # 1. URLs and email replacements
+    text = re.sub(r'(?i)https?://[^\s<"]*mercor[^\s<"]*', '#', text)
+    text = re.sub(r'(?i)\b[A-Za-z0-9._%+-]+@mercor\.com\b', 'support@jobweaver.com', text)
+    text = re.sub(r'(?i)\bwork\.mercor\.com\b', 'app.jobweaver.com', text)
+    text = re.sub(r'(?i)\bmercor\.com\b', 'jobweaver.com', text)
+    
+    # 2. Specific phrases
+    text = re.sub(r'(?i)\bMercor[\'’]?s?\s+projects?\b', 'AI projects', text)
+    text = re.sub(r'(?i)\bMercor[\'’]?s?\s+platform\b', 'AI platform', text)
+    text = re.sub(r'(?i)\bMercor[\'’]?s?\s+account\b', 'account', text)
+    text = re.sub(r'(?i)\bMercor[\'’]?s?\s+application\b', 'application', text)
+    text = re.sub(r'(?i)\bMercor[\'’]?s?\s+dashboard\b', 'dashboard', text)
+    text = re.sub(r'(?i)\bMercor[\'’]?s?\s+team\b', 'team', text)
+    text = re.sub(r'(?i)\bMercor[\'’]?s?\s+client\b', 'client', text)
+    text = re.sub(r'(?i)\bposted\s+by\s+mercor\b', '', text)
+    text = re.sub(r'(?i)\bmercor\s+logo\b', '', text)
+    
+    # 3. Direct word/possessive removal for Mercor and Cincinnatus
+    text = re.sub(r'(?i)\bMercor[\'’]?s?\b', '', text)
+    text = re.sub(r'(?i)\bCincinnatus[\'’]?s?(?:\s*AI)?\b', '', text)
+    
+    # 4. Clean up trailing/leading spaces, double spaces, orphaned prepositions
+    text = re.sub(r'(?i)\b(?:at|on|with|by|for)\s+(?=\s*[\.,<\?!]|$)', '', text)
+    text = re.sub(r'\s*,\s*,', ',', text)
+    text = re.sub(r'\s{2,}', ' ', text)
+    return text.strip()
+
+
+def sanitize_inline_geography(text: str, is_jd: bool = False) -> str:
     if not text:
         return ""
     # Remove geographical terms case-insensitively
@@ -19,24 +59,26 @@ def sanitize_inline_geography(text: str) -> str:
     text = re.sub(r'(?i)\b(?:within \d+ to \d+ days|turnaround|turnaround time|completion date|deadline)\b.*', '', text)
     
     # Remove trailing or leading commas, pipes, spaces that might remain
-    text = re.sub(r'\s*,\s*$', '', text) # trailing comma
-    text = re.sub(r'^\s*,\s*', '', text) # leading comma
-    text = re.sub(r'\s*\|\s*$', '', text) # trailing pipe
-    text = re.sub(r'^\s*\|\s*', '', text) # leading pipe
+    text = re.sub(r'\s*,\s*$', '', text)
+    text = re.sub(r'^\s*,\s*', '', text)
+    text = re.sub(r'\s*\|\s*$', '', text)
+    text = re.sub(r'^\s*\|\s*', '', text)
     
     # Cleanup extra spaces/delimiters
     text = re.sub(r'\s*\|\s*Remote\b', ' Remote', text)
     text = re.sub(r'\bRemote\s*\|\s*', 'Remote ', text)
     text = re.sub(r'\s*\|\s*\s*', ' ', text)
     
-    # If it was comma separated like "Remote, " (after stripping United States), remove trailing comma
     text = re.sub(r',\s*$', '', text)
     text = re.sub(r'^\s*,', '', text)
     
-    return re.sub(r'\s+', ' ', text).strip()
+    text = re.sub(r'\s+', ' ', text).strip()
+    if is_jd:
+        return scrub_all_client_orgs_from_jd(text)
+    return text
 
 
-def clean_bullets(bullets) -> list:
+def clean_bullets(bullets, is_jd: bool = False) -> list:
     if not bullets:
         return []
     cleaned = []
@@ -57,23 +99,22 @@ def clean_bullets(bullets) -> list:
             continue
             
         if has_location:
-            # If it only mentions location requirement, omit it
             continue
             
-        cleaned_bullet = sanitize_inline_geography(bullet_str)
+        cleaned_bullet = sanitize_inline_geography(bullet_str, is_jd=is_jd)
         if cleaned_bullet:
             cleaned.append(cleaned_bullet)
     return cleaned
 
 
-def sanitize_format_data(data: dict) -> dict:
+def sanitize_format_data(data: dict, is_jd: bool = False) -> dict:
     clean_data = dict(data)
     
     # Sanitize all string fields
-    string_fields = ["role", "type", "pay", "location", "commitment", "role_overview", "who_this_is_for", "client_desc"]
+    string_fields = ["role", "type", "pay", "location", "commitment", "role_overview", "who_this_is_for", "client_desc", "where_you_will"]
     for field in string_fields:
-        if field in clean_data:
-            clean_data[field] = sanitize_inline_geography(clean_data[field])
+        if field in clean_data and isinstance(clean_data[field], str):
+            clean_data[field] = sanitize_inline_geography(clean_data[field], is_jd=is_jd)
             
     # Specially handle location fallback to Remote
     loc = clean_data.get("location", "Remote")
@@ -83,16 +124,23 @@ def sanitize_format_data(data: dict) -> dict:
         clean_data["location"] = loc
         
     # Sanitize responsibilities and requirements
-    clean_data["role_responsibilities"] = clean_bullets(clean_data.get("role_responsibilities", []))
-    clean_data["requirements"] = clean_bullets(clean_data.get("requirements", []))
+    clean_data["role_responsibilities"] = clean_bullets(clean_data.get("role_responsibilities", []), is_jd=is_jd)
+    clean_data["requirements"] = clean_bullets(clean_data.get("requirements", []), is_jd=is_jd)
     
     return clean_data
+
+
+def make_blue_link(url: str, text: str) -> str:
+    """Helper to render a 100% blue hyperlink with style on <a> and inner <span> element."""
+    if not url or url == "#":
+        return f'<span style="color: #0066cc !important; font-weight: bold;">{text}</span>'
+    return f'<a href="{url}" style="color: #0066cc !important; text-decoration: underline;"><span style="color: #0066cc !important; text-decoration: underline; font-weight: bold;">{text}</span></a>'
 
 
 class CrossingHurdlesFormatter(MercorFormatter):
     """Page 1: Crossing Hurdles JD & InMail Draft"""
     def format_jd(self, data: dict) -> str:
-        data = sanitize_format_data(data)
+        data = sanitize_format_data(data, is_jd=True)
         role = data.get("role", "Video Game Annotator") or "Video Game Annotator"
         role_type = data.get("type", "Hourly contract") or "Hourly contract"
         pay = data.get("pay", "$16-$17 per hour") or "$16-$17 per hour"
@@ -118,7 +166,7 @@ class CrossingHurdlesFormatter(MercorFormatter):
             ]
         req_bullets = "\n".join([f"<li>{r}</li>" for r in reqs if r and r.strip()])
 
-        return f"""<b>Position:</b> {role}<br>
+        jd_text = f"""<b>Position:</b> {role}<br>
 <b>Type:</b> {role_type}<br>
 <b>Compensation:</b> {pay}<br>
 <b>Location:</b> {location}<br>
@@ -143,9 +191,10 @@ class CrossingHurdlesFormatter(MercorFormatter):
 </ul><br>
 
 #LI-CH""".strip()
+        return scrub_all_client_orgs_from_jd(jd_text)
 
     def format_email(self, data: dict) -> str:
-        data = sanitize_format_data(data)
+        data = sanitize_format_data(data, is_jd=False)
         role = data.get("role", "Role")
         link = data.get("link", "https://work.mercor.com/explore")
         pay = data.get("pay", "")
@@ -155,9 +204,11 @@ class CrossingHurdlesFormatter(MercorFormatter):
         pay_display = f" – {pay}" if pay else ""
         pay_row = f"<b>Pay:</b> {pay}<br>\n" if pay else ""
 
+        link_html = make_blue_link(link, role)
+
         return f"""Hi {{firstName}},<br><br>
 
-I'm from <b>Crossing Hurdles</b>, Based on your profile, we think you could be a strong fit for the <a href="{link}"><b>{role}</b></a> position at <b>Mercor</b>.<br><br>
+I'm from <b>Crossing Hurdles</b>, Based on your profile, we think you could be a strong fit for the {link_html} position at <b>Mercor</b>.<br><br>
 
 <b>Organization:</b> Mercor<br>
 <b>Referral by:</b> Crossing Hurdles<br>
@@ -173,14 +224,14 @@ I'm from <b>Crossing Hurdles</b>, Based on your profile, we think you could be a
 </ul><br>
 
 <b>Apply here (reviewed on a rolling basis):</b><br>
-<a href="{link}"><b>{role}</b></a>{pay_display}<br><br>
+{link_html}{pay_display}<br><br>
 
 <b>You can also checkout these Opportunities as well:</b><br><br>
 
 <b>Take Steps to Boost Your Profile:</b>
 <ul>
-<li>Need tips to improve your chances of selection? Check out the <a href="https://docs.google.com/document/d/1xYe9X4t2Bv6BEScXwwvix35Kmlc92xiulEpBDLcCZb8/edit?usp=sharing">Interview Preparation Playbook</a></li>
-<li>You can strengthen your profile through the <a href="https://work.mercor.com/home?tab=assessments&referralCode=c88e7e37-c849-4793-a401-f58c8615e4c7">Assessment tab</a> in your dashboard. Completing skill based assessments can help unlock future opportunities, including roles you have not applied to or roles that may not be publicly listed.</li>
+<li>Need tips to improve your chances of selection? Check out the {make_blue_link("https://docs.google.com/document/d/1xYe9X4t2Bv6BEScXwwvix35Kmlc92xiulEpBDLcCZb8/edit?usp=sharing", "Interview Preparation Playbook")}</li>
+<li>You can strengthen your profile through the {make_blue_link("https://work.mercor.com/home?tab=assessments&referralCode=c88e7e37-c849-4793-a401-f58c8615e4c7", "Assessment tab")} in your dashboard. Completing skill based assessments can help unlock future opportunities, including roles you have not applied to or roles that may not be publicly listed.</li>
 </ul><br>
 
 <i>P.S. For immediate support, contact support@mercor.com</i>""".strip()
@@ -189,7 +240,7 @@ I'm from <b>Crossing Hurdles</b>, Based on your profile, we think you could be a
 class CodeGeniusRecruitFormatter(MercorFormatter):
     """Page 2: CodeGeniusRecruit JD & InMail Draft"""
     def format_jd(self, data: dict) -> str:
-        data = sanitize_format_data(data)
+        data = sanitize_format_data(data, is_jd=True)
         role_type = data.get("type", "Hourly Contract") or "Hourly Contract"
         location = data.get("location", "Remote") or "Remote"
         commitment = data.get("commitment", "Flexible Schedule") or "Flexible Schedule"
@@ -217,7 +268,7 @@ class CodeGeniusRecruitFormatter(MercorFormatter):
             ]
         req_bullets = "\n".join([f"<li>{r}</li>" for r in reqs if r and r.strip()])
 
-        return f"""<b>Work Snapshot</b><br>
+        jd_text = f"""<b>Work Snapshot</b><br>
 <b>Type:</b> {role_type}<br>
 <b>Location:</b> {location}<br>
 <b>Commitment:</b> {commitment}<br>
@@ -241,10 +292,11 @@ class CodeGeniusRecruitFormatter(MercorFormatter):
 <li>Follow the instructions provided in the email to complete the remainder of the application process.</li>
 </ul><br>
 
-#LI-CH""".strip()
+#LI-DP""".strip()
+        return scrub_all_client_orgs_from_jd(jd_text)
 
     def format_email(self, data: dict) -> str:
-        data = sanitize_format_data(data)
+        data = sanitize_format_data(data, is_jd=False)
         role = data.get("role", "Software Engineer Expert")
         link = data.get("link", "https://work.mercor.com/explore")
         pay = data.get("pay", "$40-$50 per hour")
@@ -256,10 +308,11 @@ class CodeGeniusRecruitFormatter(MercorFormatter):
         )
 
         highlights = f"Mercor | {location} | {role_type} | {pay}" if pay else f"Mercor | {location} | {role_type}"
+        link_html = make_blue_link(link, role)
 
         return f"""Hi {{firstName}},<br><br>
 
-I'm from <b>CodeGeniusRecruit</b>. Based on your profile, we think you could be a strong fit for the <a href="{link}"><b>{role}</b></a> position at <b>Mercor</b>.<br><br>
+I'm from <b>CodeGeniusRecruit</b>. Based on your profile, we think you could be a strong fit for the {link_html} position at <b>Mercor</b>.<br><br>
 
 <b>Role highlights:</b> {highlights}<br><br>
 
@@ -273,7 +326,7 @@ We’d like to refer you for this opportunity. {overview}<br><br>
 </ul><br>
 
 <b>To apply, kindly use the link below:</b><br>
-<a href="{link}"><b>{role}</b></a><br><br>
+{link_html}<br><br>
 
 <b>You can also checkout these Opportunities as well:</b><br><br>
 
@@ -288,7 +341,7 @@ CodeGeniusRecruit""".strip()
 class CuraSenseAIFormatter(MercorFormatter):
     """Page 3 & 4: CuraSenseAI JD & InMail Draft"""
     def format_jd(self, data: dict) -> str:
-        data = sanitize_format_data(data)
+        data = sanitize_format_data(data, is_jd=True)
         overview = data.get("role_overview") or (
             "Join a high-impact healthcare project where your clinical expertise will be used to develop, "
             "evaluate, and refine complex medical reasoning across a wide range of internal medicine scenarios."
@@ -320,7 +373,7 @@ class CuraSenseAIFormatter(MercorFormatter):
         work_style = data.get("work_style", "Fully remote, flexible schedule") or "Fully remote, flexible schedule"
         duration = data.get("duration") or data.get("type", "Ongoing contract") or "Ongoing contract"
 
-        return f"""<b>Role Overview</b><br>
+        jd_text = f"""<b>Role Overview</b><br>
 {overview}<br><br>
 
 <b>What You Will Be Doing</b>
@@ -346,10 +399,11 @@ class CuraSenseAIFormatter(MercorFormatter):
 <b>Work style:</b> {work_style}<br>
 <b>Duration:</b> {duration}<br><br>
 
-#LI-CH""".strip()
+#LI-DP""".strip()
+        return scrub_all_client_orgs_from_jd(jd_text)
 
     def format_email(self, data: dict) -> str:
-        data = sanitize_format_data(data)
+        data = sanitize_format_data(data, is_jd=False)
         role = data.get("role", "Internal Medicine Expert")
         link = data.get("link", "https://work.mercor.com/explore")
         pay = data.get("pay", "$130–$180 per hour")
@@ -381,10 +435,11 @@ class CuraSenseAIFormatter(MercorFormatter):
         req_bullets = "\n".join([f"<li>{r}</li>" for r in reqs if r and r.strip()])
 
         pay_row = f"<b>Pay:</b> {pay}<br>\n" if pay else ""
+        link_html = make_blue_link(link, role)
 
         return f"""Hi {{firstName}},<br><br>
 
-I’m reaching out from <b>CuraSenseAI</b> to refer you for the role of <a href="{link}"><b>{role}</b></a> at <b>Mercor</b>.<br><br>
+I’m reaching out from <b>CuraSenseAI</b> to refer you for the role of {link_html} at <b>Mercor</b>.<br><br>
 
 <b>About the Role</b><br>
 {overview}<br><br>
@@ -413,7 +468,7 @@ I’m reaching out from <b>CuraSenseAI</b> to refer you for the role of <a href=
 </ul><br>
 
 <b>Click below to apply and continue your application process:</b><br>
-<a href="{link}"><b>{role}</b></a><br><br>
+{link_html}<br><br>
 
 <b>You can also checkout these Opportunities as well:</b><br><br>
 
@@ -426,8 +481,8 @@ CuraSenseAI""".strip()
 class LegalTrustAIFormatter(MercorFormatter):
     """Page 5: LegalTrustAI JD & InMail Draft"""
     def format_jd(self, data: dict) -> str:
-        data = sanitize_format_data(data)
-        role = data.get("role", "UK-Based Legal Experts: Magic Circle") or "UK-Based Legal Experts: Magic Circle"
+        data = sanitize_format_data(data, is_jd=True)
+        role = data.get("role", "Legal Experts: Magic Circle") or "Legal Experts: Magic Circle"
         role_type = data.get("type", "Contract") or "Contract"
         location = data.get("location", "Remote") or "Remote"
         pay = data.get("pay", "$130–$170/hour") or "$130–$170/hour"
@@ -458,7 +513,7 @@ class LegalTrustAIFormatter(MercorFormatter):
             ]
         req_bullets = "\n".join([f"<li>{r}</li>" for r in reqs if r and r.strip()])
 
-        return f"""<b>{role}</b><br>
+        jd_text = f"""<b>{role}</b><br>
 {role_type} | {location}<br><br>
 <b>Pay:</b> {pay}<br>
 <b>Time Commitment:</b> {commitment}<br><br>
@@ -484,11 +539,12 @@ class LegalTrustAIFormatter(MercorFormatter):
 <li>Follow the instructions provided to complete the rest of the application process.</li>
 </ul><br>
 
-#LI-CH""".strip()
+#LI-DP""".strip()
+        return scrub_all_client_orgs_from_jd(jd_text)
 
     def format_email(self, data: dict) -> str:
-        data = sanitize_format_data(data)
-        role = data.get("role", "UK-Based Legal Experts: Magic Circle")
+        data = sanitize_format_data(data, is_jd=False)
+        role = data.get("role", "Legal Experts: Magic Circle")
         link = data.get("link", "https://work.mercor.com/explore")
         pay = data.get("pay", "$200-$250 per hour")
         location = data.get("location", "Remote")
@@ -505,13 +561,14 @@ class LegalTrustAIFormatter(MercorFormatter):
         resp_bullets = "\n".join([f"<li>{r}</li>" for r in resps if r and r.strip()])
 
         pay_row = f"<b>Compensation:</b> {pay}<br>\n" if pay else ""
+        link_html = make_blue_link(link, role)
 
         return f"""Hi {{firstName}},<br><br>
 
 I’m reaching out from <b>LegalTrustAI</b> to refer you for a remote opportunity at <b>Mercor</b>.<br><br>
 
 <b>Position Details</b><br>
-<a href="{link}"><b>{role}</b></a><br>
+{link_html}<br>
 <b>Organisation:</b> Mercor<br>
 <b>Referred by:</b> LegalTrustAI<br>
 {pay_row}<b>Location:</b> {location}<br><br>
@@ -528,7 +585,7 @@ I’m reaching out from <b>LegalTrustAI</b> to refer you for a remote opportunit
 <li>Once logged in, submit your application to complete the process.</li>
 </ul><br>
 
-<b>Apply Here:</b> <a href="{link}"><b>{role}</b></a><br><br>
+<b>Apply Here:</b> {link_html}<br><br>
 
 <b>You can also checkout these Opportunities as well:</b><br><br>
 
@@ -541,7 +598,7 @@ LegalTrustAI""".strip()
 class CapitexAIFormatter(MercorFormatter):
     """Page 6: CapitexAI JD & InMail Draft"""
     def format_jd(self, data: dict) -> str:
-        data = sanitize_format_data(data)
+        data = sanitize_format_data(data, is_jd=True)
         role = data.get("role", "Real Estate Broker") or "Real Estate Broker"
         overview = data.get("role_overview") or (
             "Support a leading AI lab by applying your professional expertise to create and evaluate "
@@ -583,7 +640,7 @@ class CapitexAIFormatter(MercorFormatter):
             ]
         strength_bullets = "\n".join([f"<li>{s}</li>" for s in strengths if s and s.strip()])
 
-        return f"""<b>{role}</b><br><br>
+        jd_text = f"""<b>{role}</b><br><br>
 <b>Role Overview</b><br>
 {overview}<br><br>
 <b>{highlights}</b><br><br>
@@ -611,10 +668,11 @@ class CapitexAIFormatter(MercorFormatter):
 <li>Follow the instructions in the email to complete the remaining application requirements.</li>
 </ul><br>
 
-#LI-CH""".strip()
+#LI-DP""".strip()
+        return scrub_all_client_orgs_from_jd(jd_text)
 
     def format_email(self, data: dict) -> str:
-        data = sanitize_format_data(data)
+        data = sanitize_format_data(data, is_jd=False)
         role = data.get("role", "Real Estate Broker")
         link = data.get("link", "https://work.mercor.com/explore")
         pay = data.get("pay", "$90–$110/hr")
@@ -634,10 +692,11 @@ class CapitexAIFormatter(MercorFormatter):
 
         highlights_parts = [p for p in [pay, commitment, location] if p]
         highlights = " | ".join(highlights_parts)
+        link_html = make_blue_link(link, role)
 
         return f"""Hi {{firstName}},<br><br>
 
-I’m reaching out from <b>Capitex AI</b> to refer you for the role of <a href="{link}"><b>{role}</b></a> at <b>Mercor</b>.<br><br>
+I’m reaching out from <b>Capitex AI</b> to refer you for the role of {link_html} at <b>Mercor</b>.<br><br>
 
 <b>{highlights}</b><br><br>
 
@@ -654,7 +713,7 @@ I’m reaching out from <b>Capitex AI</b> to refer you for the role of <a href="
 <li>After signing in, submit your application for the role on Mercor to complete your application.</li>
 </ul><br>
 
-<b>Apply Here:</b> <a href="{link}"><b>{role}</b></a><br><br>
+<b>Apply Here:</b> {link_html}<br><br>
 
 <b>You can also checkout these Opportunities as well:</b><br><br>
 
@@ -667,7 +726,7 @@ CapitexAI""".strip()
 class STEMSyncAIFormatter(MercorFormatter):
     """Page 7: STEMSyncAI JD & InMail Draft"""
     def format_jd(self, data: dict) -> str:
-        data = sanitize_format_data(data)
+        data = sanitize_format_data(data, is_jd=True)
         role = data.get("role", "Research Physics Expert") or "Research Physics Expert"
         location = data.get("location", "Remote") or "Remote"
         role_type = data.get("type", "Hourly Contract") or "Hourly Contract"
@@ -701,7 +760,7 @@ class STEMSyncAIFormatter(MercorFormatter):
             ]
         req_bullets = "\n".join([f"<li>{r}</li>" for r in reqs if r and r.strip()])
 
-        return f"""<b>{highlights}</b><br><br>
+        jd_text = f"""<b>{highlights}</b><br><br>
 
 <b>Quick Snapshot</b>
 <ul>
@@ -721,10 +780,11 @@ class STEMSyncAIFormatter(MercorFormatter):
 <li>Use the instructions in the email to complete the remaining application steps.</li>
 </ul><br>
 
-#LI-CH""".strip()
+#LI-DP""".strip()
+        return scrub_all_client_orgs_from_jd(jd_text)
 
     def format_email(self, data: dict) -> str:
-        data = sanitize_format_data(data)
+        data = sanitize_format_data(data, is_jd=False)
         role = data.get("role", "Research Physics Expert")
         link = data.get("link", "https://work.mercor.com/explore")
         pay = data.get("pay", "$80–$135/hour")
@@ -743,10 +803,11 @@ class STEMSyncAIFormatter(MercorFormatter):
         resp_bullets = "\n".join([f"<li>{r}</li>" for r in resps if r and r.strip()])
 
         highlights = f"{location} | {role_type} | {pay}" if pay else f"{location} | {role_type}"
+        link_html = make_blue_link(link, role)
 
         return f"""Hi {{firstName}},<br><br>
 
-I'm from <b>STEMSyncAI</b> and would like to refer you for the role of <a href="{link}"><b>{role}</b></a> at <b>Mercor</b>.<br><br>
+I'm from <b>STEMSyncAI</b> and would like to refer you for the role of {link_html} at <b>Mercor</b>.<br><br>
 
 <b>About the Role:</b>
 <ul>
@@ -762,7 +823,7 @@ I'm from <b>STEMSyncAI</b> and would like to refer you for the role of <a href="
 </ul><br>
 
 <b>If interested, kindly apply on the link below:</b><br>
-<a href="{link}"><b>{role}</b></a><br><br>
+{link_html}<br><br>
 
 <b>You can also checkout these Opportunities as well:</b><br><br>
 
@@ -775,7 +836,7 @@ STEMSyncAI""".strip()
 class LinguaSenseAIFormatter(MercorFormatter):
     """Page 8 & 9: LinguaSenseAI JD & InMail Draft"""
     def format_jd(self, data: dict) -> str:
-        data = sanitize_format_data(data)
+        data = sanitize_format_data(data, is_jd=True)
         overview = data.get("role_overview") or (
             "Evaluate Assamese AI-generated responses for factual accuracy, reasoning quality, and "
             "language effectiveness to produce high-quality evaluation data that improves model "
@@ -808,7 +869,7 @@ class LinguaSenseAIFormatter(MercorFormatter):
             ]
         req_bullets = "\n".join([f"<li>{r}</li>" for r in reqs if r and r.strip()])
 
-        return f"""<b>Objective</b><br>
+        jd_text = f"""<b>Objective</b><br>
 {overview}<br><br>
 
 <b>Opportunity Details</b><br>
@@ -834,10 +895,11 @@ class LinguaSenseAIFormatter(MercorFormatter):
 <li>Follow the instructions provided in the email to complete the remaining application process.</li>
 </ul><br>
 
-#LI-CH""".strip()
+#LI-DP""".strip()
+        return scrub_all_client_orgs_from_jd(jd_text)
 
     def format_email(self, data: dict) -> str:
-        data = sanitize_format_data(data)
+        data = sanitize_format_data(data, is_jd=False)
         role = data.get("role", "Generalist - English & Assamese")
         link = data.get("link", "https://work.mercor.com/explore")
         pay = data.get("pay", "$15-$20 per hour")
@@ -869,10 +931,11 @@ class LinguaSenseAIFormatter(MercorFormatter):
         req_bullets = "\n".join([f"<li>{r}</li>" for r in reqs if r and r.strip()])
 
         pay_row = f"<b>Pay:</b> {pay}<br>\n" if pay else ""
+        link_html = make_blue_link(link, role)
 
         return f"""Hi {{firstName}},<br><br>
 
-I'm from <b>LinguaSenseAI</b> and reaching out to refer you for a <a href="{link}"><b>{role}</b></a> opportunity at <b>Mercor</b>.<br><br>
+I'm from <b>LinguaSenseAI</b> and reaching out to refer you for a {link_html} opportunity at <b>Mercor</b>.<br><br>
 
 <b>Role Overview</b><br>
 {overview}<br><br>
@@ -898,7 +961,7 @@ I'm from <b>LinguaSenseAI</b> and reaching out to refer you for a <a href="{link
 <li>Follow the instructions on Mercor and submit your application for the role to complete the application process.</li>
 </ul><br>
 
-<b>Click here to complete your application for: <a href="{link}"><b>{role}</b></a></b><br><br>
+<b>Click here to complete your application for: {link_html}</b><br><br>
 
 <b>You can also checkout these Opportunities as well:</b><br><br>
 
@@ -911,7 +974,7 @@ LinguaSenseAI""".strip()
 class DesignMeshAIFormatter(MercorFormatter):
     """Page 10 & 11: DesignMeshAI JD & InMail Draft"""
     def format_jd(self, data: dict) -> str:
-        data = sanitize_format_data(data)
+        data = sanitize_format_data(data, is_jd=True)
         role = data.get("role", "Document/Deck Production QA Evaluator") or "Document/Deck Production QA Evaluator"
         overview = data.get("role_overview") or (
             "Review and assess document, spreadsheet, and presentation deliverables for quality, accuracy, "
@@ -944,7 +1007,7 @@ class DesignMeshAIFormatter(MercorFormatter):
         pay = data.get("pay", "$80–$120 per hour") or "$80–$120 per hour"
         location = data.get("location", "Remote") or "Remote"
 
-        return f"""<b>{role}</b><br><br>
+        jd_text = f"""<b>{role}</b><br><br>
 <b>Role Summary</b><br>
 {overview}<br><br>
 
@@ -971,10 +1034,11 @@ class DesignMeshAIFormatter(MercorFormatter):
 <li>Follow the instructions in the email to proceed with the remaining steps.</li>
 </ul><br>
 
-#LI-CH""".strip()
+#LI-DP""".strip()
+        return scrub_all_client_orgs_from_jd(jd_text)
 
     def format_email(self, data: dict) -> str:
-        data = sanitize_format_data(data)
+        data = sanitize_format_data(data, is_jd=False)
         role = data.get("role", "Document/Deck Production QA Evaluator")
         link = data.get("link", "https://work.mercor.com/explore")
         pay = data.get("pay", "$80–$120/hour")
@@ -1007,10 +1071,11 @@ class DesignMeshAIFormatter(MercorFormatter):
         req_bullets = "\n".join([f"<li>{r}</li>" for r in reqs if r and r.strip()])
 
         pay_row = f"<b>Pay:</b> {pay}<br>\n" if pay else ""
+        link_html = make_blue_link(link, role)
 
         return f"""Hi {{firstName}},<br><br>
 
-I'm reaching out from <b>DesignMeshAI</b> to refer you for the role of <a href="{link}"><b>{role}</b></a> at <b>Mercor</b>.<br><br>
+I'm reaching out from <b>DesignMeshAI</b> to refer you for the role of {link_html} at <b>Mercor</b>.<br><br>
 
 <b>About the Role</b><br>
 {overview}<br><br>
@@ -1037,7 +1102,7 @@ I'm reaching out from <b>DesignMeshAI</b> to refer you for the role of <a href="
 <li>After accessing your account, submit your application to finalize the process.</li>
 </ul><br>
 
-<b>Apply here:</b> <a href="{link}"><b>{role}</b></a><br><br>
+<b>Apply here:</b> {link_html}<br><br>
 
 <b>You can also checkout these Opportunities as well:</b><br><br>
 
