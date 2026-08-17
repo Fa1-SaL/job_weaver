@@ -1,10 +1,26 @@
 __pycache__/
 *.pyc
 .env
+.env.*
+!.env.example
 *.log
 
 # data (optional – choose wisely)
 data/*.json
+
+# Runtime history/cache databases and locks
+backend/cache_data/
+
+# Scraper credentials, browser state, captures, and generated exports
+backend/misc/micro1_auth.json
+backend/misc/micro1_api_dump.json
+backend/misc/micro1_data.json
+backend/misc/micro1_jobs.csv
+backend/misc/micro1_jobs.json
+backend/misc/micro1_opportunities.html
+backend/misc/micro1_page.html
+backend/misc/temp_job.json
+backend/misc/temp_job.html
 
 # OS junk
 .DS_Store

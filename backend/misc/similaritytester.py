@@ -1,6 +1,12 @@
+import os
+
 from openai import OpenAI
 
-client = OpenAI(api_key="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")
+api_key = os.environ.get("OPENAI_API_KEY")
+if not api_key:
+    raise RuntimeError("OPENAI_API_KEY is required")
+
+client = OpenAI(api_key=api_key)
 
 text = """Generalist Expert
 Hourly contract

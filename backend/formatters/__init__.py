@@ -9,12 +9,27 @@ Usage:
 """
 
 from typing import Dict
-from formatters.base import ClientFormatter
-from formatters.mercorFormatter import MercorFormatter
-from formatters.micro1Formatter import Micro1Formatter
-from formatters.turingFormatter import TuringFormatter
-
-from formatters.domainPagesFormatter import (
+try:  # Package import (``backend.formatters``)
+    from .base import ClientFormatter
+    from .mercorFormatter import MercorFormatter
+    from .micro1Formatter import Micro1Formatter
+    from .turingFormatter import TuringFormatter
+    from .domainPagesFormatter import (
+        CrossingHurdlesFormatter,
+        CodeGeniusRecruitFormatter,
+        CuraSenseAIFormatter,
+        LegalTrustAIFormatter,
+        CapitexAIFormatter,
+        STEMSyncAIFormatter,
+        LinguaSenseAIFormatter,
+        DesignMeshAIFormatter,
+    )
+except ImportError:  # Script import from the backend working directory
+    from formatters.base import ClientFormatter
+    from formatters.mercorFormatter import MercorFormatter
+    from formatters.micro1Formatter import Micro1Formatter
+    from formatters.turingFormatter import TuringFormatter
+    from formatters.domainPagesFormatter import (
     CrossingHurdlesFormatter,
     CodeGeniusRecruitFormatter,
     CuraSenseAIFormatter,
@@ -23,7 +38,7 @@ from formatters.domainPagesFormatter import (
     STEMSyncAIFormatter,
     LinguaSenseAIFormatter,
     DesignMeshAIFormatter,
-)
+    )
 
 # Singleton instances — formatters are stateless, so one instance per client is fine
 _FORMATTER_REGISTRY: Dict[str, ClientFormatter] = {

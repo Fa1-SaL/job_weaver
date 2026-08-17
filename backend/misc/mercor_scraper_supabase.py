@@ -8,7 +8,7 @@ Uses httpx for Supabase REST API calls (no supabase-py dependency needed).
 
 Usage:
     set SUPABASE_URL=https://ixzcmfbbkvwfyfsesthl.supabase.co
-    set SUPABASE_SERVICE_ROLE_KEY=sb_secret_9gTaYPsx87WK_DPdihthaA_IAYkA6dq
+    set SUPABASE_SERVICE_ROLE_KEY=<your-service-role-key>
     python mercor_scraper_supabase.py [--visible] [--dry-run]
 """
 
@@ -45,7 +45,7 @@ SUPABASE_URL = os.environ.get(
     "SUPABASE_URL", "https://ixzcmfbbkvwfyfsesthl.supabase.co"
 )
 SUPABASE_KEY = os.environ.get(
-    "SUPABASE_SERVICE_ROLE_KEY", "sb_secret_9gTaYPsx87WK_DPdihthaA_IAYkA6dq"
+    "SUPABASE_SERVICE_ROLE_KEY"
 )
 
 MAX_RETRIES = 3
@@ -236,7 +236,7 @@ def scrape_mercor_jobs(headless: bool = True, dry_run: bool = False) -> dict:
     api_captured = False
 
     print("[*] Starting Mercor Job Scraper → Supabase pipeline...")
-    if not SUPABASE_KEY:
+    if not dry_run and not SUPABASE_KEY:
         print("[X] SUPABASE_SERVICE_ROLE_KEY not set! Exiting.")
         sys.exit(1)
 
@@ -358,7 +358,7 @@ def scrape_mercor_jobs(headless: bool = True, dry_run: bool = False) -> dict:
 
             record = clean_listing(listing, description)
 
-            existing_record = fetch_existing_job(listing_id)
+            existing_record = None if dry_run else fetch_existing_job(listing_id)
 
             if existing_record:
                 if not has_changed(existing_record, record):
@@ -414,8 +414,7 @@ if __name__ == "__main__":
     parser.add_argument("--dry-run", action="store_true", help="Scrape only, skip Supabase upload")
     args = parser.parse_args()
 
-    stats = scrape_mercor_jobs(headless=not.
-    args.visible, dry_run=args.dry_run)
+    stats = scrape_mercor_jobs(headless=not args.visible, dry_run=args.dry_run)
 
     print("\n" + "=" * 50)
     print("  SCRAPE COMPLETED STATUS")

@@ -8,19 +8,40 @@ from openai import OpenAI
 from dotenv import load_dotenv
 
 # ── Registry imports ─────────────────────────────────────────────────────────
-from clients import get_client_config, CLIENT_REGISTRY, SUPPORTED_CLIENTS, DOMAIN_PAGE_KEYS
-from formatters import get_formatter
-from prompts import get_prompt
+try:  # Package import (``backend.llm_jd_parser``)
+    from .clients import get_client_config, CLIENT_REGISTRY, SUPPORTED_CLIENTS, DOMAIN_PAGE_KEYS
+    from .formatters import get_formatter
+    from .formatters.base import sanitize_http_url
+    from .formatters.domainPagesFormatter import scrub_all_client_orgs_from_jd
+    from .policy_utils import is_geography_constraint, is_prohibited_eligibility, remove_prohibited_sentences, sanitize_scalar_eligibility
+    from .prompts import get_prompt
+except ImportError:  # Script import from the backend working directory
+    from clients import get_client_config, CLIENT_REGISTRY, SUPPORTED_CLIENTS, DOMAIN_PAGE_KEYS
+    from formatters import get_formatter
+    from formatters.base import sanitize_http_url
+    from formatters.domainPagesFormatter import scrub_all_client_orgs_from_jd
+    from policy_utils import is_geography_constraint, is_prohibited_eligibility, remove_prohibited_sentences, sanitize_scalar_eligibility
+    from prompts import get_prompt
 
-# Explicitly load .env from the project root (one level above this file's backend/ folder)
+# Explicitly load .env from the project root without replacing deployment
+# environment variables. Process-level configuration must win during rotations
+# and container/orchestrator deployments.
 _env_path = Path(__file__).resolve().parent.parent / ".env"
-load_dotenv(dotenv_path=_env_path, override=True)
+load_dotenv(dotenv_path=_env_path, override=False)
 
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("OPENAI_API_KEY is not set in environment variables.")
+_openai_client = None
+OUTPUT_VERSION = "v3"
 
-_openai_client = OpenAI(api_key=api_key)
+
+def _get_openai_client() -> OpenAI:
+    """Create the OpenAI client only when an LLM call is actually requested."""
+    global _openai_client
+    if _openai_client is None:
+        api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            raise ValueError("OPENAI_API_KEY is not set in environment variables.")
+        _openai_client = OpenAI(api_key=api_key)
+    return _openai_client
 
 # ── Output schema ─────────────────────────────────────────────────────────────
 OUTPUT_SCHEMA = {
@@ -31,9 +52,11 @@ OUTPUT_SCHEMA = {
     "commitment": "",
     "role_responsibilities": [],
     "requirements": [],
+    "preferred_qualifications": [],
     "role_overview": "",
     "who_this_is_for": "",
     "where_you_will": "",
+    "start_date": "",
     "client": "",
     "client_desc": "",
     "link": "",
@@ -70,7 +93,7 @@ def generate_llm_output(raw_jd: str, client_name: str = "mercor") -> str:
         )
 
     _t0 = time.time()
-    response = _openai_client.chat.completions.create(
+    response = _get_openai_client().chat.completions.create(
         model="gpt-4o",
         messages=[
             {"role": "system", "content": system_instruction},
@@ -116,7 +139,7 @@ VALID_INDUSTRIES = [
 ]
 
 def clean_category_list(items, valid_list):
-    """Validates items against valid_list (exact match). Falls back to keyword overlap if < 3 match, and defaults if still < 3."""
+    """Validate category values without inventing unrelated list entries."""
     if not isinstance(items, list): items = []
     cleaned = []
     for i in items:
@@ -145,14 +168,6 @@ def clean_category_list(items, valid_list):
             if len(cleaned) >= 3:
                 break
 
-    # Failsafe 2: if still < 3 (e.g. empty input or no keyword match), fill from valid_list
-    if len(cleaned) < 3:
-        for v in valid_list:
-            if v not in cleaned:
-                cleaned.append(v)
-            if len(cleaned) >= 3:
-                break
-
     return cleaned[:3]
 
 _SKILL_VERB_PREFIXES = (
@@ -166,8 +181,11 @@ def clean_skills(skills: list, role: str = "") -> list:
         skills = []
     role_lower = role.lower()
     cleaned = []
+    seen = set()
     for s in skills:
-        s = str(s).strip()
+        if not isinstance(s, str):
+            continue
+        s = s.strip()
         if not s:
             continue
         if len(s.split()) > 3:
@@ -177,9 +195,10 @@ def clean_skills(skills: list, role: str = "") -> list:
             continue
         if s_lower == role_lower:
             continue
+        if s_lower in seen:
+            continue
+        seen.add(s_lower)
         cleaned.append(s)
-    if not cleaned:
-        cleaned = ["Data Evaluation", "Quality Assurance", "Content Analysis"]
     return cleaned[:5]
 
 def normalize_commitment(commitment: str) -> str:
@@ -191,20 +210,43 @@ def clean_experience_phrases(text: str) -> str:
     if not text:
         return text
 
-    # Replace the complete quantified-experience phrase so ranges such as
-    # "2-3 years of relevant experience" cannot leave fragments like "2- of".
+    original_text = str(text)
+    original_started_upper = original_text.lstrip()[:1].isupper()
+    number = (
+        r"(?:\d+(?:\.\d+)?|one|two|three|four|five|six|seven|eight|nine|ten|"
+        r"eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|"
+        r"nineteen|twenty(?:[-\s](?:one|two|three|four|five|six|seven|eight|nine))?)"
+    )
+    duration = rf"""
+        (?:(?:at\s+least|(?:a\s+)?minimum(?:\s+of)?|more\s+than|over|up\s+to|(?:not|no)\s+less\s+than)\s+|between\s+)?
+        {number}
+        (?:\s*(?:[-–—]|to|and)\s*{number})?
+        (?:\s*\+|\s+or\s+more)?
+        \s*(?:years?|yrs?\.?)['’]?
+    """
+    original_started_with_duration = bool(
+        re.match(
+            rf"(?ix)^\s*(?:an?\s+)?(?:(?:at\s+least|minimum(?:\s+of)?|between)\s+)?{number}",
+            original_text,
+        )
+    )
+
+    adjectival_pattern = re.compile(
+        rf'''(?ix)
+        \b(?:an?\s+)?{number}(?:\s*[-–—]\s*{number})?\s*[-–—]\s*year\s+
+        (?:(?:relevant|professional|industry|domain|technical|practical|hands-on)\s+)?
+        (?:experience|background)\b
+        ''',
+    )
+    text, replacements = adjectival_pattern.subn("strong relevant experience", text)
+
+    # Duration followed by an experience phrase, including descriptors such as
+    # "hands-on machine learning". Education, age, training, and residency
+    # durations are explicitly excluded.
     experience_duration_pattern = re.compile(
-        r'''
-        \b
-        (?:
-            (?:(?:at[ \t]+least|(?:a[ \t]+)?minimum(?:[ \t]+of)?|more[ \t]+than|over|up[ \t]+to)[ \t]+)
-            |(?:between[ \t]+)
-        )?
-        \d+(?:\.\d+)?
-        (?:[ \t]*(?:[-–—]|to|and)[ \t]*\d+(?:\.\d+)?)?
-        (?:[ \t]*\+|[ \t]+or[ \t]+more)?
-        [ \t]*(?:years?|yrs?(?:\.(?![ \t]+(?-i:[A-Z])))?)(?:['’])?
-        (?:[ \t]+of)?[ \t]+
+        rf'''
+        \b{duration}
+        (?:\s+of)?\s+
         (?:
             (?!
                 (?:age|old|college|education|study|studies|degree|degrees|
@@ -212,12 +254,125 @@ def clean_experience_phrases(text: str) -> str:
                    during|plus|including|followed|have|has|having|had|who|that|which)\b
             )
             (?!experience\b)[\w/&,+’'–—-]+[ \t]+
-        ){0,4}
+        ){{0,4}}
         experience\b
         ''',
         flags=re.IGNORECASE | re.VERBOSE,
     )
-    text, replacements = experience_duration_pattern.subn("strong relevant experience", text)
+    text, count = experience_duration_pattern.subn("strong relevant experience", text)
+    replacements += count
+
+    # Experience-first variants: "minimum experience of 2 years" and
+    # "professional experience: two years".
+    experience_first_pattern = re.compile(
+        rf'''(?ix)
+        \b(?:minimum\s+|required\s+|relevant\s+|professional\s+)?experience
+        (?:\s+(?:requirement|required))?\s*(?::|of|is)?\s*{duration}\b
+        ''',
+    )
+    text, count = experience_first_pattern.subn("strong relevant experience", text)
+    replacements += count
+
+    # Postfix work-history variants. Require candidate/requirement grammar (or
+    # a duration-led standalone bullet) so company/project timelines are not
+    # mistaken for candidate experience.
+    postfix_work_pattern = re.compile(
+        rf'''(?ix)
+        (?P<leading>
+            \b(?:(?:must|should)\s+have\s+|(?:required|need(?:s)?)\s+to\s+have\s+)
+            |
+            \b(?:candidates?|applicants?|you)\s+(?:have|has|had)\s+
+            |
+            ^\s*
+        )
+        (?:been\s+)?
+        (?:worked|working|employed|served|practiced|practised)
+        (?P<context>(?:[ \t]+(?!for\b)[^.!?;:\r\n]+?)?)
+        [ \t]+for[ \t]+{duration}\b
+        ''',
+    )
+
+    def replace_postfix_work(match: re.Match) -> str:
+        leading = match.group("leading")
+        context = " ".join((match.group("context") or "").split())
+        context_suffix = f" {context}" if context else ""
+        return f"{leading}strong relevant experience{context_suffix}"
+
+    text, count = postfix_work_pattern.subn(replace_postfix_work, text)
+    replacements += count
+
+    role_tenure_pattern = re.compile(
+        rf'''(?ix)
+        (?P<leading>
+            \b(?:(?:must|should)\s+have\s+|(?:required|need(?:s)?)\s+to\s+have\s+)
+            |
+            \b(?:candidates?|applicants?|you)\s+(?:have|has|had)\s+
+        )
+        been\s+(?:an?\s+)?(?:senior\s+|lead\s+)?
+        (?:analysts?|engineers?|developers?|managers?|researchers?|designers?|consultants?|
+           specialists?|professionals?|practitioners?|scientists?|accountants?|attorneys?|
+           lawyers?|teachers?|writers?|editors?)
+        [ \t]+for[ \t]+{duration}\b
+        ''',
+    )
+    text, count = role_tenure_pattern.subn(
+        lambda match: f"{match.group('leading')}strong relevant experience",
+        text,
+    )
+    replacements += count
+
+    synonym_duration_pattern = re.compile(
+        rf'''(?ix)
+        (?P<leading>
+            ^\s*
+            |
+            \b(?:(?:must|should)\s+(?:have\s+)?|(?:require(?:s|d)?|need(?:s)?(?:\s+to)?)\s+(?:have\s+)?)
+            |
+            \b(?:candidates?|applicants?|you)\s+(?:have|bring)\s+
+        )
+        {duration}(?:\s+of)?\s+
+        (?:(?:relevant|professional|industry|domain|technical|practical|hands-on|full-time)\s+){{0,3}}
+        (?:background|expertise|work)\b
+        ''',
+    )
+    text, count = synonym_duration_pattern.subn(
+        lambda match: f"{match.group('leading')}strong relevant experience",
+        text,
+    )
+    replacements += count
+
+    # Work-context variants without the word "experience":
+    # "3 years working with Python", "two years as an analyst".
+    work_context_pattern = re.compile(
+        rf'''(?ix)
+        (?P<leading>
+            ^\s*
+            |
+            \b(?:(?:must|should)\s+(?:have\s+)?|(?:require(?:s|d)?|need(?:s)?(?:\s+to)?)\s+(?:have\s+)?)
+            |
+            \b(?:candidates?|applicants?|you)\s+(?:have|bring)\s+
+        )
+        {duration}\b
+        (?=\s+(?:working|using|developing|building|practicing|practising|performing|
+                     managing|leading|serving|employed|as|with|in)\b
+            (?!\s+(?:college|education|study|studies|degree|training|residency)\b))
+        ''',
+    )
+    text, count = work_context_pattern.subn(
+        lambda match: f"{match.group('leading')}strong relevant experience",
+        text,
+    )
+    replacements += count
+
+    # A requirement expressed solely as a duration or followed by
+    # "required/preferred" still represents experience in this field.
+    standalone_pattern = re.compile(
+        rf'''(?ix)^\s*(?:experience\s*:\s*)?{duration}\s*(?:required|preferred|desired)?\s*([.!?]?)\s*$'''
+    )
+    if standalone_pattern.match(text):
+        punctuation = standalone_pattern.match(text).group(1) or ""
+        text = f"strong relevant experience{punctuation}"
+        replacements += 1
 
     if replacements:
         # In the reported Masters-studies construction, experience remains an
@@ -235,6 +390,8 @@ def clean_experience_phrases(text: str) -> str:
         )
 
     text = " ".join(text.split())
+    if (original_started_upper or original_started_with_duration) and text[:1].islower():
+        text = text[0].upper() + text[1:]
     return text.strip()
 
 def normalize_role(role: str) -> str:
@@ -245,6 +402,33 @@ def normalize_role(role: str) -> str:
     # Remove bracketed and parenthesized expressions (like [Task-based], (Remote), etc.)
     role = re.sub(r'\[[^\]]*\]', '', role)
     role = re.sub(r'\([^)]*\)', '', role)
+    places = (
+        r"united\s+states|u\.?s\.?(?:a\.?)?|canada|united\s+kingdom|u\.?k\.?|"
+        r"india|australia|germany|france|brazil|singapore|europe|asia|apac|emea|"
+        r"new\s+york|london|berlin|bangalore|bengaluru|mumbai|delhi|toronto|"
+        r"vancouver|sydney|melbourne|paris|tokyo|dubai"
+    )
+    role = re.sub(
+        r"^\s*(?!(?:Evidence|Research|Skill|Competency|Performance|Project|Team|Web|Cloud)\b)"
+        r"[A-Z][a-z]{2,}\s*[- ]based\s*[-–—|:]?\s*",
+        "",
+        role,
+    )
+    role = re.sub(
+        rf"(?i)^\s*(?:{places})\s*[-–— ]\s*(?:based|only)\s*[-–—|:]?\s*",
+        "",
+        role,
+    )
+    role = re.sub(
+        rf"(?i)^\s*(?:remote|hybrid|on-?site)\s*[-–—|:]\s*",
+        "",
+        role,
+    )
+    role = re.sub(
+        rf"(?i)\s*[-–—|,]\s*(?:{places}|remote|hybrid|on-?site)\s*$",
+        "",
+        role,
+    )
     # Remove trailing/leading symbol clutter (pipes, dashes, colons, spaces)
     role = re.sub(r'\s*[|\-:\s]+$', '', role)
     role = re.sub(r'^[|\-:\s]+', '', role)
@@ -277,32 +461,35 @@ def strip_deadlines_and_dates(text: str) -> str:
 
 def filter_requirements(requirements: List[str]) -> List[str]:
     filtered = []
-    blocked_pattern = re.compile(r'\b(us|uk|canada|europe|western|h1-b|h1b|visa|opt|citizenship)\b', re.IGNORECASE)
     deadline_pattern = re.compile(
         r'(?i)\b(before \d{1,2}/\d{1,2}|turnaround time|to be filled before|filled before|deadline|complete before|submit by|apply by|\d{1,2}(?:st|nd|rd|th)?\s+(?:january|february|march|april|may|june|july|august|september|october|november|december))\b'
     )
 
     for r in requirements:
-        if blocked_pattern.search(r) or deadline_pattern.search(r):
+        if is_prohibited_eligibility(r) or deadline_pattern.search(r):
             continue
         filtered.append(r)
 
-    if len(filtered) < 2:
-        fallback = "Candidates should have strong relevant experience in the domain."
-        if fallback not in filtered:
-            filtered.append(fallback)
-
     return filtered
+
+
+def filter_optional_requirements(requirements: List[str]) -> List[str]:
+    """Apply requirement policies without adding mandatory fallback bullets."""
+    deadline_pattern = re.compile(
+        r'(?i)\b(before \d{1,2}/\d{1,2}|turnaround time|to be filled before|filled before|deadline|complete before|submit by|apply by|\d{1,2}(?:st|nd|rd|th)?\s+(?:january|february|march|april|may|june|july|august|september|october|november|december))\b'
+    )
+    return [
+        item for item in requirements
+        if item and not is_prohibited_eligibility(item) and not deadline_pattern.search(item)
+    ]
 
 def filter_responsibilities(responsibilities: List[str]) -> List[str]:
     filtered = []
-    blocked_patterns = ["based in", "located in", "native to"]
     deadline_pattern = re.compile(
         r'(?i)\b(before \d{1,2}/\d{1,2}|turnaround time|to be filled before|filled before|deadline|complete before|submit by|apply by|\d{1,2}(?:st|nd|rd|th)?\s+(?:january|february|march|april|may|june|july|august|september|october|november|december))\b'
     )
     for r in responsibilities:
-        r_lower = r.lower()
-        if any(p in r_lower for p in blocked_patterns) or deadline_pattern.search(r):
+        if is_prohibited_eligibility(r) or deadline_pattern.search(r):
             continue
         filtered.append(r)
     return filtered
@@ -327,16 +514,17 @@ def normalize_compensation(pay: str) -> str:
         return pay
 
     pay = pay.strip()
-    match = re.match(r'\$0\s*-\s*\$?(\d+)', pay)
+    match = re.match(
+        r'^\$0(?:\.0+)?\s*[-–—]\s*\$?\s*(\d[\d,]*(?:\.\d+)?)\s*(.*)$',
+        pay,
+        flags=re.IGNORECASE,
+    )
 
     if match:
         max_val = match.group(1)
-        if "hour" in pay.lower():
-            return f"Upto ${max_val} per hour"
-        elif "month" in pay.lower():
-            return f"Upto ${max_val} per month"
-        else:
-            return f"Upto ${max_val}"
+        suffix = match.group(2).strip()
+        separator = " " if suffix and not suffix.startswith("/") else ""
+        return f"Up to ${max_val}{separator}{suffix}".strip()
 
     return pay
 
@@ -349,28 +537,30 @@ def normalize_data(data: dict, client_id: str) -> dict:
 
     data["pay"] = normalize_compensation(data.get("pay", ""))
     data["commitment"] = normalize_commitment(data.get("commitment", ""))
-    data["role"] = normalize_role(data.get("role", ""))
+    data["role"] = normalize_role(
+        sanitize_scalar_eligibility(data.get("role", ""))
+    )
+    for scalar_field in ("role", "type", "pay", "commitment"):
+        data[scalar_field] = sanitize_scalar_eligibility(data.get(scalar_field, ""))
+    data["location"] = "Remote"
+    data["link"] = sanitize_http_url(data.get("link", ""))
 
     reqs = normalize_requirements(data.get("requirements", []))
     data["requirements"] = filter_requirements(reqs)
 
+    preferred = normalize_requirements(data.get("preferred_qualifications", []))
+    data["preferred_qualifications"] = filter_optional_requirements(preferred)
+
     who_for = clean_experience_phrases(data.get("who_this_is_for", ""))
+    who_for = remove_prohibited_sentences(who_for)
     data["who_this_is_for"] = normalize_text_block(who_for)
 
-    if len(data["who_this_is_for"].split()) < 10:
-        data["who_this_is_for"] = (
-            "Professionals with strong experience in content editing, proofreading, or "
-            "language-focused roles who are comfortable working with structured evaluation "
-            "tasks and maintaining high-quality standards."
-        )
-
-    where_will = data.get("where_you_will", "").strip()
+    where_will = clean_experience_phrases(data.get("where_you_will", ""))
+    where_will = remove_prohibited_sentences(where_will).strip()
     if where_will:
         where_will = " ".join(where_will.split())
         if len(where_will) > 0:
             where_will = where_will[0].lower() + where_will[1:]
-    else:
-        where_will = "contribute to training advanced AI models and ensuring high-quality system integration"
     data["where_you_will"] = where_will
     
     data["justifications"] = data.get("justifications", {})
@@ -378,7 +568,9 @@ def normalize_data(data: dict, client_id: str) -> dict:
         data["justifications"] = {}
 
     if "role_overview" in data and isinstance(data["role_overview"], str):
+        data["role_overview"] = clean_experience_phrases(data["role_overview"])
         data["role_overview"] = strip_deadlines_and_dates(data["role_overview"])
+        data["role_overview"] = remove_prohibited_sentences(data["role_overview"])
     if "commitment" in data and isinstance(data["commitment"], str):
         data["commitment"] = strip_deadlines_and_dates(data["commitment"])
     if "who_this_is_for" in data and isinstance(data["who_this_is_for"], str):
@@ -388,6 +580,7 @@ def normalize_data(data: dict, client_id: str) -> dict:
 
     unique_resps = []
     for resp in data.get("role_responsibilities", []):
+        resp = clean_experience_phrases(resp)
         r_fmt = format_bullet(resp)
         if r_fmt and r_fmt not in unique_resps:
             unique_resps.append(r_fmt)
@@ -395,18 +588,6 @@ def normalize_data(data: dict, client_id: str) -> dict:
 
     data["requirements"] = [clean_requirement_text(clean_text_artifacts(r)) for r in data["requirements"]]
     data["role_responsibilities"] = [clean_text_artifacts(r) for r in data["role_responsibilities"]]
-
-    if len(data["role_responsibilities"]) < 2:
-        data["role_responsibilities"] = [
-            "Perform tasks relevant to the role with high accuracy",
-            "Follow guidelines to ensure consistent output quality"
-        ]
-
-    if len(data["requirements"]) < 2:
-        data["requirements"] = [
-            "Candidates should have strong relevant experience in the domain.",
-            "Strong communication and analytical skills"
-        ]
 
     data["role_responsibilities"] = [r for r in data["role_responsibilities"] if r and r.strip()]
     data["requirements"] = [r for r in data["requirements"] if r and r.strip()]
@@ -434,14 +615,7 @@ def is_remote_role(data: dict) -> bool:
     return "remote" in text_blob
 
 def is_geography_sentence(sentence: str) -> bool:
-    patterns = [
-        r'(?i)\bbased in\b',
-        r'(?i)\blocated in\b',
-        r'(?i)\bnative to\b',
-        r'(?i)\bmust be in\b',
-        r'(?i)\bonly candidates from\b'
-    ]
-    return any(re.search(p, sentence) for p in patterns)
+    return is_geography_constraint(sentence)
 
 def clean_text_artifacts(text: str) -> str:
     if not text: return text
@@ -473,24 +647,7 @@ def clean_requirement_text(text: str) -> str:
     return t
 
 def remove_inline_geography(text: str) -> str:
-    if not text:
-        return text
-
-    geo_terms = [
-        "us", "uk", "canada", "spain", "mexico", "chile",
-        "europe", "western", "germany", "france"
-    ]
-
-    words = text.split()
-    cleaned_words = []
-
-    for w in words:
-        word_clean = w.lower().strip(",.")
-        if word_clean in geo_terms:
-            continue
-        cleaned_words.append(w)
-
-    return " ".join(cleaned_words)
+    return remove_prohibited_sentences(text)
 
 def remove_geography_sentences(text: str) -> str:
     if not text:
@@ -500,7 +657,7 @@ def remove_geography_sentences(text: str) -> str:
     cleaned = []
 
     for sentence in sentences:
-        if is_geography_sentence(sentence):
+        if is_prohibited_eligibility(sentence):
             continue
         cleaned.append(sentence.strip())
 
@@ -512,44 +669,60 @@ def remove_geography_sentences(text: str) -> str:
     return result
 
 def get_fallback_titles(role: str) -> List[str]:
-    return [
-        f"{role} (Research & Reporting)",
-        "Content Analyst (Media & Insights)",
-        "Reporting Specialist (Analysis & Review)",
-        "Media Reviewer (Content & Accuracy)",
-        "Editorial Analyst (Research & Quality)"
-    ]
+    role = normalize_role(role) or "Role"
+    return [role]
 
 def clean_titles(titles: List[str], role: str) -> List[str]:
     cleaned = []
     role_lower = role.lower()
+    role_mentions_ai = bool(re.search(r"\bai\b", role_lower))
+    seen = set()
 
+    if not isinstance(titles, list):
+        titles = []
     for t in titles:
+        if not isinstance(t, str):
+            continue
+        t = normalize_role(t.strip())
+        if not t:
+            continue
         t_lower = t.lower()
 
-        if len(t.split()) > 10:
+        if len(t.split()) > 8:
             continue
 
         if any(bad in t_lower for bad in ["expert", "generalist"]):
             continue
 
-        if "ai" in t_lower and "ai" not in role_lower:
+        if re.search(r"\bai\b", t_lower) and not role_mentions_ai:
             continue
 
-        if t not in cleaned:
+        title_key = t.casefold()
+        if title_key not in seen:
+            seen.add(title_key)
             cleaned.append(t)
 
-    if len(cleaned) < 3:
+    if not cleaned:
         cleaned = get_fallback_titles(role)
 
     return cleaned[:5]
 
 
 def extract_raw_role(raw_jd: str) -> str:
-    for line in raw_jd.split('\n'):
+    """Extract only an explicitly labelled, plain-text job title from raw input."""
+    for line in raw_jd.split('\n')[:20]:
         line = line.strip()
-        if line:
-            return line
+        match = re.match(r'(?i)^(?:job\s+title|position\s+title|position|role)\s*:\s*(.+)$', line)
+        if not match:
+            continue
+        candidate = match.group(1).strip()
+        if not candidate or len(candidate) > 120:
+            continue
+        if any(token in candidate for token in ("<", ">", "{", "}")):
+            continue
+        if re.search(r'(?i)https?://|javascript:', candidate):
+            continue
+        return candidate
     return ""
 
 def extract_pay_info(pay_str: str):
@@ -618,6 +791,36 @@ def generate_linkedin_title(role: str, numeric_max: float, formatted_max: str, u
 
 # ── 4. Schema Validation ──────────────────────────────────────────────────────
 
+def validate_raw_schema(data: Any) -> Tuple[bool, str]:
+    """Validate model-produced types before any normalizer can coerce them."""
+    if not isinstance(data, dict):
+        return False, "LLM output must be a JSON object"
+
+    string_fields = {
+        "role", "type", "pay", "location", "commitment", "role_overview",
+        "who_this_is_for", "where_you_will", "client", "client_desc", "link",
+        "subject", "linkedin_title", "start_date",
+    }
+    list_fields = {
+        "role_responsibilities", "requirements", "preferred_qualifications",
+        "suggested_titles", "skills", "job_functions", "industries",
+    }
+
+    for key in string_fields:
+        if key in data and not isinstance(data[key], str):
+            return False, f"{key} must be a string"
+    for key in list_fields:
+        if key not in data:
+            continue
+        if not isinstance(data[key], list):
+            return False, f"{key} must be a list"
+        if not all(isinstance(item, str) for item in data[key]):
+            return False, f"{key} must contain only strings"
+    if "justifications" in data and not isinstance(data["justifications"], dict):
+        return False, "justifications must be an object"
+    return True, ""
+
+
 def validate_schema(data: dict) -> Tuple[bool, Any]:
     required_keys = [
         "role", "type", "pay", "location", "commitment",
@@ -630,6 +833,10 @@ def validate_schema(data: dict) -> Tuple[bool, Any]:
 
     if not isinstance(data["role_responsibilities"], list): return False, "role_responsibilities must be a list"
     if not isinstance(data["requirements"], list): return False, "requirements must be a list"
+    if not all(isinstance(item, str) for item in data["role_responsibilities"]):
+        return False, "role_responsibilities must contain only strings"
+    if not all(isinstance(item, str) for item in data["requirements"]):
+        return False, "requirements must contain only strings"
 
     string_keys = ["role", "type", "pay", "location", "commitment", "role_overview", "who_this_is_for", "client", "client_desc", "link"]
     for k in string_keys:
@@ -638,6 +845,10 @@ def validate_schema(data: dict) -> Tuple[bool, Any]:
 
     if not isinstance(data.get("suggested_titles"), list):
         return False, "suggested_titles must be a list"
+    if not all(isinstance(item, str) for item in data["suggested_titles"]):
+        return False, "suggested_titles must contain only strings"
+    if not isinstance(data.get("justifications", {}), dict):
+        return False, "justifications must be an object"
 
     return True, data
 
@@ -696,7 +907,7 @@ Job Description:
 
     try:
         # o3-mini supports JSON mode via response_format={"type": "json_object"}
-        response = _openai_client.chat.completions.create(
+        response = _get_openai_client().chat.completions.create(
             model="o3-mini",
             messages=[
                 {"role": "user", "content": prompt}
@@ -739,71 +950,14 @@ def get_valid_llm_output(raw_jd: str, url: str = None, client: str = "mercor") -
             data = json.loads(clean_text)
         except json.JSONDecodeError:
             print(f"[!] Invalid JSON on attempt {attempt+1}")
-
-            if attempt == 2:
-                fallback_titles = get_fallback_titles("Role")
-                fallback_data = {
-                    "role": "Role not parsed",
-                    "type": "",
-                    "pay": "",
-                    "location": "Remote",
-                    "commitment": "",
-                    "role_responsibilities": [
-                        "Unable to extract responsibilities from input",
-                        "Please review the original job description"
-                    ],
-                    "requirements": [
-                        "Candidates should have strong relevant experience in the domain.",
-                        "Strong communication and analytical skills"
-                    ],
-                    "role_overview": "Unable to generate overview due to parsing failure.",
-                    "who_this_is_for": "Unable to determine target candidate profile.",
-                    "where_you_will": "",
-                    "client": config["displayName"],
-                    "client_desc": config["description"],
-                    "link": url if url else "",
-                    "suggested_titles": fallback_titles,
-                    "subject": "",
-                    "linkedin_title": "",
-                    "skills": ["Data Evaluation", "Quality Assurance", "Content Analysis"],
-                    "job_functions": ["Writing/Editing", "Analytics", "Project Management"],
-                    "industries": ["Technology, Information and Media", "Professional Services", "Education"],
-                    "justifications": {}
-                }
-
-                jd_output = formatter.format_jd(fallback_data)
-                email_output = formatter.format_email(fallback_data)
-
-                print("Final role:", fallback_data["role"])
-                print("Subject:", fallback_data["subject"])
-                print("LinkedIn:", fallback_data["linkedin_title"])
-
-                if client_id == "turing":
-                    print("[TURING DEBUG] Formatter Output (email_output):", email_output)
-                    print("[TURING DEBUG] AI Raw Output (raw_resp):", raw_resp)
-                    print("[TURING DEBUG] Final Response Payload (email):", email_output)
-
-                is_dp = client_id in DOMAIN_PAGE_KEYS
-                return {
-                    "jd": jd_output,
-                    "email": email_output if not is_dp else "",
-                    "inmail_draft": email_output if is_dp else None,
-                    "email_draft": None if is_dp else email_output,
-                    "subject": fallback_data["subject"],
-                    "linkedin_title": fallback_data["linkedin_title"],
-                    "skills": fallback_data["skills"],
-                    "job_functions": fallback_data["job_functions"],
-                    "industries": fallback_data["industries"],
-                    "version": "v2",
-                    "titles": fallback_titles,
-                    "structured_data": fallback_data,
-                    "justifications": {},
-                    "is_domain_page": is_dp
-                }
-
             continue
 
-        # NORMALIZE BEFORE VALIDATION
+        raw_is_valid, raw_error = validate_raw_schema(data)
+        if not raw_is_valid:
+            print(f"[!] Invalid schema on attempt {attempt+1}: {raw_error}")
+            continue
+
+        # NORMALIZE ONLY AFTER RAW TYPES ARE VALIDATED
         raw_role = extract_raw_role(raw_jd)
         if raw_role:
             data["role"] = raw_role
@@ -812,17 +966,13 @@ def get_valid_llm_output(raw_jd: str, url: str = None, client: str = "mercor") -
 
         # Call higher model to refine classifications and justifications
         refinement = refine_classifications_with_higher_model(raw_jd, client_id)
-        if refinement:
+        if isinstance(refinement, dict):
             print("[LLM] Successfully refined classifications and justifications using higher model (o3-mini)")
-            if refinement.get("suggested_titles"):
-                data["suggested_titles"] = refinement["suggested_titles"]
-            if refinement.get("skills"):
-                data["skills"] = refinement["skills"]
-            if refinement.get("job_functions"):
-                data["job_functions"] = refinement["job_functions"]
-            if refinement.get("industries"):
-                data["industries"] = refinement["industries"]
-            if refinement.get("justifications"):
+            for field in ("suggested_titles", "skills", "job_functions", "industries"):
+                value = refinement.get(field)
+                if isinstance(value, list) and all(isinstance(item, str) for item in value):
+                    data[field] = value
+            if isinstance(refinement.get("justifications"), dict):
                 data["justifications"] = refinement["justifications"]
         else:
             print("[LLM] Fallback: using initial classifications and justifications")
@@ -832,45 +982,13 @@ def get_valid_llm_output(raw_jd: str, url: str = None, client: str = "mercor") -
         if is_valid:
             result = msg_or_data
 
-            # Policy Enforcement
-            is_remote = is_remote_role(result)
-            
-            # Detect location from first 10 non-empty lines of the input JD
-            first_lines = [line.strip().lower() for line in raw_jd.split('\n') if line.strip()][:10]
-            detected_loc = None
-            for line in first_lines:
-                if "remote" in line:
-                    detected_loc = "Remote"
-                    break
-                elif "hybrid" in line:
-                    detected_loc = "Hybrid"
-                    break
-                elif "on-site" in line or "onsite" in line:
-                    detected_loc = "Onsite"
-                    break
-            
-            if detected_loc:
-                if detected_loc == "Remote":
-                    is_remote = True
-                    result["location"] = "Remote"
-                else:
-                    is_remote = False
-                    result["location"] = detected_loc
-            elif client_id == "turing":
-                loc_lower = result.get("location", "").lower()
-                if "onsite" in loc_lower or "on-site" in loc_lower or "hybrid" in loc_lower:
-                    is_remote = False
-                else:
-                    is_remote = True
-                    result["location"] = "Remote"
-            elif is_remote:
-                result["location"] = "Remote"
-
-            if is_remote:
-                result["role_overview"] = remove_geography_sentences(result.get("role_overview", ""))
-                result["who_this_is_for"] = remove_geography_sentences(result.get("who_this_is_for", ""))
-                result["role_overview"] = remove_inline_geography(result.get("role_overview", ""))
-                result["who_this_is_for"] = remove_inline_geography(result.get("who_this_is_for", ""))
+            # Output location is intentionally standardized for every client.
+            is_remote = True
+            result["location"] = "Remote"
+            result["role_overview"] = remove_geography_sentences(result.get("role_overview", ""))
+            result["who_this_is_for"] = remove_geography_sentences(result.get("who_this_is_for", ""))
+            result["role_overview"] = remove_inline_geography(result.get("role_overview", ""))
+            result["who_this_is_for"] = remove_inline_geography(result.get("who_this_is_for", ""))
 
             result["suggested_titles"] = clean_titles(result.get("suggested_titles", []), result.get("role", ""))
 
@@ -880,27 +998,24 @@ def get_valid_llm_output(raw_jd: str, url: str = None, client: str = "mercor") -
 
             assert isinstance(result["role_responsibilities"], list)
             assert isinstance(result["requirements"], list)
-            assert len(result["role_responsibilities"]) >= 2
-            assert len(result["requirements"]) >= 2
 
             # Guard: ensure client is in the registry (replaces old hardcoded assert)
             assert client_id in SUPPORTED_CLIENTS, f"Unexpected client: {client_id}"
 
             if url:
-                result["link"] = url
+                result["link"] = sanitize_http_url(url)
 
             # Use the registry formatter — no more if/else branching
             jd_output = formatter.format_jd(result)
             email_output = formatter.format_email(result)
 
             if client_id in DOMAIN_PAGE_KEYS:
-                from formatters.domainPagesFormatter import scrub_all_client_orgs_from_jd
                 jd_output = scrub_all_client_orgs_from_jd(jd_output)
 
             skills = result.get("skills", [])
             if not isinstance(skills, list):
                 skills = []
-            skills = clean_skills([str(s).strip() for s in skills if str(s).strip()], result.get("role", ""))
+            skills = clean_skills([s.strip() for s in skills if isinstance(s, str) and s.strip()], result.get("role", ""))
 
             max_numeric, formatted_max, unit = extract_pay_info(result.get("pay", ""))
             subject = generate_subject(result["role"], formatted_max, unit, is_remote, client_id)
@@ -918,7 +1033,7 @@ def get_valid_llm_output(raw_jd: str, url: str = None, client: str = "mercor") -
                 if item_str in raw_justifications:
                     return raw_justifications[item_str]
                 for k, v in raw_justifications.items():
-                    if k.lower().strip() == item_lower:
+                    if isinstance(k, str) and k.lower().strip() == item_lower:
                         return v
                 return ""
 
@@ -943,11 +1058,6 @@ def get_valid_llm_output(raw_jd: str, url: str = None, client: str = "mercor") -
             print("Subject:", subject)
             print("LinkedIn:", linkedin_title)
 
-            if client_id == "turing":
-                print("[TURING DEBUG] Formatter Output (email_output):", email_output)
-                print("[TURING DEBUG] AI Raw Output (raw_resp):", raw_resp)
-                print("[TURING DEBUG] Final Response Payload (email):", email_output)
-
             is_dp = client_id in DOMAIN_PAGE_KEYS
             return {
                 "jd": jd_output,
@@ -959,7 +1069,7 @@ def get_valid_llm_output(raw_jd: str, url: str = None, client: str = "mercor") -
                 "skills": skills,
                 "job_functions": job_functions,
                 "industries": industries,
-                "version": "v2",
+                "version": OUTPUT_VERSION,
                 "titles": result["suggested_titles"],
                 "structured_data": result,
                 "justifications": final_justifications,
@@ -969,7 +1079,7 @@ def get_valid_llm_output(raw_jd: str, url: str = None, client: str = "mercor") -
         else:
             print(f"[!] Validation failed on attempt {attempt+1}: {msg_or_data}")
 
-    raise ValueError("Failed to get valid JSON from LLM after 3 attempts.")
+    raise ValueError("Failed to get valid structured output from LLM after 3 attempts.")
 
 
 

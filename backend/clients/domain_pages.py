@@ -3,7 +3,10 @@ Domain Pages client configurations.
 All 8 Domain Pages recruit for positions at Mercor.
 """
 
-from clients.mercor import CONFIG as MERCOR_CONFIG
+try:
+    from .mercor import CONFIG as MERCOR_CONFIG
+except ImportError:
+    from clients.mercor import CONFIG as MERCOR_CONFIG
 
 CROSSING_HURDLES_CONFIG = {
     "clientId": "crossing_hurdles",

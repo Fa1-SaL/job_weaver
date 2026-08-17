@@ -40,3 +40,9 @@
   animation: tetrisPulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 .opacity-50 { opacity: 0.5; }
+
+html[data-theme="dark"] .dark\:bg-white { background-color: #e2e8f0 !important; }
+html[data-theme="dark"] .dark\:bg-black { background-color: #0b1323 !important; }
+html[data-theme="dark"] .dark\:border-gray-600 { border-color: #475569; }
+html[data-theme="dark"] .dark\:border-gray-200 { border-color: #e2e8f0; }
+html[data-theme="dark"] .dark\:text-white { color: #f8fafc; }

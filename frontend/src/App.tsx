@@ -1,11 +1,331 @@
-import { useState, useRef } from 'react';
+import { useLayoutEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import DOMPurify, { type Config } from 'dompurify';
 import {
-  ArrowRight, ArrowLeft, History, Link, Check
+  ArrowRight, ArrowLeft, History, Link, Check, Moon, Sun
 } from 'lucide-react';
 import TetrisLoading from './components/ui/tetris-loader';
 
-const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8000";
+const configuredApiUrl = import.meta.env.VITE_API_URL?.trim();
+const API_URL = (
+  configuredApiUrl || (import.meta.env.DEV ? "http://127.0.0.1:8000" : "")
+).replace(/\/+$/, "");
+
+const API_TOKEN_SESSION_KEY = 'job_weaver_api_token';
+const API_CACHE_SCOPE_SESSION_KEY = 'job_weaver_api_cache_scope';
+const CACHE_SCOPE_MARKER_KEY = 'job_weaver_cache_scope_v2';
+const LAST_RUN_CACHE_KEY = 'job_weaver_last_run_v2';
+const LEGACY_LAST_RUN_CACHE_KEY = 'job_weaver_last_run';
+const HISTORY_CACHE_KEY = 'job_weaver_history_v2';
+const LEGACY_HISTORY_CACHE_KEY = 'job_weaver_history';
+const DETAIL_CACHE_PREFIX = 'jw_detail_v2_';
+const LEGACY_DETAIL_CACHE_PREFIX = 'jw_detail_';
+const LOCAL_CACHE_SCOPE = 'local';
+const COLOR_THEME_STORAGE_KEY = 'job-weaver-color-theme';
+
+type ColorTheme = 'light' | 'dark';
+
+function getInitialColorTheme(): ColorTheme {
+  try {
+    const storedTheme = localStorage.getItem(COLOR_THEME_STORAGE_KEY);
+    if (storedTheme === 'light' || storedTheme === 'dark') return storedTheme;
+  } catch {
+    // Fall through to the operating-system preference when storage is blocked.
+  }
+  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+const DOMAIN_PAGES = new Set([
+  'crossing_hurdles',
+  'codegeniusrecruit',
+  'curasenseai',
+  'legaltrustai',
+  'capitexai',
+  'stemsyncai',
+  'linguasenseai',
+  'designmeshai'
+]);
+
+type OutputSelection = { inmail: boolean; jd: boolean };
+
+const RICH_TEXT_SANITIZE_CONFIG: Config = {
+  ALLOWED_TAGS: [
+    'a', 'b', 'blockquote', 'br', 'code', 'div', 'em', 'h1', 'h2', 'h3',
+    'h4', 'h5', 'h6', 'i', 'li', 'ol', 'p', 'pre', 's', 'span', 'strong',
+    'u', 'ul'
+  ],
+  ALLOWED_ATTR: ['href', 'style', 'title'],
+  ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto|tel):|[^a-z]|[a-z0-9+.-]+(?:[^a-z0-9+.-:]|$))/i,
+  ALLOW_ARIA_ATTR: false,
+  ALLOW_DATA_ATTR: false
+};
+
+const SAFE_INLINE_STYLE_PROPERTIES = [
+  'color',
+  'font-weight',
+  'text-decoration'
+] as const;
+
+const OUTPUT_HTML_FIELDS = [
+  'jd',
+  'email',
+  'email_draft',
+  'inmail_draft',
+  'structuredJd',
+  'emailTemplate'
+] as const;
+
+function sanitizeHtml(value: unknown) {
+  if (typeof value !== 'string' || !value) return '';
+
+  const purified = DOMPurify.sanitize(value, RICH_TEXT_SANITIZE_CONFIG);
+  const template = document.createElement('template');
+  template.innerHTML = purified;
+
+  template.content.querySelectorAll<HTMLElement>('[style]').forEach(element => {
+    const safeDeclarations: string[] = [];
+    SAFE_INLINE_STYLE_PROPERTIES.forEach(property => {
+      const propertyValue = element.style.getPropertyValue(property).trim();
+      if (!propertyValue) return;
+      const priority = element.style.getPropertyPriority(property);
+      safeDeclarations.push(`${property}: ${propertyValue}${priority ? ` !${priority}` : ''}`);
+    });
+
+    if (safeDeclarations.length > 0) {
+      element.setAttribute('style', safeDeclarations.join('; '));
+    } else {
+      element.removeAttribute('style');
+    }
+  });
+
+  return template.innerHTML;
+}
+
+function sanitizeOutputPayload(payload: any) {
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return payload;
+  const sanitized = { ...payload };
+  OUTPUT_HTML_FIELDS.forEach(field => {
+    if (typeof sanitized[field] === 'string') {
+      sanitized[field] = sanitizeHtml(sanitized[field]);
+    }
+  });
+  return sanitized;
+}
+
+function normalizeStringArray(value: unknown) {
+  return Array.isArray(value)
+    ? value.filter((item): item is string => typeof item === 'string')
+    : [];
+}
+
+function normalizeCachedTitleText(value: unknown) {
+  return typeof value === 'string' ? value : '';
+}
+
+function apiEndpoint(path: string) {
+  return `${API_URL}${path}`;
+}
+
+function apiFetch(path: string, token: string, init: RequestInit = {}) {
+  const headers = new Headers(init.headers);
+  const normalizedToken = token.trim();
+  if (normalizedToken) {
+    headers.set('Authorization', `Bearer ${normalizedToken}`);
+  }
+  return fetch(apiEndpoint(path), { ...init, headers });
+}
+
+function readSessionApiToken() {
+  try {
+    return sessionStorage.getItem(API_TOKEN_SESSION_KEY) || '';
+  } catch {
+    return '';
+  }
+}
+
+function persistSessionApiToken(token: string) {
+  try {
+    if (token) {
+      sessionStorage.setItem(API_TOKEN_SESSION_KEY, token);
+    } else {
+      sessionStorage.removeItem(API_TOKEN_SESSION_KEY);
+    }
+  } catch (error) {
+    console.warn('The API token could not be saved for this browser session.', error);
+  }
+}
+
+function safeLocalStorageSet(key: string, value: string) {
+  try {
+    localStorage.setItem(key, value);
+    return true;
+  } catch (error) {
+    console.warn(`Local cache write failed for ${key}.`, error);
+    return false;
+  }
+}
+
+function removeLocalJobData() {
+  const keys = new Set([
+    LAST_RUN_CACHE_KEY,
+    LEGACY_LAST_RUN_CACHE_KEY,
+    HISTORY_CACHE_KEY,
+    LEGACY_HISTORY_CACHE_KEY,
+    CACHE_SCOPE_MARKER_KEY
+  ]);
+
+  try {
+    for (let index = 0; index < localStorage.length; index++) {
+      const key = localStorage.key(index);
+      if (key && (key.startsWith('job_weaver_') || key.startsWith('jw_detail_'))) {
+        keys.add(key);
+      }
+    }
+  } catch (error) {
+    console.error('Could not enumerate all local Job Weaver data:', error);
+  }
+
+  keys.forEach(key => {
+    try {
+      localStorage.removeItem(key);
+    } catch (error) {
+      console.error(`Could not remove local cache key ${key}:`, error);
+    }
+  });
+}
+
+function removeLegacyLocalData() {
+  try {
+    localStorage.removeItem(LEGACY_LAST_RUN_CACHE_KEY);
+    localStorage.removeItem(LEGACY_HISTORY_CACHE_KEY);
+    const legacyDetailKeys: string[] = [];
+    for (let index = 0; index < localStorage.length; index++) {
+      const key = localStorage.key(index);
+      if (key?.startsWith(LEGACY_DETAIL_CACHE_PREFIX) && !key.startsWith(DETAIL_CACHE_PREFIX)) {
+        legacyDetailKeys.push(key);
+      }
+    }
+    legacyDetailKeys.forEach(key => localStorage.removeItem(key));
+  } catch (error) {
+    console.error('Could not remove legacy Job Weaver cache data:', error);
+  }
+}
+
+function createCacheScope() {
+  try {
+    if (typeof crypto.randomUUID === 'function') return crypto.randomUUID();
+    const bytes = crypto.getRandomValues(new Uint8Array(16));
+    return Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('');
+  } catch {
+    return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  }
+}
+
+function persistSessionCacheScope(scope: string | null) {
+  try {
+    if (scope) sessionStorage.setItem(API_CACHE_SCOPE_SESSION_KEY, scope);
+    else sessionStorage.removeItem(API_CACHE_SCOPE_SESSION_KEY);
+  } catch (error) {
+    console.warn('The API cache scope could not be saved for this browser session.', error);
+  }
+}
+
+function prepareCacheScope(token: string) {
+  removeLegacyLocalData();
+  const authenticated = Boolean(token.trim());
+  let scope = LOCAL_CACHE_SCOPE;
+  try {
+    if (authenticated) {
+      scope = sessionStorage.getItem(API_CACHE_SCOPE_SESSION_KEY) || createCacheScope();
+      persistSessionCacheScope(scope);
+    } else {
+      persistSessionCacheScope(null);
+    }
+
+    const marker = localStorage.getItem(CACHE_SCOPE_MARKER_KEY);
+    // No cache is trusted without the exact session/local identity marker.
+    if (marker !== scope) {
+      removeLocalJobData();
+    }
+    safeLocalStorageSet(CACHE_SCOPE_MARKER_KEY, scope);
+  } catch (error) {
+    console.error('Could not prepare the local Job Weaver cache scope:', error);
+  }
+  return scope;
+}
+
+function rotateCacheScope(token: string) {
+  removeLocalJobData();
+  const scope = token.trim() ? createCacheScope() : LOCAL_CACHE_SCOPE;
+  persistSessionCacheScope(token.trim() ? scope : null);
+  safeLocalStorageSet(CACHE_SCOPE_MARKER_KEY, scope);
+  return scope;
+}
+
+function scopedCacheKey(baseKey: string, scope: string) {
+  return scope === LOCAL_CACHE_SCOPE ? baseKey : `${baseKey}_${scope}`;
+}
+
+function detailCacheKey(itemId: string, scope: string) {
+  return `${DETAIL_CACHE_PREFIX}${scope === LOCAL_CACHE_SCOPE ? '' : `${scope}_`}${itemId}`;
+}
+
+function normalizeOutputSelection(value: any): OutputSelection {
+  return {
+    inmail: value?.inmail !== false,
+    jd: value?.jd !== false
+  };
+}
+
+function outputSelectionsMatch(left: any, right: OutputSelection) {
+  const normalized = normalizeOutputSelection(left);
+  return normalized.inmail === right.inmail && normalized.jd === right.jd;
+}
+
+function normalizeRawJd(text: string) {
+  return (text || "")
+    .replace(/\r\n?/g, "\n")
+    .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, "")
+    .split("\n")
+    .map(line => line.trim())
+    .filter(Boolean)
+    .join("\n");
+}
+
+function buildHistorySnippet(text: string) {
+  const normalized = normalizeRawJd(text);
+  return normalized.slice(0, 150) + (normalized.length > 150 ? "..." : "");
+}
+
+function isSafeJobUrl(value: string) {
+  if (!value.trim()) return true;
+  try {
+    const parsed = new URL(value.trim());
+    return parsed.protocol === "http:" || parsed.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+function apiErrorMessage(data: any, fallback: string) {
+  const detail = data?.detail ?? data?.error;
+  if (typeof detail === "string" && detail.trim()) return detail;
+  if (Array.isArray(detail)) {
+    const messages = detail.map(item => {
+      if (typeof item === "string") return item;
+      const message = typeof item?.msg === "string" ? item.msg : "";
+      const location = Array.isArray(item?.loc)
+        ? item.loc.filter((part: any) => part !== "body").join(".")
+        : "";
+      return location && message ? `${location}: ${message}` : message;
+    }).filter(Boolean);
+    if (messages.length > 0) return messages.join("; ");
+  }
+  if (detail && typeof detail === "object" && typeof detail.msg === "string") {
+    return detail.msg;
+  }
+  return fallback;
+}
 
 function splitParts(text: string) {
   if (!text) return { prefix: "", suffix: "" };
@@ -17,6 +337,7 @@ function splitParts(text: string) {
 }
 
 export default function App() {
+  const [colorTheme, setColorTheme] = useState<ColorTheme>(getInitialColorTheme);
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [client, setClient] = useState('mercor');
   const [jobUrl, setJobUrl] = useState('');
@@ -36,34 +357,79 @@ export default function App() {
   const [loadingStep, setLoadingStep] = useState("");
   const [isDomainView, setIsDomainView] = useState(false);
   const [domainPageSelection, setDomainPageSelection] = useState("crossing_hurdles");
-  const [outputCheckmarks, setOutputCheckmarks] = useState({ inmail: true, jd: true });
+  const [outputCheckmarks, setOutputCheckmarks] = useState<OutputSelection>({ inmail: true, jd: true });
   const [showHistoryModal, setShowHistoryModal] = useState(false);
   const [historyItems, setHistoryItems] = useState<any[]>([]);
   const [loadingHistory, setLoadingHistory] = useState(false);
   const [hoveredLinkUrl, setHoveredLinkUrl] = useState<string | null>(null);
+  const [apiToken, setApiToken] = useState(readSessionApiToken);
+  const [cacheScope, setCacheScope] = useState(() => prepareCacheScope(apiToken));
 
   const [lastRunData, setLastRunData] = useState<any>(() => {
     try {
-      const saved = localStorage.getItem("job_weaver_last_run");
-      return saved ? JSON.parse(saved) : null;
+      const saved = localStorage.getItem(scopedCacheKey(LAST_RUN_CACHE_KEY, cacheScope));
+      return saved ? sanitizeOutputPayload(JSON.parse(saved)) : null;
     } catch (e) {
       return null;
     }
   });
 
+  useLayoutEffect(() => {
+    document.documentElement.dataset.theme = colorTheme;
+    document.documentElement.style.colorScheme = colorTheme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute(
+      'content',
+      colorTheme === 'dark' ? '#080f1d' : '#f8fafc'
+    );
+    try {
+      localStorage.setItem(COLOR_THEME_STORAGE_KEY, colorTheme);
+    } catch (error) {
+      console.warn('The color theme preference could not be saved.', error);
+    }
+  }, [colorTheme]);
+
+  const handleApiTokenChange = (token: string) => {
+    if (token.trim() !== apiToken.trim()) {
+      setCacheScope(rotateCacheScope(token));
+      setLastRunData(null);
+      setHistoryItems([]);
+      setRawJd('');
+      setJobUrl('');
+      setStructuredJd('');
+      setEmailTemplate('');
+      setSuggestedTitles('');
+      setSubject('');
+      setLinkedinTitle('');
+      setSkills([]);
+      setJobFunctions([]);
+      setIndustries([]);
+      setJustifications({});
+      setError(null);
+      setStep(1);
+    }
+    setApiToken(token);
+    persistSessionApiToken(token);
+  };
+
 
   const fetchHistory = async () => {
     try {
       setLoadingHistory(true);
-      const localStr = localStorage.getItem("job_weaver_history");
+      const localStr = localStorage.getItem(scopedCacheKey(HISTORY_CACHE_KEY, cacheScope));
       let localHist: any[] = [];
       if (localStr) {
-        try { localHist = JSON.parse(localStr); } catch (e) { }
+        try {
+          const parsed = JSON.parse(localStr);
+          localHist = Array.isArray(parsed) ? parsed : [];
+        } catch (e) { }
       }
       setHistoryItems(localHist);
 
-      const res = await fetch(`${API_URL}/history`);
+      const res = await apiFetch("/history", apiToken);
       const data = await res.json();
+      if (res.ok === false || !data.success) {
+        throw new Error(apiErrorMessage(data, "Could not fetch history."));
+      }
       if (data.success && Array.isArray(data.history)) {
         const map = new Map();
         [...data.history, ...localHist].forEach((it: any) => {
@@ -73,7 +439,7 @@ export default function App() {
           new Date(b.timestamp || 0).getTime() - new Date(a.timestamp || 0).getTime()
         );
         setHistoryItems(merged);
-        localStorage.setItem("job_weaver_history", JSON.stringify(merged));
+        safeLocalStorageSet(scopedCacheKey(HISTORY_CACHE_KEY, cacheScope), JSON.stringify(merged));
       }
     } catch (e) {
       console.error("Error fetching history from backend, showing local cache:", e);
@@ -90,25 +456,45 @@ export default function App() {
       let payload: any = null;
 
       try {
-        const res = await fetch(`${API_URL}/history/${itemId}`);
+        const res = await apiFetch(`/history/${encodeURIComponent(itemId)}`, apiToken);
         const data = await res.json();
-        if (data.success && data.data) {
-          payload = data.data;
+        if (res.ok !== false && data.success && data.data) {
+          let cachedSelection: any = outputCheckmarks;
+          const existingDetail = localStorage.getItem(detailCacheKey(itemId, cacheScope));
+          if (existingDetail) {
+            try {
+              cachedSelection = JSON.parse(existingDetail)?._output_selection || outputCheckmarks;
+            } catch (e) { }
+          }
+          payload = sanitizeOutputPayload({
+            ...data.data,
+            _output_selection: normalizeOutputSelection(data.data._output_selection || cachedSelection)
+          });
+          safeLocalStorageSet(detailCacheKey(itemId, cacheScope), JSON.stringify(payload));
         }
       } catch (err) {
         console.error("Backend fetch failed, checking localStorage detail...");
       }
 
       if (!payload) {
-        const localDetailStr = localStorage.getItem(`jw_detail_${itemId}`);
+        const localDetailStr = localStorage.getItem(detailCacheKey(itemId, cacheScope));
         if (localDetailStr) {
-          try { payload = JSON.parse(localDetailStr); } catch (e) { }
+          try {
+            payload = sanitizeOutputPayload(JSON.parse(localDetailStr));
+            safeLocalStorageSet(detailCacheKey(itemId, cacheScope), JSON.stringify(payload));
+          } catch (e) { }
         }
       }
 
       if (payload) {
-        if (payload._raw_jd) setRawJd(payload._raw_jd);
-        if (payload._url) setJobUrl(payload._url);
+        const restoredRawJd = typeof payload._raw_jd === "string" ? payload._raw_jd : rawJd;
+        const restoredJobUrl = typeof payload._url === "string" ? payload._url : jobUrl;
+        const restoredSelection = normalizeOutputSelection(payload._output_selection || outputCheckmarks);
+        const restoredClient = DOMAIN_PAGES.has(payload._client) ? "domain_page" : (payload._client || client);
+
+        setRawJd(restoredRawJd);
+        setJobUrl(restoredJobUrl);
+        setOutputCheckmarks(restoredSelection);
         if (payload._client) {
           if (DOMAIN_PAGES.has(payload._client)) {
             setClient("domain_page");
@@ -118,16 +504,10 @@ export default function App() {
           }
         }
 
-        const defaultTitles = [
-          `${payload.role || 'Role'} (Research & Reporting)`,
-          "Content Analyst (Media & Insights)",
-          "Reporting Specialist (Analysis & Review)",
-          "Media Reviewer (Content & Accuracy)"
-        ];
-        const loadedTitles = payload.titles && payload.titles.length > 0 ? payload.titles : defaultTitles;
-        const loadedSkills = payload.skills && payload.skills.length > 0 ? payload.skills : ["Data Evaluation", "Quality Assurance", "Content Analysis"];
-        const loadedFunctions = payload.job_functions && payload.job_functions.length > 0 ? payload.job_functions : ["Writing/Editing", "Analytics", "Project Management"];
-        const loadedIndustries = payload.industries && payload.industries.length > 0 ? payload.industries : ["Technology, Information and Media", "Professional Services", "Education"];
+        const loadedTitles = normalizeStringArray(payload.titles);
+        const loadedSkills = normalizeStringArray(payload.skills);
+        const loadedFunctions = normalizeStringArray(payload.job_functions);
+        const loadedIndustries = normalizeStringArray(payload.industries);
 
         setStructuredJd(payload.jd || "");
         setEmailTemplate(payload.email || payload.inmail_draft || "");
@@ -141,11 +521,11 @@ export default function App() {
         setIsDomainView(payload.is_domain_page || DOMAIN_PAGES.has(payload._client) || payload._client === "domain_page");
 
         const restoredRun = {
-          rawJd: payload._raw_jd || rawJd,
-          jobUrl: payload._url || jobUrl,
-          client: payload._client || client,
+          rawJd: restoredRawJd,
+          jobUrl: restoredJobUrl,
+          client: restoredClient,
           domainPageSelection: DOMAIN_PAGES.has(payload._client) ? payload._client : domainPageSelection,
-          outputCheckmarks,
+          outputCheckmarks: restoredSelection,
           structuredJd: payload.jd || "",
           emailTemplate: payload.email || payload.inmail_draft || "",
           suggestedTitles: loadedTitles.join("\n"),
@@ -158,7 +538,7 @@ export default function App() {
           isDomainView: payload.is_domain_page || DOMAIN_PAGES.has(payload._client)
         };
         setLastRunData(restoredRun);
-        localStorage.setItem("job_weaver_last_run", JSON.stringify(restoredRun));
+        safeLocalStorageSet(scopedCacheKey(LAST_RUN_CACHE_KEY, cacheScope), JSON.stringify(restoredRun));
 
         setStep(3);
       } else {
@@ -173,25 +553,130 @@ export default function App() {
   };
 
   const clearHistory = async () => {
+    const keysToRemove = new Set([
+      HISTORY_CACHE_KEY,
+      LEGACY_HISTORY_CACHE_KEY,
+      LAST_RUN_CACHE_KEY,
+      LEGACY_LAST_RUN_CACHE_KEY
+    ]);
+    let localCleanupFailed = false;
+
     try {
-      await fetch(`${API_URL}/history`, { method: "DELETE" });
-    } catch (e) { }
-    localStorage.removeItem("job_weaver_history");
+      for (let index = 0; index < localStorage.length; index++) {
+        const key = localStorage.key(index);
+        if (key && (key.startsWith("job_weaver_") || key.startsWith("jw_detail_"))) {
+          keysToRemove.add(key);
+        }
+      }
+    } catch (error) {
+      localCleanupFailed = true;
+      console.error('Could not enumerate all local Job Weaver data:', error);
+    }
+
+    keysToRemove.forEach(key => {
+      try {
+        localStorage.removeItem(key);
+      } catch (error) {
+        localCleanupFailed = true;
+        console.error(`Could not remove local cache key ${key}:`, error);
+      }
+    });
     setHistoryItems([]);
-    showToast("History cleared!");
+    setLastRunData(null);
+    safeLocalStorageSet(CACHE_SCOPE_MARKER_KEY, cacheScope);
+
+    let serverError: Error | null = null;
+    try {
+      const res = await apiFetch("/history", apiToken, { method: "DELETE" });
+      const data = await res.json();
+      if (res.ok === false || !data.success) {
+        throw new Error(apiErrorMessage(data, "Could not clear server history."));
+      }
+    } catch (error: any) {
+      serverError = error instanceof Error
+        ? error
+        : new Error("Could not clear server history.");
+      console.error("Error clearing server history:", error);
+    }
+
+    if (serverError) {
+      showToast(`Local history cleared, but server history could not be cleared: ${serverError.message}`);
+    } else if (localCleanupFailed) {
+      showToast("Server history cleared, but some local cache data could not be removed.");
+    } else {
+      showToast("History and local cache cleared!");
+    }
   };
 
+  const persistGeneratedHistory = async (
+    data: any,
+    effectiveClient: string,
+    selection: OutputSelection
+  ) => {
+    const sanitizedData = sanitizeOutputPayload(data);
+    const detail = {
+      ...sanitizedData,
+      _raw_jd: rawJd,
+      _url: jobUrl,
+      _client: effectiveClient,
+      _output_selection: selection
+    };
+    let itemId = sanitizedData._id || sanitizedData.id;
 
-  const DOMAIN_PAGES = new Set([
-    'crossing_hurdles',
-    'codegeniusrecruit',
-    'curasenseai',
-    'legaltrustai',
-    'capitexai',
-    'stemsyncai',
-    'linguasenseai',
-    'designmeshai'
-  ]);
+    if (itemId) {
+      try {
+        safeLocalStorageSet(detailCacheKey(itemId, cacheScope), JSON.stringify(detail));
+      } catch (e) {
+        console.error("Generated output could not be saved locally:", e);
+      }
+      return;
+    }
+
+    try {
+      const res = await apiFetch("/history", apiToken);
+      const historyData = await res.json();
+      if (res.ok === false || !historyData.success || !Array.isArray(historyData.history)) {
+        throw new Error(apiErrorMessage(historyData, "Could not sync local history."));
+      }
+
+      const localStr = localStorage.getItem(scopedCacheKey(HISTORY_CACHE_KEY, cacheScope));
+      let localHistory: any[] = [];
+      if (localStr) {
+        try {
+          const parsed = JSON.parse(localStr);
+          localHistory = Array.isArray(parsed) ? parsed : [];
+        } catch (e) { }
+      }
+
+      const historyMap = new Map<string, any>();
+      [...historyData.history, ...localHistory].forEach((item: any) => {
+        if (item?.id && !historyMap.has(item.id)) historyMap.set(item.id, item);
+      });
+      const mergedHistory = Array.from(historyMap.values()).sort((a: any, b: any) =>
+        new Date(b.timestamp || 0).getTime() - new Date(a.timestamp || 0).getTime()
+      );
+      safeLocalStorageSet(scopedCacheKey(HISTORY_CACHE_KEY, cacheScope), JSON.stringify(mergedHistory));
+      setHistoryItems(mergedHistory);
+
+      const expectedSnippet = buildHistorySnippet(rawJd);
+      const matchingItem = historyData.history.find((item: any) =>
+        item?.client === effectiveClient &&
+        (item?.url || "").trim() === jobUrl.trim() &&
+        item?.raw_jd_snippet === expectedSnippet
+      );
+      itemId = matchingItem?.id;
+    } catch (e) {
+      console.error("Generated output could not be synced to local history:", e);
+    }
+
+    if (itemId) {
+      try {
+        safeLocalStorageSet(detailCacheKey(itemId, cacheScope), JSON.stringify(detail));
+      } catch (e) {
+        console.error("Generated output could not be saved locally:", e);
+      }
+    }
+  };
 
   const showToast = (message: string) => {
     setToastMessage(message);
@@ -247,28 +732,29 @@ export default function App() {
   const emailRef = useRef<HTMLDivElement>(null);
 
   const handleGenerate = async () => {
-    if (!rawJd.trim() && !jobUrl.trim()) {
-      setError('Please provide a job link or paste the job description.');
+    if (!rawJd.trim()) {
+      setError('Please paste the job description. The job link is optional.');
+      return;
+    }
+    if (!isSafeJobUrl(jobUrl)) {
+      setError('Please enter a valid job link beginning with http:// or https://.');
       return;
     }
 
     const effectiveClient = client === "domain_page" ? domainPageSelection : client;
+    const currentSelection = { ...outputCheckmarks };
 
     if (lastRunData &&
+      typeof lastRunData.rawJd === "string" &&
       lastRunData.rawJd.trim() === rawJd.trim() &&
+      (lastRunData.jobUrl || "").trim() === jobUrl.trim() &&
       lastRunData.client === client &&
+      outputSelectionsMatch(lastRunData.outputCheckmarks, currentSelection) &&
       (client !== "domain_page" || lastRunData.domainPageSelection === domainPageSelection)) {
-      const fallbackRole = lastRunData.subject?.split('|')[0]?.trim() || 'Role';
-      const defaultTitles = [
-        `${fallbackRole} (Research & Reporting)`,
-        "Content Analyst (Media & Insights)",
-        "Reporting Specialist (Analysis & Review)",
-        "Media Reviewer (Content & Accuracy)"
-      ];
-      const loadedTitles = lastRunData.suggestedTitles && lastRunData.suggestedTitles.trim() ? lastRunData.suggestedTitles : defaultTitles.join("\n");
-      const loadedSkills = lastRunData.skills && lastRunData.skills.length > 0 ? lastRunData.skills : ["Data Evaluation", "Quality Assurance", "Content Analysis"];
-      const loadedFunctions = lastRunData.jobFunctions && lastRunData.jobFunctions.length > 0 ? lastRunData.jobFunctions : ["Writing/Editing", "Analytics", "Project Management"];
-      const loadedIndustries = lastRunData.industries && lastRunData.industries.length > 0 ? lastRunData.industries : ["Technology, Information and Media", "Professional Services", "Education"];
+      const loadedTitles = normalizeCachedTitleText(lastRunData.suggestedTitles);
+      const loadedSkills = normalizeStringArray(lastRunData.skills);
+      const loadedFunctions = normalizeStringArray(lastRunData.jobFunctions);
+      const loadedIndustries = normalizeStringArray(lastRunData.industries);
 
       setStructuredJd(lastRunData.structuredJd || "");
       setEmailTemplate(lastRunData.emailTemplate || "");
@@ -298,32 +784,34 @@ export default function App() {
     }, 2400);
 
     try {
-      const res = await fetch(`${API_URL}/parse-jd`, {
+      const res = await apiFetch("/parse-jd", apiToken, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
           raw_jd: rawJd,
-          url: jobUrl,
+          url: jobUrl.trim(),
           client: effectiveClient,
-          output_selection: client === "domain_page" ? outputCheckmarks : null
+          output_selection: client === "domain_page" ? currentSelection : null
         })
       });
 
-      const data = await res.json();
+      let data: any;
+      try {
+        data = await res.json();
+      } catch {
+        throw new Error("The server returned an unreadable response.");
+      }
+      if (res.ok === false || !data?.success) {
+        throw new Error(apiErrorMessage(data, "The server could not process this job description."));
+      }
+      data = sanitizeOutputPayload(data);
 
-      const fallbackRole = data.subject?.split('|')[0]?.trim() || 'Role';
-      const defaultTitles = [
-        `${fallbackRole} (Research & Reporting)`,
-        "Content Analyst (Media & Insights)",
-        "Reporting Specialist (Analysis & Review)",
-        "Media Reviewer (Content & Accuracy)"
-      ];
-      const loadedTitles = data.titles && data.titles.length > 0 ? data.titles : defaultTitles;
-      const loadedSkills = data.skills && data.skills.length > 0 ? data.skills : ["Data Evaluation", "Quality Assurance", "Content Analysis"];
-      const loadedFunctions = data.job_functions && data.job_functions.length > 0 ? data.job_functions : ["Writing/Editing", "Analytics", "Project Management"];
-      const loadedIndustries = data.industries && data.industries.length > 0 ? data.industries : ["Technology, Information and Media", "Professional Services", "Education"];
+      const loadedTitles = normalizeStringArray(data.titles);
+      const loadedSkills = normalizeStringArray(data.skills);
+      const loadedFunctions = normalizeStringArray(data.job_functions);
+      const loadedIndustries = normalizeStringArray(data.industries);
 
       setStructuredJd(data.jd || "");
       setEmailTemplate(data.email || data.inmail_draft || "");
@@ -341,7 +829,7 @@ export default function App() {
         jobUrl,
         client,
         domainPageSelection,
-        outputCheckmarks,
+        outputCheckmarks: currentSelection,
         structuredJd: data.jd || "",
         emailTemplate: data.email || data.inmail_draft || "",
         suggestedTitles: loadedTitles.join("\n"),
@@ -354,16 +842,12 @@ export default function App() {
         isDomainView: data.is_domain_page || DOMAIN_PAGES.has(effectiveClient) || client === "domain_page"
       };
       setLastRunData(runData);
-      localStorage.setItem("job_weaver_last_run", JSON.stringify(runData));
-
-      if (data._id || data.id) {
-        const itemObj = { ...data, _raw_jd: rawJd, _url: jobUrl, _client: effectiveClient };
-        localStorage.setItem(`jw_detail_${data._id || data.id}`, JSON.stringify(itemObj));
-      }
+      safeLocalStorageSet(scopedCacheKey(LAST_RUN_CACHE_KEY, cacheScope), JSON.stringify(runData));
 
       clearTimeout(t1);
       clearTimeout(t2);
       setStep(3);
+      void persistGeneratedHistory(data, effectiveClient, currentSelection);
     } catch (err: any) {
       clearTimeout(t1);
       clearTimeout(t2);
@@ -374,12 +858,14 @@ export default function App() {
 
   const copyHtml = async (html: string, label?: string) => {
     try {
-      const blob = new Blob([html], { type: "text/html" });
+      const sanitizedHtml = sanitizeHtml(html);
+      const blob = new Blob([sanitizedHtml], { type: "text/html" });
       const data = [new ClipboardItem({ "text/html": blob })];
       await navigator.clipboard.write(data);
       showToast(label ? `Copied ${label}!` : "Copied to clipboard!");
     } catch (e) {
       console.error(e);
+      showToast("Could not copy this output.");
     }
   };
   //Name suggested by Samarth
@@ -389,11 +875,24 @@ export default function App() {
       {step !== 2 && (
         <nav className="nav-top">
           <div className="nav-left">
-            <span className="logo" onClick={() => setStep(1)} style={{ cursor: "pointer" }} title="Go to Homepage">Job Weaver</span>
+            <button type="button" className="logo logo-button" onClick={() => setStep(1)} title="Go to Homepage">Job Weaver</button>
             {step === 1 && <span className="logo-sub">CROSSING HURDLES</span>}
           </div>
 
           <div className="nav-right">
+            <button
+              type="button"
+              className="btn-ghost-box theme-toggle"
+              onClick={() => setColorTheme(theme => theme === 'dark' ? 'light' : 'dark')}
+              aria-label="Dark mode"
+              aria-pressed={colorTheme === 'dark'}
+              title={`Switch to ${colorTheme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+              {colorTheme === 'dark'
+                ? <Sun className="w-4 h-4" aria-hidden="true" />
+                : <Moon className="w-4 h-4" aria-hidden="true" />}
+              <span>{colorTheme === 'dark' ? 'Light' : 'Dark'}</span>
+            </button>
             <button
               className="btn-ghost-box"
               onClick={() => {
@@ -419,17 +918,10 @@ export default function App() {
                   <button
                     className="btn-back"
                     onClick={() => {
-                      const fallbackRole = lastRunData.subject?.split('|')[0]?.trim() || 'Role';
-                      const defaultTitles = [
-                        `${fallbackRole} (Research & Reporting)`,
-                        "Content Analyst (Media & Insights)",
-                        "Reporting Specialist (Analysis & Review)",
-                        "Media Reviewer (Content & Accuracy)"
-                      ];
-                      const loadedTitles = lastRunData.suggestedTitles && lastRunData.suggestedTitles.trim() ? lastRunData.suggestedTitles : defaultTitles.join("\n");
-                      const loadedSkills = lastRunData.skills && lastRunData.skills.length > 0 ? lastRunData.skills : ["Data Evaluation", "Quality Assurance", "Content Analysis"];
-                      const loadedFunctions = lastRunData.jobFunctions && lastRunData.jobFunctions.length > 0 ? lastRunData.jobFunctions : ["Writing/Editing", "Analytics", "Project Management"];
-                      const loadedIndustries = lastRunData.industries && lastRunData.industries.length > 0 ? lastRunData.industries : ["Technology, Information and Media", "Professional Services", "Education"];
+                      const loadedTitles = normalizeCachedTitleText(lastRunData.suggestedTitles);
+                      const loadedSkills = normalizeStringArray(lastRunData.skills);
+                      const loadedFunctions = normalizeStringArray(lastRunData.jobFunctions);
+                      const loadedIndustries = normalizeStringArray(lastRunData.industries);
 
                       setStructuredJd(lastRunData.structuredJd || "");
                       setEmailTemplate(lastRunData.emailTemplate || "");
@@ -441,6 +933,7 @@ export default function App() {
                       setIndustries(loadedIndustries);
                       setJustifications(lastRunData.justifications || {});
                       setIsDomainView(lastRunData.isDomainView);
+                      setOutputCheckmarks(normalizeOutputSelection(lastRunData.outputCheckmarks));
                       setStep(3);
                       showToast("Returned to output view!");
                     }}
@@ -490,8 +983,8 @@ export default function App() {
                 handleGenerate();
               }}
             >
-              <label className="input-label">SELECT TARGET CLIENT</label>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "12px", marginBottom: "28px" }}>
+              <div className="input-label" id="target-client-label">SELECT TARGET CLIENT</div>
+              <div className="selection-grid client-grid" role="group" aria-labelledby="target-client-label">
                 {[
                   { id: "mercor", name: "Mercor" },
                   { id: "micro1", name: "Micro1" },
@@ -500,16 +993,19 @@ export default function App() {
                 ].map((item) => {
                   const isSelected = client === item.id;
                   return (
-                    <motion.div
+                    <motion.button
                       key={item.id}
+                      type="button"
+                      className="selection-card"
+                      aria-pressed={isSelected}
                       whileHover={{ scale: 1.02, translateY: -2 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => setClient(item.id)}
                       style={{
                         padding: "18px 16px",
                         borderRadius: "14px",
-                        border: isSelected ? "2px solid #2563eb" : "1.5px solid #e2e8f0",
-                        backgroundColor: isSelected ? "#eff6ff" : "#ffffff",
+                        border: isSelected ? "2px solid var(--primary-blue)" : "1.5px solid var(--border-light)",
+                        backgroundColor: isSelected ? "var(--accent-soft)" : "var(--bg-card)",
                         cursor: "pointer",
                         display: "flex",
                         alignItems: "center",
@@ -518,8 +1014,8 @@ export default function App() {
                         transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)"
                       }}
                     >
-                      <span style={{ fontWeight: 700, fontSize: "1.05rem", color: isSelected ? "#1e40af" : "#0f172a" }}>{item.name}</span>
-                    </motion.div>
+                      <span style={{ fontWeight: 700, fontSize: "1.05rem", color: isSelected ? "var(--accent-text)" : "var(--text-main)" }}>{item.name}</span>
+                    </motion.button>
                   );
                 })}
               </div>
@@ -531,10 +1027,10 @@ export default function App() {
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    style={{ marginBottom: "28px", padding: "24px", backgroundColor: "#f8fafc", border: "1.5px solid #e2e8f0", borderRadius: "16px", overflow: "hidden" }}
+                    style={{ marginBottom: "28px", padding: "24px", backgroundColor: "var(--surface-subtle)", border: "1.5px solid var(--border-light)", borderRadius: "16px", overflow: "hidden" }}
                   >
-                    <label className="input-label" style={{ color: "#334155" }}>SELECT DOMAIN PAGE</label>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "10px", marginBottom: "24px" }}>
+                    <div className="input-label" id="domain-page-label">SELECT DOMAIN PAGE</div>
+                    <div className="selection-grid domain-grid" role="group" aria-labelledby="domain-page-label">
                       {[
                         { id: "crossing_hurdles", name: "Crossing Hurdles" },
                         { id: "codegeniusrecruit", name: "CodeGeniusRecruit" },
@@ -547,17 +1043,20 @@ export default function App() {
                       ].map((dom) => {
                         const isDomSelected = domainPageSelection === dom.id;
                         return (
-                          <motion.div
+                          <motion.button
                             key={dom.id}
+                            type="button"
+                            className="selection-card"
+                            aria-pressed={isDomSelected}
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.97 }}
                             onClick={() => setDomainPageSelection(dom.id)}
                             style={{
                               padding: "12px 14px",
                               borderRadius: "10px",
-                              border: isDomSelected ? "2px solid #2563eb" : "1px solid #cbd5e1",
-                              backgroundColor: isDomSelected ? "#2563eb" : "#ffffff",
-                              color: isDomSelected ? "#ffffff" : "#1e293b",
+                              border: isDomSelected ? "2px solid var(--primary-blue)" : "1px solid var(--border-color)",
+                              backgroundColor: isDomSelected ? "var(--primary-blue)" : "var(--bg-card)",
+                              color: isDomSelected ? "var(--on-primary)" : "var(--text-main)",
                               cursor: "pointer",
                               fontSize: "0.86rem",
                               fontWeight: isDomSelected ? 700 : 600,
@@ -570,21 +1069,24 @@ export default function App() {
                             }}
                           >
                             {dom.name}
-                          </motion.div>
+                          </motion.button>
                         );
                       })}
                     </div>
 
-                    <label className="input-label" style={{ color: "#334155" }}>OPTIONS</label>
-                    <div style={{ display: "flex", gap: "14px" }}>
+                    <div className="input-label" id="output-options-label">OPTIONS</div>
+                    <div className="output-option-grid" role="group" aria-labelledby="output-options-label">
                       {[
                         { key: "inmail", label: "InMail Draft" },
                         { key: "jd", label: "Job Description" }
                       ].map((opt) => {
                         const isChecked = outputCheckmarks[opt.key as "inmail" | "jd"];
                         return (
-                          <motion.div
+                          <motion.button
                             key={opt.key}
+                            type="button"
+                            className="selection-card output-option"
+                            aria-pressed={isChecked}
                             whileHover={{ scale: 1.015 }}
                             whileTap={{ scale: 0.985 }}
                             onClick={() => {
@@ -600,8 +1102,8 @@ export default function App() {
                               flex: 1,
                               padding: "16px 18px",
                               borderRadius: "12px",
-                              border: isChecked ? "2px solid #2563eb" : "1.5px solid #cbd5e1",
-                              backgroundColor: isChecked ? "#ffffff" : "#f1f5f9",
+                              border: isChecked ? "2px solid var(--primary-blue)" : "1.5px solid var(--border-color)",
+                              backgroundColor: isChecked ? "var(--bg-card)" : "var(--bg-gray)",
                               cursor: "pointer",
                               display: "flex",
                               alignItems: "center",
@@ -614,19 +1116,19 @@ export default function App() {
                               width: "24px",
                               height: "24px",
                               borderRadius: "6px",
-                              border: isChecked ? "none" : "2px solid #94a3b8",
-                              backgroundColor: isChecked ? "#2563eb" : "transparent",
+                              border: isChecked ? "none" : "2px solid var(--text-light)",
+                              backgroundColor: isChecked ? "var(--primary-blue)" : "transparent",
                               display: "flex",
                               alignItems: "center",
                               justifyContent: "center",
-                              color: "#ffffff"
+                              color: "var(--on-primary)"
                             }}>
                               {isChecked && <Check className="w-4 h-4 stroke-[3]" />}
                             </div>
-                            <div style={{ flex: 1, fontWeight: 700, fontSize: "0.98rem", color: isChecked ? "#0f172a" : "#475569" }}>
+                            <div style={{ flex: 1, fontWeight: 700, fontSize: "0.98rem", color: isChecked ? "var(--text-main)" : "var(--text-muted)" }}>
                               {opt.label}
                             </div>
-                          </motion.div>
+                          </motion.button>
                         );
                       })}
                     </div>
@@ -634,11 +1136,34 @@ export default function App() {
                 )}
               </AnimatePresence>
 
-              <label className="input-label">JOB LINK</label>
+              <details className="advanced-api-section">
+                <summary>Advanced / Remote API</summary>
+                <div className="advanced-api-content">
+                  <label className="input-label" htmlFor="remote-api-token">BEARER TOKEN</label>
+                  <input
+                    id="remote-api-token"
+                    type="password"
+                    className="input-field-clean advanced-api-token"
+                    value={apiToken}
+                    onChange={(event) => handleApiTokenChange(event.target.value)}
+                    autoComplete="off"
+                    spellCheck={false}
+                    aria-describedby="remote-api-token-help"
+                    placeholder="Required only when the remote backend enables authentication"
+                  />
+                  <p id="remote-api-token-help" className="advanced-api-help">
+                    Sent only as an Authorization header and retained for this browser tab session.
+                    Clear this field to forget it.
+                  </p>
+                </div>
+              </details>
+
+              <label className="input-label" htmlFor="job-url">JOB LINK (OPTIONAL)</label>
               <div className="input-with-icon" style={{ marginBottom: "26px" }}>
                 <Link className="w-4 h-4 text-slate-400" />
                 <input
-                  type="text"
+                  id="job-url"
+                  type="url"
                   className="input-field-clean"
                   placeholder="Paste the target job URL..."
                   value={jobUrl}
@@ -646,8 +1171,9 @@ export default function App() {
                 />
               </div>
 
-              <label className="input-label">PASTE RAW JOB DESCRIPTION</label>
+              <label className="input-label" htmlFor="raw-job-description">PASTE RAW JOB DESCRIPTION</label>
               <textarea
+                id="raw-job-description"
                 className="input-field-clean textarea-large"
                 placeholder="Paste the full job description or specification here..."
                 value={rawJd}
@@ -666,7 +1192,7 @@ export default function App() {
                 <button
                   type="button"
                   className="btn-ghost"
-                  onClick={() => { setRawJd(''); setJobUrl(''); }}
+                  onClick={() => { setRawJd(''); setJobUrl(''); setError(null); }}
                 >
                   Clear
                 </button>
@@ -728,7 +1254,7 @@ export default function App() {
                       <h3>{isDomainView ? "InMail Draft" : "Outreach Email"}</h3>
                     </div>
                     <div className="header-actions">
-                      <label style={{ display: 'flex', alignItems: 'center', fontSize: '13px', fontWeight: 600, color: '#475569', cursor: 'pointer', marginRight: '8px' }}>
+                      <label style={{ display: 'flex', alignItems: 'center', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)', cursor: 'pointer', marginRight: '8px' }}>
                         <input
                           type="checkbox"
                           checked={mirrorSync}
@@ -739,7 +1265,7 @@ export default function App() {
                       </label>
                       <button
                         className="btn-primary-box"
-                        onClick={() => copyHtml(emailTemplate, isDomainView ? "InMail Draft" : "template")}
+                        onClick={() => copyHtml(emailRef.current?.innerHTML ?? emailTemplate, isDomainView ? "InMail Draft" : "template")}
                       >
                         <CopyIcon /> {isDomainView ? "Copy InMail" : "Copy Template"}
                       </button>
@@ -747,13 +1273,14 @@ export default function App() {
                   </div>
 
                   {subject && (
-                    <div style={{ marginBottom: "16px", padding: "12px 16px", backgroundColor: "#f8f9fa", borderRadius: "8px", border: "1px solid #e2e8f0", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <div className="metadata-row">
                       <div style={{ flex: 1, marginRight: "16px" }}>
-                        <div className="mini-title" style={{ fontSize: "11px", color: "#64748b", marginBottom: "4px" }}>SUBJECT LINE</div>
+                        <div className="mini-title metadata-label">SUBJECT LINE</div>
                         <input
                           value={subject}
                           onChange={handleSubjectChange}
-                          style={{ width: "100%", border: "none", background: "transparent", fontWeight: 600, color: "#0f172a", outline: "none", fontSize: "15px", fontFamily: "inherit" }}
+                          aria-label="Email subject line"
+                          className="metadata-input"
                         />
                       </div>
                       <button className="btn-ghost-box" onClick={() => copyToClipboard(subject, "subject")} title="Copy Subject">
@@ -767,8 +1294,11 @@ export default function App() {
                       className="rich-text-content"
                       ref={emailRef}
                       contentEditable
+                      suppressContentEditableWarning
+                      role="textbox"
+                      aria-label={isDomainView ? "Editable InMail draft" : "Editable outreach email"}
                       style={{ whiteSpace: 'normal' }}
-                      dangerouslySetInnerHTML={{ __html: emailTemplate || "<p>No data</p>" }}
+                      dangerouslySetInnerHTML={{ __html: sanitizeHtml(emailTemplate || "<p>No data</p>") }}
                     />
                   </div>
                 </div>
@@ -783,7 +1313,7 @@ export default function App() {
                     <div className="header-actions">
                       <button
                         className="btn-primary-box"
-                        onClick={() => copyHtml(structuredJd, "JD")}
+                        onClick={() => copyHtml(jdRef.current?.innerHTML ?? structuredJd, "JD")}
                       >
                         <CopyIcon /> Copy JD
                       </button>
@@ -791,13 +1321,14 @@ export default function App() {
                   </div>
 
                   {linkedinTitle && (
-                    <div style={{ marginBottom: "16px", padding: "12px 16px", backgroundColor: "#f8f9fa", borderRadius: "8px", border: "1px solid #e2e8f0", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <div className="metadata-row">
                       <div style={{ flex: 1, marginRight: "16px" }}>
-                        <div className="mini-title" style={{ fontSize: "11px", color: "#64748b", marginBottom: "4px" }}>LINKEDIN TITLE</div>
+                        <div className="mini-title metadata-label">LINKEDIN TITLE</div>
                         <input
                           value={linkedinTitle}
                           onChange={handleLinkedinChange}
-                          style={{ width: "100%", border: "none", background: "transparent", fontWeight: 600, color: "#0f172a", outline: "none", fontSize: "15px", fontFamily: "inherit" }}
+                          aria-label="LinkedIn title"
+                          className="metadata-input"
                         />
                       </div>
                       <button className="btn-ghost-box" onClick={() => copyToClipboard(linkedinTitle, "LinkedIn title")} title="Copy LinkedIn Title">
@@ -810,8 +1341,11 @@ export default function App() {
                       className="rich-text-content"
                       ref={jdRef}
                       contentEditable
+                      suppressContentEditableWarning
+                      role="textbox"
+                      aria-label="Editable job description"
                       style={{ whiteSpace: 'normal' }}
-                      dangerouslySetInnerHTML={{ __html: structuredJd || "<p>No data</p>" }}
+                      dangerouslySetInnerHTML={{ __html: sanitizeHtml(structuredJd || "<p>No data</p>") }}
                     />
                   </div>
                 </div>
@@ -827,14 +1361,15 @@ export default function App() {
                     {suggestedTitles.split("\n").filter(Boolean).map((t: string, i: number) => {
                       const cleanT = t.replace(/^- /, '').trim();
                       return (
-                        <div
+                        <button
+                          type="button"
                           key={i}
                           className="clickable-pill"
                           onClick={() => copyToClipboard(cleanT, "title")}
                           title={justifications[cleanT] || "Alternative job title matching role requirements."}
                         >
                           {cleanT}
-                        </div>
+                        </button>
                       );
                     })}
                   </div>
@@ -847,14 +1382,15 @@ export default function App() {
                   <div className="mini-title" style={{ marginBottom: "12px" }}>INDUSTRIES (TAP TO COPY)</div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                     {industries.map((s: string, i: number) => (
-                      <div
+                      <button
+                        type="button"
                         key={i}
                         className="clickable-pill"
                         onClick={() => copyToClipboard(s, "industry")}
                         title={justifications[s] || "Industry sector relevant to the role's domain."}
                       >
                         {s}
-                      </div>
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -866,14 +1402,15 @@ export default function App() {
                   <div className="mini-title" style={{ marginBottom: "12px" }}>JOB FUNCTIONS (TAP TO COPY)</div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                     {jobFunctions.map((s: string, i: number) => (
-                      <div
+                      <button
+                        type="button"
                         key={i}
                         className="clickable-pill"
                         onClick={() => copyToClipboard(s, "job function")}
                         title={justifications[s] || "Core function related to the primary responsibilities."}
                       >
                         {s}
-                      </div>
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -885,14 +1422,15 @@ export default function App() {
                   <div className="mini-title" style={{ marginBottom: "12px" }}>TARGET SKILLS (TAP TO COPY)</div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                     {skills.map((s: string, i: number) => (
-                      <div
+                      <button
+                        type="button"
                         key={i}
                         className="clickable-pill"
                         onClick={() => copyToClipboard(s, "skill")}
                         title={justifications[s] || "Technical skill or framework required for the role."}
                       >
                         {s}
-                      </div>
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -900,28 +1438,7 @@ export default function App() {
             </div>
 
             {hoveredLinkUrl && (
-              <div
-                style={{
-                  position: 'fixed',
-                  bottom: 0,
-                  left: 0,
-                  backgroundColor: '#f8fafc',
-                  color: '#334155',
-                  padding: '4px 12px',
-                  fontSize: '12px',
-                  fontFamily: 'sans-serif',
-                  borderTopRightRadius: '6px',
-                  borderTop: '1px solid #cbd5e1',
-                  borderRight: '1px solid #cbd5e1',
-                  boxShadow: '0 -2px 6px rgba(0, 0, 0, 0.08)',
-                  zIndex: 99999,
-                  maxWidth: '80vw',
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  pointerEvents: 'none'
-                }}
-              >
+              <div className="link-preview">
                 {hoveredLinkUrl}
               </div>
             )}
@@ -936,21 +1453,27 @@ export default function App() {
       )}
 
       {showHistoryModal && (
-        <div style={{
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="history-dialog-title"
+          className="history-modal-overlay"
+          style={{
           position: "fixed",
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: "rgba(15, 23, 42, 0.6)",
+          backgroundColor: "var(--overlay-bg)",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           zIndex: 1000,
           padding: "24px"
-        }}>
+          }}
+        >
           <div className="card animate-fade-in" style={{
-            backgroundColor: "#ffffff",
+            backgroundColor: "var(--bg-card)",
             borderRadius: "12px",
             width: "100%",
             maxWidth: "680px",
@@ -961,15 +1484,16 @@ export default function App() {
             overflow: "hidden"
           }}>
             <div style={{ padding: "20px 24px", borderBottom: "1px solid var(--border-color)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <h3 style={{ margin: 0, fontSize: "1.2rem", fontWeight: 700, color: "var(--text-main)" }}>Recent Generation History</h3>
+              <h3 id="history-dialog-title" style={{ margin: 0, fontSize: "1.2rem", fontWeight: 700, color: "var(--text-main)" }}>Recent Generation History</h3>
               <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
                 {historyItems.length > 0 && (
-                  <button className="btn-ghost-box" onClick={clearHistory} style={{ color: "#ef4444", fontSize: "0.85rem" }}>
+                  <button className="btn-ghost-box" onClick={clearHistory} style={{ color: "var(--danger-text)", fontSize: "0.85rem" }}>
                     Clear All
                   </button>
                 )}
                 <button
                   onClick={() => setShowHistoryModal(false)}
+                  aria-label="Close history"
                   style={{ background: "none", border: "none", fontSize: "1.5rem", cursor: "pointer", color: "var(--text-muted)", lineHeight: 1 }}
                 >
                   &times;
@@ -991,7 +1515,7 @@ export default function App() {
                         padding: "16px",
                         border: "1px solid var(--border-color)",
                         borderRadius: "8px",
-                        backgroundColor: "#f8fafc",
+                        backgroundColor: "var(--surface-subtle)",
                         display: "flex",
                         justifyContent: "space-between",
                         alignItems: "center",
@@ -1004,14 +1528,14 @@ export default function App() {
                           <span style={{ fontWeight: 700, fontSize: "1rem", color: "var(--text-main)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                             {item.role || "Untitled Job"}
                           </span>
-                          <span style={{ fontSize: "0.75rem", padding: "2px 8px", borderRadius: "9999px", backgroundColor: "#e2e8f0", color: "#475569", fontWeight: 600, textTransform: "uppercase" }}>
+                          <span style={{ fontSize: "0.75rem", padding: "2px 8px", borderRadius: "9999px", backgroundColor: "var(--pill-bg)", color: "var(--pill-text)", fontWeight: 600, textTransform: "uppercase" }}>
                             {item.client}
                           </span>
                         </div>
                         <div style={{ fontSize: "0.8rem", color: "var(--text-muted)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                           {item.raw_jd_snippet || item.url || "No details provided"}
                         </div>
-                        <div style={{ fontSize: "0.75rem", color: "#94a3b8", marginTop: "4px" }}>
+                        <div style={{ fontSize: "0.75rem", color: "var(--text-light)", marginTop: "4px" }}>
                           {new Date(item.timestamp).toLocaleString()}
                         </div>
                       </div>

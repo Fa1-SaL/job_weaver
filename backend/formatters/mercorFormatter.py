@@ -4,23 +4,38 @@ Extracted verbatim from the original llm_jd_parser.py render_jd / render_email
 (Mercor branch) to preserve 100% backward compatibility.
 """
 
-from formatters.base import ClientFormatter
+try:
+    from .base import ClientFormatter, prepare_html_data
+except ImportError:
+    from formatters.base import ClientFormatter, prepare_html_data
 
 
 class MercorFormatter(ClientFormatter):
 
     def format_jd(self, data: dict) -> str:
+        data = prepare_html_data(data)
         responsibilities = "\n".join(
             [f"<li>{r}</li>" for r in data["role_responsibilities"] if r and str(r).strip()]
         )
         requirements = "\n".join(
             [f"<li>{r}</li>" for r in data["requirements"] if r and str(r).strip()]
         )
+        responsibilities_section = (
+            f"<b>Role Responsibilities</b>\n<ul>\n{responsibilities}\n</ul>\n"
+            if responsibilities else ""
+        )
+        requirements_section = (
+            f"<b>Requirements</b>\n<ul>\n{requirements}\n</ul>\n"
+            if requirements else ""
+        )
 
         commitment = data.get("commitment", "").strip()
         commitment_line = f"<b>Commitment:</b> {commitment}<br>\n" if commitment else ""
 
-        pay_line = f"<b>Compensation:</b> {data.get('pay', '')}<br>\n"
+        pay = data.get("pay", "").strip()
+        pay_line = f"<b>Compensation:</b> {pay}<br>\n" if pay else ""
+        role_type = data.get("type", "").strip()
+        type_line = f"<b>Type:</b> {role_type}<br>\n" if role_type else ""
 
         app_process = """<b>Application Process</b><br>
 <ul>
@@ -30,20 +45,13 @@ class MercorFormatter(ClientFormatter):
 </ul>"""
 
         jd_text = f"""<b>Position:</b> {data['role']}<br>
-<b>Type:</b> {data['type']}<br>
+{type_line}
 {pay_line}<b>Location:</b> {data['location']}<br>
 {commitment_line}
 <br>
 
-<b>Role Responsibilities</b>
-<ul>
-{responsibilities}
-</ul>
-
-<b>Requirements</b>
-<ul>
-{requirements}
-</ul>
+{responsibilities_section}
+{requirements_section}
 
 <br>
 
@@ -55,6 +63,7 @@ class MercorFormatter(ClientFormatter):
         return jd_text.strip()
 
     def format_email(self, data: dict) -> str:
+        data = prepare_html_data(data)
         boost_items = []
         boost_items.append("""\
 <li>
@@ -86,8 +95,27 @@ for upcoming openings.
 </li>""")
 
         boost_section = "\n\n".join(boost_items)
-        pay_line = f"<b>Compensation:</b> {data.get('pay', '')}<br>\n"
+        pay_line = f"<b>Compensation:</b> {data.get('pay', '')}<br>\n" if data.get("pay") else ""
         referral_partner = "<b>Referral Partner:</b> Crossing Hurdles<br>\n"
+        role_type = data.get("type", "").strip()
+        type_line = f"<b>Type:</b> {role_type}<br>\n" if role_type else ""
+        client = data.get("client", "").strip()
+        organization_line = f"<b>Organization:</b> {client}<br>\n" if client else ""
+        client_desc = data.get("client_desc", "").strip()
+        about_section = (
+            f"<b>About {client}:</b><br>\n{client_desc}<br><br>\n"
+            if client and client_desc else ""
+        )
+        role_overview = data.get("role_overview", "").strip()
+        overview_section = (
+            f"<b>Role Overview:</b><br>\n{role_overview}<br><br>\n"
+            if role_overview else ""
+        )
+        who_this_is_for = data.get("who_this_is_for", "").strip()
+        audience_section = (
+            f"<b>Who This Is For:</b><br>\n{who_this_is_for}<br><br>\n"
+            if who_this_is_for else ""
+        )
         app_process = """\
 <b>Application process:</b> (~20 Min)<br>
 <ul>
@@ -100,24 +128,21 @@ for upcoming openings.
         apply_line = (
             f"<b>Apply asap (reviewed on a rolling basis):</b><br>\n"
             f"<a href=\"{data['link']}\" style=\"color: #0066cc;\">{data['role']}</a>{pay_display}<br><br>"
+        ) if data.get("link") else ""
+        apply_here_line = (
+            f'<b>Apply Here:</b> <a href="{data["link"]}" style="color: #0066cc;">{data["role"]}</a><br><br>\n'
+            if data.get("link") else ""
         )
 
         return f"""<br>I'm from Crossing Hurdles, a global recruitment firm. We would like to refer you for an interesting opportunity that involves leveraging your expertise to train AI models.<br><br>
 
-<b>Organization:</b> {data['client']}<br>
+{organization_line}
 {referral_partner}<b>Role:</b> {data['role']}<br>
-<b>Type:</b> {data['type']}<br>
+{type_line}
 {pay_line}<b>Location:</b> {data['location']}<br>
-<b>Apply Here:</b> <a href="{data['link']}" style="color: #0066cc;">{data['role']}</a><br><br>
+{apply_here_line}
 
-<b>About {data['client']}:</b><br>
-{data['client_desc']}<br><br>
-
-<b>Role Overview:</b><br>
-{data['role_overview']}<br><br>
-
-<b>Who This Is For:</b><br>
-{data['who_this_is_for']}<br><br>
+{about_section}{overview_section}{audience_section}
 
 {app_process}
 {apply_line}

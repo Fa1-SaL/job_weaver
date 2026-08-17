@@ -10,10 +10,16 @@ Usage:
 
 from typing import Dict, Any, Set
 
-from clients.mercor import CONFIG as MERCOR_CONFIG
-from clients.micro1 import CONFIG as MICRO1_CONFIG
-from clients.turing import CONFIG as TURING_CONFIG
-from clients.domain_pages import DOMAIN_PAGES_REGISTRY, DOMAIN_PAGE_KEYS
+try:  # Package import (``backend.clients``)
+    from .mercor import CONFIG as MERCOR_CONFIG
+    from .micro1 import CONFIG as MICRO1_CONFIG
+    from .turing import CONFIG as TURING_CONFIG
+    from .domain_pages import DOMAIN_PAGES_REGISTRY, DOMAIN_PAGE_KEYS
+except ImportError:  # Script import from the backend working directory
+    from clients.mercor import CONFIG as MERCOR_CONFIG
+    from clients.micro1 import CONFIG as MICRO1_CONFIG
+    from clients.turing import CONFIG as TURING_CONFIG
+    from clients.domain_pages import DOMAIN_PAGES_REGISTRY, DOMAIN_PAGE_KEYS
 
 # ── Registry ──────────────────────────────────────────────────────────────────
 CLIENT_REGISTRY: Dict[str, Dict[str, Any]] = {
@@ -40,4 +46,3 @@ def get_client_config(client_id: str) -> Dict[str, Any]:
             f"Supported clients: {SUPPORTED_CLIENTS}"
         )
     return CLIENT_REGISTRY[key]
-

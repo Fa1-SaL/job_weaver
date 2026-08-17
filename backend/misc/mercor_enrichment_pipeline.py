@@ -17,15 +17,8 @@ except ImportError:
 # Configuration
 # ---------------------------------------------------------------------------
 SUPABASE_URL = os.environ.get("SUPABASE_URL", "https://ixzcmfbbkvwfyfsesthl.supabase.co")
-SUPABASE_KEY = os.environ.get("SUPABASE_SERVICE_ROLE_KEY", "sb_secret_9gTaYPsx87WK_DPdihthaA_IAYkA6dq")
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "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")
-
-if not SUPABASE_KEY:
-    print("[X] SUPABASE_SERVICE_ROLE_KEY is required as an environment variable.")
-    sys.exit(1)
-if not OPENAI_API_KEY:
-    print("[X] OPENAI_API_KEY is required as an environment variable.")
-    sys.exit(1)
+SUPABASE_KEY = os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
 MAX_RETRIES = 3
 RETRY_DELAY = 2
@@ -120,6 +113,10 @@ def process_job(job: dict, client: OpenAI) -> dict:
     }
 
 def run_pipeline(dry_run: bool, limit: int):
+    if not SUPABASE_KEY:
+        raise RuntimeError("SUPABASE_SERVICE_ROLE_KEY is required")
+    if not OPENAI_API_KEY:
+        raise RuntimeError("OPENAI_API_KEY is required")
     client = OpenAI(api_key=OPENAI_API_KEY)
     
     try:

@@ -9,11 +9,16 @@ Usage:
 
 from typing import Dict
 
-import prompts.mercorPrompt as _mercor
-import prompts.micro1Prompt as _micro1
-import prompts.turingPrompt as _turing
-
-from clients import DOMAIN_PAGE_KEYS
+try:  # Package import (``backend.prompts``)
+    from . import mercorPrompt as _mercor
+    from . import micro1Prompt as _micro1
+    from . import turingPrompt as _turing
+    from ..clients import DOMAIN_PAGE_KEYS
+except ImportError:  # Script import from the backend working directory
+    import prompts.mercorPrompt as _mercor
+    import prompts.micro1Prompt as _micro1
+    import prompts.turingPrompt as _turing
+    from clients import DOMAIN_PAGE_KEYS
 
 _PROMPT_REGISTRY: Dict[str, str] = {
     "mercor": _mercor.PROMPT_TEMPLATE,

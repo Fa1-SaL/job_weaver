@@ -4,7 +4,10 @@ Based on standard Turing recruitment structure.
 """
 
 import re
-from formatters.base import ClientFormatter
+try:
+    from .base import ClientFormatter, prepare_html_data
+except ImportError:
+    from formatters.base import ClientFormatter, prepare_html_data
 
 
 def clean_position(role: str) -> str:
@@ -38,19 +41,18 @@ class TuringFormatter(ClientFormatter):
 
     def format_jd(self, data: dict) -> str:
         """InMail / Formatted JD structure matching Turing specifications."""
+        data = prepare_html_data(data)
         role = clean_position(data.get('role', ''))
-        job_type = data.get('type', 'Short-Term Contract').strip() or 'Short-Term Contract'
-        location = data.get('location', '').strip()
-        loc_lower = location.lower()
-        if not ("onsite" in loc_lower or "on-site" in loc_lower or "hybrid" in loc_lower):
-            location = "Remote"
+        job_type = data.get('type', '').strip()
+        location = "Remote"
+        type_line = f"<b>Type:</b> {job_type}<br>\n" if job_type else ""
 
-        commitment = data.get("commitment", "Flexible 40 hrs/week with a minimum 4-hour overlap with PST").strip()
+        commitment = data.get("commitment", "10-40 hrs/week").strip()
         if not commitment:
-            commitment = "Flexible 40 hrs/week with a minimum 4-hour overlap with PST"
+            commitment = "10-40 hrs/week"
 
         pay = data.get("pay", "").strip()
-        pay_line = f"<b>Compensation:</b> {pay}<br>" if pay else "<b>Compensation:</b> To be discussed<br>"
+        pay_line = f"<b>Compensation:</b> {pay}<br>" if pay else ""
 
         resps = data.get("role_responsibilities", [])
         responsibilities = "\n".join(
@@ -60,6 +62,14 @@ class TuringFormatter(ClientFormatter):
         requirements = "\n".join(
             [f"<li>{r}</li>" for r in reqs if r and str(r).strip()]
         )
+        responsibilities_section = (
+            f"<b>Role Responsibilities:</b>\n<ul>\n{responsibilities}\n</ul>\n<br>\n"
+            if responsibilities else ""
+        )
+        requirements_section = (
+            f"<b>Requirements:</b>\n<ul>\n{requirements}\n</ul>\n<br>\n"
+            if requirements else ""
+        )
 
         app_process = """<b>Application Process</b>
 <ul>
@@ -68,22 +78,13 @@ class TuringFormatter(ClientFormatter):
 </ul>"""
 
         jd_text = f"""<b>Position:</b> {role}<br>
-<b>Type:</b> {job_type}<br>
+{type_line}
 {pay_line}<b>Location:</b> {location}<br>
 <b>Commitment:</b> {commitment}<br>
 <br>
 
-<b>Role Responsibilities:</b>
-<ul>
-{responsibilities}
-</ul>
-<br>
-
-<b>Requirements:</b>
-<ul>
-{requirements}
-</ul>
-<br>
+{responsibilities_section}
+{requirements_section}
 
 {app_process}
 <br>
@@ -92,55 +93,56 @@ class TuringFormatter(ClientFormatter):
 
     def format_email(self, data: dict) -> str:
         """Outreach Email structure matching Turing specifications."""
+        data = prepare_html_data(data)
         link = data.get("link", "").strip()
         role = clean_position(data.get("role", ""))
         client_name = data.get("client", "Turing") or "Turing"
         about_desc = data.get("client_desc", "").strip()
-        if not about_desc or "talent solutions" in about_desc.lower():
-            about_desc = (
-                "Turing is the world’s leading research accelerator for frontier AI labs "
-                "and a trusted partner for global enterprises deploying advanced AI systems. "
-                "Turing supports organizations by accelerating frontier AI research through high-quality data, "
-                "advanced training pipelines, and expert talent specializing in STEM, reasoning, multilinguality, "
-                "multimodality, coding, and AI agents."
-            )
 
         role_overview = data.get("role_overview", "").strip()
         who_this_is_for = data.get("who_this_is_for", "").strip()
 
         article = get_article(role)
         where_you_will = data.get("where_you_will", "").strip()
-        if not where_you_will:
-            where_you_will = "help train and evaluate cutting-edge AI systems using specialized reasoning tasks"
+        work_clause = f", where you will {where_you_will}" if where_you_will else ""
 
         intro = (
             f"I’m from Crossing Hurdles, a global recruitment firm. We would like to refer you for an "
-            f"exciting short-term contract opportunity with Turing as {article} <b>{role}</b>, where you will {where_you_will}."
+            f"exciting opportunity with Turing as {article} <b>{role}</b>{work_clause}."
         )
 
-        location = data.get("location", "").strip()
-        loc_lower = location.lower()
-        if not ("onsite" in loc_lower or "on-site" in loc_lower or "hybrid" in loc_lower):
-            location = "Remote"
+        location = "Remote"
 
-        job_type = data.get("type", "").strip() or "Short-Term Contract"
-        pay = data.get("pay", "").strip() or "$17 per hour"
-        commitment = data.get("commitment", "").strip() or "Flexible 40 hrs/week with a minimum 4-hour overlap with PST"
-        start_date = data.get("start_date", "").strip() or "Immediate"
+        job_type = data.get("type", "").strip()
+        pay = data.get("pay", "").strip()
+        commitment = data.get("commitment", "").strip() or "10-40 hrs/week"
+        start_date = data.get("start_date", "").strip()
+        type_line = f"<b>Type:</b> {job_type}<br>\n" if job_type else ""
+        start_line = f"<b>Start Date:</b> {start_date}<br>\n" if start_date else ""
+        about_section = (
+            f"<b>About {client_name}:</b><br>\n{about_desc}<br>\n<br>\n"
+            if about_desc else ""
+        )
+        overview_section = (
+            f"<b>Role Overview:</b><br>\n{role_overview}<br>\n<br>\n"
+            if role_overview else ""
+        )
 
         if link:
             apply_link_html = f'<a href="{link}" style="color: #0066cc;">Apply Here</a>'
             click_here_html = f'<a href="{link}" style="color: #0066cc;">clicking here</a>'
+            application_link_line = f"<b>Application Form Link – {apply_link_html}</b><br>\n"
+            application_action = f"Complete the application form by {click_here_html} to apply for the role."
         else:
-            apply_link_html = 'Apply Here'
-            click_here_html = 'clicking here'
+            application_link_line = ""
+            application_action = "Complete the application form to apply for the role."
 
         # Responsibilities bullets ("What You'll Work On:")
         resps = data.get("role_responsibilities", [])
         if resps:
             resps_html = "\n".join([f"<li>{r}</li>" for r in resps if r and str(r).strip()])
         else:
-            resps_html = "<li>Review, classify, label, and validate data according to detailed project guidelines.</li>"
+            resps_html = ""
 
         # Requirements bullets ("Who This Is For:")
         reqs = data.get("requirements", [])
@@ -151,10 +153,21 @@ class TuringFormatter(ClientFormatter):
         elif who_this_is_for and isinstance(who_this_is_for, str):
             reqs_html = f"<li>{who_this_is_for}</li>"
         else:
-            reqs_html = "<li>Professionals with relevant analytical and domain expertise.</li>"
+            reqs_html = ""
+        resps_section = (
+            f"<b>What You'll Work On:</b><br>\n<ul>\n{resps_html}\n</ul>\n<br>\n"
+            if resps_html else ""
+        )
+        reqs_section = (
+            f"<b>Who This Is For:</b><br>\n<ul>\n{reqs_html}\n</ul>\n<br>\n"
+            if reqs_html else ""
+        )
 
         # Preferred Qualifications section (if provided)
-        pref_qual = data.get("preferred_qualifications", [])
+        pref_qual = [
+            item for item in data.get("preferred_qualifications", [])
+            if item and str(item).strip()
+        ]
         pref_qual_html = ""
         if pref_qual and isinstance(pref_qual, list) and len(pref_qual) > 0:
             pref_bullets = "\n".join([f"<li>{q}</li>" for q in pref_qual if q and str(q).strip()])
@@ -165,31 +178,16 @@ class TuringFormatter(ClientFormatter):
 <b>Organization:</b> {client_name}<br>
 <b>Referral Partner:</b> Crossing Hurdles<br>
 <b>Role:</b> {role}<br>
-<b>Type:</b> {job_type}<br>
-<b>Compensation:</b> {pay}<br>
+{type_line}
+{f'<b>Compensation:</b> {pay}<br>' if pay else ''}
 <b>Location:</b> {location}<br>
 <b>Work Schedule:</b> {commitment}<br>
-<b>Start Date:</b> {start_date}<br>
-<b>Application Form Link – {apply_link_html}</b><br>
+{start_line}
+{application_link_line}
 <br>
-<b>About {client_name}:</b><br>
-{about_desc}<br>
-<br>
-<b>Role Overview:</b><br>
-{role_overview}<br>
-<br>
-<b>What You'll Work On:</b><br>
-<ul>
-{resps_html}
-</ul>
-<br>
-<b>Who This Is For:</b><br>
-<ul>
-{reqs_html}
-</ul>
-<br>
+{about_section}{overview_section}{resps_section}{reqs_section}
 {pref_qual_html}<b>Application Process:</b><br>
-Complete the application form by {click_here_html} to apply for the role.<br>
+{application_action}<br>
 <br>
 <b>Assessment Process (After Shortlisting):</b><br>
 Shortlisted candidates will receive a Take Home Assessment. Candidates who successfully clear the assessment will proceed to the Delivery Review stage. Successful candidates will then be contacted regarding onboarding.<br>

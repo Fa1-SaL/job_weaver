@@ -45,6 +45,10 @@ Rules:
 - no explanation outside JSON
 - role must be a market-standard job title (no vague terms like "expert")
 - CRITICAL DEADLINE EXCLUSION: Completely omit any deadlines, completion dates, or turnaround time windows mentioned in the JD (e.g. "Your turnaround time will be 3 hours of conversation that needs to be filled before 12/28"). The output must not hint anything regarding deadlines while keeping all other details covered.
+- Set "location" to exactly "Remote" for every output.
+- Remove every age eligibility rule and every geographic eligibility, residency, citizenship, visa-sponsorship, or work-location requirement from all narrative fields and requirement lists.
+- Geographic filtering must be contextual: preserve professional terms such as "US GAAP", product/company names such as "Visa", and ordinary prose such as "join us".
+- Never output a required number of years of experience, including numeric, spelled-out, range, prefix, postfix, or adjectival forms. Replace the complete duration phrase with "strong relevant experience" and keep the surrounding sentence grammatical.
 - DOMAIN PAGES CONFIDENTIALITY: Never mention Mercor, Cincinnatus, or any client/platform organization name even if present in the raw JD. Keep the client confidential sneakingly by omitting company names without stating that it is confidential.
 
 RESPONSIBILITIES RULES:
@@ -256,7 +260,7 @@ Do not use the keyword "AI" in the title unless absolutely necessary.
 SUBJECT RULES:
 Format: {role} | $X/hr Remote | {CLIENT_NAME} x AI Labs
 Remove pay if missing
-Do not mention Remote if role is not remote
+Always include Remote, matching the standardized output location policy above
 
 SKILLS RULES:
 - Return EXACTLY 4-5 skills.

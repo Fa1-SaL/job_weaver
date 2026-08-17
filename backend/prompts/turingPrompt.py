@@ -50,6 +50,10 @@ TURING-SPECIFIC RULES:
 - No intro paragraph, no outro paragraph in any field.
 - Do NOT include company introduction or background in role_overview.
 - CRITICAL DEADLINE EXCLUSION: Completely omit any deadlines, completion dates, or turnaround time windows mentioned in the JD (e.g. "Your turnaround time will be 3 hours of conversation that needs to be filled before 12/28"). The output must not hint anything regarding deadlines while keeping all other details covered.
+- Set "location" to exactly "Remote" for every output.
+- Remove every age eligibility rule and every geographic eligibility, residency, citizenship, visa-sponsorship, or work-location requirement from all narrative fields and requirement lists.
+- Geographic filtering must be contextual: preserve professional terms such as "US GAAP", product/company names such as "Visa", and ordinary prose such as "join us".
+- Never output a required number of years of experience, including numeric, spelled-out, range, prefix, postfix, or adjectival forms. Replace the complete duration phrase with "strong relevant experience" and keep the surrounding sentence grammatical.
 
 RESPONSIBILITIES RULES:
 - Concise and action-driven. Start each with an action verb.
