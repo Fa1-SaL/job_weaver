@@ -891,7 +891,6 @@ export default function App() {
               {colorTheme === 'dark'
                 ? <Sun className="w-4 h-4" aria-hidden="true" />
                 : <Moon className="w-4 h-4" aria-hidden="true" />}
-              <span>{colorTheme === 'dark' ? 'Light' : 'Dark'}</span>
             </button>
             <button
               className="btn-ghost-box"
@@ -1010,7 +1009,7 @@ export default function App() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        boxShadow: isSelected ? "0 10px 25px -5px rgba(37, 99, 235, 0.25)" : "0 2px 4px rgba(0,0,0,0.02)",
+                        boxShadow: "none",
                         transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)"
                       }}
                     >
@@ -1061,7 +1060,7 @@ export default function App() {
                               fontSize: "0.86rem",
                               fontWeight: isDomSelected ? 700 : 600,
                               textAlign: "center",
-                              boxShadow: isDomSelected ? "0 6px 16px rgba(37, 99, 235, 0.35)" : "0 1px 2px rgba(0,0,0,0.02)",
+                              boxShadow: "none",
                               transition: "all 0.18s ease",
                               display: "flex",
                               alignItems: "center",
@@ -1108,7 +1107,7 @@ export default function App() {
                               display: "flex",
                               alignItems: "center",
                               gap: "14px",
-                              boxShadow: isChecked ? "0 8px 20px -4px rgba(37, 99, 235, 0.15)" : "none",
+                              boxShadow: "none",
                               transition: "all 0.2s ease"
                             }}
                           >
@@ -1135,28 +1134,6 @@ export default function App() {
                   </motion.div>
                 )}
               </AnimatePresence>
-
-              <details className="advanced-api-section">
-                <summary>Advanced / Remote API</summary>
-                <div className="advanced-api-content">
-                  <label className="input-label" htmlFor="remote-api-token">BEARER TOKEN</label>
-                  <input
-                    id="remote-api-token"
-                    type="password"
-                    className="input-field-clean advanced-api-token"
-                    value={apiToken}
-                    onChange={(event) => handleApiTokenChange(event.target.value)}
-                    autoComplete="off"
-                    spellCheck={false}
-                    aria-describedby="remote-api-token-help"
-                    placeholder="Required only when the remote backend enables authentication"
-                  />
-                  <p id="remote-api-token-help" className="advanced-api-help">
-                    Sent only as an Authorization header and retained for this browser tab session.
-                    Clear this field to forget it.
-                  </p>
-                </div>
-              </details>
 
               <label className="input-label" htmlFor="job-url">JOB LINK (OPTIONAL)</label>
               <div className="input-with-icon" style={{ marginBottom: "26px" }}>

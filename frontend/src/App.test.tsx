@@ -123,7 +123,9 @@ describe('Job Weaver frontend regressions', () => {
 
     expect(document.documentElement).toHaveAttribute('data-theme', 'dark');
     expect(document.documentElement.style.colorScheme).toBe('dark');
-    expect(screen.getByRole('button', { name: 'Dark mode' })).toHaveAttribute('aria-pressed', 'true');
+    const themeToggle = screen.getByRole('button', { name: 'Dark mode' });
+    expect(themeToggle).toHaveAttribute('aria-pressed', 'true');
+    expect(themeToggle).toHaveTextContent('');
     expect(localStorage.getItem(COLOR_THEME_STORAGE_KEY)).toBe('dark');
   });
 
@@ -144,13 +146,9 @@ describe('Job Weaver frontend regressions', () => {
     expect(document.documentElement.style.colorScheme).toBe('dark');
     expect(localStorage.getItem(COLOR_THEME_STORAGE_KEY)).toBe('dark');
 
-    fireEvent.click(screen.getByText('Advanced / Remote API'));
-    fireEvent.change(screen.getByLabelText('BEARER TOKEN'), {
-      target: { value: 'new-owner-token' }
-    });
-    expect(localStorage.getItem(COLOR_THEME_STORAGE_KEY)).toBe('dark');
-
     firstRender.unmount();
+    sessionStorage.setItem(API_TOKEN_SESSION_KEY, 'new-owner-token');
+    sessionStorage.removeItem(API_CACHE_SCOPE_SESSION_KEY);
     render(<App />);
     expect(document.documentElement).toHaveAttribute('data-theme', 'dark');
     expect(screen.getByRole('button', { name: 'Dark mode' })).toHaveAttribute('aria-pressed', 'true');
@@ -214,8 +212,6 @@ describe('Job Weaver frontend regressions', () => {
     });
 
     render(<App />);
-    fireEvent.click(screen.getByText('Advanced / Remote API'));
-    expect(screen.getByLabelText('BEARER TOKEN')).toHaveValue(token);
 
     fireEvent.click(screen.getByRole('button', { name: 'History' }));
     fireEvent.click(await screen.findByRole('button', { name: 'Load Output' }));
@@ -251,19 +247,11 @@ describe('Job Weaver frontend regressions', () => {
     expect(sessionStorage.getItem(API_TOKEN_SESSION_KEY)).toBe(token);
   });
 
-  it('keeps a token entered in the remote API control in sessionStorage only', () => {
-    const token = 'runtime-only-secret';
+  it('keeps the remote API token control out of the interface', () => {
     render(<App />);
-    fireEvent.click(screen.getByText('Advanced / Remote API'));
-    const tokenInput = screen.getByLabelText('BEARER TOKEN');
-    fireEvent.change(tokenInput, { target: { value: token } });
 
-    expect(sessionStorage.getItem(API_TOKEN_SESSION_KEY)).toBe(token);
-    expect(localStorage.getItem(API_TOKEN_SESSION_KEY)).toBeNull();
-    expect(JSON.stringify(localStorage)).not.toContain(token);
-
-    fireEvent.change(tokenInput, { target: { value: '' } });
-    expect(sessionStorage.getItem(API_TOKEN_SESSION_KEY)).toBeNull();
+    expect(screen.queryByText('Advanced / Remote API')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('BEARER TOKEN')).not.toBeInTheDocument();
   });
 
   it('clears cached user data when the API identity changes', () => {
@@ -274,12 +262,12 @@ describe('Job Weaver frontend regressions', () => {
     localStorage.setItem(CACHE_SCOPE_MARKER_KEY, aliceScope);
     localStorage.setItem(aliceCacheKey, JSON.stringify(cachedRun({ rawJd: 'Alice private JD' })));
 
-    render(<App />);
+    const aliceRender = render(<App />);
     expect(screen.getByRole('button', { name: /Forward/ })).toBeInTheDocument();
-    fireEvent.click(screen.getByText('Advanced / Remote API'));
-    fireEvent.change(screen.getByLabelText('BEARER TOKEN'), {
-      target: { value: 'bob-token' }
-    });
+    aliceRender.unmount();
+    sessionStorage.setItem(API_TOKEN_SESSION_KEY, 'bob-token');
+    sessionStorage.removeItem(API_CACHE_SCOPE_SESSION_KEY);
+    render(<App />);
 
     expect(localStorage.getItem(aliceCacheKey)).toBeNull();
     expect(screen.queryByRole('button', { name: /Forward/ })).not.toBeInTheDocument();
