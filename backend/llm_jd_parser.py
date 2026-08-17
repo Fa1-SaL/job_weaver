@@ -190,7 +190,50 @@ def normalize_commitment(commitment: str) -> str:
 def clean_experience_phrases(text: str) -> str:
     if not text:
         return text
-    text = re.sub(r'\b\d+\+?\s*(years?|yrs?)\b', '', text, flags=re.IGNORECASE)
+
+    # Replace the complete quantified-experience phrase so ranges such as
+    # "2-3 years of relevant experience" cannot leave fragments like "2- of".
+    experience_duration_pattern = re.compile(
+        r'''
+        \b
+        (?:
+            (?:(?:at[ \t]+least|(?:a[ \t]+)?minimum(?:[ \t]+of)?|more[ \t]+than|over|up[ \t]+to)[ \t]+)
+            |(?:between[ \t]+)
+        )?
+        \d+(?:\.\d+)?
+        (?:[ \t]*(?:[-–—]|to|and)[ \t]*\d+(?:\.\d+)?)?
+        (?:[ \t]*\+|[ \t]+or[ \t]+more)?
+        [ \t]*(?:years?|yrs?(?:\.(?![ \t]+(?-i:[A-Z])))?)(?:['’])?
+        (?:[ \t]+of)?[ \t]+
+        (?:
+            (?!
+                (?:age|old|college|education|study|studies|degree|degrees|
+                   training|residency|and|or|but|nor|with|without|before|after|
+                   during|plus|including|followed|have|has|having|had|who|that|which)\b
+            )
+            (?!experience\b)[\w/&,+’'–—-]+[ \t]+
+        ){0,4}
+        experience\b
+        ''',
+        flags=re.IGNORECASE | re.VERBOSE,
+    )
+    text, replacements = experience_duration_pattern.subn("strong relevant experience", text)
+
+    if replacements:
+        # In the reported Masters-studies construction, experience remains an
+        # additional requirement. Keep genuine alternative qualifications as-is.
+        text = re.sub(
+            r'''(?ix)
+            (
+                currently[ \t]+pursuing[ \t]+or[ \t]+recently[ \t]+completed
+                [ \t]+(?:a[ \t]+)?master(?:['’]?s)?[ \t]+(?:degree|studies),[ \t]*
+            )
+            or(?=[ \t]+have[ \t]+strong[ \t]+relevant[ \t]+experience\b)
+            ''',
+            r'\1and',
+            text,
+        )
+
     text = " ".join(text.split())
     return text.strip()
 
@@ -995,4 +1038,3 @@ link - https://work.mercor.com/explore?listingId=list_AAABnSLJvfVX3RBDlENFN7tC
 
         except Exception as e:
             print(f"Error during test [{test_client}]: {e}")
-

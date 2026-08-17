@@ -25,6 +25,11 @@ from formatters import get_formatter
 from formatters.domainPagesFormatter import scrub_all_client_orgs_from_jd
 from clients import DOMAIN_PAGE_KEYS
 
+# llm_jd_parser constructs its API client at import time; these tests do not
+# make network calls, so a placeholder keeps the pure cleaner tests portable.
+os.environ.setdefault("OPENAI_API_KEY", "test-key")
+from llm_jd_parser import clean_experience_phrases, normalize_requirements
+
 def test_turing_formatter():
     fmt = get_formatter("turing")
     data = {
@@ -118,7 +123,77 @@ def test_domain_pages_rules():
 
     print("[SUCCESS] All 8 Domain Pages rule verification passed!")
 
+def test_reported_regressions():
+    reported_requirement = (
+        "Currently pursuing or recently completed Masters studies, or have "
+        "2-3 years of relevant experience."
+    )
+    expected_requirement = (
+        "Currently pursuing or recently completed Masters studies, and have "
+        "strong relevant experience."
+    )
+
+    assert clean_experience_phrases(reported_requirement) == expected_requirement
+    assert normalize_requirements([reported_requirement]) == [expected_requirement]
+
+    experience_variants = [
+        "Candidates need 2+ years of professional experience.",
+        "Candidates need 2–3 years of industry experience.",
+        "Candidates need 2—3 yrs. of hands-on experience.",
+        "Candidates need 2 yrs. experience.",
+        "Candidates need 2 years of hands-on machine learning experience.",
+        "Candidates need between 2 and 3 years of relevant experience.",
+        "Candidates need at least 2 years of work experience."
+    ]
+    for requirement in experience_variants:
+        cleaned = clean_experience_phrases(requirement)
+        assert cleaned == "Candidates need strong relevant experience.", cleaned
+
+    age_requirement = "Candidates must be at least 21 years old."
+    assert clean_experience_phrases(age_requirement) == age_requirement
+
+    unrelated_sentences = "The degree takes 4 years. Prior research experience is preferred."
+    assert clean_experience_phrases(unrelated_sentences) == unrelated_sentences
+
+    age_with_experience = "Candidates must be at least 21 years of age and have relevant work experience."
+    assert clean_experience_phrases(age_with_experience) == age_with_experience
+
+    education_with_experience = "Requires 4 years of college or equivalent work experience."
+    assert clean_experience_phrases(education_with_experience) == education_with_experience
+
+    training_with_experience = "Requires 4 years of supervised training with practical work experience."
+    assert clean_experience_phrases(training_with_experience) == training_with_experience
+
+    residency_with_experience = "Candidates need 3 years of residency with clinical experience."
+    assert clean_experience_phrases(residency_with_experience) == residency_with_experience
+
+    alternative_requirement = "Candidates may hold a degree, or have 2 years of relevant experience."
+    assert clean_experience_phrases(alternative_requirement) == (
+        "Candidates may hold a degree, or have strong relevant experience."
+    )
+
+    stemsync_jd = get_formatter("stemsyncai").format_jd({
+        "role": "Physics Researcher",
+        "type": "Hourly Contract",
+        "pay": "$25 per hour",
+        "location": "Remote",
+        "commitment": "10 hours/week",
+        "requirements": [
+            expected_requirement,
+            "Candidates must be located in Canada.",
+            "Strong scientific writing skills."
+        ]
+    })
+    assert "$25 per hour" in stemsync_jd
+    assert "$80–$135" not in stemsync_jd
+    assert "Stripe" not in stemsync_jd and "Wise" not in stemsync_jd
+    assert expected_requirement in stemsync_jd
+    assert "Canada" not in stemsync_jd
+
+    print("[SUCCESS] Reported STEMSyncAI regressions passed!")
+
 if __name__ == "__main__":
     test_turing_formatter()
     test_domain_pages_rules()
+    test_reported_regressions()
     print("\nALL VERIFICATION TESTS PASSED SUCCESSFULLY!")

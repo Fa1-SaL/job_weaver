@@ -186,7 +186,7 @@ class CrossingHurdlesFormatter(MercorFormatter):
 <ul>
 <li>Apply using the Easy Apply button and submit your application.</li>
 <li>Applications will be reviewed based on the role requirements.</li>
-<li>Eligible candidates will receive a message in their LinkedIn inbox with instructions to continue the application process.</li>
+<li>Eligible candidates will receive a message in their LinkedIn or email inbox with instructions to continue the application process.</li>
 <li>Follow the instructions in the message to complete the remaining application steps.</li>
 </ul><br>
 
@@ -740,7 +740,6 @@ class STEMSyncAIFormatter(MercorFormatter):
                 "Contribute to research-grade physics benchmarks used to evaluate advanced language models.",
                 "Solve, review, and validate complex physics problems across multiple specialized subfields.",
                 "Work asynchronously with a fully remote, flexible schedule.",
-                "Earn $80–$135 per hour, with weekly payouts via Stripe or Wise.",
                 "Typical commitment of ~10 hours per week over an 8–10 week project window.",
                 "Independent contractor engagement with opportunities for project extensions.",
                 "Help produce fully human-verified reference solutions for frontier physics reasoning."
