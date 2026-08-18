@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import App from './App';
+import App, { resolveApiUrl } from './App';
 
 const LAST_RUN_CACHE_KEY = 'job_weaver_last_run_v2';
 const HISTORY_CACHE_KEY = 'job_weaver_history_v2';
@@ -115,6 +115,12 @@ describe('Job Weaver frontend regressions', () => {
     document.documentElement.style.colorScheme = '';
     mockSystemTheme(false);
     vi.stubGlobal('fetch', vi.fn());
+  });
+
+  it('keeps production builds pointed at the local Job Weaver API by default', () => {
+    expect(resolveApiUrl()).toBe('http://127.0.0.1:8000');
+    expect(resolveApiUrl('   ')).toBe('http://127.0.0.1:8000');
+    expect(resolveApiUrl('https://api.example.test///')).toBe('https://api.example.test');
   });
 
   it('uses the system dark preference when no theme has been saved', () => {
@@ -299,8 +305,26 @@ describe('Job Weaver frontend regressions', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Generate' }));
 
     await screen.findByText('Fresh JD');
-    const [, init] = vi.mocked(fetch).mock.calls[0];
+    const [requestUrl, init] = vi.mocked(fetch).mock.calls[0];
+    expect(requestUrl).toBe('http://127.0.0.1:8000/parse-jd');
     expect(new Headers(init?.headers).get('Authorization')).toBeNull();
+  });
+
+  it('reports the API location and status for a non-JSON response', async () => {
+    vi.mocked(fetch).mockResolvedValue({
+      ok: false,
+      status: 404,
+      json: vi.fn().mockRejectedValue(new SyntaxError('Unexpected end of JSON input'))
+    } as unknown as Response);
+    render(<App />);
+    fireEvent.change(screen.getByLabelText('PASTE RAW JOB DESCRIPTION'), {
+      target: { value: 'A valid raw JD' }
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Generate' }));
+
+    expect(await screen.findByText(
+      'The Job Weaver API returned an unreadable response (HTTP 404). Make sure the backend is running at http://127.0.0.1:8000.'
+    )).toBeInTheDocument();
   });
 
   it('surfaces a 401 without exposing or persisting the bearer token', async () => {

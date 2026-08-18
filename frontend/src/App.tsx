@@ -6,10 +6,13 @@ import {
 } from 'lucide-react';
 import TetrisLoading from './components/ui/tetris-loader';
 
-const configuredApiUrl = import.meta.env.VITE_API_URL?.trim();
-const API_URL = (
-  configuredApiUrl || (import.meta.env.DEV ? "http://127.0.0.1:8000" : "")
-).replace(/\/+$/, "");
+const LOCAL_API_URL = "http://127.0.0.1:8000";
+
+export function resolveApiUrl(configuredApiUrl?: string) {
+  return (configuredApiUrl?.trim() || LOCAL_API_URL).replace(/\/+$/, "");
+}
+
+const API_URL = resolveApiUrl(import.meta.env.VITE_API_URL);
 
 const API_TOKEN_SESSION_KEY = 'job_weaver_api_token';
 const API_CACHE_SCOPE_SESSION_KEY = 'job_weaver_api_cache_scope';
@@ -801,7 +804,11 @@ export default function App() {
       try {
         data = await res.json();
       } catch {
-        throw new Error("The server returned an unreadable response.");
+        const status = Number.isFinite(res.status) ? ` (HTTP ${res.status})` : "";
+        throw new Error(
+          `The Job Weaver API returned an unreadable response${status}. ` +
+          `Make sure the backend is running at ${API_URL}.`
+        );
       }
       if (res.ok === false || !data?.success) {
         throw new Error(apiErrorMessage(data, "The server could not process this job description."));

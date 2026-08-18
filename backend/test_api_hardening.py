@@ -81,6 +81,19 @@ class ApiHardeningTests(unittest.TestCase):
             preflight.headers.get("access-control-allow-credentials"), "true"
         )
 
+        preview_preflight = self.client.options(
+            "/history",
+            headers={
+                "Origin": "http://127.0.0.1:4173",
+                "Access-Control-Request-Method": "GET",
+            },
+        )
+        self.assertEqual(preview_preflight.status_code, 200)
+        self.assertEqual(
+            preview_preflight.headers.get("access-control-allow-origin"),
+            "http://127.0.0.1:4173",
+        )
+
         remote_client = TestClient(api.app, client=("198.51.100.10", 50000))
         try:
             self.assertEqual(remote_client.get("/history").status_code, 403)

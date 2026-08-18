@@ -16,13 +16,13 @@ npm run dev
 
 The development server is available at [http://localhost:5173](http://localhost:5173). `npm start` is an alias for the same Vite development server.
 
-In development, API requests default to `http://127.0.0.1:8000`. To use another backend, set `VITE_API_URL` to its origin in a local Vite environment file such as `.env.development`:
+API requests default to the local backend at `http://127.0.0.1:8000` in both development and production builds. To use another backend, set `VITE_API_URL` to its origin in a Vite environment file for the relevant mode:
 
 ```dotenv
 VITE_API_URL=https://api.example.com
 ```
 
-Production builds use same-origin API paths when `VITE_API_URL` is unset. API bearer tokens must not be added to Vite environment files. For an authenticated remote backend, enter the token at runtime under **Advanced / Remote API**. It is kept only in memory and `sessionStorage`, and is sent as an `Authorization: Bearer …` header.
+API bearer tokens must not be added to Vite environment files or bundled into frontend code. Authenticated remote deployments should provide credentials through their runtime integration or an authenticated same-origin proxy.
 
 ## Checks
 
@@ -42,3 +42,9 @@ npm run build
 ```
 
 Vite writes deployable production assets to `dist/`.
+
+To verify the production bundle locally against the backend on port 8000:
+
+```bash
+npm run preview
+```
