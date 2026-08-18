@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import App, { resolveApiUrl } from './App';
+import App, { resolveApiUrl, shouldUseServerHistory } from './App';
 
 const LAST_RUN_CACHE_KEY = 'job_weaver_last_run_v2';
 const HISTORY_CACHE_KEY = 'job_weaver_history_v2';
@@ -117,10 +117,14 @@ describe('Job Weaver frontend regressions', () => {
     vi.stubGlobal('fetch', vi.fn());
   });
 
-  it('keeps production builds pointed at the local Job Weaver API by default', () => {
-    expect(resolveApiUrl()).toBe('http://127.0.0.1:8000');
-    expect(resolveApiUrl('   ')).toBe('http://127.0.0.1:8000');
-    expect(resolveApiUrl('https://api.example.test///')).toBe('https://api.example.test');
+  it('uses localhost for development and the Vercel proxy for production', () => {
+    expect(resolveApiUrl(undefined, true)).toBe('http://127.0.0.1:8000');
+    expect(resolveApiUrl('   ', true)).toBe('http://127.0.0.1:8000');
+    expect(resolveApiUrl(undefined, false)).toBe('/api');
+    expect(resolveApiUrl('   ', false)).toBe('/api');
+    expect(resolveApiUrl('https://api.example.test///', false)).toBe('https://api.example.test');
+    expect(shouldUseServerHistory('/api')).toBe(false);
+    expect(shouldUseServerHistory('https://api.example.test')).toBe(true);
   });
 
   it('uses the system dark preference when no theme has been saved', () => {
@@ -308,6 +312,31 @@ describe('Job Weaver frontend regressions', () => {
     const [requestUrl, init] = vi.mocked(fetch).mock.calls[0];
     expect(requestUrl).toBe('http://127.0.0.1:8000/parse-jd');
     expect(new Headers(init?.headers).get('Authorization')).toBeNull();
+  });
+
+  it('stores a generated history summary and detail in the browser cache', async () => {
+    vi.mocked(fetch).mockResolvedValue(jsonResponse(generatedResult({
+      structured_data: { role: 'Locally saved role' }
+    })));
+    render(<App />);
+    fireEvent.change(screen.getByLabelText('PASTE RAW JOB DESCRIPTION'), {
+      target: { value: 'A locally saved raw JD' }
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Generate' }));
+
+    await screen.findByText('Fresh JD');
+    await waitFor(() => {
+      const history = JSON.parse(localStorage.getItem(HISTORY_CACHE_KEY) || '[]');
+      expect(history).toEqual(expect.arrayContaining([
+        expect.objectContaining({
+          id: 'history-id',
+          client: 'mercor',
+          role: 'Locally saved role',
+          raw_jd_snippet: 'A locally saved raw JD'
+        })
+      ]));
+      expect(localStorage.getItem(`${DETAIL_CACHE_PREFIX}history-id`)).toContain('Fresh JD');
+    });
   });
 
   it('reports the API location and status for a non-JSON response', async () => {

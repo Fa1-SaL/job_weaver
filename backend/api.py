@@ -94,6 +94,20 @@ def _csv_setting(name: str, defaults: tuple[str, ...]) -> tuple[str, ...]:
     return normalized
 
 
+def _allowed_hosts() -> tuple[str, ...]:
+    configured = _csv_setting(
+        "JOB_WEAVER_ALLOWED_HOSTS",
+        ("localhost", "127.0.0.1", "[::1]", "testserver"),
+    )
+    # Render supplies its public hostname at runtime. Trusting that exact host
+    # keeps host-header protection enabled without requiring a duplicated
+    # dashboard setting that can drift when a service is renamed.
+    render_hostname = os.getenv("RENDER_EXTERNAL_HOSTNAME", "").strip().rstrip("/")
+    if render_hostname:
+        configured = (*configured, render_hostname)
+    return tuple(dict.fromkeys(configured))
+
+
 MAX_RAW_JD_CHARS = _bounded_int("JOB_WEAVER_MAX_RAW_JD_CHARS", 100_000, 1_000, 1_000_000)
 MAX_REQUEST_BYTES = _bounded_int("JOB_WEAVER_MAX_REQUEST_BYTES", 262_144, 4_096, 2_000_000)
 GENERATION_RATE_LIMIT = _bounded_int(
@@ -112,10 +126,7 @@ ALLOWED_ORIGINS = _csv_setting(
         "http://127.0.0.1:4173",
     ),
 )
-ALLOWED_HOSTS = _csv_setting(
-    "JOB_WEAVER_ALLOWED_HOSTS",
-    ("localhost", "127.0.0.1", "[::1]", "testserver"),
-)
+ALLOWED_HOSTS = _allowed_hosts()
 
 
 def _load_api_tokens() -> Dict[str, str]:

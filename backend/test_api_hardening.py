@@ -106,6 +106,23 @@ class ApiHardeningTests(unittest.TestCase):
         finally:
             remote_client.close()
 
+    def test_render_runtime_hostname_is_automatically_trusted(self) -> None:
+        with mock.patch.dict(
+            os.environ,
+            {
+                "JOB_WEAVER_ALLOWED_HOSTS": "localhost,api.example.test",
+                "RENDER_EXTERNAL_HOSTNAME": "job-weaver.onrender.com",
+            },
+        ):
+            self.assertEqual(
+                api._allowed_hosts(),
+                (
+                    "localhost",
+                    "api.example.test",
+                    "job-weaver.onrender.com",
+                ),
+            )
+
     def test_validation_http_errors_and_size_limit(self) -> None:
         empty = self.client.post(
             "/parse-jd", json={"raw_jd": "\t\r\n", "client": "mercor"}

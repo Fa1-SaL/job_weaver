@@ -7,12 +7,23 @@ import {
 import TetrisLoading from './components/ui/tetris-loader';
 
 const LOCAL_API_URL = "http://127.0.0.1:8000";
+const PRODUCTION_API_URL = "/api";
 
-export function resolveApiUrl(configuredApiUrl?: string) {
-  return (configuredApiUrl?.trim() || LOCAL_API_URL).replace(/\/+$/, "");
+export function resolveApiUrl(
+  configuredApiUrl?: string,
+  isDevelopment = import.meta.env.DEV
+) {
+  const fallback = isDevelopment ? LOCAL_API_URL : PRODUCTION_API_URL;
+  return (configuredApiUrl?.trim() || fallback).replace(/\/+$/, "");
 }
 
 const API_URL = resolveApiUrl(import.meta.env.VITE_API_URL);
+
+export function shouldUseServerHistory(apiUrl: string) {
+  return apiUrl !== PRODUCTION_API_URL;
+}
+
+const USE_SERVER_HISTORY = shouldUseServerHistory(API_URL);
 
 const API_TOKEN_SESSION_KEY = 'job_weaver_api_token';
 const API_CACHE_SCOPE_SESSION_KEY = 'job_weaver_api_cache_scope';
@@ -273,6 +284,17 @@ function detailCacheKey(itemId: string, scope: string) {
   return `${DETAIL_CACHE_PREFIX}${scope === LOCAL_CACHE_SCOPE ? '' : `${scope}_`}${itemId}`;
 }
 
+function readLocalHistory(scope: string) {
+  try {
+    const stored = localStorage.getItem(scopedCacheKey(HISTORY_CACHE_KEY, scope));
+    if (!stored) return [];
+    const parsed = JSON.parse(stored);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
 function normalizeOutputSelection(value: any): OutputSelection {
   return {
     inmail: value?.inmail !== false,
@@ -418,15 +440,13 @@ export default function App() {
   const fetchHistory = async () => {
     try {
       setLoadingHistory(true);
-      const localStr = localStorage.getItem(scopedCacheKey(HISTORY_CACHE_KEY, cacheScope));
-      let localHist: any[] = [];
-      if (localStr) {
-        try {
-          const parsed = JSON.parse(localStr);
-          localHist = Array.isArray(parsed) ? parsed : [];
-        } catch (e) { }
-      }
+      const localHist = readLocalHistory(cacheScope);
       setHistoryItems(localHist);
+
+      // The public Vercel proxy deliberately exposes generation only. Keeping
+      // history in this browser prevents one visitor from reading or deleting
+      // another visitor's stored job descriptions through a shared API token.
+      if (!USE_SERVER_HISTORY) return;
 
       const res = await apiFetch("/history", apiToken);
       const data = await res.json();
@@ -458,25 +478,27 @@ export default function App() {
       setShowHistoryModal(false);
       let payload: any = null;
 
-      try {
-        const res = await apiFetch(`/history/${encodeURIComponent(itemId)}`, apiToken);
-        const data = await res.json();
-        if (res.ok !== false && data.success && data.data) {
-          let cachedSelection: any = outputCheckmarks;
-          const existingDetail = localStorage.getItem(detailCacheKey(itemId, cacheScope));
-          if (existingDetail) {
-            try {
-              cachedSelection = JSON.parse(existingDetail)?._output_selection || outputCheckmarks;
-            } catch (e) { }
+      if (USE_SERVER_HISTORY) {
+        try {
+          const res = await apiFetch(`/history/${encodeURIComponent(itemId)}`, apiToken);
+          const data = await res.json();
+          if (res.ok !== false && data.success && data.data) {
+            let cachedSelection: any = outputCheckmarks;
+            const existingDetail = localStorage.getItem(detailCacheKey(itemId, cacheScope));
+            if (existingDetail) {
+              try {
+                cachedSelection = JSON.parse(existingDetail)?._output_selection || outputCheckmarks;
+              } catch (e) { }
+            }
+            payload = sanitizeOutputPayload({
+              ...data.data,
+              _output_selection: normalizeOutputSelection(data.data._output_selection || cachedSelection)
+            });
+            safeLocalStorageSet(detailCacheKey(itemId, cacheScope), JSON.stringify(payload));
           }
-          payload = sanitizeOutputPayload({
-            ...data.data,
-            _output_selection: normalizeOutputSelection(data.data._output_selection || cachedSelection)
-          });
-          safeLocalStorageSet(detailCacheKey(itemId, cacheScope), JSON.stringify(payload));
+        } catch (err) {
+          console.error("Backend fetch failed, checking localStorage detail...");
         }
-      } catch (err) {
-        console.error("Backend fetch failed, checking localStorage detail...");
       }
 
       if (!payload) {
@@ -589,23 +611,27 @@ export default function App() {
     safeLocalStorageSet(CACHE_SCOPE_MARKER_KEY, cacheScope);
 
     let serverError: Error | null = null;
-    try {
-      const res = await apiFetch("/history", apiToken, { method: "DELETE" });
-      const data = await res.json();
-      if (res.ok === false || !data.success) {
-        throw new Error(apiErrorMessage(data, "Could not clear server history."));
+    if (USE_SERVER_HISTORY) {
+      try {
+        const res = await apiFetch("/history", apiToken, { method: "DELETE" });
+        const data = await res.json();
+        if (res.ok === false || !data.success) {
+          throw new Error(apiErrorMessage(data, "Could not clear server history."));
+        }
+      } catch (error: any) {
+        serverError = error instanceof Error
+          ? error
+          : new Error("Could not clear server history.");
+        console.error("Error clearing server history:", error);
       }
-    } catch (error: any) {
-      serverError = error instanceof Error
-        ? error
-        : new Error("Could not clear server history.");
-      console.error("Error clearing server history:", error);
     }
 
     if (serverError) {
       showToast(`Local history cleared, but server history could not be cleared: ${serverError.message}`);
     } else if (localCleanupFailed) {
-      showToast("Server history cleared, but some local cache data could not be removed.");
+      showToast(USE_SERVER_HISTORY
+        ? "Server history cleared, but some local cache data could not be removed."
+        : "Some local history data could not be removed.");
     } else {
       showToast("History and local cache cleared!");
     }
@@ -632,8 +658,30 @@ export default function App() {
       } catch (e) {
         console.error("Generated output could not be saved locally:", e);
       }
+
+      const structuredRole = sanitizedData.structured_data?.role;
+      const summary = {
+        id: itemId,
+        timestamp: new Date().toISOString(),
+        client: effectiveClient,
+        role: typeof structuredRole === "string" ? structuredRole : "",
+        url: jobUrl,
+        raw_jd_snippet: buildHistorySnippet(rawJd)
+      };
+      const localHistory = readLocalHistory(cacheScope);
+      const updatedHistory = [
+        summary,
+        ...localHistory.filter((item: any) => item?.id !== itemId)
+      ].slice(0, 100);
+      safeLocalStorageSet(
+        scopedCacheKey(HISTORY_CACHE_KEY, cacheScope),
+        JSON.stringify(updatedHistory)
+      );
+      setHistoryItems(updatedHistory);
       return;
     }
+
+    if (!USE_SERVER_HISTORY) return;
 
     try {
       const res = await apiFetch("/history", apiToken);
