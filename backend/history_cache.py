@@ -40,7 +40,7 @@ GENERATION_LOCK_DIR = HISTORY_DB.parent / ".generation_locks"
 # Bump this value whenever prompts, policy cleaning, or formatter behavior
 # changes. It is included in every cache key, so stale rendered output is not
 # returned after a deployment.
-CACHE_SCHEMA_VERSION = os.getenv("JOB_WEAVER_CACHE_VERSION", "3").strip() or "3"
+CACHE_SCHEMA_VERSION = os.getenv("JOB_WEAVER_CACHE_VERSION", "4").strip() or "4"
 HISTORY_LIMIT = _bounded_int("JOB_WEAVER_HISTORY_LIMIT", 100, 1, 10_000)
 SQLITE_TIMEOUT_SECONDS = _bounded_int("JOB_WEAVER_SQLITE_TIMEOUT_SECONDS", 30, 1, 300)
 GENERATION_LOCK_TIMEOUT_SECONDS = _bounded_int(

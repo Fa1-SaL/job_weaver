@@ -10,6 +10,7 @@ Verification script to validate:
 """
 
 import os
+import json
 import re
 import sys
 from pathlib import Path
@@ -570,7 +571,7 @@ def test_html_escaping_and_link_validation():
 
 def test_schema_role_and_normalizer_regressions():
     assert parser._openai_client is None
-    assert parser.OUTPUT_VERSION == "v3"
+    assert parser.OUTPUT_VERSION == "v4"
     assert validate_raw_schema({"requirements": "Python experience"}) == (
         False,
         "requirements must be a list",
@@ -580,9 +581,56 @@ def test_schema_role_and_normalizer_regressions():
         "requirements must contain only strings",
     )
 
-    assert extract_raw_role("Job Title:\nData Analyst") == ""
+    assert extract_raw_role("Job Title:\nData Analyst") == "Data Analyst"
+    assert extract_raw_role("Title: Senior Data Analyst\nDescription") == "Senior Data Analyst"
+    assert extract_raw_role("Job Title - Senior Data Analyst\nDescription") == "Senior Data Analyst"
+    assert extract_raw_role("Position Title — Senior Data Analyst\nDescription") == "Senior Data Analyst"
+    assert extract_raw_role("Position | Senior Data Analyst\nDescription") == "Senior Data Analyst"
+    assert extract_raw_role("Role：Senior Data Analyst\nDescription") == "Senior Data Analyst"
+    assert extract_raw_role("JOB TITLE\tData Analyst\nDescription") == "Data Analyst"
+    assert extract_raw_role("Job Title = Data Analyst\nDescription") == "Data Analyst"
+    assert extract_raw_role("Position:\nSenior Data Analyst\nDescription") == "Senior Data Analyst"
+    assert extract_raw_role("Job Title:\nQuantum Workflow Wizard\nDescription") == "Quantum Workflow Wizard"
+    assert extract_raw_role("# Senior Data Analyst\nAbout the Role") == "Senior Data Analyst"
+    assert extract_raw_role("**Job Title:** Senior Data Analyst\nDescription") == "Senior Data Analyst"
+    assert extract_raw_role("## Job Title\nSenior Data Analyst\nDescription") == "Senior Data Analyst"
+    assert extract_raw_role("Job Title: Quantum Workflow Wizard\nDescription") == "Quantum Workflow Wizard"
+    assert extract_raw_role("Audio and Video Technicians\nPart-time position") == "Audio and Video Technicians"
+    assert extract_raw_role("senior software engineer\nAbout the Role") == "senior software engineer"
+    assert extract_raw_role("Chief of Staff\nAbout the Role") == "Chief of Staff"
+    assert extract_raw_role("Product Owner\nAbout the Role") == "Product Owner"
+    assert extract_raw_role("AI Training - Mathematics\nAbout the Role") == "AI Training - Mathematics"
+    assert extract_raw_role("Customer Success\nAbout the Role") == "Customer Success"
+    assert extract_raw_role("Machine Learning\nAbout the Role") == "Machine Learning"
     assert extract_raw_role("<h1>Job Title: Attacker</h1>\nDescription") == ""
+    assert extract_raw_role("Job Title: javascript:alert(1)\nDescription") == ""
+    assert extract_raw_role("Job Title:\nhttps://attacker.test/title\nDescription") == ""
+    assert extract_raw_role("Job Title:\nDescription: Review candidate data.\nRequirements") == ""
     assert extract_raw_role("Arbitrary first line\nDescription") == ""
+    assert extract_raw_role("Acme Corporation\nAbout the Role") == ""
+    assert extract_raw_role("Terms And Conditions\nSenior Data Analyst") == ""
+    assert extract_raw_role(
+        "Role:\nYou will review AI responses\nJob Title: Data Analyst"
+    ) == "Data Analyst"
+    assert extract_raw_role(
+        "Role:\nReviewers evaluate AI-generated responses\nJob Title: Data Analyst"
+    ) == "Data Analyst"
+    assert extract_raw_role(
+        "Position:\nData Scientists transform complex research\nJob Title: Senior Data Analyst"
+    ) == "Senior Data Analyst"
+    for prose_role in (
+        "Role:\nData Scientists will transform healthcare",
+        "Role:\nReviewers routinely evaluate AI-generated responses",
+        "Position:\nSenior engineers are building scalable systems",
+        "Role:\nData Analysts who review model outputs",
+        "Role:\nEngineers responsible for building reliable systems",
+    ):
+        assert extract_raw_role(prose_role) == ""
+    assert extract_raw_role("Shape The Future\nAbout the Role") == ""
+    assert extract_raw_role("Help Build Better AI\nAbout the Role") == ""
+    assert extract_raw_role("Job Description\nSenior Data Analyst") == ""
+    assert extract_raw_role("$30 per hour\nSenior Data Analyst") == ""
+    assert extract_raw_role("Remote\nSenior Data Analyst") == ""
     assert extract_raw_role("Job Title: Senior Data Analyst\nDescription") == "Senior Data Analyst"
     assert parser.normalize_role("India-based Data Analyst") == "Data Analyst"
     assert parser.normalize_role("Data Analyst - Australia") == "Data Analyst"
@@ -634,6 +682,47 @@ def test_schema_role_and_normalizer_regressions():
         "Operations Analyst",
     ) == ["Retail Analyst", "Claims Analyst", "Maintenance Engineer"]
     assert clean_titles(["AI Analyst"], "Operations Analyst") == ["Operations Analyst"]
+
+    source_role_payload = {
+        **_base_formatter_data(
+            role="Data Annotation Specialist",
+            pay="$30/hour",
+            commitment="10-40 hrs/week",
+        ),
+        "suggested_titles": ["Data Annotation Specialist"],
+        "skills": ["Data Annotation"],
+        "job_functions": ["Analytics"],
+        "industries": ["Technology, Information and Media"],
+        "justifications": {},
+    }
+    original_generate = parser.generate_llm_output
+    original_refine = parser.refine_classifications_with_higher_model
+    try:
+        parser.generate_llm_output = lambda *args, **kwargs: json.dumps(source_role_payload)
+        parser.refine_classifications_with_higher_model = lambda *args, **kwargs: None
+        source_role_result = parser.get_valid_llm_output(
+            "18+ India-based AI Training - Data Annotator\nAbout the Role\nReview training data.",
+            client="mercor",
+        )
+    finally:
+        parser.generate_llm_output = original_generate
+        parser.refine_classifications_with_higher_model = original_refine
+
+    expected_source_role = "AI Training - Data Annotator"
+    assert source_role_result["structured_data"]["role"] == expected_source_role
+    assert source_role_result["subject"].startswith(f"{expected_source_role} |")
+    assert source_role_result["linkedin_title"].startswith(f"{expected_source_role} |")
+    assert f"<b>Position:</b> {expected_source_role}<br>" in source_role_result["jd"]
+    assert f"<b>Role:</b> {expected_source_role}<br>" in source_role_result["email"]
+    assert source_role_result["titles"] == ["Data Annotation Specialist"]
+    for rendered_value in (
+        source_role_result["jd"],
+        source_role_result["email"],
+        source_role_result["subject"],
+        source_role_result["linkedin_title"],
+    ):
+        assert "18+" not in rendered_value
+        assert "India-based" not in rendered_value
 
     calls = []
     original_generate = parser.generate_llm_output

@@ -43,7 +43,7 @@ Rules:
 - no extra keys
 - no markdown
 - no explanation outside JSON
-- role must be a market-standard job title (no vague terms like "expert")
+- If the job description states a source job title, role must preserve it rather than using a suggested alternative. Only when no source title exists, infer a concise market-standard role. Put alternatives only in suggested_titles.
 - CRITICAL DEADLINE EXCLUSION: Completely omit any deadlines, completion dates, or turnaround time windows mentioned in the JD (e.g. "Your turnaround time will be 3 hours of conversation that needs to be filled before 12/28"). The output must not hint anything regarding deadlines while keeping all other details covered.
 - Set "location" to exactly "Remote" for every output.
 - Remove every age eligibility rule and every geographic eligibility, residency, citizenship, visa-sponsorship, or work-location requirement from all narrative fields and requirement lists.

@@ -28,8 +28,10 @@ const USE_SERVER_HISTORY = shouldUseServerHistory(API_URL);
 const API_TOKEN_SESSION_KEY = 'job_weaver_api_token';
 const API_CACHE_SCOPE_SESSION_KEY = 'job_weaver_api_cache_scope';
 const CACHE_SCOPE_MARKER_KEY = 'job_weaver_cache_scope_v2';
-const LAST_RUN_CACHE_KEY = 'job_weaver_last_run_v2';
+const LAST_RUN_CACHE_KEY = 'job_weaver_last_run_v3';
+const LEGACY_V2_LAST_RUN_CACHE_KEY = 'job_weaver_last_run_v2';
 const LEGACY_LAST_RUN_CACHE_KEY = 'job_weaver_last_run';
+const CURRENT_OUTPUT_VERSION = 'v4';
 const HISTORY_CACHE_KEY = 'job_weaver_history_v2';
 const LEGACY_HISTORY_CACHE_KEY = 'job_weaver_history';
 const DETAIL_CACHE_PREFIX = 'jw_detail_v2_';
@@ -182,6 +184,7 @@ function safeLocalStorageSet(key: string, value: string) {
 function removeLocalJobData() {
   const keys = new Set([
     LAST_RUN_CACHE_KEY,
+    LEGACY_V2_LAST_RUN_CACHE_KEY,
     LEGACY_LAST_RUN_CACHE_KEY,
     HISTORY_CACHE_KEY,
     LEGACY_HISTORY_CACHE_KEY,
@@ -210,7 +213,18 @@ function removeLocalJobData() {
 
 function removeLegacyLocalData() {
   try {
-    localStorage.removeItem(LEGACY_LAST_RUN_CACHE_KEY);
+    const legacyLastRunKeys: string[] = [];
+    for (let index = 0; index < localStorage.length; index++) {
+      const key = localStorage.key(index);
+      if (key && (
+        key === LEGACY_LAST_RUN_CACHE_KEY ||
+        key === LEGACY_V2_LAST_RUN_CACHE_KEY ||
+        key.startsWith(`${LEGACY_V2_LAST_RUN_CACHE_KEY}_`)
+      )) {
+        legacyLastRunKeys.push(key);
+      }
+    }
+    legacyLastRunKeys.forEach(key => localStorage.removeItem(key));
     localStorage.removeItem(LEGACY_HISTORY_CACHE_KEY);
     const legacyDetailKeys: string[] = [];
     for (let index = 0; index < localStorage.length; index++) {
@@ -560,7 +574,8 @@ export default function App() {
           jobFunctions: loadedFunctions,
           industries: loadedIndustries,
           justifications: payload.justifications || {},
-          isDomainView: payload.is_domain_page || DOMAIN_PAGES.has(payload._client)
+          isDomainView: payload.is_domain_page || DOMAIN_PAGES.has(payload._client),
+          outputVersion: payload.version || ""
         };
         setLastRunData(restoredRun);
         safeLocalStorageSet(scopedCacheKey(LAST_RUN_CACHE_KEY, cacheScope), JSON.stringify(restoredRun));
@@ -582,6 +597,7 @@ export default function App() {
       HISTORY_CACHE_KEY,
       LEGACY_HISTORY_CACHE_KEY,
       LAST_RUN_CACHE_KEY,
+      LEGACY_V2_LAST_RUN_CACHE_KEY,
       LEGACY_LAST_RUN_CACHE_KEY
     ]);
     let localCleanupFailed = false;
@@ -796,6 +812,7 @@ export default function App() {
     const currentSelection = { ...outputCheckmarks };
 
     if (lastRunData &&
+      lastRunData.outputVersion === CURRENT_OUTPUT_VERSION &&
       typeof lastRunData.rawJd === "string" &&
       lastRunData.rawJd.trim() === rawJd.trim() &&
       (lastRunData.jobUrl || "").trim() === jobUrl.trim() &&
@@ -894,7 +911,8 @@ export default function App() {
         jobFunctions: loadedFunctions,
         industries: loadedIndustries,
         justifications: data.justifications || {},
-        isDomainView: data.is_domain_page || DOMAIN_PAGES.has(effectiveClient) || client === "domain_page"
+        isDomainView: data.is_domain_page || DOMAIN_PAGES.has(effectiveClient) || client === "domain_page",
+        outputVersion: data.version || ""
       };
       setLastRunData(runData);
       safeLocalStorageSet(scopedCacheKey(LAST_RUN_CACHE_KEY, cacheScope), JSON.stringify(runData));

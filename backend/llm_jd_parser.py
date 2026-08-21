@@ -30,7 +30,7 @@ _env_path = Path(__file__).resolve().parent.parent / ".env"
 load_dotenv(dotenv_path=_env_path, override=False)
 
 _openai_client = None
-OUTPUT_VERSION = "v3"
+OUTPUT_VERSION = "v4"
 
 
 def _get_openai_client() -> OpenAI:
@@ -708,21 +708,192 @@ def clean_titles(titles: List[str], role: str) -> List[str]:
     return cleaned[:5]
 
 
+_RAW_ROLE_LABEL = re.compile(
+    r"(?i)^(?P<label>job\s+title|position\s+title|title|position|role)(?:"
+    r"[ \t]*(?P<separator>:|：|=|\||[-–—])[ \t]*(?P<title>.*)"
+    r"|[ \t]+(?P<spaced_title>.+)"
+    r")?$"
+)
+
+_RAW_ROLE_BOILERPLATE = re.compile(
+    r"(?ix)^(?:"
+    r"job\s+description|description|about(?:\s+the\s+(?:job|role|position))?|"
+    r"role\s+(?:description|overview|summary)|overview|summary|who\s+we\s+are|"
+    r"key\s+responsibilities|responsibilities|duties|requirements|qualifications|"
+    r"preferred\s+qualifications|what\s+you(?:'|’)?ll\s+do|what\s+you\s+will\s+do|"
+    r"location|compensation|salary|pay|commitment|schedule|start\s+date|"
+    r"application(?:\s+process)?|apply(?:\s+now)?|company(?:\s+overview)?|"
+    r"about\s+us|terms\s+and\s+conditions|privacy\s+policy|benefits(?:\s+and\s+perks)?|"
+    r"equal\s+opportunity(?:\s+employer)?|what\s+we\s+offer|"
+    r"remote|hybrid|on-?site|full[ -]?time|part[ -]?time|contract"
+    r")(?:\s*:\s*.*|\s*[\s.!?]*)$"
+)
+
+_RAW_ROLE_ORGANIZATION = re.compile(
+    r"(?ix)(?:"
+    r"\b(?:incorporated|inc|llc|ltd|limited|corporation|corp|company|group|holdings|"
+    r"enterprises|foundation|university|institute|agency|studio|labs|technologies|"
+    r"solutions|services)\.?$|^(?:university|institute|foundation)\s+of\b"
+    r")"
+)
+
+_RAW_ROLE_NOUNLESS_HEADING = re.compile(
+    r"(?ix)^(?:"
+    r"ai\s+training(?:\s*[-–—:]\s*[A-Za-z][A-Za-z0-9 +#./'-]*)?|"
+    r"machine\s+learning|data\s+science|customer\s+(?:success|support)|"
+    r"quality\s+assurance|business\s+development|human\s+resources|"
+    r"product\s+management|project\s+management|account\s+management|"
+    r"sales\s+development|content\s+moderation|risk\s+management"
+    r")$"
+)
+
+_RAW_ROLE_ACTION_AFTER_NOUN = re.compile(
+    r"(?i)^(?:build|create|develop|evaluate|transform|review|analy[sz]e|manage|"
+    r"support|work|write|test|provide|help|ensure|deliver|collaborate|conduct|"
+    r"perform|use|train|assess|solve|research)(?:s|es|ed|ing)?\b"
+)
+
+_RAW_ROLE_PROSE_CONTINUATION = re.compile(
+    r"(?ix)^(?:"
+    r"will|would|can|could|should|must|shall|is|are|was|were|be|being|"
+    r"who|that|responsible(?:\s+for)?|"
+    r"(?:routinely|regularly|typically|often|primarily|usually|actively)"
+    r")\b"
+)
+
+_RAW_ROLE_NOUN = re.compile(
+    r"(?ix)\b(?:"
+    r"accountants?|administrators?|advisers?|advisors?|agents?|analysts?|animators?|"
+    r"annotators?|apprentices?|architects?|artists?|assistants?|associates?|"
+    r"attorneys?|auditors?|brokers?|buyers?|chiefs?|consultants?|contributors?|"
+    r"controllers?|coordinators?|copywriters?|counsel|designers?|developers?|"
+    r"directors?|editors?|engineers?|evaluators?|executives?|experts?|fellows?|"
+    r"founders?|heads?|illustrators?|instructors?|interpreters?|interns?|"
+    r"investigators?|labelers?|labellers?|leads?|librarians?|linguists?|managers?|"
+    r"marketers?|mechanics?|nurses?|officers?|operators?|owners?|paralegals?|"
+    r"partners?|pharmacists?|photographers?|physicians?|planners?|practitioners?|"
+    r"presidents?|principals?|producers?|professors?|recruiters?|representatives?|"
+    r"researchers?|reviewers?|scientists?|specialists?|strategists?|supervisors?|"
+    r"surgeons?|teachers?|technicians?|therapists?|traders?|trainers?|trainees?|"
+    r"translators?|videographers?|vice\s+presidents?|vps?|writers?|"
+    r"ceo|cfo|cio|cmo|coo|cpo|cto|svp|evp|avp"
+    r")\b"
+)
+
+
+def _unwrap_raw_role_markdown(value: str) -> str:
+    """Remove only simple Markdown heading/bold presentation around a title line."""
+    line = str(value or "").strip()
+    heading = re.fullmatch(r"#{1,6}[ \t]+(.+)", line)
+    if heading:
+        line = heading.group(1).strip()
+    line = re.sub(r"\*\*([^*\r\n]+)\*\*", r"\1", line)
+    return line.strip()
+
+
+def _safe_raw_role_candidate(value: str) -> str:
+    """Return a compact plain-text title candidate, or an empty string if unsafe."""
+    candidate = " ".join(str(value or "").split()).strip()
+    if not candidate or len(candidate) > 120 or len(candidate.split()) > 16:
+        return ""
+    if not any(char.isalpha() for char in candidate):
+        return ""
+    if any(ord(char) < 32 for char in candidate):
+        return ""
+    if any(token in candidate for token in ("<", ">", "{", "}", "`")):
+        return ""
+    if candidate.startswith(("#", "*", ">")) or "**" in candidate:
+        return ""
+    if re.search(r"(?i)(?:https?://|www\.|javascript\s*:|data\s*:|vbscript\s*:)", candidate):
+        return ""
+    if candidate.rstrip().endswith((".", "!", "?", ";")):
+        return ""
+    if _RAW_ROLE_LABEL.fullmatch(candidate) or _RAW_ROLE_BOILERPLATE.fullmatch(candidate):
+        return ""
+    return candidate
+
+
+def _is_high_confidence_raw_role_heading(value: str) -> bool:
+    """Recognize a title-like first heading without treating arbitrary prose as a role."""
+    candidate = _safe_raw_role_candidate(value)
+    if not candidate:
+        return False
+
+    # Apply the same compact eligibility cleanup used by the final role before
+    # assessing its shape. The original candidate is still returned so the
+    # normal normalization pipeline remains the single source of policy output.
+    title_shape = normalize_role(sanitize_scalar_eligibility(candidate))
+    if not title_shape or len(title_shape.split()) > 12:
+        return False
+    if _RAW_ROLE_BOILERPLATE.fullmatch(title_shape):
+        return False
+    if _RAW_ROLE_ORGANIZATION.search(title_shape):
+        return False
+    if title_shape.rstrip().endswith((".", "!", "?", ";")):
+        return False
+    if re.search(r"(?i)\b(?:we|you|our|this)\b", title_shape):
+        return False
+    if re.search(r"(?i)\b(?:per\s+hour|hrs?/week|hours?/week)\b|[$€£]", title_shape):
+        return False
+
+    noun_match = _RAW_ROLE_NOUN.search(title_shape)
+    if noun_match:
+        following_text = title_shape[noun_match.end():].lstrip(" ,:;-–—")
+        if following_text and (
+            _RAW_ROLE_ACTION_AFTER_NOUN.match(following_text)
+            or _RAW_ROLE_PROSE_CONTINUATION.match(following_text)
+        ):
+            return False
+        return True
+
+    return bool(_RAW_ROLE_NOUNLESS_HEADING.fullmatch(title_shape))
+
+
 def extract_raw_role(raw_jd: str) -> str:
-    """Extract only an explicitly labelled, plain-text job title from raw input."""
-    for line in raw_jd.split('\n')[:20]:
-        line = line.strip()
-        match = re.match(r'(?i)^(?:job\s+title|position\s+title|position|role)\s*:\s*(.+)$', line)
-        if not match:
-            continue
-        candidate = match.group(1).strip()
-        if not candidate or len(candidate) > 120:
-            continue
-        if any(token in candidate for token in ("<", ">", "{", "}")):
-            continue
-        if re.search(r'(?i)https?://|javascript:', candidate):
-            continue
-        return candidate
+    """Extract the source title while rejecting markup, URLs, metadata, and prose."""
+    lines = [
+        _unwrap_raw_role_markdown(line)
+        for line in str(raw_jd or "").splitlines()[:20]
+    ]
+
+    # Explicit labels are authoritative. Support both inline values and the
+    # common two-line layout where the label is followed by the title.
+    # Search authoritative title labels before the more ambiguous Role/Position
+    # headings so nearby prose cannot win over a later explicit Job Title.
+    for authoritative_pass in (True, False):
+        for index, line in enumerate(lines):
+            if not line:
+                continue
+            match = _RAW_ROLE_LABEL.fullmatch(line)
+            if not match:
+                continue
+            label = " ".join(match.group("label").casefold().split())
+            authoritative_label = label in {"job title", "position title", "title"}
+            if authoritative_label != authoritative_pass:
+                continue
+            inline_title = _safe_raw_role_candidate(
+                match.group("title") or match.group("spaced_title") or ""
+            )
+            if inline_title and (
+                authoritative_label or _is_high_confidence_raw_role_heading(inline_title)
+            ):
+                return inline_title
+            for following_line in lines[index + 1:]:
+                if not following_line:
+                    continue
+                next_title = _safe_raw_role_candidate(following_line)
+                if next_title and (
+                    authoritative_label or _is_high_confidence_raw_role_heading(next_title)
+                ):
+                    return next_title
+                break
+
+    # Many source JDs, including Mercor exports, use the role as the first
+    # unlabelled heading. Accept it only when it has a strong title shape.
+    first_line = next((line for line in lines if line), "")
+    first_title = _safe_raw_role_candidate(first_line)
+    if first_title and _is_high_confidence_raw_role_heading(first_title):
+        return first_title
     return ""
 
 def extract_pay_info(pay_str: str):

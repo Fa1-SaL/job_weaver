@@ -2,7 +2,8 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import App, { resolveApiUrl, shouldUseServerHistory } from './App';
 
-const LAST_RUN_CACHE_KEY = 'job_weaver_last_run_v2';
+const LAST_RUN_CACHE_KEY = 'job_weaver_last_run_v3';
+const LEGACY_V2_LAST_RUN_CACHE_KEY = 'job_weaver_last_run_v2';
 const HISTORY_CACHE_KEY = 'job_weaver_history_v2';
 const DETAIL_CACHE_PREFIX = 'jw_detail_v2_';
 const API_TOKEN_SESSION_KEY = 'job_weaver_api_token';
@@ -49,6 +50,7 @@ function generatedResult(overrides: Record<string, any> = {}) {
     industries: ['Technology, Information and Media'],
     justifications: {},
     is_domain_page: false,
+    version: 'v4',
     ...overrides
   };
 }
@@ -70,6 +72,7 @@ function cachedRun(overrides: Record<string, any> = {}) {
     industries: ['Technology, Information and Media'],
     justifications: {},
     isDomainView: false,
+    outputVersion: 'v4',
     ...overrides
   };
 }
@@ -482,6 +485,76 @@ describe('Job Weaver frontend regressions', () => {
     expect(localStorage.getItem('job_weaver_last_run')).toBeNull();
     expect(localStorage.getItem('job_weaver_history')).toBeNull();
     expect(localStorage.getItem('jw_detail_old-id')).toBeNull();
+  });
+
+  it('ignores and removes stale v2 output instead of replaying it', async () => {
+    localStorage.setItem(LEGACY_V2_LAST_RUN_CACHE_KEY, JSON.stringify(cachedRun({
+      jobUrl: '',
+      linkedinTitle: 'Old suggested title'
+    })));
+    vi.mocked(fetch).mockResolvedValue(jsonResponse(generatedResult({
+      linkedin_title: 'Original title from the JD'
+    })));
+
+    render(<App />);
+    fireEvent.change(screen.getByLabelText('PASTE RAW JOB DESCRIPTION'), {
+      target: { value: 'Same raw JD' }
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Generate' }));
+
+    expect(await screen.findByText('Fresh JD')).toBeInTheDocument();
+    expect(fetch).toHaveBeenCalledTimes(1);
+    expect(screen.queryByText('Old cached JD')).not.toBeInTheDocument();
+    expect(screen.getByRole('textbox', { name: 'LinkedIn title' })).toHaveValue('Original title from the JD');
+    expect(localStorage.getItem(LEGACY_V2_LAST_RUN_CACHE_KEY)).toBeNull();
+    expect(localStorage.getItem(LAST_RUN_CACHE_KEY)).not.toBeNull();
+  });
+
+  it('keeps suggested titles copy-only while using the backend default title', async () => {
+    const clipboardWriteText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText: clipboardWriteText }
+    });
+    vi.mocked(fetch).mockResolvedValue(jsonResponse(generatedResult({
+      linkedin_title: 'Original title from the JD',
+      titles: ['Alternative suggested title']
+    })));
+
+    render(<App />);
+    fireEvent.change(screen.getByLabelText('PASTE RAW JOB DESCRIPTION'), {
+      target: { value: 'Job Title: Original title from the JD' }
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Generate' }));
+
+    const defaultTitle = await screen.findByRole('textbox', { name: 'LinkedIn title' });
+    const suggestedTitle = screen.getByRole('button', { name: 'Alternative suggested title' });
+    expect(defaultTitle).toHaveValue('Original title from the JD');
+
+    fireEvent.click(suggestedTitle);
+    await waitFor(() => expect(clipboardWriteText).toHaveBeenCalledWith('Alternative suggested title'));
+    expect(defaultTitle).toHaveValue('Original title from the JD');
+  });
+
+  it('does not replay a pre-policy draft loaded into the current cache key', async () => {
+    localStorage.setItem(LAST_RUN_CACHE_KEY, JSON.stringify(cachedRun({
+      jobUrl: '',
+      outputVersion: 'v3',
+      linkedinTitle: 'Old suggested title'
+    })));
+    vi.mocked(fetch).mockResolvedValue(jsonResponse(generatedResult({
+      linkedin_title: 'Original title from the JD'
+    })));
+
+    render(<App />);
+    fireEvent.change(screen.getByLabelText('PASTE RAW JOB DESCRIPTION'), {
+      target: { value: 'Same raw JD' }
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Generate' }));
+
+    expect(await screen.findByText('Fresh JD')).toBeInTheDocument();
+    expect(fetch).toHaveBeenCalledTimes(1);
+    expect(screen.getByRole('textbox', { name: 'LinkedIn title' })).toHaveValue('Original title from the JD');
   });
 
   it('includes domain output selection in the last-run cache identity', async () => {

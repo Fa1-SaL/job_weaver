@@ -92,6 +92,7 @@ WHERE_YOU_WILL RULES:
 - plain text only, no markdown, no quotes
 
 TITLE RULES:
+- These rules apply only to suggested_titles. Never use a suggested title as role.
 - Market-standard job titles only
 - No inflated titles (avoid "Expert")
 - 3-6 words preferred, max 8 words
@@ -130,7 +131,7 @@ ABSOLUTE RULES:
 - No extra keys in the JSON
 - No explanation outside JSON
 - No emojis
-- role must be a market-standard job title
+- If the job description states a source job title, role must preserve it rather than using a suggested alternative. Only when no source title exists, infer a concise market-standard role. Alternatives belong only in suggested_titles.
 
 Job Description:
 """
